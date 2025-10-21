@@ -50,13 +50,16 @@ import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
 	}
 
 	.navigation-container-full {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 20px;
-		display: flex;
-		align-items: center;
 		justify-content: space-between;
-		height: 80px;
+		align-items: center;
+		width: 100%;
+		max-width: none;
+		height: 64px;
+		min-height: auto;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 16px 20px;
+		display: flex;
 	}
 
 	.brand {
@@ -65,16 +68,21 @@ import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
 	}
 
 	.logo {
-		height: 40px;
 		width: auto;
+		height: 32px;
+		display: block;
 		filter: brightness(0) invert(1);
 		border: none;
 		outline: none;
 	}
 
 	.nav-menu-green {
-		display: flex;
+		color: var(--oregano);
 		align-items: center;
+		width: auto;
+		height: auto;
+		display: flex;
+		position: static;
 		gap: 32px;
 	}
 
@@ -138,13 +146,17 @@ import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
 			padding: 0 16px;
 		}
 
+		.logo {
+			height: 24px;
+		}
+
 		.menu-button {
 			display: flex;
 		}
 
 		.nav-menu-green {
 			position: fixed;
-			top: 80px;
+			top: 64px;
 			left: 0;
 			right: 0;
 			background-color: var(--grey-5);
