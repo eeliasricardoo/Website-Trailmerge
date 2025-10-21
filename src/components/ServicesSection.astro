@@ -1,0 +1,46 @@
+---
+// Import images
+import FireIcon from '../assets/images/Illustration---Fire.svg';
+import MagnifyingGlassIcon from '../assets/images/Illustration---Magnifying-Glass.svg';
+import CaribinerIcon from '../assets/images/Illustration---Caribiner.svg';
+
+export interface ServiceItem {
+	icon: any;
+	title: string;
+	description: string;
+}
+
+const services: ServiceItem[] = [
+	{
+		icon: FireIcon,
+		title: "Ignite your practice",
+		description: "We'll guide you in building a strong, Agile-centered product design practice, efficient design systems, and team-wide processes."
+	},
+	{
+		icon: MagnifyingGlassIcon,
+		title: "Evaluate your app's UX",
+		description: "Our team of SaaS & enterprise usability specialists will conduct a UX design audit to highlight and prioritize areas for improvement."
+	},
+	{
+		icon: CaribinerIcon,
+		title: "Scale up design",
+		description: "Augment UX efforts on your team by bringing on a fractional design team member to take your product to the next level."
+	}
+];
+---
+
+<!-- Services Section -->
+<div class="body-block">
+	<div class="content-container">
+		<div class="items-across">
+			{services.map((service, index) => (
+				<div class={`item-block ${index === services.length - 1 ? 'item-block-last' : ''}`}>
+					<img src={service.icon.src} loading="lazy" alt="" class="item-image" />
+					<h4>{service.title}</h4>
+					<div class="spacer-s"></div>
+					<p>{service.description}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</div>

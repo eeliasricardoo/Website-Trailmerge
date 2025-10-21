@@ -1,0 +1,52 @@
+---
+// Import images
+import AchieveItLogo from '../assets/images/AchieveIt-Logo.svg';
+import LoanShoutLogo from '../assets/images/LoanShout-Logo.svg';
+import StaatLogo from '../assets/images/Staat-Logo.svg';
+import TourialLogo from '../assets/images/Tourial-Logo.svg';
+import UserIQLogo from '../assets/images/UserIQ-Logo.svg';
+
+export interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Companies we've served",
+	description = "We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives."
+} = Astro.props;
+
+const companyLogos = [
+	AchieveItLogo,
+	LoanShoutLogo,
+	StaatLogo,
+	TourialLogo,
+	UserIQLogo
+];
+---
+
+<!-- Companies Section -->
+<div class="body-block dark-block">
+	<div class="content-container">
+		<div class="div-block-18">
+			<div class="stacked-title-area">
+				<h3 class="light-text"><strong>{title}</strong></h3>
+				<div class="spacer-m"></div>
+				<div class="side-content">
+					<p class="light-text">{description}</p>
+				</div>
+			</div>
+			<div class="div-block-19"></div>
+		</div>
+		<div class="spacer-xl"></div>
+		<div class="grid-5">
+			{companyLogos.map((logo, index) => (
+				<div class="item-block">
+					<img src={logo.src} loading="lazy" alt="" class="logo" />
+				</div>
+			))}
+			<div class="div-block-35"></div>
+			<div class="div-block-36"></div>
+		</div>
+	</div>
+</div>

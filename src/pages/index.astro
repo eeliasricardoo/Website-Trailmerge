@@ -1,467 +1,78 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import AsideSection from '../components/AsideSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import CompaniesSection from '../components/CompaniesSection.astro';
+import Testimonial from '../components/Testimonial.astro';
+import CaseStudy from '../components/CaseStudy.astro';
+import OfferSection from '../components/OfferSection.astro';
+import BlogSection from '../components/BlogSection.astro';
+import Footer from '../components/Footer.astro';
+import ContactModal from '../components/ContactModal.astro';
 
-// Import images
-import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
-import TrailmergeLogoGrey from '../assets/images/Trailmerge-Wordmark_Grey-5.svg';
-import FireIcon from '../assets/images/Illustration---Fire.svg';
-import MagnifyingGlassIcon from '../assets/images/Illustration---Magnifying-Glass.svg';
-import CaribinerIcon from '../assets/images/Illustration---Caribiner.svg';
-import BannerTag from '../assets/images/BannerTag.png';
-import BannerTagLeft from '../assets/images/BannerTagLeft.png';
-import AchieveItLogo from '../assets/images/AchieveIt-Logo.svg';
-import LoanShoutLogo from '../assets/images/LoanShout-Logo.svg';
-import StaatLogo from '../assets/images/Staat-Logo.svg';
-import TourialLogo from '../assets/images/Tourial-Logo.svg';
-import UserIQLogo from '../assets/images/UserIQ-Logo.svg';
+// Import images for testimonials and case studies
 import SeanHeadshot from '../assets/images/Sean-Headshot.png';
 import AndyHeadshot from '../assets/images/Andy-Headshot.png';
-import DesignAuditImage from '../assets/images/Design-Audit-Image.png';
 import TourialScreenshots from '../assets/images/Tourial-Screenshots.png';
-import CoffeeImage from '../assets/images/Coffee.png';
-import HeroArt from '../assets/images/Hero-Art.png';
 ---
 
 <Layout>
-	<!-- Navigation -->
-	<div class="navigation">
-		<div class="navigation-container-full">
-			<a href="/" id="nav-logo" aria-current="page" class="brand">
-				<img src={TrailmergeLogo.src} alt="Trailmerge Logo" class="logo nav-logo" />
-			</a>
-			<nav class="nav-menu-green">
-				<div class="mock-menu-background"></div>
-				<a href="/about" id="nav-about" class="nav-link">About</a>
-				<a href="/blog" id="nav-blog" class="nav-link">Blog</a>
-				<div class="navbar-button-wrapper">
-					<a href="#" id="nav-contact" class="open-modal button navbar-button">Contact Us</a>
-				</div>
-			</nav>
-			<div class="menu-button">
-				<div class="icon"></div>
-			</div>
-		</div>
-	</div>
+	<Navbar />
+	<Hero />
 
-	<!-- Hero Section -->
-	<div class="body-block hero-wrapper home-hero">
-		<div class="content-container">
-			<div class="hero">
-				<div class="flex-half-right">
-					<h1>Elevate your product's design</h1>
-					<div class="spacer-m"></div>
-					<h3>Take the path to best-in-class UX for SaaS & enterprise apps</h3>
-					<div class="spacer-m"></div>
-					<a id="hero-contact" href="#" class="open-modal button">Request A Consult</a>
-				</div>
-				<div class="hero-illustration-wrapper">
-					<div class="hero-illustration"></div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<AsideSection />
 
-	<!-- Aside Section -->
-	<div class="body-block aside-wrapper">
-		<div class="aside-center-container">
-			<div class="aside-center">
-				<div class="div-block-17">
-					<p>Trailmerge equips SaaS and enterprise product teams with user experience expertise, specialized product design, and strategic best practices to level up the usability and adoption of your SaaS or enterprise application.</p>
-				</div>
-			</div>
-			<div class="ribbon-right-container">
-				<img src={BannerTag.src} loading="lazy" width="85" alt="" />
-			</div>
-			<div class="ribbon-left-container">
-				<img src={BannerTagLeft.src} loading="lazy" width="85" alt="" />
-			</div>
-		</div>
-	</div>
+	<ServicesSection />
 
-	<!-- Services Section -->
-	<div class="body-block">
-		<div class="content-container">
-			<div class="items-across">
-				<div class="item-block">
-					<img src={FireIcon.src} loading="lazy" alt="" class="item-image" />
-					<h4>Ignite your practice</h4>
-					<div class="spacer-s"></div>
-					<p>We'll guide you in building a strong, Agile-centered product design practice, efficient design systems, and team-wide processes.</p>
-				</div>
-				<div class="item-block">
-					<img src={MagnifyingGlassIcon.src} loading="lazy" alt="" class="item-image" />
-					<h4>Evaluate your app's UX</h4>
-					<div class="spacer-s"></div>
-					<p>Our team of SaaS & enterprise usability specialists will conduct a UX design audit to highlight and prioritize areas for improvement.</p>
-				</div>
-				<div class="item-block item-block-last">
-					<img src={CaribinerIcon.src} loading="lazy" alt="" class="item-image" />
-					<h4>Scale up design</h4>
-					<div class="spacer-s"></div>
-					<p>Augment UX efforts on your team by bringing on a fractional design team member to take your product to the next level.</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	<CompaniesSection />
 
-	<!-- Companies Section -->
-	<div class="body-block dark-block">
-		<div class="content-container">
-			<div class="div-block-18">
-				<div class="stacked-title-area">
-					<h3 class="light-text"><strong>Companies we've served</strong></h3>
-					<div class="spacer-m"></div>
-					<div class="side-content">
-						<p class="light-text">We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives.</p>
-					</div>
-				</div>
-				<div class="div-block-19"></div>
-			</div>
-			<div class="spacer-xl"></div>
-			<div class="grid-5">
-				<div class="item-block">
-					<img src={AchieveItLogo.src} loading="lazy" alt="" class="logo" />
-				</div>
-				<div class="item-block">
-					<img src={LoanShoutLogo.src} loading="lazy" alt="" class="logo" />
-				</div>
-				<div class="item-block">
-					<img src={StaatLogo.src} loading="lazy" alt="" class="logo" />
-				</div>
-				<div class="div-block-35"></div>
-				<div class="item-block">
-					<img src={TourialLogo.src} loading="lazy" alt="" class="logo" />
-				</div>
-				<div class="item-block">
-					<img src={UserIQLogo.src} loading="lazy" alt="" class="logo" />
-				</div>
-				<div class="div-block-36"></div>
-			</div>
-		</div>
-	</div>
+	<Testimonial 
+		image={SeanHeadshot}
+		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
+		author="Sean Grapevine"
+		position="Founder"
+		company="LoanShout"
+	/>
 
-	<!-- First Testimonial -->
-	<div class="body-block quote-block">
-		<div class="content-container">
-			<div class="quote-wrapper">
-				<img src={SeanHeadshot.src} loading="lazy" alt="" class="quote-image" />
-				<div class="quote-text-wrapper">
-					<blockquote>"Trailmerge has been the difference between success and failure for our early-stage startup."</blockquote>
-					<div class="spacer-m"></div>
-					<p class="quote-name">— Sean Grapevine, Founder @ LoanShout</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	<CaseStudy 
+		image="https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/6115a548caa9f623017a1227_LoanShout%20Screenshots.png"
+		title="LoanShout"
+		description="Trailmerge guided this non-technical SaaS founder from concept to first users, transforming home loan communication along the way."
+		linkText="Read More"
+		linkUrl="#"
+		imageAlt="LoanShout Screenshots"
+	/>
 
-	<!-- LoanShout Case Study -->
-	<div class="body-block">
-		<div class="content-container">
-			<div class="case-study-section">
-				<div class="case-study-image">
-					<img src="https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/6115a548caa9f623017a1227_LoanShout%20Screenshots.png" loading="lazy" alt="LoanShout Screenshots" class="constrained-full-image" />
-				</div>
-				<div class="case-study-content">
-					<h2>LoanShout</h2>
-					<div class="spacer-m"></div>
-					<p>Trailmerge guided this non-technical SaaS founder from concept to first users, transforming home loan communication along the way.</p>
-					<div class="spacer-m"></div>
-					<a href="#" class="button">Read More</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	<OfferSection />
 
-	<!-- Design Audit Offer -->
-	<div class="body-block offer-block">
-		<div class="content-container">
-			<div class="div-block-20">
-				<div class="image-text-wrapper">
-					<div class="side-content">
-						<h3><strong>How does your product stack up?</strong></h3>
-						<div class="spacer-m"></div>
-						<a id="audit-button" href="https://forms.gle/ufj74gqNJSiabci79" target="_blank" class="button dark-button">Get a <span class="text-span-4">Personalized </span>SaaS Design Audit</a>
-					</div>
-				</div>
-				<div class="div-block-21"></div>
-				<div class="div-block-22">
-					<img src={DesignAuditImage.src} loading="lazy" width="248" alt="" class="image-25" />
-				</div>
-			</div>
-		</div>
-	</div>
+	<CaseStudy 
+		image={TourialScreenshots}
+		title="Tourial"
+		description="Trailmerge crafted a scalable design system and designed new features in partnership with this Atlanta-based startup team focused on improving the SaaS sales process."
+		linkText="Read More"
+		linkUrl="#"
+		imageAlt="Tourial Screenshots"
+	/>
 
-	<!-- Tourial Case Study -->
-	<div class="body-block">
-		<div class="content-container">
-			<div class="case-study-section">
-				<div class="case-study-image">
-					<img src={TourialScreenshots.src} loading="lazy" alt="" class="constrained-full-image" />
-				</div>
-				<div class="case-study-content">
-					<h2>Tourial</h2>
-					<div class="spacer-m"></div>
-					<p>Trailmerge crafted a scalable design system and designed new features in partnership with this Atlanta-based startup team focused on improving the SaaS sales process.</p>
-					<div class="spacer-m"></div>
-					<a href="#" class="button">Read More</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	<Testimonial 
+		image={AndyHeadshot}
+		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
+		author="Andy Binkley"
+		position="Co-founder & CEO"
+		company="Tourial"
+	/>
 
-	<!-- Second Testimonial -->
-	<div class="body-block quote-block">
-		<div class="content-container">
-			<div class="quote-wrapper">
-				<img src={AndyHeadshot.src} loading="lazy" alt="" class="quote-image" />
-				<div class="quote-text-wrapper">
-					<blockquote>"Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."</blockquote>
-					<div class="spacer-s"></div>
-					<p class="quote-name">— Andy Binkley, Co-founder & CEO @ Tourial</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	<BlogSection />
 
-	<!-- Blog Section -->
-	<div class="body-block">
-		<div class="content-container">
-			<div class="blog-grid">
-				<div class="blog-feed-post-wrapper">
-					<img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop" loading="lazy" alt="Team building" class="blog-feed-image" />
-					<div class="spacer-m"></div>
-					<h4>Help! How do I build out my product design team?</h4>
-					<div class="spacer-s"></div>
-					<div class="blog-feed-details">
-						<div class="blog-feed-text">Mark Tegtmeier</div>
-						<div class="divider"></div>
-						<div class="blog-feed-text">Jul 8, 2022</div>
-					</div>
-					<div class="spacer-xs"></div>
-					<a href="#" class="text-link">See Blog Post</a>
-				</div>
-				<div class="blog-feed-post-wrapper">
-					<img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop" loading="lazy" alt="Coffee and planning" class="blog-feed-image" />
-					<div class="spacer-m"></div>
-					<h4>How Do I Prioritize Features? Part 2 of 2</h4>
-					<div class="spacer-s"></div>
-					<div class="blog-feed-details">
-						<div class="blog-feed-text">Mark Tegtmeier</div>
-						<div class="divider"></div>
-						<div class="blog-feed-text">Jun 9, 2021</div>
-					</div>
-					<div class="spacer-xs"></div>
-					<a href="#" class="text-link">See Blog Post</a>
-				</div>
-				<div class="blog-feed-post-wrapper">
-					<img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop" loading="lazy" alt="Jenga blocks" class="blog-feed-image" />
-					<div class="spacer-m"></div>
-					<h4>How Do I Prioritize Features? Part 1 of 2</h4>
-					<div class="spacer-s"></div>
-					<div class="blog-feed-details">
-						<div class="blog-feed-text">Mark Tegtmeier</div>
-						<div class="divider"></div>
-						<div class="blog-feed-text">May 21, 2021</div>
-					</div>
-					<div class="spacer-xs"></div>
-					<a href="#" class="text-link">See Blog Post</a>
-				</div>
-			</div>
-		</div>
-	</div>
+	<Footer />
 
-	<!-- Footer -->
-	<footer id="footer" class="footer">
-		<div class="content-container distributed">
-			<div class="footer-flex-container">
-				<div class="footer-logo-area">
-					<a href="/" aria-current="page" class="footer-logo-link">
-						<img src={TrailmergeLogoGrey.src} alt="Trailmerge Wordmark" class="footer-image" />
-					</a>
-					<div class="spacer-l"></div>
-					<div class="help-text">
-						3100 Interstate North Circle SE<br />
-						Suite 200<br />
-						Atlanta, GA 30339
-					</div>
-					<div class="spacer-xl"></div>
-				</div>
-				<div class="footer-links-wrapper">
-					<div class="footer-links-group">
-						<a href="/about" class="footer-heading-link">About</a>
-						<div class="spacer-m"></div>
-						<ul>
-							<li class="hidden">
-								<a href="#" class="footer-link">Case Studies</a>
-								<div class="spacer-s"></div>
-							</li>
-							<li class="hidden">
-								<a href="#" class="footer-link">Pricing</a>
-								<div class="spacer-s"></div>
-							</li>
-							<li>
-								<a href="https://trailmerge.breezy.hr/" target="_blank" class="footer-link">Careers</a>
-								<div class="spacer-s"></div>
-								<a href="/privacy" class="footer-link">Privacy</a>
-								<div class="spacer-s hidden"></div>
-							</li>
-							<li class="hidden">
-								<a href="#" class="footer-link">Privacy Policy</a>
-							</li>
-						</ul>
-						<div class="spacer-l"></div>
-					</div>
-					<div class="footer-links-group last-item">
-						<h2 class="footer-heading">Resources</h2>
-						<div class="spacer-m"></div>
-						<ul>
-							<li>
-								<a href="#" class="footer-link">Blog</a>
-								<div class="spacer-s hidden"></div>
-							</li>
-							<li class="hidden">
-								<a href="#" class="footer-link">SaaS Design Best Practices</a>
-								<div class="spacer-s"></div>
-							</li>
-							<li class="hidden">
-								<a href="#" class="footer-link">Contact Us</a>
-							</li>
-						</ul>
-						<div class="spacer-l"></div>
-						<a id="footer-contact" href="#" class="open-modal button dark-button">Request A Consult</a>
-					</div>
-				</div>
-			</div>
-			<div class="help-text">© 2024 Trailmerge Ltd Co. All rights reserved.</div>
-		</div>
-	</footer>
-
-	<!-- Contact Modal -->
-	<div class="modal-backdrop">
-		<div class="contact-modal">
-			<div class="modal-columns">
-				<div class="modal-column centered">
-					<img src={CoffeeImage.src} loading="lazy" alt="" class="modal-image" />
-					<div class="spacer-s"></div>
-					<h3>Schedule your free consult</h3>
-					<div class="spacer-s"></div>
-					<p>The journey together starts with a simple first step. Send us a message - tell us a little bit about your project, your ideas, your dream - and we'll be on our way to making it a reality.</p>
-					<div class="spacer-l show-mobile"></div>
-				</div>
-				<div class="modal-column">
-					<div class="form-block">
-						<form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="get" class="form">
-							<label for="Name" class="field-label">Name</label>
-							<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder="First and Last" type="text" id="modal-name" />
-							
-							<label for="Email" class="field-label">Email Address</label>
-							<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder="hello@yoursite.com" type="email" id="modal-email" required="" />
-							
-							<label for="Message" class="field-label">Message</label>
-							<textarea placeholder="Tell us about your project..." maxlength="5000" id="modal-message" name="Message" data-name="Message" required="" class="textarea"></textarea>
-							
-							<label id="modal-optin" class="checkbox-field">
-								<input type="checkbox" id="Updates?" name="Updates" data-name="Updates?" class="checkbox" />
-								<span for="Updates" class="checkbox-label">Please send me updates and helpful content from Trailmerge.</span>
-							</label>
-							
-							<label class="checkbox-field honey-field">
-								<input type="checkbox" id="Not Human?" name="Not-Human" data-name="Not Human?" class="checkbox" />
-								<span for="Not-Human" class="checkbox-label">Only check this if you're a bot.</span>
-							</label>
-							
-							<input type="submit" data-wait="Please wait..." id="modal-submit" class="button dark-button" value="Submit" />
-						</form>
-						<div class="success-message">
-							<div>Great first step! We've received your message and will be touching base soon.</div>
-						</div>
-						<div class="error-message">
-							<div>Hmm... Something went wrong while submitting the form. Give it another shot!</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<a href="#" class="close-modal">✕</a>
-		</div>
-	</div>
+	<ContactModal />
 </Layout>
-
-<script>
-	// Modal functionality
-	document.addEventListener('DOMContentLoaded', function() {
-		const modalBackdrop = document.querySelector('.modal-backdrop');
-		const openModalButtons = document.querySelectorAll('.open-modal');
-		const closeModalButton = document.querySelector('.close-modal');
-
-		// Open modal
-		openModalButtons.forEach(button => {
-			button.addEventListener('click', function(e) {
-				e.preventDefault();
-				modalBackdrop.classList.add('active');
-				document.body.style.overflow = 'hidden';
-			});
-		});
-
-		// Close modal
-		closeModalButton.addEventListener('click', function(e) {
-			e.preventDefault();
-			modalBackdrop.classList.remove('active');
-			document.body.style.overflow = 'auto';
-		});
-
-		// Close modal when clicking backdrop
-		modalBackdrop.addEventListener('click', function(e) {
-			if (e.target === modalBackdrop) {
-				modalBackdrop.classList.remove('active');
-				document.body.style.overflow = 'auto';
-			}
-		});
-
-		// Close modal with Escape key
-		document.addEventListener('keydown', function(e) {
-			if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
-				modalBackdrop.classList.remove('active');
-				document.body.style.overflow = 'auto';
-			}
-		});
-	});
-</script>
 
 <style is:global>
 	/* Additional styles for specific elements */
-	.hero {
-		display: flex;
-		align-items: center;
-		min-height: 60vh;
-		width: 100%;
-		position: relative;
-	}
-
-	.flex-half-right {
-		flex: 1;
-		max-width: 600px;
-		z-index: 2;
-	}
-
-	.hero-illustration-wrapper {
-		position: absolute;
-		top: 0;
-		right: 0;
-		width: 50%;
-		height: 100vh;
-		background: linear-gradient(135deg, var(--green-100) 0%, var(--mint) 100%);
-		z-index: 1;
-	}
-
-	.hero-illustration {
-		width: 100%;
-		height: 100%;
-		background-image: url({HeroArt.src});
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-	}
-
 	.blog-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
@@ -530,35 +141,7 @@ import HeroArt from '../assets/images/Hero-Art.png';
 		border: 1px solid var(--cinnamon-500);
 	}
 
-	/* Mobile menu styles */
-	.menu-button {
-		display: none;
-		flex-direction: column;
-		cursor: pointer;
-		padding: 8px;
-	}
-
-	.menu-button .icon {
-		width: 24px;
-		height: 2px;
-		background-color: var(--grey-5);
-		margin: 2px 0;
-		transition: all 0.3s ease;
-	}
-
 	@media (max-width: 768px) {
-		.menu-button {
-			display: flex;
-		}
-
-		.nav-menu-green {
-			display: none;
-		}
-
-		.hero-illustration-wrapper {
-			display: none;
-		}
-
 		.ribbon-right-container,
 		.ribbon-left-container {
 			display: none;

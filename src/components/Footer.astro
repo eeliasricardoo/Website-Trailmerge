@@ -1,0 +1,88 @@
+---
+// Import images
+import TrailmergeLogoGrey from '../assets/images/Trailmerge-Wordmark_Grey-5.svg';
+
+export interface FooterLink {
+	text: string;
+	url: string;
+	target?: string;
+}
+
+export interface FooterLinkGroup {
+	title: string;
+	links: FooterLink[];
+}
+
+export interface Props {
+	logo?: any;
+	address?: string;
+	linkGroups?: FooterLinkGroup[];
+	copyright?: string;
+	ctaButtonText?: string;
+	ctaButtonUrl?: string;
+}
+
+const { 
+	logo = TrailmergeLogoGrey,
+	address = "3100 Interstate North Circle SE<br />Suite 200<br />Atlanta, GA 30339",
+	linkGroups = [
+		{
+			title: "About",
+			links: [
+				{ text: "Careers", url: "https://trailmerge.breezy.hr/", target: "_blank" },
+				{ text: "Privacy", url: "/privacy" }
+			]
+		},
+		{
+			title: "Resources",
+			links: [
+				{ text: "Blog", url: "#" }
+			]
+		}
+	],
+	copyright = "© 2024 Trailmerge Ltd Co. All rights reserved.",
+	ctaButtonText = "Request A Consult",
+	ctaButtonUrl = "#"
+} = Astro.props;
+---
+
+<!-- Footer -->
+<footer id="footer" class="footer">
+	<div class="content-container distributed">
+		<div class="footer-flex-container">
+			<div class="footer-logo-area">
+				<a href="/" aria-current="page" class="footer-logo-link">
+					<img src={logo.src} alt="Trailmerge Wordmark" class="footer-image" />
+				</a>
+				<div class="spacer-l"></div>
+				<div class="help-text" set:html={address}></div>
+				<div class="spacer-xl"></div>
+			</div>
+			<div class="footer-links-wrapper">
+				{linkGroups.map((group, index) => (
+					<div class={`footer-links-group ${index === linkGroups.length - 1 ? 'last-item' : ''}`}>
+						{group.title === "About" ? (
+							<a href="/about" class="footer-heading-link">{group.title}</a>
+						) : (
+							<h2 class="footer-heading">{group.title}</h2>
+						)}
+						<div class="spacer-m"></div>
+						<ul>
+							{group.links.map((link) => (
+								<li>
+									<a href={link.url} class="footer-link" target={link.target || "_self"}>{link.text}</a>
+									<div class="spacer-s"></div>
+								</li>
+							))}
+						</ul>
+						<div class="spacer-l"></div>
+						{index === linkGroups.length - 1 && (
+							<a id="footer-contact" href={ctaButtonUrl} class="open-modal button dark-button">{ctaButtonText}</a>
+						)}
+					</div>
+				))}
+			</div>
+		</div>
+		<div class="help-text">{copyright}</div>
+	</div>
+</footer>

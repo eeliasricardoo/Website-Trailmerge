@@ -1,0 +1,39 @@
+---
+// Import images
+import DesignAuditImage from '../assets/images/Design-Audit-Image.png';
+
+export interface Props {
+	title?: string;
+	buttonText?: string;
+	buttonUrl?: string;
+	image?: any;
+	imageWidth?: number;
+}
+
+const { 
+	title = "How does your product stack up?",
+	buttonText = "Get a Personalized SaaS Design Audit",
+	buttonUrl = "https://forms.gle/ufj74gqNJSiabci79",
+	image = DesignAuditImage,
+	imageWidth = 248
+} = Astro.props;
+---
+
+<!-- Design Audit Offer -->
+<div class="body-block offer-block">
+	<div class="content-container">
+		<div class="div-block-20">
+			<div class="image-text-wrapper">
+				<div class="side-content">
+					<h3><strong>{title}</strong></h3>
+					<div class="spacer-m"></div>
+					<a id="audit-button" href={buttonUrl} target="_blank" class="button dark-button">{buttonText}</a>
+				</div>
+			</div>
+			<div class="div-block-21"></div>
+			<div class="div-block-22">
+				<img src={image.src} loading="lazy" width={imageWidth} alt="" class="image-25" />
+			</div>
+		</div>
+	</div>
+</div>

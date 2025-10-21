@@ -1,0 +1,64 @@
+---
+export interface BlogPost {
+	image: string;
+	title: string;
+	author: string;
+	date: string;
+	linkUrl?: string;
+	imageAlt?: string;
+}
+
+export interface Props {
+	posts?: BlogPost[];
+}
+
+const { posts = [
+	{
+		image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop",
+		title: "Help! How do I build out my product design team?",
+		author: "Mark Tegtmeier",
+		date: "Jul 8, 2022",
+		linkUrl: "#",
+		imageAlt: "Team building"
+	},
+	{
+		image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=200&fit=crop",
+		title: "How Do I Prioritize Features? Part 2 of 2",
+		author: "Mark Tegtmeier",
+		date: "Jun 9, 2021",
+		linkUrl: "#",
+		imageAlt: "Coffee and planning"
+	},
+	{
+		image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=200&fit=crop",
+		title: "How Do I Prioritize Features? Part 1 of 2",
+		author: "Mark Tegtmeier",
+		date: "May 21, 2021",
+		linkUrl: "#",
+		imageAlt: "Jenga blocks"
+	}
+] } = Astro.props;
+---
+
+<!-- Blog Section -->
+<div class="body-block">
+	<div class="content-container">
+		<div class="blog-grid">
+			{posts.map((post) => (
+				<div class="blog-feed-post-wrapper">
+					<img src={post.image} loading="lazy" alt={post.imageAlt || post.title} class="blog-feed-image" />
+					<div class="spacer-m"></div>
+					<h4>{post.title}</h4>
+					<div class="spacer-s"></div>
+					<div class="blog-feed-details">
+						<div class="blog-feed-text">{post.author}</div>
+						<div class="divider"></div>
+						<div class="blog-feed-text">{post.date}</div>
+					</div>
+					<div class="spacer-xs"></div>
+					<a href={post.linkUrl || "#"} class="text-link">See Blog Post</a>
+				</div>
+			))}
+		</div>
+	</div>
+</div>

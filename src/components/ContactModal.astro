@@ -1,0 +1,110 @@
+---
+// Import images
+import CoffeeImage from '../assets/images/Coffee.png';
+
+export interface Props {
+	image?: any;
+	title?: string;
+	description?: string;
+	formAction?: string;
+	formMethod?: string;
+}
+
+const { 
+	image = CoffeeImage,
+	title = "Schedule your free consult",
+	description = "The journey together starts with a simple first step. Send us a message - tell us a little bit about your project, your ideas, your dream - and we'll be on our way to making it a reality.",
+	formAction = "#",
+	formMethod = "get"
+} = Astro.props;
+---
+
+<!-- Contact Modal -->
+<div class="modal-backdrop">
+	<div class="contact-modal">
+		<div class="modal-columns">
+			<div class="modal-column centered">
+				<img src={image.src} loading="lazy" alt="" class="modal-image" />
+				<div class="spacer-s"></div>
+				<h3>{title}</h3>
+				<div class="spacer-s"></div>
+				<p>{description}</p>
+				<div class="spacer-l show-mobile"></div>
+			</div>
+			<div class="modal-column">
+				<div class="form-block">
+					<form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method={formMethod} class="form" action={formAction}>
+						<label for="Name" class="field-label">Name</label>
+						<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder="First and Last" type="text" id="modal-name" />
+						
+						<label for="Email" class="field-label">Email Address</label>
+						<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder="hello@yoursite.com" type="email" id="modal-email" required="" />
+						
+						<label for="Message" class="field-label">Message</label>
+						<textarea placeholder="Tell us about your project..." maxlength="5000" id="modal-message" name="Message" data-name="Message" required="" class="textarea"></textarea>
+						
+						<label id="modal-optin" class="checkbox-field">
+							<input type="checkbox" id="Updates?" name="Updates" data-name="Updates?" class="checkbox" />
+							<span for="Updates" class="checkbox-label">Please send me updates and helpful content from Trailmerge.</span>
+						</label>
+						
+						<label class="checkbox-field honey-field">
+							<input type="checkbox" id="Not Human?" name="Not-Human" data-name="Not Human?" class="checkbox" />
+							<span for="Not-Human" class="checkbox-label">Only check this if you're a bot.</span>
+						</label>
+						
+						<input type="submit" data-wait="Please wait..." id="modal-submit" class="button dark-button" value="Submit" />
+					</form>
+					<div class="success-message">
+						<div>Great first step! We've received your message and will be touching base soon.</div>
+					</div>
+					<div class="error-message">
+						<div>Hmm... Something went wrong while submitting the form. Give it another shot!</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="#" class="close-modal">✕</a>
+	</div>
+</div>
+
+<script>
+	// Modal functionality
+	document.addEventListener('DOMContentLoaded', function() {
+		const modalBackdrop = document.querySelector('.modal-backdrop');
+		const openModalButtons = document.querySelectorAll('.open-modal');
+		const closeModalButton = document.querySelector('.close-modal');
+
+		// Open modal
+		openModalButtons.forEach(button => {
+			button.addEventListener('click', function(e) {
+				e.preventDefault();
+				modalBackdrop.classList.add('active');
+				document.body.style.overflow = 'hidden';
+			});
+		});
+
+		// Close modal
+		closeModalButton.addEventListener('click', function(e) {
+			e.preventDefault();
+			modalBackdrop.classList.remove('active');
+			document.body.style.overflow = 'auto';
+		});
+
+		// Close modal when clicking backdrop
+		modalBackdrop.addEventListener('click', function(e) {
+			if (e.target === modalBackdrop) {
+				modalBackdrop.classList.remove('active');
+				document.body.style.overflow = 'auto';
+			}
+		});
+
+		// Close modal with Escape key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
+				modalBackdrop.classList.remove('active');
+				document.body.style.overflow = 'auto';
+			}
+		});
+	});
+</script>

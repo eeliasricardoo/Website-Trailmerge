@@ -1,0 +1,39 @@
+---
+export interface Props {
+	image: string | any;
+	title: string;
+	description: string;
+	linkText?: string;
+	linkUrl?: string;
+	imageAlt?: string;
+}
+
+const { 
+	image, 
+	title, 
+	description, 
+	linkText = "Read More", 
+	linkUrl = "#",
+	imageAlt = ""
+} = Astro.props;
+
+const imageSrc = typeof image === 'string' ? image : image.src;
+---
+
+<!-- Case Study -->
+<div class="body-block">
+	<div class="content-container">
+		<div class="case-study-section">
+			<div class="case-study-image">
+				<img src={imageSrc} loading="lazy" alt={imageAlt || `${title} Screenshots`} class="constrained-full-image" />
+			</div>
+			<div class="case-study-content">
+				<h2>{title}</h2>
+				<div class="spacer-m"></div>
+				<p>{description}</p>
+				<div class="spacer-m"></div>
+				<a href={linkUrl} class="button">{linkText}</a>
+			</div>
+		</div>
+	</div>
+</div>
