@@ -4,6 +4,10 @@
 
 <!-- Hero Section -->
 <div class="body-block hero-wrapper home-hero">
+	<!-- Background shapes -->
+	<div class="hero-bg-shape hero-bg-shape-1"></div>
+	<div class="hero-bg-shape hero-bg-shape-2"></div>
+	
 	<div class="content-container">
 		<div class="hero">
 			<div class="hero-content">
@@ -29,6 +33,32 @@
 		min-height: calc(100vh - 80px);
 		display: flex;
 		align-items: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.hero-bg-shape {
+		position: absolute;
+		border-radius: 50%;
+		z-index: 0;
+	}
+
+	.hero-bg-shape-1 {
+		background-color: var(--aqua-100);
+		width: 400px;
+		height: 400px;
+		top: -100px;
+		right: 200px;
+		opacity: 0.6;
+	}
+
+	.hero-bg-shape-2 {
+		background-color: var(--tangerine-100);
+		width: 300px;
+		height: 300px;
+		top: 50px;
+		right: 50px;
+		opacity: 0.6;
 	}
 
 	.hero {

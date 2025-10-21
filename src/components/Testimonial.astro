@@ -11,7 +11,7 @@ const { image, quote, author, position, company } = Astro.props;
 ---
 
 <!-- Testimonial -->
-<div class="body-block quote-block">
+<div class="body-block quote-block testimonial-section">
 	<div class="content-container">
 		<div class="quote-wrapper">
 			<img src={image.src} loading="lazy" alt="" class="quote-image" />
@@ -23,3 +23,28 @@ const { image, quote, author, position, company } = Astro.props;
 		</div>
 	</div>
 </div>
+
+<style>
+	.testimonial-section {
+		background-color: var(--mint);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.testimonial-section::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(135deg, var(--mint) 0%, var(--aqua-100) 100%);
+		opacity: 0.3;
+		z-index: 0;
+	}
+
+	.testimonial-section .content-container {
+		position: relative;
+		z-index: 1;
+	}
+</style>
