@@ -1,11 +1,4 @@
 ---
-// Import images
-import AchieveItLogo from '../assets/images/AchieveIt-Logo.svg';
-import LoanShoutLogo from '../assets/images/LoanShout-Logo.svg';
-import StaatLogo from '../assets/images/Staat-Logo.svg';
-import TourialLogo from '../assets/images/Tourial-Logo.svg';
-import UserIQLogo from '../assets/images/UserIQ-Logo.svg';
-
 export interface Props {
 	title?: string;
 	description?: string;
@@ -17,11 +10,11 @@ const {
 } = Astro.props;
 
 const companyLogos = [
-	AchieveItLogo,
-	LoanShoutLogo,
-	StaatLogo,
-	TourialLogo,
-	UserIQLogo
+	"/images/AchieveIt-Logo.svg",
+	"/images/LoanShout-Logo.svg",
+	"/images/Staat-Logo.svg",
+	"/images/Tourial-Logo.svg",
+	"/images/UserIQ-Logo.svg"
 ];
 ---
 
@@ -42,7 +35,7 @@ const companyLogos = [
 		<div class="grid-5">
 			{companyLogos.map((logo, index) => (
 				<div class="item-block">
-					<img src={logo.src} loading="lazy" alt="" class="logo" />
+					<img src={logo} loading="lazy" alt="" class="logo" />
 				</div>
 			))}
 			<div class="div-block-35"></div>
