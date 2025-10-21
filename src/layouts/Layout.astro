@@ -135,7 +135,7 @@
 		font-family: Bitter, serif;
 		font-size: 48px;
 		font-weight: 700;
-		line-height: 1.2;
+		line-height: 56px;
 	}
 
 	h2 {
@@ -143,9 +143,9 @@
 		margin-top: 0;
 		margin-bottom: 0;
 		font-family: Bitter, serif;
-		font-size: 36px;
+		font-size: 40px;
 		font-weight: 700;
-		line-height: 1.2;
+		line-height: 48px;
 	}
 
 	h3 {
@@ -153,9 +153,9 @@
 		margin-top: 0;
 		margin-bottom: 0;
 		font-family: Bitter, serif;
-		font-size: 28px;
-		font-weight: 700;
-		line-height: 1.2;
+		font-size: 32px;
+		font-weight: 500;
+		line-height: 40px;
 	}
 
 	h4 {
@@ -163,9 +163,9 @@
 		margin-top: 0;
 		margin-bottom: 0;
 		font-family: Bitter, serif;
-		font-size: 22px;
+		font-size: 24px;
 		font-weight: 700;
-		line-height: 1.2;
+		line-height: 28px;
 	}
 
 	p {
@@ -310,9 +310,9 @@
 	}
 
 	.item-image {
-		width: 80px;
-		height: 80px;
-		margin-bottom: 24px;
+		width: 100%;
+		max-width: 240px;
+		margin-bottom: 16px;
 	}
 
 	/* Dark Block */
@@ -650,20 +650,27 @@
 		}
 
 		h1 {
-			font-size: 36px;
+			font-size: 40px;
+			line-height: 48px;
 		}
 
 		h2 {
-			font-size: 28px;
+			font-size: 32px;
+			line-height: 40px;
 		}
 
 		h3 {
-			font-size: 24px;
+			font-size: 28px;
+			line-height: 32px;
 		}
 
 		.items-across {
 			grid-template-columns: 1fr;
 			gap: 32px;
+		}
+
+		.item-image {
+			max-width: 200px;
 		}
 
 		.quote-wrapper {
@@ -717,6 +724,10 @@
 	@media (max-width: 480px) {
 		.aside-center {
 			padding: 24px 16px;
+		}
+
+		.item-image {
+			max-width: 152px;
 		}
 	}
 </style>
