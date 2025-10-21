@@ -1,8 +1,4 @@
 ---
-// Import images
-import BannerTag from '../assets/images/BannerTag.png';
-import BannerTagLeft from '../assets/images/BannerTagLeft.png';
-
 export interface Props {
 	text?: string;
 	showBannerTags?: boolean;
@@ -25,10 +21,10 @@ const {
 		{showBannerTags && (
 			<>
 				<div class="ribbon-right-container">
-					<img src={BannerTag.src} loading="lazy" width="85" alt="" />
+					<img src="/images/BannerTag.png" loading="lazy" width="85" alt="" />
 				</div>
 				<div class="ribbon-left-container">
-					<img src={BannerTagLeft.src} loading="lazy" width="85" alt="" />
+					<img src="/images/BannerTagLeft.png" loading="lazy" width="85" alt="" />
 				</div>
 			</>
 		)}
