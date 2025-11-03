@@ -438,23 +438,31 @@
 	/* Constrained Full Image */
 	.constrained-full-image {
 		width: 100%;
+		max-width: 800px;
 		height: auto;
-		border-radius: 8px;
-		margin-bottom: 32px;
+		display: block;
+		margin: 0 auto;
 	}
 
 	/* Side Title Area */
 	.side-title-area {
+		text-align: left;
+		justify-content: flex-start;
+		max-width: 800px;
 		display: flex;
-		gap: 48px;
-		align-items: flex-start;
 	}
 
 	.side-title {
-		flex: 0 0 200px;
+		border-right: 4px solid var(--pimento);
+		border-left: 4px none var(--pimento);
+		flex: none;
+		width: auto;
+		margin-right: 16px;
+		padding-right: 16px;
 	}
 
 	.side-content {
+		text-align: left;
 		flex: 1;
 	}
 
@@ -754,6 +762,15 @@
 		.side-title-area {
 			flex-direction: column;
 			gap: 24px;
+		}
+
+		.side-title {
+			padding-right: 8px;
+			border-right: 4px solid var(--pimento);
+		}
+
+		.side-content {
+			flex: 1;
 		}
 
 		.div-block-20 {
