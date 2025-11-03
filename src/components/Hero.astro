@@ -6,45 +6,32 @@
 <div class="body-block hero-wrapper home-hero">
 	<div class="content-container">
 		<div class="hero">
-			<div class="flex-half-right">
-				<h1>Elevate your product's design</h1>
+			<div class="hero-content-left">
+				<h1>Elevate your product</h1>
 				<div class="spacer-m"></div>
-				<h3>Take the path to best-in-class UX for SaaS & enterprise apps</h3>
+				<h3 class="hero-subtitle">Take the path to best-in-class UX and development for SaaS & enterprise apps</h3>
 				<div class="spacer-m"></div>
-				<a id="hero-contact" href="#" class="open-modal button">Request A Consult</a>
+				<a id="hero-contact" href="#" class="open-modal button hero-cta-button">Request A Consult</a>
+			</div>
+			<div class="hero-illustration-right">
+				<div class="hero-illustration"></div>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="hero-illustration-wrapper">
-	<div class="hero-illustration"></div>
-</div>
 
 <style>
-	/* Hero Section - Exact Webflow Replication */
-	.hero {
-		z-index: 1;
-		justify-content: flex-start;
-		width: 100%;
-		max-width: 1200px;
-		display: block;
-		position: relative;
-	}
-
+	/* Hero Section - Clean two-column layout */
 	.body-block.hero-wrapper {
-		background-image: url('/images/Service-Hero-Graphic.png');
-		background-position: 100% 0;
-		background-repeat: no-repeat;
-		background-size: auto 70%;
+		background-color: var(--white);
 		align-items: center;
-		height: 80vh;
 		min-height: 560px;
 		padding-top: 120px;
 		position: relative;
 	}
 
 	.body-block.hero-wrapper.home-hero {
-		background-image: url('/images/Hero-Backdrop.svg');
+		background-color: var(--white);
 	}
 
 	.hero-wrapper {
@@ -57,43 +44,72 @@
 		padding: 0 20px;
 		display: flex;
 		align-items: center;
-		height: 100%;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
 	}
 
-	.flex-half-right {
-		text-align: left;
-		flex-direction: column;
-		flex: none;
-		order: 0;
-		justify-content: space-between;
-		align-items: flex-start;
-		width: 50%;
-		max-width: 600px;
+	.hero {
+		width: 100%;
 		display: flex;
-		z-index: 1;
+		align-items: center;
+		gap: 48px;
 		position: relative;
 	}
 
-	.hero-illustration-wrapper {
-		justify-content: flex-end;
-		width: 100%;
-		height: 100%;
-		padding-top: 64px;
+	.hero-content-left {
+		flex: 1;
+		text-align: left;
 		display: flex;
-		position: absolute;
-		inset: 0% 0% auto;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		max-width: 600px;
+	}
+
+	.hero-subtitle {
+		font-family: Roboto, sans-serif !important;
+		font-size: 18px !important;
+		font-weight: 400 !important;
+		line-height: 1.6 !important;
+		color: var(--grey-5) !important;
+		margin: 0 !important;
+	}
+
+	.hero-cta-button {
+		background-color: var(--mint);
+		color: var(--grey-5);
+		border: 1px solid var(--grey-5);
+		border-radius: 4px;
+		padding: 12px 24px;
+		font-family: Roboto, sans-serif;
+		font-size: 16px;
+		font-weight: 500;
+		transition: background-color 0.2s ease, color 0.2s ease;
+	}
+
+	.hero-cta-button:hover {
+		background-color: var(--green-500);
+		color: var(--white);
+		border-color: var(--green-500);
+	}
+
+	.hero-illustration-right {
+		flex: 1;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		position: relative;
 	}
 
 	.hero-illustration {
 		background-image: url('/images/Hero-Art.png');
-		background-position: 16px 0;
+		background-position: center;
 		background-repeat: no-repeat;
-		background-size: auto 75%;
-		background-attachment: scroll;
-		flex: none;
-		width: 50%;
-		height: 90%;
-		padding-top: 0;
+		background-size: contain;
+		width: 100%;
+		max-width: 500px;
+		height: 400px;
 	}
 
 	/* Responsive Design */
@@ -102,95 +118,70 @@
 			padding-top: 112px;
 		}
 
+		.hero {
+			gap: 32px;
+		}
+
 		.hero-illustration {
-			background-position: 0 0;
-			background-size: auto 64%;
+			max-width: 400px;
+			height: 320px;
 		}
 	}
 
 	@media (max-width: 768px) {
-		.body-block {
-			padding: 40px 24px;
-		}
-
 		.body-block.hero-wrapper {
-			height: auto;
-			min-height: auto;
 			padding-top: 104px;
-		}
-
-		.body-block.hero-wrapper.home-hero {
-			background-size: auto 50%;
-			padding-top: 352px;
-		}
-
-		.hero-wrapper .content-container {
-			display: block;
-		}
-
-		.flex-half-right {
-			width: 100%;
-		}
-
-		.hero-illustration {
-			background-image: url('/images/Hero-Art.png');
-			background-position: 125% 0;
-			background-repeat: no-repeat;
-			background-size: auto 240px;
-			background-attachment: scroll;
-			width: 100%;
-			height: 100%;
-		}
-
-		.hero-illustration-wrapper {
-			height: 240px;
-			margin-top: 88px;
-			padding-top: 0;
-			position: absolute;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.body-block {
-			padding-left: 16px;
-			padding-right: 16px;
-		}
-
-		.body-block.hero-wrapper {
-			background-position: 100% 0;
-			background-size: auto 40%;
 			min-height: auto;
-			padding-top: 88px;
-		}
-
-		.body-block.hero-wrapper.home-hero {
-			background-size: auto 33%;
-			padding-top: 304px;
 		}
 
 		.hero-wrapper .content-container {
 			padding: 0 16px;
 		}
 
-		.flex-half-right {
+		.hero {
+			flex-direction: column;
+			gap: 32px;
+			align-items: center;
+		}
+
+		.hero-content-left {
 			width: 100%;
+			max-width: 100%;
+			text-align: center;
+			align-items: center;
+		}
+
+		.hero-illustration-right {
+			width: 100%;
+			justify-content: center;
 		}
 
 		.hero-illustration {
-			background-image: url('/images/Hero-Art.png');
-			background-position: 0% 0;
-			background-repeat: repeat;
-			background-size: auto 240px;
-			width: 100%;
-			height: 100%;
+			max-width: 100%;
+			height: 280px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.body-block.hero-wrapper {
+			padding-top: 88px;
 		}
 
-		.hero-illustration-wrapper {
+		.hero-wrapper .content-container {
+			padding: 0 16px;
+		}
+
+		.hero-content-left h1 {
+			font-size: 36px;
+			line-height: 44px;
+		}
+
+		.hero-subtitle {
+			font-size: 16px;
+		}
+
+		.hero-illustration {
 			height: 240px;
-			margin-top: 56px;
-			padding-top: 0;
-			display: block;
-			position: absolute;
 		}
 	}
 </style>
