@@ -1,2 +1,0 @@
-# trailmerge-website
-Trailmerge Website

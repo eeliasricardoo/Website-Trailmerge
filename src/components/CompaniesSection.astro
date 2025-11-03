@@ -4,18 +4,10 @@ export interface Props {
 	description?: string;
 }
 
-const { 
+const {
 	title = "Companies we've served",
 	description = "We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives."
 } = Astro.props;
-
-const companyLogos = [
-	"/images/AchieveIt-Logo.svg",
-	"/images/LoanShout-Logo.svg",
-	"/images/Staat-Logo.svg",
-	"/images/Tourial-Logo.svg",
-	"/images/UserIQ-Logo.svg"
-];
 ---
 
 <!-- Companies Section -->
@@ -32,13 +24,23 @@ const companyLogos = [
 			<div class="div-block-19"></div>
 		</div>
 		<div class="spacer-xl"></div>
-		<div class="grid-5">
-			{companyLogos.map((logo, index) => (
-				<div class="item-block">
-					<img src={logo} loading="lazy" alt="" class="logo" />
-				</div>
-			))}
+		<div class="w-layout-grid grid-5">
+			<div id="w-node-_689b0b07-951c-0d11-2720-386febb84402-aac4e33e" class="item-block">
+				<img src="/images/AchieveIt-Logo.svg" loading="lazy" alt="" class="logo" />
+			</div>
+			<div id="w-node-_37673771-74d8-e206-e4f1-64843c1b623c-aac4e33e" class="item-block">
+				<img src="/images/LoanShout-Logo.svg" loading="lazy" alt="" class="logo" />
+			</div>
+			<div id="w-node-_2463a2f5-fcd0-3179-3866-ade00a0feae3-aac4e33e" class="item-block">
+				<img src="/images/Staat-Logo.svg" loading="lazy" alt="" class="logo" />
+			</div>
 			<div class="div-block-35"></div>
+			<div id="w-node-_3b6d4e20-4aaa-a981-3cad-e9536868e51c-aac4e33e" class="item-block">
+				<img src="/images/Tourial-Logo.svg" loading="lazy" alt="" class="logo" />
+			</div>
+			<div id="w-node-c06599c9-26b2-89b1-d786-dca3a18403da-aac4e33e" class="item-block">
+				<img src="/images/UserIQ-Logo.svg" loading="lazy" alt="" class="logo" />
+			</div>
 			<div class="div-block-36"></div>
 		</div>
 	</div>
