@@ -4,9 +4,9 @@ export interface Props {
 	showBannerTags?: boolean;
 }
 
-const { 
-	text = "Trailmerge equips SaaS and enterprise product teams with user experience and development expertise, specialized product design, and strategic best practices to level up the usability and adoption of your SaaS or enterprise application.",
-	showBannerTags = true 
+const {
+	text = "Trailmerge equips SaaS and enterprise product teams with user experience expertise, specialized product design, and strategic best practices to level up the usability and adoption of your SaaS or enterprise application.",
+	showBannerTags = true
 } = Astro.props;
 ---
 
@@ -15,7 +15,7 @@ const {
 	<div class="aside-center-container">
 		<div class="aside-center">
 			<div class="div-block-17">
-				<p>{text}</p>
+				<p class="light-text">{text}</p>
 			</div>
 		</div>
 		{showBannerTags && (
