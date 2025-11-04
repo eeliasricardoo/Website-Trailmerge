@@ -109,6 +109,10 @@ const {
 		display: flex;
 	}
 
+	.footer .content-container {
+		max-width: 1400px;
+	}
+
 	.footer-flex-container {
 		text-align: left;
 		justify-content: space-between;
@@ -211,12 +215,18 @@ const {
 
 	.footer-cta-button {
 		width: 100%;
-		max-width: 420px;
-		padding: 16px 32px;
+		max-width: 280px;
+		padding: 14px 28px;
 		font-size: 16px;
 		font-weight: 500;
-		display: block;
+		line-height: 1.5;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		box-sizing: border-box;
 	}
 
 	@media (max-width: 1024px) {
