@@ -249,11 +249,12 @@
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 0 20px;
+		width: 100%;
 	}
 
 	/* Aside Section */
 	.body-block.aside-wrapper {
-		margin-top: 0;
+		margin-top: -40px;
 		margin-bottom: 0;
 		padding: 24px 80px;
 		display: flex;
@@ -742,15 +743,35 @@
 
 	/* Responsive Design */
 	@media (max-width: 1024px) {
+		.body-block {
+			padding: 48px 20px;
+		}
+
+		.content-container {
+			padding: 0 20px;
+		}
+
 		.grid-5 {
 			grid-template-rows: auto auto;
 			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 			justify-items: center;
 			max-width: 1200px;
 		}
+
+		.aside-center {
+			padding: 32px 28px;
+		}
+
+		.quote-wrapper {
+			gap: 24px;
+		}
 	}
 
 	@media (max-width: 768px) {
+		.body-block {
+			padding: 40px 16px;
+		}
+
 		.navigation-container-full {
 			padding: 0 16px;
 		}
@@ -880,8 +901,20 @@
 	}
 
 	@media (max-width: 480px) {
+		.body-block {
+			padding: 32px 16px;
+		}
+
+		.content-container {
+			padding: 0 16px;
+		}
+
 		.aside-center {
 			padding: 24px 16px;
+		}
+
+		.aside-center p {
+			font-size: 16px;
 		}
 
 		.item-image {
@@ -893,8 +926,24 @@
 			height: 120px;
 		}
 
+		blockquote {
+			font-size: 20px;
+		}
+
 		.grid-5 {
 			grid-template-columns: 1fr 1fr;
+		}
+
+		.items-across {
+			gap: 24px;
+		}
+
+		.case-study-section {
+			gap: 24px;
+		}
+
+		.div-block-20 {
+			gap: 16px;
 		}
 	}
 </style>
