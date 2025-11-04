@@ -22,9 +22,13 @@ export interface Props {
 	ctaButtonUrl?: string;
 }
 
-const { 
+const {
 	logo = TrailmergeLogoGrey,
-	address = "3100 Interstate North Circle SE<br />Suite 200<br />Atlanta, GA 30339",
+	addressLines = [
+		"3100 Interstate North Circle SE",
+		"Suite 200",
+		"Atlanta, GA 30339"
+	],
 	linkGroups = [
 		{
 			title: "About",
@@ -48,14 +52,18 @@ const {
 
 <!-- Footer -->
 <footer id="footer" class="footer">
-	<div class="content-container distributed">
+	<div class="content-container">
 		<div class="footer-flex-container">
 			<div class="footer-logo-area">
-				<a href="/" aria-current="page" class="footer-logo-link">
+				<a href="/" aria-current="page" class="footer-logo-link w--current">
 					<img src={logo.src} alt="Trailmerge Wordmark" class="footer-image" />
 				</a>
 				<div class="spacer-l"></div>
-				<div class="help-text" set:html={address}></div>
+				<div class="help-text">
+					{addressLines.map((line) => (
+						<div>{line}</div>
+					))}
+				</div>
 				<div class="spacer-xl"></div>
 			</div>
 			<div class="footer-links-wrapper">
@@ -77,7 +85,7 @@ const {
 						</ul>
 						<div class="spacer-l"></div>
 						{index === linkGroups.length - 1 && (
-							<a id="footer-contact" href={ctaButtonUrl} class="open-modal button dark-button">{ctaButtonText}</a>
+							<a id="footer-contact" href={ctaButtonUrl} class="footer-cta-button open-modal button dark-button">{ctaButtonText}</a>
 						)}
 					</div>
 				))}
@@ -89,35 +97,49 @@ const {
 
 <style>
 	.footer {
-		background-color: var(--grey-5);
-		padding: 80px 0 40px;
+		text-align: center;
+		background-color: transparent;
+		background-image: url('/images/Footer-Background.svg');
+		background-position: 0 -160px;
+		background-size: auto;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		padding: 40px 0;
+		display: flex;
 	}
 
 	.footer-flex-container {
-		display: flex;
+		text-align: left;
 		justify-content: space-between;
 		align-items: flex-start;
-		margin-bottom: 48px;
+		margin-bottom: 40px;
+		display: flex;
+		width: 100%;
+		gap: 100px;
 	}
 
 	.footer-logo-area {
-		flex: 0 0 300px;
-		margin-right: 0;
-		padding-right: 0;
+		flex: 0 0 auto;
+		min-width: 240px;
 	}
 
 	.footer-links-wrapper {
-		display: flex;
-		gap: 80px;
 		flex: 1;
+		justify-content: space-between;
+		align-items: flex-start;
+		margin-bottom: 40px;
+		display: flex;
 	}
 
 	.footer-links-group {
-		flex: 0 0 auto;
+		flex: 1;
+		margin-bottom: 0;
+		margin-right: 24px;
 	}
 
 	.footer-links-group.last-item {
-		margin-left: auto;
+		margin-right: 0;
 	}
 
 	.w-list-unstyled {
@@ -126,54 +148,120 @@ const {
 		margin: 0;
 	}
 
-	.footer-heading-link,
-	.footer-heading {
-		color: var(--white);
-		font-weight: 600;
-		font-size: 18px;
+	.footer-heading-link {
+		color: var(--grey-5);
 		margin-bottom: 0;
+		font-weight: 700;
+		text-decoration: none;
+		transition: color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 		display: block;
+		font-size: 16px;
+	}
+
+	.footer-heading-link:hover {
+		color: var(--oregano);
+		text-decoration: underline;
+	}
+
+	.footer-heading {
+		color: var(--grey-5);
+		margin-top: 0;
+		margin-bottom: 0;
+		font-family: Roboto, sans-serif;
+		font-size: 16px;
+		line-height: 24px;
 	}
 
 	.footer-link {
-		color: var(--grey-2);
+		color: var(--grey-5);
+		margin-bottom: 0;
 		text-decoration: none;
-		font-size: 16px;
 		display: block;
-		transition: color 0.2s ease;
+		font-size: 16px;
 	}
 
 	.footer-link:hover {
-		color: var(--white);
+		text-decoration: underline;
 	}
 
 	.footer-image {
-		height: 40px;
-		width: auto;
-		margin-bottom: 32px;
+		object-position: 0% 50%;
+		width: 100%;
+		height: auto;
+		display: block;
 	}
 
 	.help-text {
-		color: var(--white);
+		color: var(--grey-5);
 		font-size: 14px;
 		line-height: 1.5;
 	}
 
+	.footer-logo-link {
+		flex: 0 auto;
+		min-width: 60px;
+		margin-bottom: 0;
+		display: block;
+		transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+	}
+
+	.footer-logo-link:hover {
+		opacity: 0.6;
+	}
+
+	.footer-cta-button {
+		width: 100%;
+		max-width: 420px;
+		padding: 16px 32px;
+		font-size: 16px;
+		font-weight: 500;
+		display: block;
+		text-align: center;
+	}
+
+	@media (max-width: 1024px) {
+		.footer-logo-area {
+			margin-right: 120px;
+		}
+	}
 
 	@media (max-width: 768px) {
+		.footer {
+			text-align: left;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+
 		.footer-flex-container {
 			flex-direction: column;
-			gap: 30px;
+		}
+
+		.footer-logo-link {
+			height: 60px;
+		}
+
+		.footer-logo-link.w--current {
+			height: auto;
+		}
+
+		.footer-image {
+			width: auto;
+			height: 40px;
 		}
 
 		.footer-links-wrapper {
 			flex-direction: column;
-			gap: 30px;
 		}
 
-		.footer-links-group.last-item {
-			text-align: left;
-			margin-left: 0;
+		.footer-logo-area {
+			margin-right: 40px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.footer {
+			padding-left: 20px;
+			padding-right: 20px;
 		}
 
 		.footer-logo-area {

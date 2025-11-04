@@ -80,41 +80,46 @@ import TourialScreenshots from '../assets/images/Tourial-Screenshots.png';
 	}
 
 	.blog-feed-post-wrapper {
-		background-color: var(--white);
-		padding: 24px;
-		border-radius: 8px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		text-align: left;
+		flex-direction: column;
+		align-items: flex-start;
+		display: flex;
 	}
 
 	.blog-feed-image {
-		width: 100%;
-		height: 200px;
 		object-fit: cover;
-		border-radius: 4px;
+		border-radius: 8px;
+		width: 100%;
+		height: 240px;
+		margin-bottom: 0;
 	}
 
 	.blog-feed-details {
-		display: flex;
 		align-items: center;
-		gap: 8px;
-		font-size: 14px;
+		display: flex;
+	}
+
+	.blog-feed-text {
 		color: var(--grey-3);
 	}
 
 	.divider {
-		width: 1px;
-		height: 12px;
-		background-color: var(--grey-2);
+		background-color: var(--grey-3);
+		width: 2px;
+		height: 16px;
+		margin-left: 8px;
+		margin-right: 8px;
 	}
 
 	.text-link {
-		color: var(--green-700);
-		font-weight: 500;
-		transition: color 0.2s ease;
+		color: var(--pimento);
+		font-weight: 700;
+		transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+		text-decoration: none;
 	}
 
 	.text-link:hover {
-		color: var(--green-900);
+		opacity: 0.65;
 	}
 
 	.text-span-4 {
@@ -150,6 +155,11 @@ import TourialScreenshots from '../assets/images/Tourial-Screenshots.png';
 		.grid-5 .div-block-35,
 		.grid-5 .div-block-36 {
 			display: none;
+		}
+
+		.blog-grid {
+			grid-template-columns: 1fr;
+			gap: 32px;
 		}
 	}
 </style>
