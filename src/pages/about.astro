@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import AboutHero from '../components/AboutHero.astro';
+import JumboTextSection from '../components/JumboTextSection.astro';
+import ValuesSection from '../components/ValuesSection.astro';
+import Footer from '../components/Footer.astro';
+import ContactModal from '../components/ContactModal.astro';
+---
+
+<Layout
+	title="About Trailmerge – UX Agency for B2B SaaS"
+	description="Trailmerge is a UI/UX agency specializing in B2B SaaS product design from MVP to first users and beyond. We scale with your product and business."
+>
+	<Navbar />
+
+	<AboutHero />
+
+	<JumboTextSection />
+
+	<ValuesSection />
+
+	<Footer />
+
+	<ContactModal />
+</Layout>
+
+<style is:global>
+	/* Additional styles specific to the About page */
+	.about-page {
+		background-color: var(--sand);
+	}
+</style>

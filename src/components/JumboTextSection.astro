@@ -1,0 +1,97 @@
+---
+// JumboTextSection Component
+---
+
+<div class="body-block">
+	<div class="content-container">
+		<div class="jumbo-text-wrapper">
+			<p class="jumbo-text">
+				At Trailmerge, our vision is to promote abundance of life and opportunity. <br><br>
+				This drives how we operate with our team members and candidates – mentorship and development are a core part of who we are. <br><br>
+				This is also how we partner with our clients – journeying with founders and product teams to support their entrepreneurial dreams and growth.<br>
+			</p>
+		</div>
+		<div class="decorative-line"></div>
+	</div>
+</div>
+
+<style>
+	.body-block {
+		padding: 80px 0;
+	}
+
+	.content-container {
+		padding: 0 20px;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.jumbo-text-wrapper {
+		margin-bottom: 80px;
+	}
+
+	.jumbo-text {
+		font-family: Literata, serif;
+		font-size: 32px;
+		font-weight: 400;
+		line-height: 1.6;
+		color: var(--grey-5);
+		margin: 0;
+		max-width: 900px;
+	}
+
+	.decorative-line {
+		background-color: var(--mint);
+		width: 100%;
+		height: 4px;
+		border-radius: 2px;
+	}
+
+	@media (max-width: 1024px) {
+		.body-block {
+			padding: 60px 0;
+		}
+
+		.jumbo-text {
+			font-size: 28px;
+		}
+
+		.jumbo-text-wrapper {
+			margin-bottom: 60px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.body-block {
+			padding: 48px 0;
+		}
+
+		.content-container {
+			padding: 0 16px;
+		}
+
+		.jumbo-text {
+			font-size: 24px;
+		}
+
+		.jumbo-text-wrapper {
+			margin-bottom: 48px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.body-block {
+			padding: 40px 0;
+		}
+
+		.jumbo-text {
+			font-size: 20px;
+			line-height: 1.5;
+		}
+
+		.jumbo-text-wrapper {
+			margin-bottom: 40px;
+		}
+	}
+</style>
