@@ -1,3 +1,17 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+	ogImage?: string;
+}
+
+const {
+	title = "UX Design Agency for B2B SaaS Startups – Trailmerge",
+	description = "Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started.",
+	ogImage = "https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png"
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -5,21 +19,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		
+
 		<!-- SEO Meta Tags -->
-		<title>UX Design Agency for B2B SaaS Startups – Trailmerge</title>
-		<meta name="description" content="Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started." />
-		
+		<title>{title}</title>
+		<meta name="description" content={description} />
+
 		<!-- Open Graph Meta Tags -->
-		<meta property="og:title" content="UX Design Agency for B2B SaaS Startups – Trailmerge" />
-		<meta property="og:description" content="Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started." />
-		<meta property="og:image" content="https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
 		<meta property="og:type" content="website" />
-		
+
 		<!-- Twitter Meta Tags -->
-		<meta name="twitter:title" content="UX Design Agency for B2B SaaS Startups – Trailmerge" />
-		<meta name="twitter:description" content="Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started." />
-		<meta name="twitter:image" content="https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 		<meta name="twitter:card" content="summary_large_image" />
 		
 		<!-- Fonts -->
@@ -124,7 +138,7 @@
 		height: 100%;
 		background-color: var(--off-white);
 		color: var(--grey-5);
-		font-family: Roboto, sans-serif;
+		font-family: Bitter, serif;
 		font-size: 16px;
 		line-height: 20px;
 	}
@@ -169,6 +183,26 @@
 		line-height: 28px;
 	}
 
+	h5 {
+		color: var(--grey-5);
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-family: Bitter, serif;
+		font-size: 14px;
+		font-weight: bold;
+		line-height: 20px;
+	}
+
+	h6 {
+		color: var(--grey-5);
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-family: Bitter, serif;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 18px;
+	}
+
 	p {
 		margin-top: 0;
 		margin-bottom: 0;
@@ -208,7 +242,7 @@
 		margin-left: 0;
 		margin-right: 0;
 		padding: 10px 16px;
-		font-family: Roboto, sans-serif;
+		font-family: Bitter, serif;
 		font-size: 16px;
 		font-weight: 700;
 		text-decoration: none;
@@ -577,7 +611,7 @@
 		color: var(--grey-5);
 		margin-top: 0;
 		margin-bottom: 0;
-		font-family: Roboto, sans-serif;
+		font-family: Bitter, serif;
 		font-size: 16px;
 		line-height: 24px;
 	}
@@ -635,11 +669,12 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(0, 0, 0, 0.5);
+		background-color: rgba(0, 0, 0, 0.6);
 		display: none;
 		align-items: center;
 		justify-content: center;
 		z-index: 2000;
+		backdrop-filter: blur(2px);
 	}
 
 	.modal-backdrop.active {
@@ -647,71 +682,138 @@
 	}
 
 	.contact-modal {
-		background-color: var(--white);
-		border-radius: 8px;
-		padding: 40px;
-		max-width: 800px;
+		background-color: var(--mint);
+		border-radius: 12px;
+		padding: 48px;
+		max-width: 960px;
 		width: 90%;
 		max-height: 90vh;
 		overflow-y: auto;
 		position: relative;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 	}
 
 	.modal-columns {
 		display: flex;
-		gap: 40px;
+		gap: 48px;
+		align-items: flex-start;
 	}
 
 	.modal-column {
 		flex: 1;
 	}
 
+	.modal-column.centered {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
 	.modal-image {
 		width: 100%;
+		max-width: 280px;
 		height: auto;
-		margin-bottom: 16px;
+		margin-bottom: 24px;
+		object-fit: contain;
+		filter: brightness(0);
+		opacity: 0.9;
+	}
+
+	.modal-column h3 {
+		font-family: Bitter, serif;
+		font-size: 32px;
+		font-weight: 700;
+		line-height: 1.2;
+		color: var(--grey-5);
+		margin: 0 0 16px 0;
+	}
+
+	.modal-column p {
+		font-family: Bitter, serif;
+		font-size: 16px;
+		line-height: 1.6;
+		color: var(--grey-5);
+		margin: 0;
 	}
 
 	.close-modal {
 		position: absolute;
-		top: 16px;
-		right: 16px;
+		top: 20px;
+		right: 20px;
 		background: none;
 		border: none;
-		font-size: 24px;
+		font-size: 28px;
 		cursor: pointer;
-		color: var(--grey-4);
+		color: var(--grey-5);
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: color 0.2s ease;
+		z-index: 10;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.close-modal:hover {
+		color: var(--green-900);
 	}
 
 	/* Form Styles */
 	.form {
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: 20px;
+	}
+
+	.form-block {
+		width: 100%;
+	}
+
+	.field-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
 	}
 
 	.field-label {
 		display: block;
 		font-weight: 500;
-		margin-bottom: 8px;
+		margin-bottom: 0;
+		margin-top: 0;
 		color: var(--grey-5);
+		font-family: Bitter, serif;
+		font-size: 16px;
 	}
 
 	.text-field,
 	.textarea {
 		width: 100%;
-		padding: 12px;
-		border: 1px solid var(--grey-1);
+		padding: 12px 16px;
+		border: 1px solid var(--grey-5);
 		border-radius: 4px;
-		font-family: Roboto, sans-serif;
+		font-family: Bitter, serif;
 		font-size: 16px;
 		transition: border-color 0.2s ease;
+		box-sizing: border-box;
+		background-color: var(--white);
+		color: var(--grey-5);
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	.text-field::placeholder,
+	.textarea::placeholder {
+		color: var(--grey-3);
+		opacity: 0.7;
 	}
 
 	.text-field:focus,
 	.textarea:focus {
 		outline: none;
 		border-color: var(--green-700);
+		box-shadow: 0 0 0 2px rgba(63, 184, 109, 0.2);
 	}
 
 	.textarea {
@@ -723,22 +825,61 @@
 		display: flex;
 		align-items: flex-start;
 		gap: 12px;
+		margin-top: 8px;
 	}
 
 	.checkbox {
-		width: 16px;
-		height: 16px;
+		width: 18px;
+		height: 18px;
 		margin-top: 2px;
+		flex-shrink: 0;
+		cursor: pointer;
+		accent-color: var(--grey-5);
+		border: 2px solid var(--grey-5);
+		border-radius: 2px;
 	}
 
 	.checkbox-label {
 		font-size: 14px;
-		color: var(--grey-4);
-		line-height: 1.4;
+		color: var(--grey-5);
+		line-height: 1.5;
+		font-family: Bitter, serif;
+		cursor: pointer;
 	}
 
 	.honey-field {
 		display: none;
+	}
+
+	.form .dark-button {
+		margin-top: 8px;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		display: flex;
+		padding: 12px 24px;
+		font-size: 16px;
+		font-weight: 600;
+	}
+
+	.success-message,
+	.error-message {
+		display: none;
+		margin-top: 16px;
+		padding: 12px;
+		border-radius: 4px;
+		font-family: Bitter, serif;
+		font-size: 14px;
+	}
+
+	.success-message {
+		background-color: var(--mint);
+		color: var(--grey-5);
+	}
+
+	.error-message {
+		background-color: var(--cinnamon);
+		color: var(--white);
 	}
 
 	/* Responsive Design */
@@ -879,10 +1020,27 @@
 
 		.modal-columns {
 			flex-direction: column;
+			gap: 32px;
 		}
 
 		.contact-modal {
-			padding: 24px;
+			padding: 32px 24px;
+			max-width: 95%;
+		}
+
+		.modal-column h3 {
+			font-size: 28px;
+		}
+
+		.modal-image {
+			max-width: 200px;
+			margin-bottom: 20px;
+		}
+
+		.close-modal {
+			top: 16px;
+			right: 16px;
+			font-size: 24px;
 		}
 
 		.body-block.aside-wrapper {
@@ -915,6 +1073,28 @@
 
 		.aside-center p {
 			font-size: 16px;
+		}
+
+		.contact-modal {
+			padding: 24px 20px;
+			max-width: 98%;
+		}
+
+		.modal-column h3 {
+			font-size: 24px;
+		}
+
+		.modal-image {
+			max-width: 160px;
+			margin-bottom: 16px;
+		}
+
+		.close-modal {
+			top: 12px;
+			right: 12px;
+			font-size: 20px;
+			width: 28px;
+			height: 28px;
 		}
 
 		.item-image {
