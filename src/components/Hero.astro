@@ -3,9 +3,9 @@
 ---
 
 <!-- Hero Section -->
-<div class="body-block hero-wrapper home-hero">
+<div class="body-block hero-wrapper home-hero" id="hero-section">
 	<div class="hero-illustration-wrapper">
-		<div class="hero-illustration"></div>
+		<div class="hero-illustration" id="hero-illustration"></div>
 	</div>
 	<div class="content-container">
 		<div class="hero">
@@ -19,6 +19,45 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	// Zoom effect for Hero section on scroll
+	let ticking = false;
+
+	function updateZoom() {
+		const heroSection = document.getElementById('hero-section');
+		const heroIllustration = document.getElementById('hero-illustration');
+
+		if (!heroSection || !heroIllustration) return;
+
+		const scrolled = window.pageYOffset;
+		const heroHeight = heroSection.offsetHeight;
+		const scrollPercent = Math.min(scrolled / heroHeight, 1);
+
+		// Scale from 1 to 1.3 based on scroll (aumenta 30%)
+		const scale = 1 + (scrollPercent * 0.3);
+
+		heroIllustration.style.transform = `scale(${scale})`;
+
+		ticking = false;
+	}
+
+	function requestTick() {
+		if (!ticking) {
+			window.requestAnimationFrame(updateZoom);
+			ticking = true;
+		}
+	}
+
+	// Initialize on load
+	window.addEventListener('load', updateZoom);
+
+	// Update on scroll
+	window.addEventListener('scroll', requestTick, { passive: true });
+
+	// Update on resize
+	window.addEventListener('resize', updateZoom);
+</script>
 
 <style>
 	/* Hero Section - Clean two-column layout */
@@ -112,6 +151,7 @@
 		display: flex;
 		position: absolute;
 		inset: 0% 0% auto;
+		overflow: hidden;
 	}
 
 	.hero-illustration {
@@ -124,6 +164,9 @@
 		width: 50%;
 		height: 90%;
 		padding-top: 0;
+		will-change: transform;
+		transform-origin: center center;
+		transition: transform 0.1s ease-out;
 	}
 
 	/* Responsive Design */
