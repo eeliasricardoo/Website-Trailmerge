@@ -30,3 +30,42 @@ const {
 		)}
 	</div>
 </div>
+
+<style>
+	.ribbon-right-container {
+		position: absolute;
+		top: 50%;
+		right: -75px;
+		transform: translateY(-50%);
+		z-index: 1;
+	}
+
+	.ribbon-left-container {
+		position: absolute;
+		top: 50%;
+		left: -75px;
+		transform: translateY(-50%);
+		z-index: 1;
+	}
+
+	.ribbon-right-container img,
+	.ribbon-left-container img {
+		display: block;
+	}
+
+	.aside-center-container {
+		position: relative;
+	}
+
+	.aside-center {
+		position: relative;
+		z-index: 2;
+	}
+
+	@media (max-width: 768px) {
+		.ribbon-right-container,
+		.ribbon-left-container {
+			display: none;
+		}
+	}
+</style>
