@@ -39,7 +39,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -185,6 +185,18 @@ const {
 		outline-offset: 2px;
 	}
 
+	/* Respect user's motion preferences */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+
 	html,
 	body {
 		margin: 0;
@@ -283,6 +295,19 @@ const {
 	.light-text { color: var(--white); }
 
 	.hidden { display: none; }
+
+	/* Visually hidden but accessible to screen readers */
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
 
 	/* Button Styles */
 	.button {
@@ -859,6 +884,14 @@ const {
 		color: var(--grey-5);
 		font-family: Bitter, serif;
 		font-size: 16px;
+	}
+
+	.field-help-text {
+		font-size: 13px;
+		color: var(--grey-3);
+		margin-top: 4px;
+		display: block;
+		line-height: 1.4;
 	}
 
 	.text-field,

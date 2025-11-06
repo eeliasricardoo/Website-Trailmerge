@@ -33,12 +33,13 @@ const {
 					<form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method={formMethod} class="form" action={formAction} aria-label="Contact form">
 						<div class="field-wrapper">
 							<label for="modal-name" class="field-label">Name</label>
-							<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder="First and Last" type="text" id="modal-name" aria-required="false" />
+							<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder="First and Last" type="text" id="modal-name" aria-required="false" autocomplete="name" />
 						</div>
 
 						<div class="field-wrapper">
 							<label for="modal-email" class="field-label">Email Address</label>
-							<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder="hello@yoursite.com" type="email" id="modal-email" required="" aria-required="true" />
+							<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder="hello@yoursite.com" type="email" id="modal-email" required="" aria-required="true" autocomplete="email" aria-describedby="email-help" />
+							<span id="email-help" class="field-help-text">We'll never share your email with anyone else.</span>
 						</div>
 
 						<div class="field-wrapper">
@@ -58,10 +59,10 @@ const {
 						
 						<input type="submit" data-wait="Please wait..." id="modal-submit" class="button dark-button" value="Submit" />
 					</form>
-					<div class="success-message">
+					<div class="success-message" role="status" aria-live="polite" aria-atomic="true">
 						<div>Great first step! We've received your message and will be touching base soon.</div>
 					</div>
-					<div class="error-message">
+					<div class="error-message" role="alert" aria-live="assertive" aria-atomic="true">
 						<div>Hmm... Something went wrong while submitting the form. Give it another shot!</div>
 					</div>
 				</div>
