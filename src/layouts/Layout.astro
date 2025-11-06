@@ -36,59 +36,29 @@ const {
 		<meta name="twitter:image" content={ogImage} />
 		<meta name="twitter:card" content="summary_large_image" />
 		
-		<!-- Fonts -->
+		<!-- Fonts - Optimized to only load essential weights -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400&family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Literata:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+
+		<!-- Preconnect for external resources -->
+		<link rel="preconnect" href="https://plausible.io" />
+		<link rel="dns-prefetch" href="https://images.unsplash.com" />
+		<link rel="dns-prefetch" href="https://uploads-ssl.webflow.com" />
 		
 		<!-- Analytics -->
-		<script is:inline async defer data-domain="trailmerge.com" src="https://plausible.io/js/plausible.js"></script>
-		<script is:inline>
-			window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }
+		<script async defer data-domain="trailmerge.com" src="https://plausible.io/js/plausible.js"></script>
+		<script>
+			import { initAnalytics } from '../scripts/analytics';
+			initAnalytics();
 		</script>
 	</head>
 	<body>
 		<slot />
 
-		<script is:inline>
-			// @ts-ignore - plausible is loaded from external script
-			// Nav Click Events
-			document.addEventListener('DOMContentLoaded', function() {
-				const navLogo = document.getElementById('nav-logo');
-				const navServices = document.getElementById('nav-services');
-				const navTalent = document.getElementById('nav-talent');
-				const navAbout = document.getElementById('nav-about');
-				const navBlog = document.getElementById('nav-blog');
-				const navContact = document.getElementById('nav-contact');
-				const heroContact = document.getElementById('hero-contact');
-				const servicesButton = document.getElementById('services-button');
-				const auditButton = document.getElementById('audit-button');
-				const footerContact = document.getElementById('footer-contact');
-				
-				// Contact Modal Click Events
-				const modalName = document.getElementById('modal-name');
-				const modalEmail = document.getElementById('modal-email');
-				const modalMessage = document.getElementById('modal-message');
-				const modalOptin = document.getElementById('modal-optin');
-				const modalSubmit = document.getElementById('modal-submit');
-				
-				if (navLogo) navLogo.addEventListener('click', () => plausible('Nav Logo - Home'));
-				if (navServices) navServices.addEventListener('click', () => plausible('Nav Services - Home'));
-				if (navTalent) navTalent.addEventListener('click', () => plausible('Nav Talent - Home'));
-				if (navAbout) navAbout.addEventListener('click', () => plausible('Nav About - Home'));
-				if (navBlog) navBlog.addEventListener('click', () => plausible('Nav Blog - Home'));
-				if (navContact) navContact.addEventListener('click', () => plausible('Nav Contact Button - Home'));
-				if (heroContact) heroContact.addEventListener('click', () => plausible('Hero Contact Button - Home'));
-				if (servicesButton) servicesButton.addEventListener('click', () => plausible('Services Button - Home'));
-				if (auditButton) auditButton.addEventListener('click', () => plausible('Audit Button - Home'));
-				if (footerContact) footerContact.addEventListener('click', () => plausible('Footer Contact Button - Home'));
-				
-				if (modalName) modalName.addEventListener('click', () => plausible('Name Input - Home'));
-				if (modalEmail) modalEmail.addEventListener('click', () => plausible('Email Input - Home'));
-				if (modalMessage) modalMessage.addEventListener('click', () => plausible('Message Input - Home'));
-				if (modalOptin) modalOptin.addEventListener('click', () => plausible('Opt-in Checkbox - Home'));
-				if (modalSubmit) modalSubmit.addEventListener('click', () => plausible('Submit Button - Home'));
-			});
+		<!-- Analytics Tracking -->
+		<script>
+			import '../scripts/analytics';
 		</script>
 	</body>
 </html>
