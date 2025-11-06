@@ -39,7 +39,7 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -116,6 +116,7 @@ const {
 		/>
 	</head>
 	<body>
+		<a href="#main-content" class="skip-to-content">Skip to main content</a>
 		<slot />
 
 		<!-- Analytics Tracking -->
@@ -161,6 +162,39 @@ const {
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+	}
+
+	/* Skip to content link for accessibility */
+	.skip-to-content {
+		position: absolute;
+		top: -100px;
+		left: 0;
+		background: var(--oregano);
+		color: var(--white);
+		padding: 12px 24px;
+		text-decoration: none;
+		font-weight: 600;
+		z-index: 10000;
+		transition: top 0.3s;
+		border-radius: 0 0 8px 0;
+	}
+
+	.skip-to-content:focus {
+		top: 0;
+		outline: 2px solid var(--mint);
+		outline-offset: 2px;
+	}
+
+	/* Respect user's motion preferences */
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
 	}
 
 	html,
@@ -245,6 +279,11 @@ const {
 		text-decoration: none;
 	}
 
+	a:focus {
+		outline: 2px solid var(--oregano);
+		outline-offset: 2px;
+	}
+
 	/* Utility Classes */
 	.spacer-xs { height: 4px; }
 	.spacer-s { height: 8px; }
@@ -256,6 +295,19 @@ const {
 	.light-text { color: var(--white); }
 
 	.hidden { display: none; }
+
+	/* Visually hidden but accessible to screen readers */
+	.visually-hidden {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border-width: 0;
+	}
 
 	/* Button Styles */
 	.button {
@@ -288,6 +340,11 @@ const {
 		box-shadow: 2px 2px 5px rgba(21, 26, 23, 0.2);
 	}
 
+	.button:focus {
+		outline: 2px solid var(--oregano);
+		outline-offset: 2px;
+	}
+
 	.dark-button {
 		background-color: var(--grey-5);
 		color: var(--off-white);
@@ -297,6 +354,11 @@ const {
 
 	.dark-button:hover {
 		background-color: var(--grey-4);
+	}
+
+	.dark-button:focus {
+		outline: 2px solid var(--mint);
+		outline-offset: 2px;
 	}
 
 	/* Body Block Styles */
@@ -792,6 +854,11 @@ const {
 		color: var(--green-900);
 	}
 
+	.close-modal:focus {
+		outline: 2px solid var(--oregano);
+		outline-offset: 2px;
+	}
+
 	/* Form Styles */
 	.form {
 		display: flex;
@@ -817,6 +884,14 @@ const {
 		color: var(--grey-5);
 		font-family: Bitter, serif;
 		font-size: 16px;
+	}
+
+	.field-help-text {
+		font-size: 13px;
+		color: var(--grey-3);
+		margin-top: 4px;
+		display: block;
+		line-height: 1.4;
 	}
 
 	.text-field,
@@ -869,6 +944,11 @@ const {
 		accent-color: var(--grey-5);
 		border: 2px solid var(--grey-5);
 		border-radius: 2px;
+	}
+
+	.checkbox:focus {
+		outline: 2px solid var(--oregano);
+		outline-offset: 2px;
 	}
 
 	.checkbox-label {

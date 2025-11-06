@@ -4,24 +4,24 @@ import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
 ---
 
 <!-- Navigation -->
-<div class="navigation">
+<div class="navigation" role="banner">
 	<div class="navigation-container-full">
-		<a href="/" id="nav-logo" aria-current="page" class="brand">
+		<a href="/" id="nav-logo" aria-current="page" aria-label="Trailmerge home" class="brand">
 			<img src={TrailmergeLogo.src} alt="Trailmerge Logo" class="logo nav-logo" />
 		</a>
-		<nav class="nav-menu-green">
+		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
-			<a href="/about" id="nav-about" class="nav-link">About</a>
-			<a href="/blog" id="nav-blog" class="nav-link">Blog</a>
+			<a href="/about" id="nav-about" class="nav-link" aria-label="About Trailmerge">About</a>
+			<a href="/blog" id="nav-blog" class="nav-link" aria-label="Trailmerge blog">Blog</a>
 			<div class="navbar-button-wrapper">
-				<a href="#" id="nav-contact" class="open-modal button navbar-button">Contact Us</a>
+				<a href="#" id="nav-contact" class="open-modal button navbar-button" aria-label="Open contact form">Contact Us</a>
 			</div>
 		</nav>
-		<div class="menu-button">
+		<button class="menu-button" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-menu">
 			<div class="icon icon-1"></div>
 			<div class="icon icon-2"></div>
 			<div class="icon icon-3"></div>
-		</div>
+		</button>
 	</div>
 </div>
 
@@ -121,6 +121,14 @@ import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
 		width: 32px;
 		height: 24px;
 		z-index: 1001;
+		background: none;
+		border: none;
+		outline: none;
+	}
+
+	.menu-button:focus {
+		outline: 2px solid var(--mint);
+		outline-offset: 2px;
 	}
 
 	.menu-button .icon {

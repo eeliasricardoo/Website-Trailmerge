@@ -35,7 +35,7 @@ const services: ServiceItem[] = [
 		<div class="items-across">
 			{services.map((service, index) => (
 				<div class={`item-block ${index === services.length - 1 ? 'item-block-last' : ''}`}>
-					<img src={service.icon.src} loading="lazy" alt="" class="item-image" />
+					<img src={service.icon.src} loading="lazy" alt={`${service.title} icon`} class="item-image" />
 					<h4>{service.title}</h4>
 					<div class="spacer-s"></div>
 					<p>{service.description}</p>

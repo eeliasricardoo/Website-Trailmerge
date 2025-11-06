@@ -14,7 +14,7 @@ const { image, quote, author, position, company } = Astro.props;
 <div class="body-block quote-block testimonial-section">
 	<div class="content-container">
 		<div class="quote-wrapper">
-			<img src={image.src} loading="lazy" alt="" class="quote-image" />
+			<img src={image.src} loading="lazy" alt={`${author} headshot photo`} class="quote-image" />
 			<div class="quote-text-wrapper">
 				<blockquote>"{quote}"</blockquote>
 				<div class="spacer-m"></div>
