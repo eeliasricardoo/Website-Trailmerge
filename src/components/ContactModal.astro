@@ -20,40 +20,40 @@ const {
 ---
 
 <!-- Contact Modal -->
-<div class="modal-backdrop">
+<div class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
 	<div class="contact-modal">
 		<div class="modal-columns">
 			<div class="modal-column centered">
-				<img src={image.src} loading="lazy" alt="" class="modal-image" />
-				<h3>{title}</h3>
+				<img src={image.src} loading="lazy" alt="Coffee cup illustration representing consultation meeting" class="modal-image" />
+				<h3 id="modal-title">{title}</h3>
 				<p>{description}</p>
 			</div>
 			<div class="modal-column">
 				<div class="form-block">
-					<form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method={formMethod} class="form" action={formAction}>
+					<form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method={formMethod} class="form" action={formAction} aria-label="Contact form">
 						<div class="field-wrapper">
-							<label for="Name" class="field-label">Name</label>
-							<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder="First and Last" type="text" id="modal-name" />
+							<label for="modal-name" class="field-label">Name</label>
+							<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder="First and Last" type="text" id="modal-name" aria-required="false" />
 						</div>
-						
+
 						<div class="field-wrapper">
-							<label for="Email" class="field-label">Email Address</label>
-							<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder="hello@yoursite.com" type="email" id="modal-email" required="" />
+							<label for="modal-email" class="field-label">Email Address</label>
+							<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder="hello@yoursite.com" type="email" id="modal-email" required="" aria-required="true" />
 						</div>
-						
+
 						<div class="field-wrapper">
-							<label for="Message" class="field-label">Message</label>
-							<textarea placeholder="Tell us about your project..." maxlength="5000" id="modal-message" name="Message" data-name="Message" required="" class="textarea"></textarea>
+							<label for="modal-message" class="field-label">Message</label>
+							<textarea placeholder="Tell us about your project..." maxlength="5000" id="modal-message" name="Message" data-name="Message" required="" class="textarea" aria-required="true"></textarea>
 						</div>
 						
 						<label id="modal-optin" class="checkbox-field">
-							<input type="checkbox" id="Updates?" name="Updates" data-name="Updates?" class="checkbox" />
-							<span for="Updates" class="checkbox-label">Please send me updates and helpful content from Trailmerge.</span>
+							<input type="checkbox" id="modal-updates" name="Updates" data-name="Updates?" class="checkbox" aria-label="Receive updates and helpful content from Trailmerge" />
+							<span class="checkbox-label">Please send me updates and helpful content from Trailmerge.</span>
 						</label>
-						
+
 						<label class="checkbox-field honey-field">
-							<input type="checkbox" id="Not Human?" name="Not-Human" data-name="Not Human?" class="checkbox" />
-							<span for="Not-Human" class="checkbox-label">Only check this if you're a bot.</span>
+							<input type="checkbox" id="modal-honeypot" name="Not-Human" data-name="Not Human?" class="checkbox" tabindex="-1" aria-hidden="true" />
+							<span class="checkbox-label">Only check this if you're a bot.</span>
 						</label>
 						
 						<input type="submit" data-wait="Please wait..." id="modal-submit" class="button dark-button" value="Submit" />
@@ -67,7 +67,7 @@ const {
 				</div>
 			</div>
 		</div>
-		<a href="#" class="close-modal">✕</a>
+		<button class="close-modal" aria-label="Close contact form">✕</button>
 	</div>
 </div>
 
