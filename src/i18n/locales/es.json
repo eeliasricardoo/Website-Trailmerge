@@ -44,5 +44,29 @@
     "submit": "Enviar",
     "close": "Cerrar",
     "readMore": "Leer Más"
+  },
+  "about": {
+    "title": "Acerca de Trailmerge",
+    "subtitle": "Como tu equipo de contratación y reclutamiento de diseño de producto, Trailmerge se adapta a la etapa y procesos de tu startup para encontrarte diseñadores y líderes que mejor se ajusten.",
+    "seo": {
+      "title": "Acerca de Trailmerge – Agencia UX para B2B SaaS",
+      "description": "Trailmerge es una agencia UI/UX especializada en diseño de producto B2B SaaS desde MVP hasta los primeros usuarios y más allá. Escalamos con tu producto y negocio.",
+      "keywords": "acerca de Trailmerge, equipo de diseño UX, expertos B2B SaaS, agencia de diseño de producto, equipo de diseño Atlanta"
+    },
+    "vision": {
+      "paragraph1": "En Trailmerge, nuestra visión es promover la abundancia de vida y oportunidades.",
+      "paragraph2": "Esto impulsa cómo operamos con los miembros de nuestro equipo y nuestros clientes: la mentoría y el desarrollo son una parte fundamental de quiénes somos.",
+      "paragraph3": "Así es también cómo nos asociamos con nuestros clientes: viajando junto a los equipos internos para apoyar sus sueños de impacto y su crecimiento."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "value1": "Oportunidad para personas talentosas y apasionadas",
+      "value2": "Responsabilidad individual, éxitos compartidos",
+      "value3": "Tecnología para las personas, no personas para la tecnología",
+      "value4": "Una cultura de honor y libertad",
+      "value5": "Los miembros de nuestro equipo son humanos, no \"recursos\"",
+      "value6": "Todos crecemos y todos mentorizamos",
+      "value7": "Comunicación proactiva y amigable"
+    }
   }
 }
