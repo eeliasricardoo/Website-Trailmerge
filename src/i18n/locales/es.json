@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "about": "Acerca",
+    "blog": "Blog",
+    "contact": "Contáctanos",
+    "home": "Inicio de Trailmerge"
+  },
+  "hero": {
+    "title": "Eleva tu producto",
+    "subtitle": "Toma el camino hacia la mejor UX y desarrollo para aplicaciones SaaS y empresariales",
+    "cta": "Solicita una Consulta"
+  },
+  "services": {
+    "ignite": {
+      "title": "Enciende tu práctica",
+      "description": "Te guiaremos en la construcción de una práctica de diseño de producto sólida y centrada en Agile, sistemas de diseño eficientes y procesos para todo el equipo."
+    },
+    "evaluate": {
+      "title": "Evalúa la UX de tu app",
+      "description": "Nuestro equipo de especialistas en usabilidad de SaaS y empresarial realizará una auditoría de diseño UX para resaltar y priorizar áreas de mejora."
+    },
+    "scale": {
+      "title": "Escala el diseño",
+      "description": "Aumenta los esfuerzos de UX en tu equipo incorporando un miembro de diseño fraccional para llevar tu producto al siguiente nivel."
+    }
+  },
+  "footer": {
+    "about": "Acerca",
+    "careers": "Carreras",
+    "privacy": "Privacidad",
+    "resources": "Recursos",
+    "blog": "Blog",
+    "cta": "Solicita una Consulta",
+    "copyright": "© 2024 Trailmerge Ltd Co. Todos los derechos reservados.",
+    "address": {
+      "line1": "3100 Interstate North Circle SE",
+      "line2": "Suite 200",
+      "line3": "Atlanta, GA 30339"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Ocurrió un error",
+    "submit": "Enviar",
+    "close": "Cerrar",
+    "readMore": "Leer Más"
+  }
+}
