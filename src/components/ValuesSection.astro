@@ -1,27 +1,34 @@
 ---
-// ValuesSection Component
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <div class="body-block">
 	<div class="content-container">
 		<div class="side-title-area">
 			<div class="side-title">
-				<h2 class="side-title-heading">Our Values</h2>
+				<h2 class="side-title-heading">{t('about.values.title')}</h2>
 			</div>
 			<div class="side-content">
-				<h3>Opportunity for talented and passionate people</h3>
+				<h3>{t('about.values.value1')}</h3>
 				<div class="spacer-xl"></div>
-				<h3>Individual responsibility, shared successes</h3>
+				<h3>{t('about.values.value2')}</h3>
 				<div class="spacer-xl"></div>
-				<h3>Technology for people, not people for technology</h3>
+				<h3>{t('about.values.value3')}</h3>
 				<div class="spacer-xl"></div>
-				<h3>A culture of honor and freedom</h3>
+				<h3>{t('about.values.value4')}</h3>
 				<div class="spacer-xl"></div>
-				<h3>Our team members are human, not "resources"</h3>
+				<h3>{t('about.values.value5')}</h3>
 				<div class="spacer-xl"></div>
-				<h3>All of us grow and all of us mentor</h3>
+				<h3>{t('about.values.value6')}</h3>
 				<div class="spacer-xl"></div>
-				<h3>Proactive and friendly communication</h3>
+				<h3>{t('about.values.value7')}</h3>
 			</div>
 		</div>
 	</div>

@@ -1,14 +1,21 @@
 ---
-// JumboTextSection Component
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <div class="body-block">
 	<div class="content-container">
 		<div class="jumbo-text-wrapper">
 			<p class="jumbo-text">
-				At Trailmerge, our vision is to promote abundance of life and opportunity. <br><br>
-				This drives how we operate with our team members and our clients – mentorship and development are a core part of who we are. <br><br>
-				This is also how we partner with our clients – journeying with internal teams to support their dreams for impact and their growth.<br>
+				{t('about.vision.paragraph1')} <br><br>
+				{t('about.vision.paragraph2')} <br><br>
+				{t('about.vision.paragraph3')}<br>
 			</p>
 		</div>
 		<div class="decorative-line"></div>
