@@ -60,7 +60,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-2",
-		image: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=400&fit=crop",
+		image: "/images/Coffee.png",
 		title: "How Do I Prioritize Features? Part 2 of 2",
 		date: "JUNE 9, 2021",
 		category: "SAAS",
@@ -314,12 +314,12 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "learning-the-core-of-successful-saas-startup",
-		image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&h=400&fit=crop",
+		image: "/images/Map.png",
 		title: "Learning: The Core of a Successful SaaS Startup",
 		date: "OCTOBER 22, 2020",
 		category: "SAAS",
 		excerpt: "A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup.",
-		imageAlt: "Hand holding a leaf examining it",
+		imageAlt: "Hand holding a map examining it",
 		content: `<p>A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup.</p>
 
 <p>Think about it: established companies have proven business models. They know who their customers are, what they'll pay for, and how to deliver value profitably. Startups, by definition, don't have that yet. They're searching, experimenting, and learning their way to a sustainable business model.</p>
