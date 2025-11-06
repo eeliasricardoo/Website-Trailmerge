@@ -1,0 +1,224 @@
+---
+// SEO Schema component for structured data (JSON-LD)
+interface Props {
+	type?: 'organization' | 'article';
+	articleData?: {
+		title: string;
+		description: string;
+		image: string;
+		datePublished: string;
+		dateModified?: string;
+		author: {
+			name: string;
+			image?: string;
+		};
+		url: string;
+	};
+	breadcrumbs?: Array<{
+		name: string;
+		url: string;
+	}>;
+	pageTitle?: string;
+	pageDescription?: string;
+}
+
+const {
+	type = 'organization',
+	articleData,
+	breadcrumbs,
+	pageTitle,
+	pageDescription
+} = Astro.props;
+
+const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
+
+// Organization Schema (for all pages)
+const organizationSchema = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": "Trailmerge",
+	"url": "https://trailmerge.com",
+	"logo": "https://trailmerge.com/images/trailmerge-logo.png",
+	"description": "UX Design Agency for B2B SaaS Startups specializing in MVP design, product revamp, and design audits.",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "3100 Interstate North Circle SE, Suite 200",
+		"addressLocality": "Atlanta",
+		"addressRegion": "GA",
+		"postalCode": "30339",
+		"addressCountry": "US"
+	},
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"contactType": "customer service",
+		"url": "https://trailmerge.com/#contact"
+	},
+	"sameAs": [
+		"https://twitter.com/trailmerge",
+		"https://www.linkedin.com/company/trailmerge"
+	]
+};
+
+// LocalBusiness Schema (for homepage)
+const localBusinessSchema = {
+	"@context": "https://schema.org",
+	"@type": "ProfessionalService",
+	"name": "Trailmerge",
+	"image": "https://trailmerge.com/images/trailmerge-logo.png",
+	"url": "https://trailmerge.com",
+	"telephone": "",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "3100 Interstate North Circle SE, Suite 200",
+		"addressLocality": "Atlanta",
+		"addressRegion": "GA",
+		"postalCode": "30339",
+		"addressCountry": "US"
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": 33.8786,
+		"longitude": -84.4644
+	},
+	"priceRange": "$$$$",
+	"areaServed": {
+		"@type": "Country",
+		"name": "United States"
+	}
+};
+
+// Service Schema (for homepage)
+const servicesSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	"serviceType": "UX Design Services",
+	"provider": {
+		"@type": "Organization",
+		"name": "Trailmerge",
+		"url": "https://trailmerge.com"
+	},
+	"areaServed": {
+		"@type": "Country",
+		"name": "United States"
+	},
+	"hasOfferCatalog": {
+		"@type": "OfferCatalog",
+		"name": "UX Design Services",
+		"itemListElement": [
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "MVP Design",
+					"description": "Design your minimum viable product from concept to launch"
+				}
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Product Revamp",
+					"description": "Redesign and optimize existing SaaS products"
+				}
+			},
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "Design Audit",
+					"description": "Comprehensive UX audit and recommendations"
+				}
+			}
+		]
+	}
+};
+
+// Article Schema (for blog posts)
+const articleSchema = articleData ? {
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"headline": articleData.title,
+	"description": articleData.description,
+	"image": articleData.image,
+	"datePublished": articleData.datePublished,
+	"dateModified": articleData.dateModified || articleData.datePublished,
+	"author": {
+		"@type": "Person",
+		"name": articleData.author.name,
+		"image": articleData.author.image,
+		"url": "https://trailmerge.com/about"
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "Trailmerge",
+		"logo": {
+			"@type": "ImageObject",
+			"url": "https://trailmerge.com/images/trailmerge-logo.png"
+		}
+	},
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": articleData.url
+	}
+} : null;
+
+// WebPage Schema (for all pages)
+const webPageSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	"@id": currentUrl,
+	"url": currentUrl,
+	"name": pageTitle || "Trailmerge - UX Design Agency",
+	"description": pageDescription || "UX Design Agency for B2B SaaS Startups",
+	"publisher": {
+		"@type": "Organization",
+		"name": "Trailmerge",
+		"url": "https://trailmerge.com"
+	},
+	"inLanguage": "en-US",
+	"isPartOf": {
+		"@type": "WebSite",
+		"@id": "https://trailmerge.com/#website",
+		"url": "https://trailmerge.com",
+		"name": "Trailmerge"
+	}
+};
+
+// BreadcrumbList Schema (if breadcrumbs provided)
+const breadcrumbSchema = breadcrumbs ? {
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": breadcrumbs.map((crumb, index) => ({
+		"@type": "ListItem",
+		"position": index + 1,
+		"name": crumb.name,
+		"item": crumb.url
+	}))
+} : null;
+---
+
+<!-- Organization Schema (always included) -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+<!-- WebPage Schema (always included) -->
+<script type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
+
+{breadcrumbSchema && (
+	<!-- BreadcrumbList Schema -->
+	<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+)}
+
+{type === 'organization' && (
+	<>
+		<!-- LocalBusiness Schema -->
+		<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
+		<!-- Service Schema -->
+		<script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} />
+	</>
+)}
+
+{type === 'article' && articleSchema && (
+	<!-- Article Schema -->
+	<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+)}

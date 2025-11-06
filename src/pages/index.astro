@@ -11,14 +11,18 @@ import OfferSection from '../components/OfferSection.astro';
 import BlogSection from '../components/BlogSection.astro';
 import Footer from '../components/Footer.astro';
 import ContactModal from '../components/ContactModal.astro';
+import TestimonialSchema from '../components/TestimonialSchema.astro';
 
 // Import images for testimonials and case studies
 import SeanHeadshot from '../assets/images/Sean-Headshot.png';
 import AndyHeadshot from '../assets/images/Andy-Headshot.png';
 import TourialScreenshots from '../assets/images/Tourial-Screenshots.png';
+
+// SEO keywords for homepage
+const keywords = "UX design agency, B2B SaaS design, MVP design, product design, design audit, UI/UX services, SaaS startup design, Atlanta UX agency";
 ---
 
-<Layout>
+<Layout keywords={keywords}>
 	<Navbar />
 	<Hero />
 
@@ -28,12 +32,18 @@ import TourialScreenshots from '../assets/images/Tourial-Screenshots.png';
 
 	<CompaniesSection />
 
-	<Testimonial 
+	<Testimonial
 		image={SeanHeadshot}
 		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
 		author="Sean Grapevine"
 		position="Founder"
 		company="LoanShout"
+	/>
+	<TestimonialSchema
+		author="Sean Grapevine"
+		position="Founder"
+		company="LoanShout"
+		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
 	/>
 
 	<CaseStudy 
@@ -56,12 +66,18 @@ import TourialScreenshots from '../assets/images/Tourial-Screenshots.png';
 		imageAlt="Tourial Screenshots"
 	/>
 
-	<Testimonial 
+	<Testimonial
 		image={AndyHeadshot}
 		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
 		author="Andy Binkley"
 		position="Co-founder & CEO"
 		company="Tourial"
+	/>
+	<TestimonialSchema
+		author="Andy Binkley"
+		position="Co-founder & CEO"
+		company="Tourial"
+		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
 	/>
 
 	<BlogSection />

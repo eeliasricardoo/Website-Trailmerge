@@ -1,10 +1,43 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+	site: 'https://trailmerge.com',
 	output: 'static',
 	compressHTML: true,
+	integrations: [
+		sitemap({
+			changefreq: 'weekly',
+			priority: 0.7,
+			lastmod: new Date(),
+			// Custom priority per route
+			serialize(item) {
+				// Homepage - highest priority
+				if (item.url === 'https://trailmerge.com/') {
+					item.changefreq = 'daily';
+					item.priority = 1.0;
+				}
+				// About page
+				else if (item.url.includes('/about')) {
+					item.changefreq = 'monthly';
+					item.priority = 0.9;
+				}
+				// Blog listing
+				else if (item.url === 'https://trailmerge.com/blog/') {
+					item.changefreq = 'weekly';
+					item.priority = 0.9;
+				}
+				// Blog posts
+				else if (item.url.includes('/blog/')) {
+					item.changefreq = 'monthly';
+					item.priority = 0.8;
+				}
+				return item;
+			}
+		})
+	],
 	build: {
 		inlineStylesheets: 'auto',
 	},
