@@ -3,8 +3,19 @@ name: Deploy to Google Cloud Storage
 on:
   push:
     branches:
-      - main
+      - main      # Production
+      - staging   # Staging
   workflow_dispatch: # Permite ejecutar manualmente desde GitHub
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - production
+          - staging
 
 jobs:
   deploy:
@@ -35,8 +46,40 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Deploy to GCS
+        env:
+          MANUAL_ENV: ${{ github.event.inputs.environment }}
+          BRANCH: ${{ github.ref_name }}
         run: |
-          gsutil -m rsync -r -d dist/ gs://trailmerge.com
-          gsutil web set -m index.html gs://trailmerge.com
-          gsutil iam ch allUsers:objectViewer gs://trailmerge.com
+          # Determinar el entorno basado en la rama o input manual
+          if [ "$MANUAL_ENV" = "auto" ] || [ -z "$MANUAL_ENV" ]; then
+            # Auto-detect basado en la rama
+            if [ "$BRANCH" = "staging" ]; then
+              ENVIRONMENT="staging"
+            elif [ "$BRANCH" = "main" ]; then
+              ENVIRONMENT="production"
+            else
+              echo "❌ Error: No se puede determinar el entorno para la rama $BRANCH"
+              echo "Usa workflow_dispatch con un entorno específico"
+              exit 1
+            fi
+          else
+            ENVIRONMENT="$MANUAL_ENV"
+          fi
+          
+          if [ "$ENVIRONMENT" = "staging" ]; then
+            BUCKET="staging.trailmerge.com"
+            MAKE_PUBLIC=false
+          else
+            BUCKET="trailmerge.com"
+            MAKE_PUBLIC=true
+          fi
+          
+          echo "🚀 Deploying to $BUCKET ($ENVIRONMENT) from branch $BRANCH"
+          gsutil -m rsync -r -d dist/ gs://$BUCKET
+          gsutil web set -m index.html gs://$BUCKET
+          if [ "$MAKE_PUBLIC" = "true" ]; then
+            gsutil iam ch allUsers:objectViewer gs://$BUCKET || echo "Note: Bucket may have public access prevention enabled"
+          else
+            echo "🔒 Staging bucket remains private (authentication required)"
+          fi
 

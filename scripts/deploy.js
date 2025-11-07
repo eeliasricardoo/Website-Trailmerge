@@ -10,12 +10,16 @@ const __dirname = dirname(__filename);
 const rootDir = join(__dirname, '..');
 
 // Leer el nombre del bucket desde variable de entorno o archivo de configuración
-const bucketName = process.env.GCS_BUCKET_NAME;
+// Puedes usar GCS_BUCKET_NAME directamente o GCS_ENVIRONMENT (production/staging)
+const environment = process.env.GCS_ENVIRONMENT || 'production';
+const bucketName = process.env.GCS_BUCKET_NAME || 
+  (environment === 'staging' ? 'staging.trailmerge.com' : 'trailmerge.com');
 
 if (!bucketName) {
   console.error('❌ Error: GCS_BUCKET_NAME no está definido');
   console.log('\nPor favor, define la variable de entorno:');
   console.log('  export GCS_BUCKET_NAME=tu-bucket-name');
+  console.log('  O export GCS_ENVIRONMENT=staging (para staging.trailmerge.com)');
   console.log('\nO crea un archivo .env con:');
   console.log('  GCS_BUCKET_NAME=tu-bucket-name');
   process.exit(1);
@@ -61,16 +65,32 @@ try {
     { stdio: 'inherit' }
   );
 
-  // Configurar permisos públicos (opcional, descomenta si quieres que sea público)
-  // console.log('\n🌐 Configurando permisos públicos...');
-  // execSync(
-  //   `gsutil iam ch allUsers:objectViewer "gs://${bucketName}"`,
-  //   { stdio: 'inherit' }
-  // );
+  // Configurar permisos públicos solo para production
+  const isStaging = bucketName.includes('staging');
+  if (!isStaging) {
+    console.log('\n🌐 Configurando permisos públicos...');
+    try {
+      execSync(
+        `gsutil iam ch allUsers:objectViewer "gs://${bucketName}"`,
+        { stdio: 'inherit' }
+      );
+    } catch (error) {
+      console.log('Note: Bucket may have public access prevention enabled');
+    }
+  } else {
+    console.log('\n🔒 Staging bucket permanece privado (requiere autenticación)');
+  }
 
   console.log('\n✅ ¡Despliegue completado exitosamente!');
-  console.log(`\n🌐 Tu sitio está disponible en: https://storage.googleapis.com/${bucketName}/index.html`);
-  console.log(`   O si configuraste un dominio: https://${bucketName}`);
+  
+  if (isStaging) {
+    console.log(`\n🔒 Staging bucket (requiere autenticación):`);
+    console.log(`   https://storage.googleapis.com/${bucketName}/index.html`);
+    console.log(`   Asegúrate de estar autenticado: gcloud auth login`);
+  } else {
+    console.log(`\n🌐 Tu sitio está disponible en: https://storage.googleapis.com/${bucketName}/index.html`);
+    console.log(`   O si configuraste un dominio: https://${bucketName}`);
+  }
 
 } catch (error) {
   console.error('\n❌ Error durante el despliegue:', error.message);
