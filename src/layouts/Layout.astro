@@ -58,7 +58,7 @@ const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
 const htmlLang = lang === 'es' ? 'es' : 'en-US';
 
 // Detect if we're on staging
-const isStaging = Astro.site?.includes('staging.trailmerge.com') || 
+const isStaging = Astro.site?.hostname === 'staging.trailmerge.com' || 
                   Astro.url.hostname === 'staging.trailmerge.com';
 ---
 
