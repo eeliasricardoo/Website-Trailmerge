@@ -38,5 +38,4 @@ jobs:
         run: |
           gsutil -m rsync -r -d dist/ gs://trailmerge.com
           gsutil web set -m index.html gs://trailmerge.com
-          gsutil iam ch allUsers:objectViewer gs://trailmerge.com
 
