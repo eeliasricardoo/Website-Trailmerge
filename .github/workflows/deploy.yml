@@ -188,4 +188,3 @@ jobs:
           echo ""
           echo "✅ Despliegue completado exitosamente!"
 
-# Trigger staging deployment
