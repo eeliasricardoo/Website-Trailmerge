@@ -71,7 +71,7 @@ jobs:
             MAKE_PUBLIC=true  # Público para que el equipo pueda acceder
           else
             BUCKET="trailmerge.com"
-            MAKE_PUBLIC=true
+            MAKE_PUBLIC=false  # Privado hasta que lancemos el nuevo dominio
           fi
           
           echo "🚀 Deploying to $BUCKET ($ENVIRONMENT) from branch $BRANCH"
@@ -178,7 +178,11 @@ jobs:
             fi
           else
             echo ""
-            echo "🔒 Bucket permanece privado (Load Balancer tiene acceso)"
+            if [ "$ENVIRONMENT" = "staging" ]; then
+              echo "🔒 Staging bucket permanece privado (Load Balancer tiene acceso)"
+            else
+              echo "🔒 Production bucket permanece privado hasta el lanzamiento"
+            fi
           fi
           
           echo ""
