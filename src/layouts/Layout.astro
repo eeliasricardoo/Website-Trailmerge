@@ -56,6 +56,10 @@ const alternateUrls = {
 // Set og:locale based on language
 const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
 const htmlLang = lang === 'es' ? 'es' : 'en-US';
+
+// Detect if we're on staging
+const isStaging = Astro.site?.includes('staging.trailmerge.com') || 
+                  Astro.url.hostname === 'staging.trailmerge.com';
 ---
 
 <!doctype html>
@@ -72,6 +76,14 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		<link rel="canonical" href={canonicalURL} />
 		<meta name="author" content="Trailmerge" />
 		{keywords && <meta name="keywords" content={keywords} />}
+		
+		<!-- Block crawlers on staging -->
+		{isStaging && (
+			<>
+				<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+				<meta name="googlebot" content="noindex, nofollow" />
+			</>
+		)}
 
 		<!-- Hreflang Tags for Multi-language Support -->
 		<link rel="alternate" hreflang="en" href={alternateUrls.en} />
