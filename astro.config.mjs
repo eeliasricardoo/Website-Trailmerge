@@ -5,6 +5,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://trailmerge.com',
+	base: '/',
 	output: 'static',
 	compressHTML: true,
 	i18n: {
