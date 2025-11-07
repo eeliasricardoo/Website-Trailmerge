@@ -50,8 +50,6 @@ jobs:
           MANUAL_ENV: ${{ github.event.inputs.environment }}
           BRANCH: ${{ github.ref_name }}
         run: |
-          set -e  # Exit on error
-          
           # Determinar el entorno basado en la rama o input manual
           if [ "$MANUAL_ENV" = "auto" ] || [ -z "$MANUAL_ENV" ]; then
             # Auto-detect basado en la rama
@@ -77,48 +75,95 @@ jobs:
           fi
           
           echo "🚀 Deploying to $BUCKET ($ENVIRONMENT) from branch $BRANCH"
+          echo "📋 Debug info:"
+          echo "  - Branch: $BRANCH"
+          echo "  - Environment: $ENVIRONMENT"
+          echo "  - Bucket: $BUCKET"
+          echo "  - Make Public: $MAKE_PUBLIC"
+          
+          # Verificar autenticación
+          echo ""
+          echo "🔐 Verificando autenticación..."
+          gcloud auth list || {
+            echo "❌ Error: No hay autenticación activa"
+            exit 1
+          }
           
           # Verificar que el directorio dist existe
+          echo ""
+          echo "📁 Verificando directorio dist..."
           if [ ! -d "dist" ]; then
             echo "❌ Error: El directorio dist/ no existe"
+            echo "Contenido del directorio actual:"
+            ls -la
             exit 1
           fi
+          echo "✅ Directorio dist/ existe"
+          echo "Archivos en dist/:"
+          ls -la dist/ | head -10
           
           # Verificar que gsutil está disponible
+          echo ""
+          echo "🔧 Verificando gsutil..."
           if ! command -v gsutil &> /dev/null; then
             echo "❌ Error: gsutil no está disponible"
             exit 1
           fi
+          echo "✅ gsutil versión: $(gsutil version)"
           
           # Verificar permisos del bucket
+          echo ""
           echo "📋 Verificando acceso al bucket..."
-          if ! gsutil ls gs://$BUCKET &> /dev/null; then
+          if ! gsutil ls gs://$BUCKET 2>&1; then
+            echo ""
             echo "❌ Error: No se puede acceder al bucket gs://$BUCKET"
-            echo "Verifica que el service account tenga permisos Storage Admin o Storage Object Admin"
+            echo ""
+            echo "Verifica:"
+            echo "  1. Que el bucket existe: gsutil ls gs://$BUCKET"
+            echo "  2. Que el service account tenga permisos Storage Admin o Storage Object Admin"
+            echo "  3. Que el service account esté correctamente configurado en GitHub Secrets"
+            echo ""
+            echo "Service account actual:"
+            gcloud config get-value account 2>&1 || echo "No se pudo obtener el service account"
             exit 1
           fi
+          echo "✅ Acceso al bucket verificado"
           
           # Subir archivos
+          echo ""
           echo "📤 Subiendo archivos..."
-          gsutil -m rsync -r -d dist/ gs://$BUCKET || {
+          if ! gsutil -m rsync -r -d dist/ gs://$BUCKET; then
+            echo ""
             echo "❌ Error al subir archivos"
+            echo "Verifica los permisos del service account en el bucket"
             exit 1
-          }
+          fi
+          echo "✅ Archivos subidos exitosamente"
           
           # Configurar página principal
+          echo ""
           echo "⚙️  Configurando página principal..."
-          gsutil web set -m index.html gs://$BUCKET || {
+          if ! gsutil web set -m index.html gs://$BUCKET; then
+            echo ""
             echo "❌ Error al configurar página principal"
             exit 1
-          }
+          fi
+          echo "✅ Página principal configurada"
           
           # Configurar permisos públicos solo para production
           if [ "$MAKE_PUBLIC" = "true" ]; then
+            echo ""
             echo "🌐 Configurando permisos públicos..."
-            gsutil iam ch allUsers:objectViewer gs://$BUCKET || echo "⚠️  Note: Bucket may have public access prevention enabled"
+            if ! gsutil iam ch allUsers:objectViewer gs://$BUCKET 2>&1; then
+              echo "⚠️  Note: No se pudieron configurar permisos públicos (puede tener public access prevention habilitado)"
+            else
+              echo "✅ Permisos públicos configurados"
+            fi
           else
-            echo "🔒 Staging bucket remains private (authentication required)"
+            echo ""
+            echo "🔒 Staging bucket permanece privado (requiere autenticación)"
           fi
           
+          echo ""
           echo "✅ Despliegue completado exitosamente!"
 
