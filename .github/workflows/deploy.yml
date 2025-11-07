@@ -68,7 +68,7 @@ jobs:
           
           if [ "$ENVIRONMENT" = "staging" ]; then
             BUCKET="staging.trailmerge.com"
-            MAKE_PUBLIC=false
+            MAKE_PUBLIC=true  # Público para que el equipo pueda acceder
           else
             BUCKET="trailmerge.com"
             MAKE_PUBLIC=true
@@ -129,6 +129,23 @@ jobs:
           fi
           echo "✅ Acceso al bucket verificado"
           
+          # Copiar robots.txt correcto según el entorno
+          echo ""
+          echo "🤖 Configurando robots.txt..."
+          if [ "$ENVIRONMENT" = "staging" ]; then
+            if [ -f "public/robots-staging.txt" ]; then
+              cp public/robots-staging.txt dist/robots.txt
+              echo "✅ robots.txt de staging copiado"
+            else
+              echo "⚠️  robots-staging.txt no encontrado, usando el default"
+            fi
+          else
+            if [ -f "public/robots.txt" ]; then
+              cp public/robots.txt dist/robots.txt
+              echo "✅ robots.txt de production copiado"
+            fi
+          fi
+          
           # Subir archivos
           echo ""
           echo "📤 Subiendo archivos..."
@@ -161,7 +178,7 @@ jobs:
             fi
           else
             echo ""
-            echo "🔒 Staging bucket permanece privado (requiere autenticación)"
+            echo "🔒 Bucket permanece privado (Load Balancer tiene acceso)"
           fi
           
           echo ""
