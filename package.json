@@ -6,10 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "npm run build && node scripts/deploy.js",
-    "deploy:staging": "GCS_ENVIRONMENT=staging npm run deploy",
-    "deploy:production": "GCS_ENVIRONMENT=production npm run deploy"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.13",

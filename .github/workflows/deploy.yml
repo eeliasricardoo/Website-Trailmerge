@@ -50,6 +50,8 @@ jobs:
           MANUAL_ENV: ${{ github.event.inputs.environment }}
           BRANCH: ${{ github.ref_name }}
         run: |
+          set -e  # Exit on error
+          
           # Determinar el entorno basado en la rama o input manual
           if [ "$MANUAL_ENV" = "auto" ] || [ -z "$MANUAL_ENV" ]; then
             # Auto-detect basado en la rama
@@ -75,11 +77,48 @@ jobs:
           fi
           
           echo "🚀 Deploying to $BUCKET ($ENVIRONMENT) from branch $BRANCH"
-          gsutil -m rsync -r -d dist/ gs://$BUCKET
-          gsutil web set -m index.html gs://$BUCKET
+          
+          # Verificar que el directorio dist existe
+          if [ ! -d "dist" ]; then
+            echo "❌ Error: El directorio dist/ no existe"
+            exit 1
+          fi
+          
+          # Verificar que gsutil está disponible
+          if ! command -v gsutil &> /dev/null; then
+            echo "❌ Error: gsutil no está disponible"
+            exit 1
+          fi
+          
+          # Verificar permisos del bucket
+          echo "📋 Verificando acceso al bucket..."
+          if ! gsutil ls gs://$BUCKET &> /dev/null; then
+            echo "❌ Error: No se puede acceder al bucket gs://$BUCKET"
+            echo "Verifica que el service account tenga permisos Storage Admin o Storage Object Admin"
+            exit 1
+          fi
+          
+          # Subir archivos
+          echo "📤 Subiendo archivos..."
+          gsutil -m rsync -r -d dist/ gs://$BUCKET || {
+            echo "❌ Error al subir archivos"
+            exit 1
+          }
+          
+          # Configurar página principal
+          echo "⚙️  Configurando página principal..."
+          gsutil web set -m index.html gs://$BUCKET || {
+            echo "❌ Error al configurar página principal"
+            exit 1
+          }
+          
+          # Configurar permisos públicos solo para production
           if [ "$MAKE_PUBLIC" = "true" ]; then
-            gsutil iam ch allUsers:objectViewer gs://$BUCKET || echo "Note: Bucket may have public access prevention enabled"
+            echo "🌐 Configurando permisos públicos..."
+            gsutil iam ch allUsers:objectViewer gs://$BUCKET || echo "⚠️  Note: Bucket may have public access prevention enabled"
           else
             echo "🔒 Staging bucket remains private (authentication required)"
           fi
+          
+          echo "✅ Despliegue completado exitosamente!"
 
