@@ -13,6 +13,7 @@ import Footer from '../../components/Footer.astro';
 import ContactModal from '../../components/ContactModal.astro';
 import TestimonialSchema from '../../components/TestimonialSchema.astro';
 import { useTranslations } from '../../i18n/utils';
+import { getTestimonialsByLang } from '../../data/testimonials';
 
 // Import images for testimonials and case studies
 import SeanHeadshot from '../../assets/images/Sean-Headshot.png';
@@ -20,6 +21,7 @@ import AndyHeadshot from '../../assets/images/Andy-Headshot.png';
 import TourialScreenshots from '../../assets/images/Tourial-Screenshots.png';
 
 const t = useTranslations('es');
+const testimonials = getTestimonialsByLang('es');
 
 // SEO keywords for homepage
 const keywords = "Agencia de diseño UX, diseño B2B SaaS, diseño MVP, diseño de producto, auditoría de diseño, servicios UI/UX, diseño startup SaaS, agencia UX Atlanta";
@@ -40,16 +42,16 @@ const description = "Servicios escalables de UI/UX para SaaS incluyendo diseño 
 
 	<Testimonial
 		image={SeanHeadshot}
-		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
-		author="Sean Grapevine"
-		position="Founder"
-		company="LoanShout"
+		quote={testimonials[0].quote}
+		author={testimonials[0].author}
+		position={testimonials[0].position}
+		company={testimonials[0].company}
 	/>
 	<TestimonialSchema
-		author="Sean Grapevine"
-		position="Founder"
-		company="LoanShout"
-		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
+		author={testimonials[0].author}
+		position={testimonials[0].position}
+		company={testimonials[0].company}
+		quote={testimonials[0].quote}
 	/>
 
 	<CaseStudy
@@ -74,16 +76,16 @@ const description = "Servicios escalables de UI/UX para SaaS incluyendo diseño 
 
 	<Testimonial
 		image={AndyHeadshot}
-		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
-		author="Andy Binkley"
-		position="Co-founder & CEO"
-		company="Tourial"
+		quote={testimonials[1].quote}
+		author={testimonials[1].author}
+		position={testimonials[1].position}
+		company={testimonials[1].company}
 	/>
 	<TestimonialSchema
-		author="Andy Binkley"
-		position="Co-founder & CEO"
-		company="Tourial"
-		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
+		author={testimonials[1].author}
+		position={testimonials[1].position}
+		company={testimonials[1].company}
+		quote={testimonials[1].quote}
 	/>
 
 	<BlogSection lang="es" />
