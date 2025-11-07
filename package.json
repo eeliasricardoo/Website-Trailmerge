@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/fix-paths.js",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "npm run build && node scripts/deploy.js"
@@ -16,7 +16,6 @@
     "sharp": "^0.34.5"
   },
   "devDependencies": {
-    "glob": "^11.0.3",
     "terser": "^5.44.1"
   }
 }
