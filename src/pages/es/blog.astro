@@ -3,12 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import ContactModal from '../../components/ContactModal.astro';
-import { getAllPosts } from '../../data/blogPosts';
+import { getAllPostsEs } from '../../data/blogPosts-es';
 import { useTranslations } from '../../i18n/utils';
 
 const lang = 'es';
 const t = useTranslations(lang);
-const blogPosts = getAllPosts();
+const blogPosts = getAllPostsEs();
 
 // SEO keywords and breadcrumbs
 const keywords = "blog diseño UX, artículos B2B SaaS, consejos diseño producto, estrategia MVP, mejores prácticas diseño, fundadores SaaS";
