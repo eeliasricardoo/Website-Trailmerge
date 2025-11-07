@@ -101,5 +101,11 @@
   "companies": {
     "title": "Companies we've served",
     "description": "We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives."
+  },
+  "blog": {
+    "title": "Trailmerge Blog – Design Insights for B2B SaaS",
+    "description": "Helpful articles for B2B SaaS founders and product leaders on the topics of UX design best practices and product strategy.",
+    "seePost": "See Blog Post",
+    "readMore": "Read More"
   }
 }

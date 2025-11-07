@@ -101,5 +101,11 @@
   "companies": {
     "title": "Empresas a las que hemos servido",
     "description": "Hemos tenido el honor de asociarnos con equipos increíbles, desde startups B2B SaaS en etapa de idea hasta equipos empresariales multinacionales, para empoderar a las personas a alcanzar, tener éxito y prosperar en su vida laboral diaria."
+  },
+  "blog": {
+    "title": "Blog de Trailmerge – Perspectivas de Diseño para B2B SaaS",
+    "description": "Artículos útiles para fundadores y líderes de producto B2B SaaS sobre mejores prácticas de diseño UX y estrategia de producto.",
+    "seePost": "Ver Publicación",
+    "readMore": "Leer Más"
   }
 }
