@@ -1,12 +1,18 @@
 ---
+import { useTranslations } from '../i18n/utils';
+
 export interface Props {
 	title?: string;
 	description?: string;
+	lang?: string;
 }
 
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
 const {
-	title = "Companies we've served",
-	description = "We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives."
+	title = t('companies.title'),
+	description = t('companies.description')
 } = Astro.props;
 ---
 

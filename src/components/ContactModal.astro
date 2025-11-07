@@ -1,5 +1,5 @@
 ---
-// Import images
+import { useTranslations } from '../i18n/utils';
 import CoffeeImage from '../assets/images/Coffee.png';
 
 export interface Props {
@@ -8,12 +8,16 @@ export interface Props {
 	description?: string;
 	formAction?: string;
 	formMethod?: string;
+	lang?: string;
 }
 
-const { 
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+const {
 	image = CoffeeImage,
-	title = "Schedule your free consult",
-	description = "The journey together starts with a simple first step. Send us a message - tell us a little bit about your project, your ideas, your dream - and we'll be on our way to making it a reality.",
+	title = t('contact.title'),
+	description = t('contact.description'),
 	formAction = "#",
 	formMethod = "get"
 } = Astro.props;
@@ -32,43 +36,43 @@ const {
 				<div class="form-block">
 					<form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method={formMethod} class="form" action={formAction} aria-label="Contact form">
 						<div class="field-wrapper">
-							<label for="modal-name" class="field-label">Name</label>
-							<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder="First and Last" type="text" id="modal-name" aria-required="false" autocomplete="name" />
+							<label for="modal-name" class="field-label">{t('contact.form.nameLabel')}</label>
+							<input class="text-field" maxlength="256" name="Name" data-name="Name" placeholder={t('contact.form.namePlaceholder')} type="text" id="modal-name" aria-required="false" autocomplete="name" />
 						</div>
 
 						<div class="field-wrapper">
-							<label for="modal-email" class="field-label">Email Address</label>
-							<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder="hello@yoursite.com" type="email" id="modal-email" required="" aria-required="true" autocomplete="email" aria-describedby="email-help" />
-							<span id="email-help" class="field-help-text">We'll never share your email with anyone else.</span>
+							<label for="modal-email" class="field-label">{t('contact.form.emailLabel')}</label>
+							<input class="text-field" maxlength="256" name="Email" data-name="Email" placeholder={t('contact.form.emailPlaceholder')} type="email" id="modal-email" required="" aria-required="true" autocomplete="email" aria-describedby="email-help" />
+							<span id="email-help" class="field-help-text">{t('contact.form.emailHelp')}</span>
 						</div>
 
 						<div class="field-wrapper">
-							<label for="modal-message" class="field-label">Message</label>
-							<textarea placeholder="Tell us about your project..." maxlength="5000" id="modal-message" name="Message" data-name="Message" required="" class="textarea" aria-required="true"></textarea>
+							<label for="modal-message" class="field-label">{t('contact.form.messageLabel')}</label>
+							<textarea placeholder={t('contact.form.messagePlaceholder')} maxlength="5000" id="modal-message" name="Message" data-name="Message" required="" class="textarea" aria-required="true"></textarea>
 						</div>
-						
+
 						<label id="modal-optin" class="checkbox-field">
-							<input type="checkbox" id="modal-updates" name="Updates" data-name="Updates?" class="checkbox" aria-label="Receive updates and helpful content from Trailmerge" />
-							<span class="checkbox-label">Please send me updates and helpful content from Trailmerge.</span>
+							<input type="checkbox" id="modal-updates" name="Updates" data-name="Updates?" class="checkbox" aria-label={t('contact.form.optinLabel')} />
+							<span class="checkbox-label">{t('contact.form.optinLabel')}</span>
 						</label>
 
 						<label class="checkbox-field honey-field">
 							<input type="checkbox" id="modal-honeypot" name="Not-Human" data-name="Not Human?" class="checkbox" tabindex="-1" aria-hidden="true" />
-							<span class="checkbox-label">Only check this if you're a bot.</span>
+							<span class="checkbox-label">{t('contact.form.honeypotLabel')}</span>
 						</label>
-						
-						<input type="submit" data-wait="Please wait..." id="modal-submit" class="button dark-button" value="Submit" />
+
+						<input type="submit" data-wait={t('contact.form.submitWait')} id="modal-submit" class="button dark-button" value={t('contact.form.submitButton')} />
 					</form>
 					<div class="success-message" role="status" aria-live="polite" aria-atomic="true">
-						<div>Great first step! We've received your message and will be touching base soon.</div>
+						<div>{t('contact.messages.success')}</div>
 					</div>
 					<div class="error-message" role="alert" aria-live="assertive" aria-atomic="true">
-						<div>Hmm... Something went wrong while submitting the form. Give it another shot!</div>
+						<div>{t('contact.messages.error')}</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<button class="close-modal" aria-label="Close contact form">✕</button>
+		<button class="close-modal" aria-label={t('contact.form.closeButton')}>✕</button>
 	</div>
 </div>
 

@@ -68,5 +68,38 @@
       "value6": "All of us grow and all of us mentor",
       "value7": "Proactive and friendly communication"
     }
+  },
+  "contact": {
+    "title": "Schedule your free consult",
+    "description": "The journey together starts with a simple first step. Send us a message - tell us a little bit about your project, your ideas, your dream - and we'll be on our way to making it a reality.",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "First and Last",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "hello@yoursite.com",
+      "emailHelp": "We'll never share your email with anyone else.",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "optinLabel": "Please send me updates and helpful content from Trailmerge.",
+      "honeypotLabel": "Only check this if you're a bot.",
+      "submitButton": "Submit",
+      "submitWait": "Please wait...",
+      "closeButton": "Close contact form"
+    },
+    "messages": {
+      "success": "Great first step! We've received your message and will be touching base soon.",
+      "error": "Hmm... Something went wrong while submitting the form. Give it another shot!"
+    }
+  },
+  "aside": {
+    "text": "Trailmerge equips SaaS and enterprise product teams with user experience and development expertise, specialized product design, and strategic best practices to level up the usability and adoption of your SaaS or enterprise application."
+  },
+  "offer": {
+    "title": "How does your product stack up?",
+    "buttonText": "Get a Personalized SaaS Design Audit"
+  },
+  "companies": {
+    "title": "Companies we've served",
+    "description": "We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives."
   }
 }

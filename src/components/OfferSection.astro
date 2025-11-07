@@ -1,5 +1,5 @@
 ---
-// Import images
+import { useTranslations } from '../i18n/utils';
 import DesignAuditImage from '../assets/images/Design-Audit-Image.png';
 
 export interface Props {
@@ -8,11 +8,15 @@ export interface Props {
 	buttonUrl?: string;
 	image?: any;
 	imageWidth?: number;
+	lang?: string;
 }
 
-const { 
-	title = "How does your product stack up?",
-	buttonText = "Get a Personalized SaaS Design Audit",
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+const {
+	title = t('offer.title'),
+	buttonText = t('offer.buttonText'),
 	buttonUrl = "https://forms.gle/ufj74gqNJSiabci79",
 	image = DesignAuditImage,
 	imageWidth = 248

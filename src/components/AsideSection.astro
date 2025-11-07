@@ -1,11 +1,17 @@
 ---
+import { useTranslations } from '../i18n/utils';
+
 export interface Props {
 	text?: string;
 	showBannerTags?: boolean;
+	lang?: string;
 }
 
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
 const {
-	text = "Trailmerge equips SaaS and enterprise product teams with user experience and development expertise, specialized product design, and strategic best practices to level up the usability and adoption of your SaaS or enterprise application.",
+	text = t('aside.text'),
 	showBannerTags = true
 } = Astro.props;
 ---
