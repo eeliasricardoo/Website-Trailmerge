@@ -6,6 +6,10 @@ import JumboTextSection from '../components/JumboTextSection.astro';
 import ValuesSection from '../components/ValuesSection.astro';
 import Footer from '../components/Footer.astro';
 import ContactModal from '../components/ContactModal.astro';
+import { useTranslations } from '../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
 
 // SEO keywords and breadcrumbs
 const keywords = "about Trailmerge, UX design team, B2B SaaS experts, product design agency, Atlanta design team";
@@ -16,24 +20,25 @@ const breadcrumbs = [
 ---
 
 <Layout
-	title="About Trailmerge – UX Agency for B2B SaaS"
-	description="Trailmerge is a UI/UX agency specializing in B2B SaaS product design from MVP to first users and beyond. We scale with your product and business."
+	title={t('about.seo.title')}
+	description={t('about.seo.description')}
 	keywords={keywords}
 	breadcrumbs={breadcrumbs}
+	lang={lang}
 >
-	<Navbar />
+	<Navbar lang={lang} />
 
 	<main id="main-content">
-		<AboutHero />
+		<AboutHero lang={lang} />
 
-		<JumboTextSection />
+		<JumboTextSection lang={lang} />
 
-		<ValuesSection />
+		<ValuesSection lang={lang} />
 	</main>
 
-	<Footer />
+	<Footer lang={lang} />
 
-	<ContactModal />
+	<ContactModal lang={lang} />
 </Layout>
 
 <style is:global>

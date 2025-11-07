@@ -24,6 +24,7 @@ interface Props {
 		url: string;
 	}>;
 	keywords?: string;
+	lang?: string;
 }
 
 const {
@@ -34,12 +35,31 @@ const {
 	schemaType = 'organization',
 	articleData,
 	breadcrumbs,
-	keywords
+	keywords,
+	lang = 'en'
 } = Astro.props;
+
+// Generate alternate language URLs for hreflang
+const currentPath = Astro.url.pathname;
+const pathWithoutLocale = currentPath.replace(/^\/(es)/, '') || '/';
+
+// Generate URLs for both languages
+const enUrl = pathWithoutLocale === '/' ? '/' : pathWithoutLocale;
+const esUrl = `/es${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+
+// Map paths for proper alternate URLs
+const alternateUrls = {
+	en: new URL(enUrl, Astro.site).href,
+	es: new URL(esUrl, Astro.site).href
+};
+
+// Set og:locale based on language
+const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
+const htmlLang = lang === 'es' ? 'es' : 'en-US';
 ---
 
 <!doctype html>
-<html lang="en-US">
+<html lang={htmlLang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -53,6 +73,11 @@ const {
 		<meta name="author" content="Trailmerge" />
 		{keywords && <meta name="keywords" content={keywords} />}
 
+		<!-- Hreflang Tags for Multi-language Support -->
+		<link rel="alternate" hreflang="en" href={alternateUrls.en} />
+		<link rel="alternate" hreflang="es" href={alternateUrls.es} />
+		<link rel="alternate" hreflang="x-default" href={alternateUrls.en} />
+
 		<!-- RSS Feed -->
 		<link rel="alternate" type="application/rss+xml" title="Trailmerge Blog RSS Feed" href="/rss.xml" />
 
@@ -63,7 +88,9 @@ const {
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:site_name" content="Trailmerge" />
-		<meta property="og:locale" content="en_US" />
+		<meta property="og:locale" content={ogLocale} />
+		{lang === 'es' && <meta property="og:locale:alternate" content="en_US" />}
+		{lang === 'en' && <meta property="og:locale:alternate" content="es_ES" />}
 
 		<!-- Twitter Meta Tags -->
 		<meta name="twitter:card" content="summary_large_image" />

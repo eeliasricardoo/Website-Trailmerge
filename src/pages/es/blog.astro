@@ -1,20 +1,20 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import ContactModal from '../components/ContactModal.astro';
-import { getAllPosts } from '../data/blogPosts';
-import { useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ContactModal from '../../components/ContactModal.astro';
+import { getAllPostsEs } from '../../data/blogPosts-es';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = 'en';
+const lang = 'es';
 const t = useTranslations(lang);
-const blogPosts = getAllPosts();
+const blogPosts = getAllPostsEs();
 
 // SEO keywords and breadcrumbs
-const keywords = "UX design blog, B2B SaaS articles, product design tips, MVP strategy, design best practices, SaaS founders";
+const keywords = "blog diseño UX, artículos B2B SaaS, consejos diseño producto, estrategia MVP, mejores prácticas diseño, fundadores SaaS";
 const breadcrumbs = [
-	{ name: "Home", url: "https://trailmerge.com/" },
-	{ name: "Blog", url: "https://trailmerge.com/blog/" }
+	{ name: "Inicio", url: "https://trailmerge.com/es/" },
+	{ name: "Blog", url: "https://trailmerge.com/es/blog/" }
 ];
 ---
 
@@ -268,4 +268,3 @@ const breadcrumbs = [
 		}
 	}
 </style>
-

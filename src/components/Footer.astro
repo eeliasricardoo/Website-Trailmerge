@@ -1,5 +1,5 @@
 ---
-// Import images
+import { useTranslations } from '../i18n/utils';
 import TrailmergeLogoGrey from '../assets/images/Trailmerge-Wordmark_Grey-5.svg';
 
 export interface FooterLink {
@@ -20,32 +20,36 @@ export interface Props {
 	copyright?: string;
 	ctaButtonText?: string;
 	ctaButtonUrl?: string;
+	lang?: string;
 }
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 
 const {
 	logo = TrailmergeLogoGrey,
 	addressLines = [
-		"3100 Interstate North Circle SE",
-		"Suite 200",
-		"Atlanta, GA 30339"
+		t('footer.address.line1'),
+		t('footer.address.line2'),
+		t('footer.address.line3')
 	],
 	linkGroups = [
 		{
-			title: "About",
+			title: t('footer.about'),
 			links: [
-				{ text: "Careers", url: "https://trailmerge.breezy.hr/", target: "_blank" },
-				{ text: "Privacy", url: "/privacy" }
+				{ text: t('footer.careers'), url: "https://trailmerge.breezy.hr/", target: "_blank" },
+				{ text: t('footer.privacy'), url: lang === 'es' ? "/es/privacidad" : "/privacy" }
 			]
 		},
 		{
-			title: "Resources",
+			title: t('footer.resources'),
 			links: [
-				{ text: "Blog", url: "/blog" }
+				{ text: t('footer.blog'), url: lang === 'es' ? "/es/blog" : "/blog" }
 			]
 		}
 	],
-	copyright = "© 2024 Trailmerge Ltd Co. All rights reserved.",
-	ctaButtonText = "Request A Consult",
+	copyright = t('footer.copyright'),
+	ctaButtonText = t('footer.cta'),
 	ctaButtonUrl = "#"
 } = Astro.props;
 ---
@@ -55,7 +59,7 @@ const {
 	<div class="content-container">
 		<div class="footer-flex-container">
 			<div class="footer-logo-area">
-				<a href="/" aria-current="page" class="footer-logo-link w--current">
+				<a href={lang === 'es' ? '/es' : '/'} aria-current="page" class="footer-logo-link w--current">
 					<img src={logo.src} alt="Trailmerge Wordmark" class="footer-image" />
 				</a>
 				<div class="spacer-l"></div>
@@ -69,8 +73,8 @@ const {
 			<div class="footer-links-wrapper">
 				{linkGroups.map((group, index) => (
 					<div class={`footer-links-group ${index === linkGroups.length - 1 ? 'last-item' : ''}`}>
-						{group.title === "About" ? (
-							<a href="/about" class="footer-heading-link">{group.title}</a>
+						{group.title === t('footer.about') ? (
+							<a href={lang === 'es' ? '/es/acerca' : '/about'} class="footer-heading-link">{group.title}</a>
 						) : (
 							<h2 class="footer-heading">{group.title}</h2>
 						)}

@@ -1,20 +1,66 @@
 ---
-// Import images
+import { useTranslations } from '../i18n/utils';
 import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+// Get current path for language switcher
+const currentPath = Astro.url.pathname;
+
+// Route mapping between English and Spanish
+const routeMap = {
+	'/': { en: '/', es: '/es' },
+	'/about': { en: '/about', es: '/es/acerca' },
+	'/blog': { en: '/blog', es: '/es/blog' },
+	'/es': { en: '/', es: '/es' },
+	'/es/acerca': { en: '/about', es: '/es/acerca' },
+	'/es/blog': { en: '/blog', es: '/es/blog' },
+};
+
+// Handle blog post slugs
+const isBlogPost = currentPath.match(/^\/blog\//) || currentPath.match(/^\/es\/blog\//);
+let enUrl = '/';
+let esUrl = '/es';
+
+if (isBlogPost) {
+	// For blog posts, keep the same slug but change the language prefix
+	const slug = currentPath.replace(/^\/(es\/)?blog\//, '');
+	enUrl = `/blog/${slug}`;
+	esUrl = `/es/blog/${slug}`;
+} else if (routeMap[currentPath]) {
+	// Use route mapping for known routes
+	enUrl = routeMap[currentPath].en;
+	esUrl = routeMap[currentPath].es;
+} else {
+	// Fallback: remove language prefix and add appropriate one
+	const pathWithoutLang = currentPath.replace(/^\/(es)/, '') || '/';
+	enUrl = pathWithoutLang === '/' ? '/' : pathWithoutLang;
+	esUrl = `/es${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+}
 ---
 
 <!-- Navigation -->
 <div class="navigation" role="banner">
 	<div class="navigation-container-full">
-		<a href="/" id="nav-logo" aria-current="page" aria-label="Trailmerge home" class="brand">
+		<a href={lang === 'es' ? '/es' : '/'} id="nav-logo" aria-label={t('nav.home')} class="brand">
 			<img src={TrailmergeLogo.src} alt="Trailmerge Logo" class="logo nav-logo" />
 		</a>
 		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
-			<a href="/about" id="nav-about" class="nav-link" aria-label="About Trailmerge">About</a>
-			<a href="/blog" id="nav-blog" class="nav-link" aria-label="Trailmerge blog">Blog</a>
+			<a href={lang === 'es' ? '/es/acerca' : '/about'} id="nav-about" class="nav-link">{t('nav.about')}</a>
+			<a href={lang === 'es' ? '/es/blog' : '/blog'} id="nav-blog" class="nav-link">{t('nav.blog')}</a>
+			<div class="language-switcher">
+				<a href={enUrl} class={`lang-link ${lang === 'en' ? 'active' : ''}`} aria-label="Switch to English">🇺🇸</a>
+				<span class="lang-divider">|</span>
+				<a href={esUrl} class={`lang-link ${lang === 'es' ? 'active' : ''}`} aria-label="Cambiar a Español">🇪🇸</a>
+			</div>
 			<div class="navbar-button-wrapper">
-				<a href="#" id="nav-contact" class="open-modal button navbar-button" aria-label="Open contact form">Contact Us</a>
+				<a href="#" id="nav-contact" class="open-modal button navbar-button">{t('nav.contact')}</a>
 			</div>
 		</nav>
 		<button class="menu-button" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="nav-menu">
@@ -87,6 +133,47 @@ import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
 
 	.nav-link:hover {
 		color: var(--mint);
+	}
+
+	/* Language Switcher */
+	.language-switcher {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-family: Roboto, sans-serif;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1;
+	}
+
+	.lang-link {
+		color: var(--white);
+		opacity: 0.7;
+		transition: all 0.2s ease;
+		padding: 4px 8px;
+		border-radius: 4px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 20px;
+		line-height: 1;
+		text-decoration: none;
+	}
+
+	.lang-link:hover {
+		opacity: 1;
+		background-color: rgba(255, 255, 255, 0.1);
+		transform: scale(1.1);
+	}
+
+	.lang-link.active {
+		opacity: 1;
+		transform: scale(1.15);
+	}
+
+	.lang-divider {
+		color: var(--white);
+		opacity: 0.5;
 	}
 
 	.navbar-button-wrapper {

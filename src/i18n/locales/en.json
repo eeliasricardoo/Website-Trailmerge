@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact Us",
+    "home": "Trailmerge home"
+  },
+  "hero": {
+    "title": "Elevate your product",
+    "subtitle": "Take the path to best-in-class UX and development for SaaS & enterprise apps",
+    "cta": "Request A Consult"
+  },
+  "services": {
+    "ignite": {
+      "title": "Ignite your practice",
+      "description": "We'll guide you in building a strong, Agile-centered product design practice, efficient design systems, and team-wide processes."
+    },
+    "evaluate": {
+      "title": "Evaluate your app's UX",
+      "description": "Our team of SaaS & enterprise usability specialists will conduct a UX design audit to highlight and prioritize areas for improvement."
+    },
+    "scale": {
+      "title": "Scale up design",
+      "description": "Augment UX efforts on your team by bringing on a fractional design team member to take your product to the next level."
+    }
+  },
+  "footer": {
+    "about": "About",
+    "careers": "Careers",
+    "privacy": "Privacy",
+    "resources": "Resources",
+    "blog": "Blog",
+    "cta": "Request A Consult",
+    "copyright": "© 2024 Trailmerge Ltd Co. All rights reserved.",
+    "address": {
+      "line1": "3100 Interstate North Circle SE",
+      "line2": "Suite 200",
+      "line3": "Atlanta, GA 30339"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "submit": "Submit",
+    "close": "Close",
+    "readMore": "Read More"
+  },
+  "about": {
+    "title": "About Trailmerge",
+    "subtitle": "As your product design staffing and recruiting team, Trailmerge adapts to your startup's stage and processes to find you best-fit designers and leaders.",
+    "seo": {
+      "title": "About Trailmerge – UX Agency for B2B SaaS",
+      "description": "Trailmerge is a UI/UX agency specializing in B2B SaaS product design from MVP to first users and beyond. We scale with your product and business.",
+      "keywords": "about Trailmerge, UX design team, B2B SaaS experts, product design agency, Atlanta design team"
+    },
+    "vision": {
+      "paragraph1": "At Trailmerge, our vision is to promote abundance of life and opportunity.",
+      "paragraph2": "This drives how we operate with our team members and our clients – mentorship and development are a core part of who we are.",
+      "paragraph3": "This is also how we partner with our clients – journeying with internal teams to support their dreams for impact and their growth."
+    },
+    "values": {
+      "title": "Our Values",
+      "value1": "Opportunity for talented and passionate people",
+      "value2": "Individual responsibility, shared successes",
+      "value3": "Technology for people, not people for technology",
+      "value4": "A culture of honor and freedom",
+      "value5": "Our team members are human, not \"resources\"",
+      "value6": "All of us grow and all of us mentor",
+      "value7": "Proactive and friendly communication"
+    }
+  },
+  "contact": {
+    "title": "Schedule your free consult",
+    "description": "The journey together starts with a simple first step. Send us a message - tell us a little bit about your project, your ideas, your dream - and we'll be on our way to making it a reality.",
+    "form": {
+      "nameLabel": "Name",
+      "namePlaceholder": "First and Last",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "hello@yoursite.com",
+      "emailHelp": "We'll never share your email with anyone else.",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell us about your project...",
+      "optinLabel": "Please send me updates and helpful content from Trailmerge.",
+      "honeypotLabel": "Only check this if you're a bot.",
+      "submitButton": "Submit",
+      "submitWait": "Please wait...",
+      "closeButton": "Close contact form"
+    },
+    "messages": {
+      "success": "Great first step! We've received your message and will be touching base soon.",
+      "error": "Hmm... Something went wrong while submitting the form. Give it another shot!"
+    }
+  },
+  "aside": {
+    "text": "Trailmerge equips SaaS and enterprise product teams with user experience and development expertise, specialized product design, and strategic best practices to level up the usability and adoption of your SaaS or enterprise application."
+  },
+  "offer": {
+    "title": "How does your product stack up?",
+    "buttonText": "Get a Personalized SaaS Design Audit"
+  },
+  "companies": {
+    "title": "Companies we've served",
+    "description": "We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives."
+  },
+  "blog": {
+    "title": "Trailmerge Blog – Design Insights for B2B SaaS",
+    "description": "Helpful articles for B2B SaaS founders and product leaders on the topics of UX design best practices and product strategy.",
+    "seePost": "See Blog Post",
+    "readMore": "Read More"
+  }
+}

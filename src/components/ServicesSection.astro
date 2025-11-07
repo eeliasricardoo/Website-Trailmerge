@@ -1,8 +1,15 @@
 ---
-// Import images
+import { useTranslations } from '../i18n/utils';
 import FireIcon from '../assets/images/Illustration---Fire.svg';
 import MagnifyingGlassIcon from '../assets/images/Illustration---Magnifying-Glass.svg';
 import CaribinerIcon from '../assets/images/Illustration---Caribiner.svg';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 
 export interface ServiceItem {
 	icon: any;
@@ -13,18 +20,18 @@ export interface ServiceItem {
 const services: ServiceItem[] = [
 	{
 		icon: FireIcon,
-		title: "Ignite your practice",
-		description: "We'll guide you in building a strong, Agile-centered product design practice, efficient design systems, and team-wide processes."
+		title: t('services.ignite.title'),
+		description: t('services.ignite.description')
 	},
 	{
 		icon: MagnifyingGlassIcon,
-		title: "Evaluate your app's UX",
-		description: "Our team of SaaS & enterprise usability specialists will conduct a UX design audit to highlight and prioritize areas for improvement."
+		title: t('services.evaluate.title'),
+		description: t('services.evaluate.description')
 	},
 	{
 		icon: CaribinerIcon,
-		title: "Scale up design",
-		description: "Augment UX efforts on your team by bringing on a fractional design team member to take your product to the next level."
+		title: t('services.scale.title'),
+		description: t('services.scale.description')
 	}
 ];
 ---

@@ -1,14 +1,21 @@
 ---
-// AboutHero Component
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <div class="body-block hero-wrapper about-hero-wrapper">
 	<div class="content-container">
 		<div class="hero">
 			<div class="flex-half-right flex-stretch">
-				<h1>About Trailmerge</h1>
+				<h1>{t('about.title')}</h1>
 				<div class="spacer-l"></div>
-				<h3>As your product design staffing and recruiting team, Trailmerge adapts to your startup's stage and processes to find you best-fit designers and leaders.</h3>
+				<h3>{t('about.subtitle')}</h3>
 			</div>
 		</div>
 	</div>

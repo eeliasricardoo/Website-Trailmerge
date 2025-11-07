@@ -18,20 +18,24 @@ import SeanHeadshot from '../assets/images/Sean-Headshot.png';
 import AndyHeadshot from '../assets/images/Andy-Headshot.png';
 import TourialScreenshots from '../assets/images/Tourial-Screenshots.png';
 
+const lang = 'en';
+
 // SEO keywords for homepage
 const keywords = "UX design agency, B2B SaaS design, MVP design, product design, design audit, UI/UX services, SaaS startup design, Atlanta UX agency";
+const title = "UX Design Agency for B2B SaaS Startups – Trailmerge";
+const description = "Scalable UI/UX services for SaaS including MVP design, product overhaul, and design audits. Schedule a free consultation to get started.";
 ---
 
-<Layout keywords={keywords}>
-	<Navbar />
+<Layout keywords={keywords} title={title} description={description} lang={lang}>
+	<Navbar lang={lang} />
 	<main id="main-content">
-		<Hero />
+		<Hero lang={lang} />
 
-		<AsideSection />
+		<AsideSection lang={lang} />
 
-	<ServicesSection />
+	<ServicesSection lang={lang} />
 
-	<CompaniesSection />
+	<CompaniesSection lang={lang} />
 
 	<Testimonial
 		image={SeanHeadshot}
@@ -81,12 +85,12 @@ const keywords = "UX design agency, B2B SaaS design, MVP design, product design,
 		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
 	/>
 
-	<BlogSection />
+	<BlogSection lang="en" />
 	</main>
 
-	<Footer />
+	<Footer lang="en" />
 
-	<ContactModal />
+	<ContactModal lang="en" />
 </Layout>
 
 <style is:global>

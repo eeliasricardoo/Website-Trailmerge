@@ -1,4 +1,6 @@
 ---
+import { useTranslations } from '../i18n/utils';
+
 export interface BlogPost {
 	image: string;
 	title: string;
@@ -10,7 +12,11 @@ export interface BlogPost {
 
 export interface Props {
 	posts?: BlogPost[];
+	lang?: string;
 }
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 
 const { posts = [
 	{
@@ -56,7 +62,7 @@ const { posts = [
 						<div class="blog-feed-text">{post.date}</div>
 					</div>
 					<div class="spacer-xs"></div>
-					<a href={post.linkUrl || "#"} class="text-link">See Blog Post</a>
+					<a href={post.linkUrl || "#"} class="text-link">{t('blog.seePost')}</a>
 				</div>
 			))}
 		</div>

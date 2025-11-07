@@ -7,6 +7,13 @@ export default defineConfig({
 	site: 'https://trailmerge.com',
 	output: 'static',
 	compressHTML: true,
+	i18n: {
+		defaultLocale: 'en',
+		locales: ['en', 'es'],
+		routing: {
+			prefixDefaultLocale: false
+		}
+	},
 	integrations: [
 		sitemap({
 			changefreq: 'weekly',

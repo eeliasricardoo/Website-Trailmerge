@@ -1,5 +1,12 @@
 ---
-// Using public path for the image
+import { useTranslations } from '../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <!-- Hero Section -->
@@ -10,11 +17,11 @@
 	<div class="content-container">
 		<div class="hero">
 			<div class="hero-content-left">
-				<h1>Elevate your product</h1>
+				<h1>{t('hero.title')}</h1>
 				<div class="spacer-m"></div>
-				<h3 class="hero-subtitle">Take the path to best-in-class UX and development for SaaS & enterprise apps</h3>
+				<h3 class="hero-subtitle">{t('hero.subtitle')}</h3>
 				<div class="spacer-m"></div>
-				<a id="hero-contact" href="#" class="open-modal button hero-cta-button">Request A Consult</a>
+				<a id="hero-contact" href="#" class="open-modal button hero-cta-button">{t('hero.cta')}</a>
 			</div>
 		</div>
 	</div>
