@@ -1,23 +1,23 @@
 {
   "nav": {
-    "about": "Acerca",
+    "about": "Acerca de",
     "blog": "Blog",
     "contact": "Contáctanos",
     "home": "Inicio de Trailmerge"
   },
   "hero": {
-    "title": "Lleva tu producto al siguiente nivel",
+    "title": "Eleva tu producto",
     "subtitle": "El camino hacia UX y desarrollo de clase mundial para aplicaciones SaaS y empresariales",
-    "cta": "Agenda una Consulta Gratis"
+    "cta": "Solicita una Consulta"
   },
   "services": {
     "ignite": {
-      "title": "Impulsa tu proceso de diseño",
+      "title": "Impulsa tu práctica",
       "description": "Te guiaremos para construir una práctica sólida de diseño de producto centrada en Agile, sistemas de diseño eficientes y procesos colaborativos para todo el equipo."
     },
     "evaluate": {
-      "title": "Evalúa la UX de tu app",
-      "description": "Nuestro equipo de especialistas en usabilidad de SaaS y empresarial realizará una auditoría de diseño UX para resaltar y priorizar áreas de mejora."
+      "title": "Evalúa la UX de tu aplicación",
+      "description": "Nuestro equipo de especialistas en usabilidad de SaaS y aplicaciones empresariales realizará una auditoría de diseño UX para identificar y priorizar áreas de mejora."
     },
     "scale": {
       "title": "Escala tu equipo de diseño",
@@ -25,7 +25,7 @@
     }
   },
   "footer": {
-    "about": "Acerca",
+    "about": "Acerca de",
     "careers": "Carreras",
     "privacy": "Privacidad",
     "resources": "Recursos",
@@ -43,18 +43,18 @@
     "error": "Ocurrió un error",
     "submit": "Enviar",
     "close": "Cerrar",
-    "readMore": "Leer Más"
+    "readMore": "Leer más"
   },
   "about": {
     "title": "Acerca de Trailmerge",
-    "subtitle": "Como tu equipo de contratación y reclutamiento de diseño de producto, Trailmerge se adapta a la etapa y procesos de tu startup para encontrarte diseñadores y líderes que mejor se ajusten.",
+    "subtitle": "Como tu equipo de contratación y reclutamiento de diseño de producto, Trailmerge se adapta a la etapa y procesos de tu startup para encontrar diseñadores y líderes que mejor se ajusten a tus necesidades.",
     "seo": {
       "title": "Acerca de Trailmerge – Agencia UX para B2B SaaS",
       "description": "Trailmerge es una agencia UI/UX especializada en diseño de producto B2B SaaS desde MVP hasta los primeros usuarios y más allá. Escalamos con tu producto y negocio.",
       "keywords": "acerca de Trailmerge, equipo de diseño UX, expertos B2B SaaS, agencia de diseño de producto, equipo de diseño Atlanta"
     },
     "vision": {
-      "paragraph1": "En Trailmerge, nuestra visión es crear abundancia de vida y oportunidades.",
+      "paragraph1": "En Trailmerge, nuestra visión es promover la abundancia de vida y oportunidades.",
       "paragraph2": "Esto define cómo trabajamos con nuestro equipo y clientes: la mentoría y el desarrollo son fundamentales para nosotros.",
       "paragraph3": "Así es como nos asociamos contigo: acompañando a los equipos internos para apoyar sus sueños de impacto y crecimiento."
     },
@@ -70,33 +70,33 @@
     }
   },
   "contact": {
-    "title": "Agenda tu consulta gratis",
-    "description": "El viaje comienza con un simple primer paso. Cuéntanos sobre tu proyecto, tus ideas, tu visión, y te ayudaremos a hacerla realidad.",
+    "title": "Agenda tu consulta gratuita",
+    "description": "El viaje comienza con un simple primer paso. Envíanos un mensaje: cuéntanos sobre tu proyecto, tus ideas, tu visión, y trabajaremos juntos para hacerla realidad.",
     "form": {
       "nameLabel": "Nombre",
-      "namePlaceholder": "Nombre completo",
-      "emailLabel": "Correo Electrónico",
-      "emailPlaceholder": "tu@email.com",
+      "namePlaceholder": "Nombre y apellido",
+      "emailLabel": "Correo electrónico",
+      "emailPlaceholder": "hola@tusitio.com",
       "emailHelp": "Nunca compartiremos tu correo con nadie más.",
       "messageLabel": "Mensaje",
-      "messagePlaceholder": "Háblanos de tu proyecto...",
+      "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
       "optinLabel": "Quiero recibir actualizaciones y contenido útil de Trailmerge.",
       "honeypotLabel": "Solo marca esto si eres un bot.",
-      "submitButton": "Enviar Mensaje",
+      "submitButton": "Enviar",
       "submitWait": "Por favor espera...",
       "closeButton": "Cerrar formulario de contacto"
     },
     "messages": {
-      "success": "¡Genial! Recibimos tu mensaje y te contactaremos pronto.",
-      "error": "Algo salió mal al enviar el formulario. ¡Intenta nuevamente!"
+      "success": "¡Excelente primer paso! Hemos recibido tu mensaje y te contactaremos pronto.",
+      "error": "Hmm... Algo salió mal al enviar el formulario. ¡Intenta nuevamente!"
     }
   },
   "aside": {
-    "text": "Trailmerge equipa a equipos de producto SaaS y empresarial con experiencia en experiencia de usuario y desarrollo, diseño de producto especializado y mejores prácticas estratégicas para elevar la usabilidad y adopción de tu aplicación SaaS o empresarial."
+    "text": "Trailmerge equipa a equipos de producto SaaS y empresariales con experiencia en experiencia de usuario y desarrollo, diseño de producto especializado y mejores prácticas estratégicas para elevar la usabilidad y adopción de tu aplicación SaaS o empresarial."
   },
   "offer": {
-    "title": "¿Tu producto está a la altura de la competencia?",
-    "buttonText": "Solicita una Auditoría de Diseño Gratis"
+    "title": "¿Cómo se compara tu producto?",
+    "buttonText": "Obtén una Auditoría de Diseño SaaS Personalizada"
   },
   "companies": {
     "title": "Empresas a las que hemos servido",
@@ -104,8 +104,8 @@
   },
   "blog": {
     "title": "Blog de Trailmerge – Insights de Diseño para B2B SaaS",
-    "description": "Artículos prácticos para fundadores y líderes de producto B2B SaaS sobre mejores prácticas de diseño UX y estrategia de producto.",
-    "seePost": "Ver Artículo",
-    "readMore": "Leer Más"
+    "description": "Artículos útiles para fundadores y líderes de producto B2B SaaS sobre mejores prácticas de diseño UX y estrategia de producto.",
+    "seePost": "Ver artículo",
+    "readMore": "Leer más"
   }
 }
