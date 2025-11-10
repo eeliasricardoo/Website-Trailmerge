@@ -48,6 +48,10 @@ const t = useTranslations(lang as 'en' | 'es');
 
 	.body-block.hero-wrapper.home-hero {
 		background-image: url('/images/Hero-Backdrop.svg');
+		--backdrop-scale: 1;
+		background-size: auto calc(70% * var(--backdrop-scale));
+		background-position: 100% 0;
+		transition: background-size 0.1s ease-out;
 	}
 
 	.hero-wrapper {
