@@ -29,7 +29,7 @@ const { image, quote, author, position, company } = Astro.props;
 		background-color: var(--mint);
 		position: relative;
 		overflow: hidden;
-		padding: 56px 40px;
+		padding: 72px 40px;
 	}
 
 	.testimonial-section::before {
@@ -52,14 +52,14 @@ const { image, quote, author, position, company } = Astro.props;
 	.quote-wrapper {
 		display: flex;
 		align-items: center;
-		gap: 32px;
+		gap: 48px;
 		max-width: 1200px;
 		margin: 0 auto;
 	}
 
 	.quote-image {
-		width: 200px;
-		height: 200px;
+		width: 240px;
+		height: 240px;
 		border-radius: 50%;
 		flex-shrink: 0;
 		object-fit: cover;
@@ -70,34 +70,60 @@ const { image, quote, author, position, company } = Astro.props;
 	}
 
 	blockquote {
-		font-size: 24px;
+		font-family: Roboto, sans-serif;
+		font-size: 28px;
 		font-weight: 600;
 		font-style: italic;
-		line-height: 32px;
-		margin: 0 0 16px 0;
+		line-height: 38px;
+		margin: 0 0 20px 0;
 		color: var(--grey-5);
 	}
 
 	.quote-name {
+		font-family: Roboto, sans-serif;
 		font-weight: 500;
 		color: var(--grey-4);
-		font-size: 16px;
+		font-size: 18px;
 	}
 
 	@media (max-width: 768px) {
 		.testimonial-section {
-			padding: 40px 20px;
+			padding: 48px 20px;
 		}
 
 		.quote-wrapper {
 			flex-direction: column;
 			text-align: center;
+			gap: 32px;
+		}
+
+		.quote-image {
+			width: 180px;
+			height: 180px;
+		}
+
+		blockquote {
+			font-size: 22px;
+			line-height: 32px;
+		}
+
+		.quote-name {
+			font-size: 16px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.testimonial-section {
+			padding: 40px 16px;
+		}
+
+		.quote-wrapper {
 			gap: 24px;
 		}
 
 		.quote-image {
-			width: 160px;
-			height: 160px;
+			width: 200px;
+			height: 200px;
 		}
 
 		blockquote {
@@ -107,30 +133,6 @@ const { image, quote, author, position, company } = Astro.props;
 
 		.quote-name {
 			font-size: 15px;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.testimonial-section {
-			padding: 32px 16px;
-		}
-
-		.quote-wrapper {
-			gap: 20px;
-		}
-
-		.quote-image {
-			width: 120px;
-			height: 120px;
-		}
-
-		blockquote {
-			font-size: 18px;
-			line-height: 26px;
-		}
-
-		.quote-name {
-			font-size: 14px;
 		}
 	}
 </style>
