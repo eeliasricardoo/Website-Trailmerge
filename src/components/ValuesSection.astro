@@ -48,13 +48,19 @@ const t = useTranslations(lang as 'en' | 'es');
 	}
 
 	.side-title-area {
-		display: grid;
-		grid-template-columns: 300px 1fr;
-		gap: 80px;
-		align-items: start;
+		text-align: left;
+		justify-content: flex-start;
+		max-width: 800px;
+		display: flex;
+		margin: 0 auto;
 	}
 
 	.side-title {
+		border-right: 4px solid var(--pimento);
+		flex: none;
+		width: auto;
+		margin-right: 16px;
+		padding-right: 16px;
 		position: sticky;
 		top: 120px;
 	}
@@ -66,6 +72,14 @@ const t = useTranslations(lang as 'en' | 'es');
 		line-height: 1.2;
 		color: var(--grey-5);
 		margin: 0;
+		text-align: right;
+		max-width: 240px;
+		white-space: nowrap;
+	}
+
+	.side-content {
+		text-align: left;
+		flex: 1;
 	}
 
 	.side-content h3 {
@@ -75,6 +89,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		line-height: 1.4;
 		color: var(--grey-5);
 		margin: 0;
+		text-align: left;
 	}
 
 	.spacer-xl {
@@ -86,9 +101,12 @@ const t = useTranslations(lang as 'en' | 'es');
 			padding: 60px 0;
 		}
 
-		.side-title-area {
-			grid-template-columns: 250px 1fr;
-			gap: 60px;
+		.side-title {
+			padding-right: 8px;
+		}
+
+		.side-content {
+			flex: 1;
 		}
 
 		.side-title-heading {
@@ -114,16 +132,28 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.side-title-area {
-			grid-template-columns: 1fr;
-			gap: 40px;
+			flex-direction: column;
+			align-items: center;
 		}
 
 		.side-title {
+			border-bottom: 4px solid var(--pimento);
+			border-right-style: none;
+			margin-bottom: 8px;
+			margin-right: 0;
+			padding-bottom: 4px;
+			padding-right: 8px;
 			position: static;
+		}
+
+		.side-content {
+			text-align: center;
 		}
 
 		.side-title-heading {
 			font-size: 36px;
+			text-align: center;
+			max-width: none;
 		}
 
 		.side-content h3 {
@@ -141,11 +171,28 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.side-title-area {
-			gap: 32px;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.side-title {
+			border-bottom: 4px solid var(--pimento);
+			border-right-style: none;
+			margin-bottom: 8px;
+			margin-right: 0;
+			padding-bottom: 4px;
+			padding-right: 8px;
+			position: static;
+		}
+
+		.side-content {
+			text-align: center;
 		}
 
 		.side-title-heading {
 			font-size: 28px;
+			text-align: center;
+			max-width: none;
 		}
 
 		.side-content h3 {
