@@ -29,6 +29,7 @@ const { image, quote, author, position, company } = Astro.props;
 		background-color: var(--mint);
 		position: relative;
 		overflow: hidden;
+		padding: 56px 40px;
 	}
 
 	.testimonial-section::before {
@@ -46,5 +47,90 @@ const { image, quote, author, position, company } = Astro.props;
 	.testimonial-section .content-container {
 		position: relative;
 		z-index: 1;
+	}
+
+	.quote-wrapper {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.quote-image {
+		width: 200px;
+		height: 200px;
+		border-radius: 50%;
+		flex-shrink: 0;
+		object-fit: cover;
+	}
+
+	.quote-text-wrapper {
+		flex: 1;
+	}
+
+	blockquote {
+		font-size: 24px;
+		font-weight: 600;
+		font-style: italic;
+		line-height: 32px;
+		margin: 0 0 16px 0;
+		color: var(--grey-5);
+	}
+
+	.quote-name {
+		font-weight: 500;
+		color: var(--grey-4);
+		font-size: 16px;
+	}
+
+	@media (max-width: 768px) {
+		.testimonial-section {
+			padding: 40px 20px;
+		}
+
+		.quote-wrapper {
+			flex-direction: column;
+			text-align: center;
+			gap: 24px;
+		}
+
+		.quote-image {
+			width: 160px;
+			height: 160px;
+		}
+
+		blockquote {
+			font-size: 20px;
+			line-height: 28px;
+		}
+
+		.quote-name {
+			font-size: 15px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.testimonial-section {
+			padding: 32px 16px;
+		}
+
+		.quote-wrapper {
+			gap: 20px;
+		}
+
+		.quote-image {
+			width: 120px;
+			height: 120px;
+		}
+
+		blockquote {
+			font-size: 18px;
+			line-height: 26px;
+		}
+
+		.quote-name {
+			font-size: 14px;
+		}
 	}
 </style>
