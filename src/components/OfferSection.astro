@@ -63,6 +63,21 @@ const {
 		max-width: 600px;
 	}
 
+	.side-content {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.side-content h3 {
+		text-align: center;
+	}
+
+	.side-content .button {
+		display: inline-block;
+	}
+
 	.div-block-21 {
 		width: 160px;
 		flex-shrink: 0;
@@ -85,12 +100,12 @@ const {
 
 	@media (max-width: 768px) {
 		.offer-block {
-			padding: 40px 20px;
+			padding: 56px 20px 64px;
 		}
 
 		.div-block-20 {
 			flex-direction: column-reverse;
-			gap: 24px;
+			gap: 32px;
 		}
 
 		.image-text-wrapper {
@@ -98,12 +113,30 @@ const {
 			width: 100%;
 		}
 
+		.side-content {
+			text-align: center;
+			align-items: center;
+		}
+
+		.side-content h3 {
+			font-size: 24px !important;
+			line-height: 32px !important;
+			margin-bottom: 8px;
+		}
+
+		.offer-block .image-text-wrapper .side-content h3,
+		.offer-block .image-text-wrapper .side-content h3 strong {
+			font-size: 24px !important;
+			line-height: 32px !important;
+			text-align: center;
+		}
+
 		.div-block-21 {
 			display: none;
 		}
 
 		.div-block-22 {
-			margin-top: -24px;
+			margin-top: -32px;
 			top: 0;
 			width: 100%;
 			text-align: center;
@@ -111,7 +144,7 @@ const {
 
 		.image-25 {
 			margin-top: 0;
-			margin-bottom: -32px;
+			margin-bottom: -40px;
 			position: static;
 			max-width: 280px;
 		}
@@ -119,16 +152,22 @@ const {
 
 	@media (max-width: 480px) {
 		.offer-block {
-			padding: 32px 16px;
+			padding: 48px 16px 56px;
 		}
 
 		.div-block-20 {
-			gap: 16px;
+			gap: 24px;
+		}
+
+		.offer-block .image-text-wrapper .side-content h3,
+		.offer-block .image-text-wrapper .side-content h3 strong {
+			font-size: 22px !important;
+			line-height: 30px !important;
 		}
 
 		.image-25 {
 			max-width: 240px;
-			margin-bottom: -24px;
+			margin-bottom: -32px;
 		}
 	}
 </style>
