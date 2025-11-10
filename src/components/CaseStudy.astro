@@ -55,23 +55,29 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 	.side-title-area {
 		display: flex;
 		gap: 16px;
-		align-items: flex-start;
+		align-items: center;
+		justify-content: center;
+		max-width: 900px;
+		margin: 0 auto;
 	}
 
 	.side-title {
 		flex: 0 0 auto;
 		padding-right: 16px;
 		border-right: 4px solid var(--pimento);
+		text-align: center;
 	}
 
 	.side-content {
 		flex: 1;
+		text-align: center;
 	}
 
 	@media (max-width: 768px) {
 		.side-title-area {
 			flex-direction: column;
 			gap: 24px;
+			align-items: center;
 		}
 
 		.side-title {
@@ -80,6 +86,7 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 			border-right: none;
 			border-bottom: 4px solid var(--pimento);
 			width: 100%;
+			text-align: center;
 		}
 
 		.side-title h2 {
@@ -89,6 +96,7 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 
 		.side-content {
 			width: 100%;
+			text-align: center;
 		}
 
 		.constrained-full-image {
@@ -104,6 +112,10 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 
 		.side-title {
 			padding-bottom: 12px;
+		}
+
+		.side-content {
+			text-align: center;
 		}
 
 		.side-content p {
