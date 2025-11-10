@@ -18,7 +18,7 @@ const { image, quote, author, position, company } = Astro.props;
 			<div class="quote-text-wrapper">
 				<blockquote>"{quote}"</blockquote>
 				<div class="spacer-m"></div>
-				<p class="quote-name">— {author}{position && `, ${position}`}{company && ` @ ${company}`}</p>
+				<p class="quote-name">— {author}{position && `, ${position}`}{company && ` ${company}`}</p>
 			</div>
 		</div>
 	</div>

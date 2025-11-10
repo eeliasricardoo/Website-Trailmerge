@@ -55,9 +55,18 @@ if (isBlogPost) {
 			<a href={lang === 'es' ? '/es/acerca' : '/about'} id="nav-about" class="nav-link">{t('nav.about')}</a>
 			<a href={lang === 'es' ? '/es/blog' : '/blog'} id="nav-blog" class="nav-link">{t('nav.blog')}</a>
 			<div class="language-switcher">
-				<a href={enUrl} class={`lang-link ${lang === 'en' ? 'active' : ''}`} aria-label="Switch to English">🇺🇸</a>
-				<span class="lang-divider">|</span>
-				<a href={esUrl} class={`lang-link ${lang === 'es' ? 'active' : ''}`} aria-label="Cambiar a Español">🇪🇸</a>
+				<button class="language-switcher-button" aria-label="Select language" aria-expanded="false" aria-haspopup="true" id="language-switcher-button">
+					<svg class="globe-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M2 8H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+						<path d="M8 2C9.66667 4.33333 10.6667 6.33333 11 8C10.6667 9.66667 9.66667 11.6667 8 14C6.33333 11.6667 5.33333 9.66667 5 8C5.33333 6.33333 6.33333 4.33333 8 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<span class="current-language">{lang === 'en' ? 'English' : 'Español'}</span>
+				</button>
+				<div class="language-dropdown" id="language-dropdown" role="menu">
+					<a href={enUrl} class={`language-option ${lang === 'en' ? 'active' : ''}`} role="menuitem" aria-label="Switch to English">English</a>
+					<a href={esUrl} class={`language-option ${lang === 'es' ? 'active' : ''}`} role="menuitem" aria-label="Cambiar a Español">Español</a>
+				</div>
 			</div>
 			<div class="navbar-button-wrapper">
 				<a href="#" id="nav-contact" class="open-modal button navbar-button">{t('nav.contact')}</a>
@@ -73,6 +82,36 @@ if (isBlogPost) {
 
 <script>
 	import '../scripts/mobileMenu';
+
+	// Language dropdown toggle
+	const languageSwitcher = document.querySelector('.language-switcher');
+	const languageButton = document.getElementById('language-switcher-button');
+	
+	if (languageButton && languageSwitcher) {
+		languageButton.addEventListener('click', (e) => {
+			e.stopPropagation();
+			const isActive = languageSwitcher.classList.contains('active');
+			languageSwitcher.classList.toggle('active');
+			languageButton.setAttribute('aria-expanded', (!isActive).toString());
+		});
+
+		// Close dropdown when clicking outside
+		document.addEventListener('click', (e) => {
+			if (!languageSwitcher.contains(e.target as Node)) {
+				languageSwitcher.classList.remove('active');
+				languageButton.setAttribute('aria-expanded', 'false');
+			}
+		});
+
+		// Close dropdown on escape key
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') {
+				languageSwitcher.classList.remove('active');
+				languageButton.setAttribute('aria-expanded', 'false');
+				languageButton.focus();
+			}
+		});
+	}
 </script>
 
 <style>
@@ -120,7 +159,7 @@ if (isBlogPost) {
 		height: auto;
 		display: flex;
 		position: static;
-		gap: 32px;
+		gap: 24px;
 		font-family: Roboto, sans-serif;
 	}
 
@@ -137,43 +176,90 @@ if (isBlogPost) {
 
 	/* Language Switcher */
 	.language-switcher {
+		position: relative;
+		display: flex;
+		align-items: center;
+		font-family: Roboto, sans-serif;
+	}
+
+	.language-switcher-button {
 		display: flex;
 		align-items: center;
 		gap: 8px;
-		font-family: Roboto, sans-serif;
-		font-size: 20px;
+		background: none;
+		border: none;
+		color: var(--mint);
+		font-size: 16px;
 		font-weight: 500;
-		line-height: 1;
-	}
-
-	.lang-link {
-		color: var(--white);
-		opacity: 0.7;
-		transition: all 0.2s ease;
+		font-family: Roboto, sans-serif;
+		cursor: pointer;
 		padding: 4px 8px;
 		border-radius: 4px;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		font-size: 20px;
+		transition: all 0.2s ease;
 		line-height: 1;
+	}
+
+	.language-switcher-button:hover {
+		background-color: rgba(193, 227, 203, 0.1);
+	}
+
+	.language-switcher-button:focus {
+		outline: 2px solid var(--mint);
+		outline-offset: 2px;
+	}
+
+	.globe-icon {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+	}
+
+	.current-language {
+		color: var(--mint);
+	}
+
+	.language-dropdown {
+		position: absolute;
+		top: calc(100% + 8px);
+		right: 0;
+		background-color: var(--white);
+		border-radius: 12px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		min-width: 160px;
+		padding: 8px 0;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-8px);
+		transition: all 0.2s ease;
+		z-index: 1001;
+	}
+
+	.language-switcher.active .language-dropdown {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	.language-option {
+		display: block;
+		padding: 12px 16px;
+		color: var(--grey-5);
+		font-size: 16px;
+		font-weight: 400;
+		font-family: Roboto, sans-serif;
 		text-decoration: none;
+		transition: all 0.2s ease;
+		line-height: 1.5;
 	}
 
-	.lang-link:hover {
-		opacity: 1;
-		background-color: rgba(255, 255, 255, 0.1);
-		transform: scale(1.1);
+	.language-option:hover {
+		background-color: var(--green-100);
+		color: var(--grey-5);
 	}
 
-	.lang-link.active {
-		opacity: 1;
-		transform: scale(1.15);
-	}
-
-	.lang-divider {
-		color: var(--white);
-		opacity: 0.5;
+	.language-option.active {
+		font-weight: 700;
+		color: var(--grey-5);
 	}
 
 	.navbar-button-wrapper {
@@ -300,6 +386,49 @@ if (isBlogPost) {
 			text-align: center;
 			padding: 12px 16px;
 			font-size: 16px;
+		}
+
+		.language-switcher {
+			width: 100%;
+		}
+
+		.language-switcher-button {
+			width: 100%;
+			justify-content: flex-start;
+			padding: 12px 8px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.language-dropdown {
+			position: static;
+			opacity: 1;
+			visibility: visible;
+			transform: none;
+			box-shadow: none;
+			background-color: transparent;
+			padding: 0;
+			margin-top: 0;
+			min-width: auto;
+			display: none;
+		}
+
+		.language-switcher.active .language-dropdown {
+			display: block;
+		}
+
+		.language-option {
+			padding: 12px 8px;
+			color: var(--white);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.language-option:hover {
+			background-color: rgba(255, 255, 255, 0.1);
+			color: var(--mint);
+		}
+
+		.language-option.active {
+			color: var(--mint);
 		}
 	}
 
