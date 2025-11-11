@@ -31,15 +31,6 @@ const breadcrumbs = [
 		<!-- Blog Posts Section -->
 		<div class="blog-page-wrapper">
 		<div class="content-container">
-			<!-- Blog Header -->
-			<div class="blog-header">
-				<h1 class="blog-main-title">{t('blog.title')}</h1>
-				<div class="spacer-m"></div>
-				<p class="blog-main-description">{t('blog.description')}</p>
-			</div>
-
-			<div class="spacer-2xl"></div>
-
 			<div class="blog-posts-list">
 				{blogPosts.map((post) => (
 					<article class="blog-post-item">
@@ -83,29 +74,6 @@ const breadcrumbs = [
 		padding-top: 120px;
 		padding-bottom: 80px;
 		min-height: 100vh;
-		font-family: Roboto, sans-serif;
-	}
-
-	.blog-header {
-		text-align: center;
-		max-width: 800px;
-		margin: 0 auto;
-	}
-
-	.blog-main-title {
-		color: var(--grey-5);
-		font-size: 48px;
-		font-weight: 700;
-		line-height: 1.2;
-		margin: 0;
-		font-family: Bitter, serif;
-	}
-
-	.blog-main-description {
-		color: var(--grey-4);
-		font-size: 18px;
-		line-height: 1.6;
-		margin: 0;
 		font-family: Roboto, sans-serif;
 	}
 
@@ -237,10 +205,6 @@ const breadcrumbs = [
 			padding-bottom: 60px;
 		}
 
-		.blog-main-title {
-			font-size: 40px;
-		}
-
 		.blog-posts-list {
 			gap: 40px;
 		}
@@ -250,14 +214,6 @@ const breadcrumbs = [
 		.blog-page-wrapper {
 			padding-top: 80px;
 			padding-bottom: 48px;
-		}
-
-		.blog-main-title {
-			font-size: 36px;
-		}
-
-		.blog-main-description {
-			font-size: 16px;
 		}
 
 		.blog-posts-list {
@@ -288,14 +244,6 @@ const breadcrumbs = [
 		.blog-page-wrapper {
 			padding-top: 72px;
 			padding-bottom: 40px;
-		}
-
-		.blog-main-title {
-			font-size: 32px;
-		}
-
-		.blog-main-description {
-			font-size: 15px;
 		}
 
 		.blog-posts-list {
