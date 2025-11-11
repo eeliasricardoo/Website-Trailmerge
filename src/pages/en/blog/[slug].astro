@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ContactModal from '../../components/ContactModal.astro';
-import { getAllPosts } from '../../data/blogPosts';
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactModal from '../../../components/ContactModal.astro';
+import { getAllPosts } from '../../../data/blogPosts';
 
 export async function getStaticPaths() {
 	const posts = getAllPosts();
@@ -14,13 +14,14 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const lang = 'en';
 
 if (!post) {
-	return Astro.redirect('/blog');
+	return Astro.redirect('/en/blog');
 }
 
 // Prepare article data for JSON-LD schema
-const articleUrl = new URL(`/blog/${post.slug}`, Astro.site).href;
+const articleUrl = new URL(`/en/blog/${post.slug}`, Astro.site).href;
 const articleData = {
 	title: post.title,
 	description: post.excerpt,
@@ -35,8 +36,8 @@ const articleData = {
 
 // Breadcrumbs for blog posts
 const breadcrumbs = [
-	{ name: "Home", url: "https://trailmerge.com/" },
-	{ name: "Blog", url: "https://trailmerge.com/blog/" },
+	{ name: "Home", url: "https://trailmerge.com/en/" },
+	{ name: "Blog", url: "https://trailmerge.com/en/blog/" },
 	{ name: post.title, url: articleUrl }
 ];
 
@@ -51,8 +52,9 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 	articleData={articleData}
 	breadcrumbs={breadcrumbs}
 	keywords={keywords}
+	lang={lang}
 >
-	<Navbar />
+	<Navbar lang={lang} />
 
 	<main id="main-content">
 		<!-- Blog Post Detail Page -->
@@ -104,9 +106,9 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 		</article>
 	</main>
 
-	<Footer />
+	<Footer lang={lang} />
 
-	<ContactModal />
+	<ContactModal lang={lang} />
 </Layout>
 
 <style is:global>
@@ -115,7 +117,7 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 		font-size: 28px !important;
 		font-weight: 600 !important;
 		line-height: 1.3 !important;
-		margin-top: 72px !important;
+		margin-top: 48px !important;
 		margin-bottom: 16px !important;
 		font-family: Bitter, serif !important;
 		text-align: left !important;
@@ -183,11 +185,30 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 		font-style: italic !important;
 	}
 
+	/* Estilização de parágrafos */
+	article.blog-detail-page .blog-detail-body p {
+		margin-bottom: 24px !important;
+		color: var(--grey-4) !important;
+		font-size: 17px !important;
+		line-height: 1.75 !important;
+		font-family: Roboto, sans-serif !important;
+		font-weight: 400 !important;
+	}
+
+	article.blog-detail-page .blog-detail-body p:last-child {
+		margin-bottom: 0 !important;
+	}
+
 	@media (max-width: 768px) {
 		article.blog-detail-page .blog-detail-body h2 {
 			font-size: 24px !important;
-			margin-top: 56px !important;
+			margin-top: 40px !important;
 			margin-bottom: 12px !important;
+		}
+
+		article.blog-detail-page .blog-detail-body p {
+			margin-bottom: 32px !important;
+			font-size: 16px !important;
 		}
 
 		article.blog-detail-page .blog-detail-body div[style*="text-align: center"] {
@@ -202,8 +223,13 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 	@media (max-width: 480px) {
 		article.blog-detail-page .blog-detail-body h2 {
 			font-size: 24px !important;
-			margin-top: 48px !important;
+			margin-top: 32px !important;
 			margin-bottom: 12px !important;
+		}
+
+		article.blog-detail-page .blog-detail-body p {
+			margin-bottom: 28px !important;
+			font-size: 15px !important;
 		}
 
 		article.blog-detail-page .blog-detail-body div[style*="text-align: center"] {
@@ -311,7 +337,7 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 	}
 
 	.blog-detail-body p {
-		margin-bottom: 24px;
+		margin-bottom: 40px;
 		color: var(--grey-4);
 		font-size: 17px;
 		line-height: 1.75;
@@ -351,8 +377,8 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 	}
 
 	.blog-author-image {
-		width: 120px;
-		height: 120px;
+		width: 150px;
+		height: 150px;
 		border-radius: 50%;
 		object-fit: cover;
 		flex-shrink: 0;
@@ -368,7 +394,7 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 		font-weight: 700;
 		line-height: 1.3;
 		margin: 0 0 8px 0;
-		font-family: Roboto, sans-serif;
+		font-family: Bitter, serif;
 	}
 
 	.blog-author-bio {
@@ -430,7 +456,7 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 
 		.blog-detail-body p {
 			font-size: 16px;
-			margin-bottom: 24px;
+			margin-bottom: 32px;
 		}
 
 		.blog-author-content {
@@ -441,8 +467,8 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 		}
 
 		.blog-author-image {
-			width: 100px;
-			height: 100px;
+			width: 130px;
+			height: 130px;
 		}
 	}
 
@@ -472,12 +498,12 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 
 		.blog-detail-body p {
 			font-size: 15px;
-			margin-bottom: 20px;
+			margin-bottom: 28px;
 		}
 
 		.blog-author-image {
-			width: 80px;
-			height: 80px;
+			width: 100px;
+			height: 100px;
 		}
 
 		.blog-author-name {

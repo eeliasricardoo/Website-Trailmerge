@@ -22,7 +22,7 @@ const t = useTranslations(lang as 'en' | 'es');
 
 // Get the latest 3 blog posts from the data file
 const allBlogPosts = lang === 'es' ? getAllPostsEs() : getAllPosts();
-const langPrefix = lang === 'es' ? '/es' : '';
+const langPrefix = lang === 'es' ? '/es' : '/en';
 const latestPosts = allBlogPosts.slice(0, 3).map(post => ({
 	image: post.image,
 	title: post.title,

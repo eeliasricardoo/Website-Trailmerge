@@ -40,7 +40,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		},
 	},
 	{
@@ -98,7 +98,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
@@ -161,7 +161,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
@@ -269,7 +269,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
@@ -323,7 +323,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
@@ -392,7 +392,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
@@ -459,7 +459,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
@@ -505,7 +505,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	}
 ];

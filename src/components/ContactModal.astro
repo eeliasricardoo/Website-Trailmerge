@@ -59,6 +59,7 @@ const copperFormId = lang === 'es'
 		const modalBackdrop = document.querySelector('.modal-backdrop');
 		const openModalButtons = document.querySelectorAll('.open-modal');
 		const closeModalButton = document.querySelector('.close-modal');
+		const calendarUrl = 'https://calendar.app.google/9LexXxAa7U6qSVgj6';
 
 		if (!modalBackdrop || !closeModalButton) return;
 
@@ -93,6 +94,123 @@ const copperFormId = lang === 'es'
 				document.body.style.overflow = 'auto';
 			}
 		});
+
+		// Listen for form submission success from Copper Forms iframe
+		// Copper Forms sends postMessage when form is submitted successfully
+		window.addEventListener('message', function(event) {
+			// Check if message is from Copper Forms domain
+			if (event.origin.includes('copper.com') || event.origin.includes('forms.copper.com')) {
+				// Check for form submission success messages
+				if (event.data && (
+					event.data.type === 'form-submit' ||
+					event.data.type === 'copper-form-submit' ||
+					event.data.status === 'success' ||
+					event.data.message === 'form-submitted' ||
+					typeof event.data === 'string' && event.data.includes('success')
+				)) {
+					// Close modal and redirect to calendar
+					modalBackdrop.classList.remove('active');
+					document.body.style.overflow = 'auto';
+					window.location.href = calendarUrl;
+				}
+			}
+		});
+
+		// Fallback: Monitor iframe for form submission indicators
+		// Check iframe content changes and URL changes that might indicate successful submission
+		const iframe = document.querySelector('iframe[id^="wYsDRF6aDG9YgnPCCJjiXJ"], iframe[id^="5dNTzeqzanj9McnokQfpFq"]');
+		if (iframe) {
+			let checkCount = 0;
+			const maxChecks = 60; // Check for up to 30 seconds (500ms * 60)
+			let lastIframeUrl = iframe.src;
+			let formSubmitted = false;
+			
+			// Listen for iframe load events (happens when form redirects after submission)
+			iframe.addEventListener('load', function() {
+				// Small delay to allow success page to render
+				setTimeout(() => {
+					if (!formSubmitted) {
+						try {
+							const currentUrl = iframe.contentWindow?.location.href || iframe.src;
+							// If URL changed from original embed URL, form was likely submitted
+							if (currentUrl && currentUrl !== lastIframeUrl && !currentUrl.includes('type=embed')) {
+								formSubmitted = true;
+								modalBackdrop.classList.remove('active');
+								document.body.style.overflow = 'auto';
+								window.location.href = calendarUrl;
+							}
+						} catch (e) {
+							// CORS error - can't access iframe URL
+						}
+					}
+				}, 1000);
+			});
+			
+			const checkInterval = setInterval(() => {
+				if (formSubmitted) {
+					clearInterval(checkInterval);
+					return;
+				}
+				
+				checkCount++;
+				
+				// Check if iframe URL changed (indicates form submission/redirect)
+				try {
+					const currentUrl = iframe.contentWindow?.location.href || iframe.src;
+					if (currentUrl && currentUrl !== lastIframeUrl && !currentUrl.includes('type=embed')) {
+						// URL changed, likely form was submitted
+						formSubmitted = true;
+						clearInterval(checkInterval);
+						modalBackdrop.classList.remove('active');
+						document.body.style.overflow = 'auto';
+						window.location.href = calendarUrl;
+						return;
+					}
+					lastIframeUrl = currentUrl || lastIframeUrl;
+				} catch (e) {
+					// CORS error - can't access iframe URL
+				}
+				
+				try {
+					// Try to access iframe content (may fail due to CORS)
+					const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+					if (iframeDoc) {
+						// Look for success indicators in the iframe
+						const successElements = iframeDoc.querySelectorAll(
+							'[class*="success"], [class*="thank"], [id*="success"], [id*="thank"], .success-message, .thank-you, [data-success]'
+						);
+						
+						if (successElements.length > 0) {
+							formSubmitted = true;
+							clearInterval(checkInterval);
+							modalBackdrop.classList.remove('active');
+							document.body.style.overflow = 'auto';
+							window.location.href = calendarUrl;
+							return;
+						}
+					}
+				} catch (e) {
+					// CORS error - can't access iframe content, rely on postMessage
+				}
+				
+				// Stop checking after max attempts
+				if (checkCount >= maxChecks) {
+					clearInterval(checkInterval);
+				}
+			}, 500);
+
+			// Stop checking when modal is closed
+			const stopChecking = () => {
+				clearInterval(checkInterval);
+			};
+			
+			closeModalButton.addEventListener('click', stopChecking);
+			modalBackdrop.addEventListener('click', function(e) {
+				if (e.target === modalBackdrop) {
+					stopChecking();
+				}
+			});
+		}
 	});
 </script>
 
@@ -107,24 +225,35 @@ const copperFormId = lang === 'es'
 
 	.copper-form-container {
 		width: 100%;
-		overflow: hidden !important;
+		overflow: visible !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		min-height: 100%;
 	}
 
 	.copper-form-container iframe {
 		width: 100%;
 		border: none;
 		height: 650px;
-		max-height: 650px;
-		overflow: hidden !important;
+		max-height: 100%;
+		overflow: visible !important;
+		margin: auto;
+		display: block;
+		vertical-align: middle;
 	}
 
 	/* Ajustar altura do modal para acomodar o iframe */
 	.contact-modal {
 		max-height: 95vh;
 		height: auto;
+		min-height: 600px;
 		overflow: hidden !important;
 		padding: 2rem;
 		margin: auto;
+		display: flex;
+		flex-direction: column;
 	}
 
 	/* Ajustar colunas do modal */
@@ -132,8 +261,10 @@ const copperFormId = lang === 'es'
 		display: grid;
 		grid-template-columns: 1fr 1.2fr;
 		gap: 3rem;
-		align-items: center;
+		align-items: stretch;
 		max-height: none;
+		min-height: 500px;
+		height: 100%;
 	}
 
 	/* Centralizar imagem e conteúdo */
@@ -168,13 +299,30 @@ const copperFormId = lang === 'es'
 	}
 
 	/* Ajustar coluna do formulário */
-	.modal-column {
-		height: auto;
+	.modal-column:not(.centered) {
+		height: 100%;
+		min-height: 500px;
 		max-height: none;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		padding: 2rem 1rem;
 	}
 
 	.modal-column.centered {
 		height: auto;
+	}
+
+	.form-block {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		min-height: 100%;
+		flex: 1;
 	}
 
 	/* Botão de fechar */

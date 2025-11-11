@@ -41,11 +41,38 @@ const {
 
 // Generate alternate language URLs for hreflang
 const currentPath = Astro.url.pathname;
-const pathWithoutLocale = currentPath.replace(/^\/(es)/, '') || '/';
 
-// Generate URLs for both languages
-const enUrl = pathWithoutLocale === '/' ? '/' : pathWithoutLocale;
-const esUrl = `/es${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+// Route mapping between English and Spanish (same as Navbar)
+const routeMap = {
+	'/': { en: '/en', es: '/es' },
+	'/en': { en: '/en', es: '/es' },
+	'/en/about': { en: '/en/about', es: '/es/sobre-nosotros' },
+	'/en/blog': { en: '/en/blog', es: '/es/blog' },
+	'/es': { en: '/en', es: '/es' },
+	'/es/sobre-nosotros': { en: '/en/about', es: '/es/sobre-nosotros' },
+	'/es/blog': { en: '/en/blog', es: '/es/blog' },
+};
+
+// Handle blog post slugs
+const isBlogPost = currentPath.match(/^\/en\/blog\//) || currentPath.match(/^\/es\/blog\//);
+let enUrl = '/en';
+let esUrl = '/es';
+
+if (isBlogPost) {
+	// For blog posts, keep the same slug but change the language prefix
+	const slug = currentPath.replace(/^\/(en\/|es\/)?blog\//, '');
+	enUrl = `/en/blog/${slug}`;
+	esUrl = `/es/blog/${slug}`;
+} else if (routeMap[currentPath]) {
+	// Use route mapping for known routes
+	enUrl = routeMap[currentPath].en;
+	esUrl = routeMap[currentPath].es;
+} else {
+	// Fallback: remove language prefix and add appropriate one
+	const pathWithoutLang = currentPath.replace(/^\/(en|es)/, '') || '/';
+	enUrl = pathWithoutLang === '/' ? '/en' : `/en${pathWithoutLang}`;
+	esUrl = `/es${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+}
 
 // Map paths for proper alternate URLs
 const alternateUrls = {
