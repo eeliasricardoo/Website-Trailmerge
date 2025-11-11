@@ -45,7 +45,6 @@ const copperFormId = lang === 'es'
 						title="Embedded Copper Forms"
 						width="100%"
 						height="700"
-						style="border: none; min-height: 700px;"
 						loading="lazy"
 					></iframe>
 				</div>
@@ -99,34 +98,32 @@ const copperFormId = lang === 'es'
 </script>
 
 <style>
-	/* Modal backdrop com scroll */
+	/* Modal backdrop */
 	.modal-backdrop {
-		overflow-y: auto;
-		overflow-x: hidden;
-		display: flex;
-		align-items: flex-start;
+		overflow: hidden;
+		align-items: center;
 		justify-content: center;
-		padding: 3vh 1rem;
+		padding: 1rem;
 	}
 
 	.copper-form-container {
 		width: 100%;
-		overflow: hidden;
+		overflow: hidden !important;
 	}
 
 	.copper-form-container iframe {
 		width: 100%;
 		border: none;
-		height: 700px;
-		min-height: 700px;
-		max-height: 700px;
+		height: 650px;
+		max-height: 650px;
+		overflow: hidden !important;
 	}
 
 	/* Ajustar altura do modal para acomodar o iframe */
 	.contact-modal {
-		max-height: none;
-		height: fit-content;
-		overflow: visible;
+		max-height: 95vh;
+		height: auto;
+		overflow: hidden !important;
 		padding: 2rem;
 		margin: auto;
 	}
@@ -136,7 +133,8 @@ const copperFormId = lang === 'es'
 		display: grid;
 		grid-template-columns: 1fr 1.2fr;
 		gap: 3rem;
-		align-items: start;
+		align-items: center;
+		max-height: none;
 	}
 
 	/* Centralizar imagem e conteúdo */
@@ -172,7 +170,8 @@ const copperFormId = lang === 'es'
 
 	/* Ajustar coluna do formulário */
 	.modal-column {
-		height: 700px;
+		height: auto;
+		max-height: none;
 	}
 
 	.modal-column.centered {
@@ -205,8 +204,8 @@ const copperFormId = lang === 'es'
 
 		.contact-modal {
 			padding: 1.5rem;
-			max-height: none;
-			overflow: visible;
+			max-height: 95vh;
+			overflow: hidden !important;
 		}
 
 		.modal-column.centered {
@@ -223,19 +222,20 @@ const copperFormId = lang === 'es'
 		}
 
 		.modal-column {
-			min-height: auto;
+			height: auto;
+			max-height: none;
 		}
 	}
 
 	@media (max-width: 768px) {
 		.copper-form-container iframe {
-			height: 600px;
-			min-height: 600px;
-			max-height: 600px;
+			height: 550px;
+			max-height: 550px;
 		}
 
 		.modal-column {
-			height: 600px;
+			height: auto;
+			max-height: none;
 		}
 
 		.close-modal {
@@ -266,13 +266,13 @@ const copperFormId = lang === 'es'
 		}
 
 		.copper-form-container iframe {
-			height: 550px;
-			min-height: 550px;
-			max-height: 550px;
+			height: 500px;
+			max-height: 500px;
 		}
 
 		.modal-column {
-			height: 550px;
+			height: auto;
+			max-height: none;
 		}
 	}
 </style>
