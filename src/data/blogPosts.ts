@@ -127,23 +127,51 @@ export const blogPosts: BlogPost[] = [
 
 <p>Every feature request feels urgent. Every customer feedback session reveals another "must-have" capability. Every competitor launch makes you question your roadmap. So how do you decide what to build first?</p>
 
-<h2>Start with customer-centered data points</h2>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/lHBbcpFTS5c2Y/giphy.gif" alt="DON'T CARE HOW I WANT IT NOW" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">When dev says it will take years to build (via Giphy)</p>
+</div>
 
-<p>To prioritize effectively, start with customer-centered data points. This means going beyond what customers say they want and understanding what they actually need. What problems are they trying to solve? What jobs are they trying to get done? What pain points keep them up at night?</p>
+<p>Building your product in phases has several benefits. It forces you to prioritize what's truly important, allows you to adapt based on customer feedback, and helps you get to market faster. But how do you decide what goes in phase one versus phase two?</p>
 
-<p>Understanding your customers' needs is the foundation of good product strategy. But "needs" can be tricky to identify. Customers often ask for solutions to symptoms rather than root causes. Your job is to dig deeper.</p>
+<h2>Remember Who You're Building For</h2>
 
-<h2>Gathering customer insights</h2>
+<p>Before you can prioritize features effectively, you need to understand who you're building for. This means going beyond generic user personas and understanding the specific needs, pain points, and goals of your target audience. Are you building for enterprise customers who need robust security and compliance features? Or are you targeting small businesses that need simplicity and quick setup?</p>
 
-<p>Effective customer research involves multiple approaches. User interviews help you understand motivations and context. Surveys can reveal patterns across your user base. Analytics show you what people actually do, not just what they say they do. Support tickets highlight recurring frustrations.</p>
+<p>Understanding your target audience helps you make better decisions about which features matter most. A feature that's critical for one user segment might be irrelevant for another. The more specific you can be about who you're building for, the easier it becomes to prioritize.</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/RaLIOPl8MLyWA/source.gif" alt="Do your research" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Do your research</p>
+	<p style="margin-top: 4px; font-size: 12px; color: var(--grey-3); font-style: italic;">Don't skip understanding! (via Giphy)</p>
+</div>
+
+<p>Gathering customer insights involves multiple approaches. User interviews help you understand motivations and context. Usability testing reveals where users struggle. Support tickets highlight recurring frustrations. Product analytics show you what people actually do, not just what they say they do.</p>
 
 <p>Look for patterns across these data sources. If multiple customers mention the same problem, that's a signal. If analytics show users consistently struggling with a particular workflow, that's a signal. If support tickets cluster around a specific issue, that's a signal.</p>
 
-<h2>Prioritizing by impact</h2>
+<h2>If it's Broke, Fix it?</h2>
 
-<p>Once you've identified customer needs, evaluate them by impact. How many customers are affected? How severe is the problem? How often does it occur? What's the cost of not solving it?</p>
+<p>Usability issues can significantly impact user satisfaction and retention. If users can't complete core tasks, or if they're frustrated by confusing interfaces, those problems should rise to the top of your priority list. But not all usability issues are created equal.</p>
 
-<p>Features that solve problems for many customers, address severe pain points, occur frequently, or have high costs of inaction should rise to the top of your priority list. But remember, this is just one piece of the prioritization puzzle—we'll explore how to balance this with constraints in part two.</p>`,
+<p>Consider the severity and frequency of each issue. A critical bug that prevents users from completing a purchase is more urgent than a minor UI inconsistency. A usability problem that affects 80% of your users is more important than one that affects 5%. Design audits and severity scales can help you systematically identify and prioritize these issues.</p>
+
+<h2>What's Going to Sell?</h2>
+
+<p>For many products, especially B2B SaaS, certain features are essential for closing deals. These are the features that prospects ask about during sales calls, the capabilities that differentiate you from competitors, and the functionality that justifies your pricing.</p>
+
+<p>Understanding which features drive sales requires talking to your sales team, analyzing win/loss data, and listening to what prospects actually say during demos. What features do they get excited about? What capabilities do they ask for? What concerns do they raise that cause them to walk away?</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/443jTW1yjUiwXOlQ2g/source.gif" alt="What do your potential customers actually want to buy?" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">What do your potential customers actually want to buy? (via Giphy)</p>
+</div>
+
+<p>It's important to distinguish between what prospects say they want and what they actually need. People often ask for features based on what they've seen in other products, not necessarily what would solve their specific problems. Rely on past behavior data—what features do your current customers actually use? What workflows do they follow? What problems do they solve with your product?</p>
+
+<h2>Next steps: Apply Constraints</h2>
+
+<p>Understanding customer needs, usability issues, and sales drivers is just the first step. In part two of this series, we'll explore how to balance these customer-centered priorities with real-world constraints: technical limitations, business requirements, and resource availability. Because even the most important features need to be feasible to build.</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",

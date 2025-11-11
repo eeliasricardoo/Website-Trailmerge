@@ -113,23 +113,51 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Cada solicitud de característica se siente urgente. Cada sesión de retroalimentación del cliente revela otra capacidad "imprescindible". Cada lanzamiento de competidor te hace cuestionar tu hoja de ruta. Entonces, ¿cómo decides qué construir primero?</p>
 
-<h2>Comienza con puntos de datos centrados en el cliente</h2>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/lHBbcpFTS5c2Y/giphy.gif" alt="DON'T CARE HOW I WANT IT NOW" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">When dev says it will take years to build (via Giphy)</p>
+</div>
 
-<p>Para priorizar efectivamente, comienza con puntos de datos centrados en el cliente. Esto significa ir más allá de lo que los clientes dicen que quieren y entender lo que realmente necesitan. ¿Qué problemas están tratando de resolver? ¿Qué trabajos están tratando de hacer? ¿Qué puntos de dolor los mantienen despiertos por la noche?</p>
+<p>Construir tu producto en fases tiene varios beneficios. Te obliga a priorizar lo que es verdaderamente importante, te permite adaptarte basándote en la retroalimentación del cliente y te ayuda a llegar al mercado más rápido. Pero, ¿cómo decides qué va en la fase uno versus la fase dos?</p>
 
-<p>Entender las necesidades de tus clientes es la base de una buena estrategia de producto. Pero las "necesidades" pueden ser difíciles de identificar. Los clientes a menudo piden soluciones a los síntomas en lugar de las causas raíz. Tu trabajo es profundizar más.</p>
+<h2>Recuerda Para Quién Estás Construyendo</h2>
 
-<h2>Recopilando perspectivas del cliente</h2>
+<p>Antes de poder priorizar características efectivamente, necesitas entender para quién estás construyendo. Esto significa ir más allá de las personas genéricas de usuario y entender las necesidades específicas, puntos de dolor y objetivos de tu audiencia objetivo. ¿Estás construyendo para clientes empresariales que necesitan características robustas de seguridad y cumplimiento? ¿O estás dirigiendo a pequeñas empresas que necesitan simplicidad y configuración rápida?</p>
 
-<p>La investigación efectiva del cliente implica múltiples enfoques. Las entrevistas con usuarios te ayudan a entender motivaciones y contexto. Las encuestas pueden revelar patrones en tu base de usuarios. Los análisis te muestran lo que la gente realmente hace, no solo lo que dice que hace. Los tickets de soporte destacan frustraciones recurrentes.</p>
+<p>Entender tu audiencia objetivo te ayuda a tomar mejores decisiones sobre qué características importan más. Una característica que es crítica para un segmento de usuario podría ser irrelevante para otro. Cuanto más específico puedas ser sobre para quién estás construyendo, más fácil se vuelve priorizar.</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/RaLIOPl8MLyWA/source.gif" alt="Do your research" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Do your research</p>
+	<p style="margin-top: 4px; font-size: 12px; color: var(--grey-3); font-style: italic;">Don't skip understanding! (via Giphy)</p>
+</div>
+
+<p>Recopilar perspectivas del cliente implica múltiples enfoques. Las entrevistas con usuarios te ayudan a entender motivaciones y contexto. Las pruebas de usabilidad revelan dónde los usuarios luchan. Los tickets de soporte destacan frustraciones recurrentes. Los análisis del producto te muestran lo que la gente realmente hace, no solo lo que dice que hace.</p>
 
 <p>Busca patrones en estas fuentes de datos. Si múltiples clientes mencionan el mismo problema, esa es una señal. Si los análisis muestran que los usuarios luchan consistentemente con un flujo de trabajo particular, esa es una señal. Si los tickets de soporte se agrupan alrededor de un problema específico, esa es una señal.</p>
 
-<h2>Priorizando por impacto</h2>
+<h2>¿Si Está Roto, Arréglalo?</h2>
 
-<p>Una vez que hayas identificado las necesidades del cliente, evalúalas por impacto. ¿Cuántos clientes se ven afectados? ¿Qué tan grave es el problema? ¿Con qué frecuencia ocurre? ¿Cuál es el costo de no resolverlo?</p>
+<p>Los problemas de usabilidad pueden impactar significativamente la satisfacción y retención del usuario. Si los usuarios no pueden completar tareas principales, o si están frustrados por interfaces confusas, esos problemas deberían subir a la cima de tu lista de prioridades. Pero no todos los problemas de usabilidad son iguales.</p>
 
-<p>Las características que resuelven problemas para muchos clientes, abordan puntos de dolor severos, ocurren con frecuencia o tienen altos costos de inacción deberían subir a la cima de tu lista de prioridades. Pero recuerda, esto es solo una pieza del rompecabezas de priorización: exploraremos cómo equilibrar esto con las restricciones en la parte dos.</p>`,
+<p>Considera la severidad y frecuencia de cada problema. Un error crítico que impide que los usuarios completen una compra es más urgente que una inconsistencia menor de UI. Un problema de usabilidad que afecta al 80% de tus usuarios es más importante que uno que afecta al 5%. Las auditorías de diseño y las escalas de severidad pueden ayudarte a identificar y priorizar sistemáticamente estos problemas.</p>
+
+<h2>¿Qué Va a Vender?</h2>
+
+<p>Para muchos productos, especialmente B2B SaaS, ciertas características son esenciales para cerrar tratos. Estas son las características que los prospectos preguntan durante las llamadas de ventas, las capacidades que te diferencian de los competidores y la funcionalidad que justifica tu precio.</p>
+
+<p>Entender qué características impulsan las ventas requiere hablar con tu equipo de ventas, analizar datos de ganancia/pérdida y escuchar lo que los prospectos realmente dicen durante las demostraciones. ¿Qué características los emocionan? ¿Qué capacidades piden? ¿Qué preocupaciones plantean que los hacen alejarse?</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/443jTW1yjUiwXOlQ2g/source.gif" alt="What do your potential customers actually want to buy?" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">What do your potential customers actually want to buy? (via Giphy)</p>
+</div>
+
+<p>Es importante distinguir entre lo que los prospectos dicen que quieren y lo que realmente necesitan. Las personas a menudo piden características basadas en lo que han visto en otros productos, no necesariamente lo que resolvería sus problemas específicos. Confía en los datos de comportamiento pasado: ¿qué características usan realmente tus clientes actuales? ¿Qué flujos de trabajo siguen? ¿Qué problemas resuelven con tu producto?</p>
+
+<h2>Próximos pasos: Aplicar Restricciones</h2>
+
+<p>Entender las necesidades del cliente, los problemas de usabilidad y los impulsores de ventas es solo el primer paso. En la parte dos de esta serie, exploraremos cómo equilibrar estas prioridades centradas en el cliente con restricciones del mundo real: limitaciones técnicas, requisitos comerciales y disponibilidad de recursos. Porque incluso las características más importantes necesitan ser factibles de construir.</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
