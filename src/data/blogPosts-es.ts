@@ -4,12 +4,12 @@ import { type BlogPost } from './blogPosts';
 export const blogPostsEs: BlogPost[] = [
 	{
 		slug: "help-how-do-i-build-out-my-product-design-team",
-		image: "https://images.unsplash.com/photo-1534158914592-062992fbe900?w=600&h=400&fit=crop",
+		image: "/images/Backpack.png",
 		title: "¡Ayuda! ¿Cómo construyo mi equipo de diseño de producto?",
 		date: "8 DE JULIO, 2022",
 		category: "EQUIPOS DE DISEÑO",
 		excerpt: "En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas. Sin embargo, contratar y encontrar diseñadores efectivos puede ser un proceso que consume tiempo y es desafiante.",
-		imageAlt: "Mesa de futbolín representando la construcción de equipos",
+		imageAlt: "Ilustración de mochila de senderismo",
 		content: `<p>En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas por igual, y más empresas están comenzando a reconocer su beneficio para reducir la rotación, impulsar la adopción y mejorar la eficiencia de los usuarios. Un gran equipo de diseño puede ser la diferencia entre un buen producto y un producto estelar.</p>
 
 <p>Sin embargo, contratar y encontrar diseñadores efectivos puede ser un proceso que consume tiempo y es desafiante.</p>
@@ -42,7 +42,6 @@ export const blogPostsEs: BlogPost[] = [
 			image: "/images/Mark.png",
 			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
 		},
-		imageCredit: "Foto del blog por Gabriella Clare Marino en Unsplash"
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-2",
@@ -51,7 +50,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: "9 DE JUNIO, 2021",
 		category: "SAAS",
 		excerpt: "En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. El siguiente paso es mezclar las restricciones.",
-		imageAlt: "Taza de café en mesa de madera",
+		imageAlt: "Ilustración de taza de café",
 		content: `<p>En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. Exploramos cómo comprender las necesidades, puntos de dolor y objetivos de tus usuarios debe ser la base de cualquier marco de priorización. Pero las necesidades del cliente por sí solas no cuentan toda la historia.</p>
 
 <p>El siguiente paso es mezclar las restricciones. El desarrollo de productos del mundo real ocurre dentro de límites, y reconocer estas restricciones te ayuda a tomar decisiones más realistas y alcanzables.</p>
@@ -89,12 +88,12 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-1",
-		image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
+		image: "/images/Binoculars.png",
 		title: "¿Cómo Priorizo Características? Parte 1 de 2",
 		date: "21 DE MAYO, 2021",
 		category: "SAAS",
 		excerpt: "Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero...",
-		imageAlt: "Bloques de Jenga representando priorización",
+		imageAlt: "Ilustración de binoculares",
 		content: `<p>Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Tu tablero de visión probablemente está desbordado con características que revolucionarían tu industria, deleitarían a tus usuarios y harían llorar a tus competidores. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero.</p>
 
 <p>Cada solicitud de característica se siente urgente. Cada sesión de retroalimentación del cliente revela otra capacidad "imprescindible". Cada lanzamiento de competidor te hace cuestionar tu hoja de ruta. Entonces, ¿cómo decides qué construir primero?</p>
@@ -124,12 +123,12 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "how-to-ask-good-questions-when-building-saas-product",
-		image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop",
+		image: "/images/Compass.png",
 		title: "Cómo Hacer Buenas Preguntas al Construir un Producto SaaS",
 		date: "21 DE ABRIL, 2021",
 		category: "SAAS",
 		excerpt: "Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.",
-		imageAlt: "Persona presentando ideas al equipo",
+		imageAlt: "Ilustración de brújula",
 		content: `<p>Construir un gran producto SaaS requiere entender profundamente a tus usuarios. Pero aquí está el problema: la mayoría de los fundadores y líderes de producto no están haciendo las preguntas correctas. Están preguntando qué características quieren los usuarios, cuando deberían estar preguntando por qué los usuarios necesitan esas características. Están preguntando sobre soluciones, cuando deberían estar preguntando sobre problemas.</p>
 
 <p>Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.</p>
@@ -167,12 +166,12 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "lets-talk-design-debt",
-		image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=600&h=400&fit=crop",
+		image: "/images/Knot.png",
 		title: "Hablemos de Deuda de Diseño: ¿Qué es y qué me podría costar?",
 		date: "7 DE ABRIL, 2021",
 		category: "SAAS",
 		excerpt: "Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software... pero meses después, enfrentas el impacto inicial de la deuda de diseño.",
-		imageAlt: "Letrero de neón con texto",
+		imageAlt: "Ilustración de nudo",
 		content: `<p>Eres un fundador no técnico con un concepto B2B SaaS increíble. Has validado la idea, asegurado algunos clientes iniciales y estás listo para construir. Sabes que necesitas contratar a un desarrollador para construir tu producto de software, así que encuentras un ingeniero talentoso, compartes tu visión y observas cómo tu producto comienza a tomar forma.</p>
 
 <p>Pero meses después, enfrentas el impacto inicial de la deuda de diseño. Tu desarrollador construyó exactamente lo que pediste, pero no se siente bien. Los usuarios están confundidos. La interfaz es torpe. Agregar nuevas características se siente como sacar dientes. ¿Qué salió mal?</p>
@@ -210,12 +209,12 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "your-mvp-is-missing-the-point",
-		image: "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=600&h=400&fit=crop",
+		image: "/images/Lantern.png",
 		title: "Tu MVP está Perdiendo el Punto",
 		date: "22 DE DICIEMBRE, 2020",
 		category: "SAAS",
 		excerpt: "¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa \"producto mínimo viable\". Pero, ¿cuál es el punto?",
-		imageAlt: "Bombilla vintage",
+		imageAlt: "Ilustración de linterna",
 		content: `<p>¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa "producto mínimo viable". Todos hemos escuchado el término lanzado en círculos de startups, reuniones de inversionistas y discusiones de productos. Pero, ¿cuál es el punto?</p>
 
 <p>Demasiados fundadores tratan al MVP como una excusa para enviar algo a medias. Se enfocan en la parte "mínimo": ¿qué es lo menos que podemos construir?, y olvidan la parte "viable". O peor, olvidan el propósito real: aprender.</p>
@@ -253,12 +252,12 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "idea-to-version-1-how-do-i-get-started",
-		image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=400&fit=crop",
+		image: "/images/Boots.png",
 		title: "De la Idea a la Versión 1: ¿Cómo Empiezo?",
 		date: "30 DE OCTUBRE, 2020",
 		category: "SAAS",
 		excerpt: "Identificar una oportunidad es un gran lugar para comenzar. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria. El único problema es que no sabes por dónde empezar.",
-		imageAlt: "Brote creciendo desde el suelo",
+		imageAlt: "Ilustración de botas de senderismo",
 		content: `<p>Identificar una oportunidad es un gran lugar para comenzar. Has detectado una brecha en el mercado, identificado un problema que necesita resolverse o visto una manera de hacer algo mejor de lo que se ha hecho antes. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria.</p>
 
 <p>El único problema es que no sabes por dónde empezar. Tienes la idea, la motivación y tal vez incluso algo de validación temprana, pero el camino desde la idea hasta la versión 1 se siente abrumador. ¿Por dónde empiezas?</p>

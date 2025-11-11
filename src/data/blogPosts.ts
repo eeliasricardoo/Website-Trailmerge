@@ -18,12 +18,12 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
 	{
 		slug: "help-how-do-i-build-out-my-product-design-team",
-		image: "https://images.unsplash.com/photo-1534158914592-062992fbe900?w=600&h=400&fit=crop",
+		image: "/images/Backpack.png",
 		title: "Help! How do I build out my product design team?",
 		date: "JULY 8, 2022",
 		category: "DESIGN TEAMS",
 		excerpt: "In today's market, designers are becoming increasingly valuable for startups and established companies alike. Yet, hiring and finding effective designers can be time-consuming and challenging.",
-		imageAlt: "Foosball table representing team building",
+		imageAlt: "Hiking backpack illustration",
 		content: `<p>In today's market, designers are becoming increasingly valuable for startups and established companies alike, and more companies are starting to recognize their benefit to reducing churn, driving adoption, and improving users' efficiency. A great design team can be the difference between a good product and a stellar product.</p>
 
 <p>Yet, hiring and finding effective designers can be time-consuming and challenging.</p>
@@ -56,7 +56,6 @@ export const blogPosts: BlogPost[] = [
 			image: "/images/Mark.png",
 			bio: "Mark Tegtmeier is the founder of Trailmerge, with extensive design experience across various industries and a passion for developing tech talent."
 		},
-		imageCredit: "Blog photo by Gabriella Clare Marino on Unsplash"
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-2",
@@ -65,7 +64,7 @@ export const blogPosts: BlogPost[] = [
 		date: "JUNE 9, 2021",
 		category: "SAAS",
 		excerpt: "In part one of this series, we discussed customer-centered data points that can help form product strategy. The next step is to mix in constraints.",
-		imageAlt: "Coffee cup on wooden table",
+		imageAlt: "Coffee cup illustration",
 		content: `<p>In part one of this series, we discussed customer-centered data points that can help form product strategy. We explored how understanding your users' needs, pain points, and goals should be the foundation of any prioritization framework. But customer needs alone don't tell the whole story.</p>
 
 <p>The next step is to mix in constraints. Real-world product development happens within boundaries, and acknowledging these constraints helps you make more realistic and achievable decisions.</p>
@@ -103,12 +102,12 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-1",
-		image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
+		image: "/images/Binoculars.png",
 		title: "How Do I Prioritize Features? Part 1 of 2",
 		date: "MAY 21, 2021",
 		category: "SAAS",
 		excerpt: "If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money...",
-		imageAlt: "Jenga blocks representing prioritization",
+		imageAlt: "Binoculars illustration",
 		content: `<p>If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. Your vision board is probably overflowing with features that would revolutionize your industry, delight your users, and make your competitors weep. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money.</p>
 
 <p>Every feature request feels urgent. Every customer feedback session reveals another "must-have" capability. Every competitor launch makes you question your roadmap. So how do you decide what to build first?</p>
@@ -138,12 +137,12 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "how-to-ask-good-questions-when-building-saas-product",
-		image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop",
+		image: "/images/Compass.png",
 		title: "How to Ask Good Questions When Building a SaaS Product",
 		date: "APRIL 21, 2021",
 		category: "SAAS",
 		excerpt: "Improve your questioning technique with these foundations for asking good questions when building your SaaS product.",
-		imageAlt: "Person presenting ideas to team",
+		imageAlt: "Compass illustration",
 		content: `<p>Building a great SaaS product requires understanding your users deeply. But here's the thing: most founders and product leaders aren't asking the right questions. They're asking what features users want, when they should be asking why users need those features. They're asking about solutions, when they should be asking about problems.</p>
 
 <p>Improve your questioning technique with these foundations for asking good questions when building your SaaS product.</p>
@@ -181,12 +180,12 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "lets-talk-design-debt",
-		image: "https://images.unsplash.com/photo-1483058712412-4245e9b90334?w=600&h=400&fit=crop",
+		image: "/images/Knot.png",
 		title: "Let's Talk Design Debt: What is it and what could it cost me?",
 		date: "APRIL 7, 2021",
 		category: "SAAS",
 		excerpt: "You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product... but months later, you hit the initial shock of design debt.",
-		imageAlt: "Neon sign with text",
+		imageAlt: "Knot illustration",
 		content: `<p>You're a non-technical founder with an awesome B2B SaaS concept. You've validated the idea, secured some early customers, and you're ready to build. You know you need to hire a developer to build your software product, so you find a talented engineer, share your vision, and watch as your product starts taking shape.</p>
 
 <p>But months later, you hit the initial shock of design debt. Your developer built exactly what you asked for, but it doesn't feel right. Users are confused. The interface is clunky. Adding new features feels like pulling teeth. What went wrong?</p>
@@ -224,12 +223,12 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "your-mvp-is-missing-the-point",
-		image: "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=600&h=400&fit=crop",
+		image: "/images/Lantern.png",
 		title: "Your MVP is Missing the Point",
 		date: "DECEMBER 22, 2020",
 		category: "SAAS",
 		excerpt: "How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for \"minimum viable product.\" But what's the point of it?",
-		imageAlt: "Vintage light bulb",
+		imageAlt: "Lantern illustration",
 		content: `<p>How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for "minimum viable product." We've all heard the term thrown around in startup circles, investor meetings, and product discussions. But what's the point of it?</p>
 
 <p>Too many founders treat MVP as an excuse to ship something half-baked. They focus on the "minimum" part—what's the least we can build?—and forget about the "viable" part. Or worse, they forget about the real purpose: learning.</p>
@@ -267,12 +266,12 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "idea-to-version-1-how-do-i-get-started",
-		image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=600&h=400&fit=crop",
+		image: "/images/Boots.png",
 		title: "Idea to Version 1: How Do I Get Started?",
 		date: "OCTOBER 30, 2020",
 		category: "SAAS",
 		excerpt: "Identifying an opportunity is a great place to start. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry. The only problem is you don't know where to begin.",
-		imageAlt: "Sprout growing from soil",
+		imageAlt: "Hiking boots illustration",
 		content: `<p>Identifying an opportunity is a great place to start. You've spotted a gap in the market, identified a problem that needs solving, or seen a way to do something better than it's been done before. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry.</p>
 
 <p>The only problem is you don't know where to begin. You have the idea, the motivation, and maybe even some early validation, but the path from idea to version 1 feels overwhelming. Where do you start?</p>
