@@ -1,6 +1,6 @@
 {
   "nav": {
-    "about": "Nosotros",
+    "about": "Sobre Nosotros",
     "blog": "Blog",
     "contact": "Contacto",
     "home": "Inicio de Trailmerge"
@@ -25,7 +25,7 @@
     }
   },
   "footer": {
-    "about": "Nosotros",
+    "about": "Sobre Nosotros",
     "careers": "Carreras",
     "privacy": "Privacidad",
     "resources": "Recursos",

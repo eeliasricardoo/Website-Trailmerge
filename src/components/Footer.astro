@@ -80,7 +80,7 @@ const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
 				{linkGroups.map((group, index) => (
 					<div class={`footer-links-group ${index === linkGroups.length - 1 ? 'last-item' : ''}`}>
 						{group.title === t('footer.about') ? (
-							<a href={lang === 'es' ? '/es/acerca' : '/about'} class="footer-heading-link">{group.title}</a>
+							<a href={lang === 'es' ? '/es/sobre-nosotros' : '/about'} class="footer-heading-link">{group.title}</a>
 						) : (
 							<h2 class="footer-heading">{group.title}</h2>
 						)}

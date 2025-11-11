@@ -15,10 +15,10 @@ const currentPath = Astro.url.pathname;
 // Route mapping between English and Spanish
 const routeMap = {
 	'/': { en: '/', es: '/es' },
-	'/about': { en: '/about', es: '/es/acerca' },
+	'/about': { en: '/about', es: '/es/sobre-nosotros' },
 	'/blog': { en: '/blog', es: '/es/blog' },
 	'/es': { en: '/', es: '/es' },
-	'/es/acerca': { en: '/about', es: '/es/acerca' },
+	'/es/sobre-nosotros': { en: '/about', es: '/es/sobre-nosotros' },
 	'/es/blog': { en: '/blog', es: '/es/blog' },
 };
 
@@ -52,7 +52,7 @@ if (isBlogPost) {
 		</a>
 		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
-			<a href={lang === 'es' ? '/es/acerca' : '/about'} id="nav-about" class="nav-link">{t('nav.about')}</a>
+			<a href={lang === 'es' ? '/es/sobre-nosotros' : '/about'} id="nav-about" class="nav-link">{t('nav.about')}</a>
 			<a href={lang === 'es' ? '/es/blog' : '/blog'} id="nav-blog" class="nav-link">{t('nav.blog')}</a>
 			<div class="language-switcher">
 				<button class="language-switcher-button" aria-label="Select language" aria-expanded="false" aria-haspopup="true" id="language-switcher-button">
