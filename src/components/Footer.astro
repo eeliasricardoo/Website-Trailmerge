@@ -26,6 +26,9 @@ export interface Props {
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 
+// Get current year for copyright
+const currentYear = new Date().getFullYear();
+
 const {
 	logo = TrailmergeLogoGrey,
 	addressLines = [
@@ -48,10 +51,13 @@ const {
 			]
 		}
 	],
-	copyright = t('footer.copyright'),
+	copyrightText = t('footer.copyright'),
 	ctaButtonText = t('footer.cta'),
-	ctaButtonUrl = "#"
+	ctaButtonUrl = "https://calendar.app.google/9LexXxAa7U6qSVgj6"
 } = Astro.props;
+
+// Replace any 4-digit year in copyright text with current year
+const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
 ---
 
 <!-- Footer -->
@@ -89,7 +95,7 @@ const {
 						</ul>
 						<div class="spacer-l"></div>
 						{index === linkGroups.length - 1 && (
-							<a id="footer-contact" href={ctaButtonUrl} class="footer-cta-button open-modal button dark-button">{ctaButtonText}</a>
+							<a id="footer-contact" href={ctaButtonUrl} target="_blank" rel="noopener noreferrer" class="footer-cta-button button dark-button">{ctaButtonText}</a>
 						)}
 					</div>
 				))}
@@ -256,7 +262,7 @@ const {
 	@media (max-width: 768px) {
 		.footer {
 			text-align: left;
-			padding: 40px 0;
+			padding: 56px 0 40px;
 		}
 
 		.footer .content-container {
@@ -266,7 +272,8 @@ const {
 
 		.footer-flex-container {
 			flex-direction: column;
-			gap: 40px;
+			gap: 48px;
+			margin-bottom: 48px;
 		}
 
 		.footer-logo-area {
@@ -291,6 +298,7 @@ const {
 			flex-direction: row;
 			flex-wrap: wrap;
 			margin-bottom: 0;
+			gap: 32px;
 		}
 
 		.footer-links-group {
@@ -301,13 +309,18 @@ const {
 	}
 
 	@media (max-width: 480px) {
+		.footer {
+			padding: 48px 0 32px;
+		}
+
 		.footer .content-container {
 			padding-left: 16px !important;
 			padding-right: 16px !important;
 		}
 
 		.footer-flex-container {
-			gap: 32px;
+			gap: 40px;
+			margin-bottom: 40px;
 		}
 
 		.footer-logo-area {
@@ -320,11 +333,12 @@ const {
 
 		.footer-links-wrapper {
 			flex-direction: column;
+			gap: 0;
 		}
 
 		.footer-links-group {
 			flex: 1 1 100%;
-			margin-bottom: 24px;
+			margin-bottom: 32px;
 		}
 
 		.footer-cta-button {

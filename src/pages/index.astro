@@ -176,7 +176,29 @@ const description = "Scalable UI/UX services for SaaS including MVP design, prod
 
 		.blog-grid {
 			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.blog-feed-post-wrapper {
+			max-width: 100%;
+		}
+
+		.blog-feed-image {
+			height: 200px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.blog-grid {
 			gap: 32px;
+		}
+
+		.blog-feed-image {
+			height: 180px;
+		}
+
+		.blog-feed-text {
+			font-size: 14px;
 		}
 	}
 </style>
