@@ -403,39 +403,59 @@ export const blogPostsEs: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "Identificar una oportunidad es un gran lugar para comenzar. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria. El único problema es que no sabes por dónde empezar.",
 		imageAlt: "Ilustración de botas de senderismo",
-		content: `<p>Identificar una oportunidad es un gran lugar para comenzar. Has detectado una brecha en el mercado, identificado un problema que necesita resolverse o visto una manera de hacer algo mejor de lo que se ha hecho antes. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria.</p>
+		content: `<p>Los fundadores de SaaS B2B vienen en una variedad de formas. A menudo, no son los genios tecnológicos que se emocionan con los pros y los contras de las últimas bibliotecas y marcos de Javascript. En muchos casos, no son diseñadores UX o gerentes de producto que decidieron ramificarse para crear un nuevo producto.</p>
 
-<p>El único problema es que no sabes por dónde empezar. Tienes la idea, la motivación y tal vez incluso algo de validación temprana, pero el camino desde la idea hasta la versión 1 se siente abrumador. ¿Por dónde empiezas?</p>
+<p>Son personas (esto podría describirte) de antecedentes no técnicos que han visto una oportunidad para servir a su industria – ya sea finanzas, atención médica, bienes raíces, logística, retail, contabilidad, educación – con tecnología efectiva. Podría ser que hayas tenido una epifanía sobre un mercado abierto para un flujo de trabajo que no ha sido tocado por la transformación digital, o podría ser que hayas sentido el dolor de lidiar con un software terrible y sobrevalorado en tu industria.</p>
 
-<h2>Valida antes de construir</h2>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif" alt="Todos queremos golpear nuestras computadoras de vez en cuando" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Todos queremos golpear nuestras computadoras de vez en cuando. (via Giphy)</p>
+</div>
 
-<p>Comienza validando tu idea con usuarios potenciales. Antes de escribir una sola línea de código o diseñar una sola pantalla, asegúrate de que la gente realmente quiera lo que planeas construir. Habla con clientes potenciales. Entiende sus problemas profundamente. Ve si tu solución resuena.</p>
+<p>Increíble. Identificar una oportunidad es un gran lugar para comenzar. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria. El único problema es que no sabes por dónde empezar. Construir un producto de software – y una empresa alrededor de ese producto – es una tarea inmensamente compleja, sin duda, y si eres un fundador no técnico, puede sentirse como si estuvieras entrando en un mundo diferente con un idioma diferente y un enfoque muy diferente de cómo se hacen las cosas.</p>
 
-<p>La validación no requiere un producto, requiere conversaciones. Haz preguntas, escucha atentamente y busca señales de que estás en el camino correcto. ¿La gente está emocionada? ¿Ven el valor? ¿Pagarían por ello?</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/SRx5tBBrTQOBi/source.gif" alt="No tengo idea de lo que estoy haciendo" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">No tengo idea de lo que estoy haciendo. (via Giphy)</p>
+</div>
 
-<h2>Comienza simple</h2>
+<p>Con eso, aquí hay algunas preguntas rápidas para considerar:</p>
 
-<p>Construye un prototipo simple o una página de destino para probar el interés. No necesitas un producto completo para validar la demanda. Una página de destino simple con una propuesta de valor clara y una forma de capturar el interés puede decirte mucho. Un prototipo clicable puede ayudarte a probar la usabilidad antes de construir lo real.</p>
+<p><strong>1. ¿Para quién estoy construyendo esto?</strong></p>
 
-<p>El objetivo no es construir algo perfecto, es construir algo que te ayude a aprender. Cada iteración debe responder preguntas e informar el siguiente paso.</p>
+<p>Bueno, te diré esto: no estás construyendo tu plataforma para ti. Claro, es posible que hayas encontrado muchos problemas con la forma actual de hacer las cosas en tu industria y es posible que tengas muchas ideas geniales sobre cómo resolver esos problemas. Pero hay un par de grandes suposiciones aquí: 1) Tu experiencia es casi idéntica a la de tus usuarios. 2) Tus soluciones resolverán los problemas que identificaste casi perfectamente.</p>
 
-<h2>Recopila retroalimentación temprano</h2>
+<p>Seamos honestos – has comenzado este negocio con una gran visión e ideas sólidas, pero también eres solo una persona y no te vas a pagar a ti mismo para usar tu producto. Además, ya estás lo suficientemente comprometido con tu idea como para tener un sesgo hacia ella. Está bien, eso es solo natural. Ahora eres un fundador de SaaS. Ya no estás en los mismos zapatos que tus clientes. Entonces, necesitamos entender quién es el cliente real para refinar la visión y hacer que la solución sea aún mejor y más valiosa para el mercado.</p>
 
-<p>Recopila retroalimentación temprano e itera basándote en lo que aprendes. No esperes hasta que creas que tu producto está "listo" para mostrárselo a la gente. Cuanto antes obtengas retroalimentación, más fácil será hacer cambios. Cuanto más esperes, más apegado te volverás a tus ideas iniciales.</p>
+<p>¿Entonces quién es? ¿Agentes de arrendamiento en grandes complejos de apartamentos urbanos? ¿Propietarios de viñedos? ¿Promotores de eventos deportivos?</p>
 
-<p>Crea un ciclo de retroalimentación: construye algo pequeño, muéstralo a los usuarios, aprende de sus reacciones y usa ese aprendizaje para informar lo que construyes a continuación. Repite este ciclo lo más rápido posible.</p>
+<p>Ahora, puedes comenzar a construir una base de investigación de mercado y usuarios: ¿Qué herramientas usan? ¿Cuáles son sus motivadores? ¿Cuáles son sus necesidades? ¿Cuáles son sus presupuestos? ¿Cuáles son los obstáculos para adoptar nuevas tecnologías?</p>
 
-<h2>Enfócate en una cosa</h2>
+<p><strong>2. ¿Qué exactamente estoy construyendo?</strong></p>
 
-<p>Al construir la versión 1, concéntrate en hacer una cosa realmente bien en lugar de muchas cosas pobremente. Identifica la propuesta de valor central, lo único que hace que tu producto sea único y valioso, y haz que eso sea excepcional.</p>
+<p>Ya has llegado a la mesa con una idea que vale la pena investigar e invertir. Tienes una visión a largo plazo para una solución única. Pero hay muchos detalles que necesitan resolverse. Varias formas de investigación, así como una buena comprensión de las dependencias de características, te ayudarán a dar definición a la visión a bajo costo.</p>
 
-<p>Puedes agregar características más tarde. Para la versión 1, clava la experiencia central. Hazla tan buena que los usuarios tempranos se conviertan en defensores, no solo en clientes.</p>
+<p>Aquí es donde entran la gestión de productos y el diseño UX. Si te adelantas a construir, corres el riesgo de incurrir en una deuda de diseño significativa y gastar mucho dinero en un alcance mal definido. Hay muchas cosas en las que pensar que surgen a lo largo del proceso de creación de software:</p>
 
-<h2>Envía y aprende</h2>
+<ul>
+	<li>¿Qué características deberían incluirse en el primer lanzamiento (pista: piensa en pequeño y enfócate en lo que puedes aprender)?</li>
+	<li>¿Qué debería pasar cuando el usuario hace clic en esto?</li>
+	<li>¿Qué tipos de entradas permitiremos en este campo?</li>
+	<li>¿Cómo debería organizarse la navegación?</li>
+	<li>¿Cómo se ve el flujo de trabajo del usuario al completar la tarea principal?</li>
+	<li>¿Cómo deberían relacionarse las diferentes piezas de datos entre sí?</li>
+	<li>¿Qué componentes se necesitarán para construir el front-end y cómo deberían verse?</li>
+</ul>
 
-<p>Finalmente, recuerda que la versión 1 no es la línea de meta, es la línea de salida. Envía algo, aprende de cómo la gente lo usa e itera. Los mejores productos no se construyen en aislamiento; se refinan a través del uso en el mundo real.</p>
+<p>Definir este tipo de preguntas puede tomar bastante esfuerzo, pero hacerlo con las ideas proporcionadas por la investigación y dentro de los parámetros de una estrategia de producto bien definida puede ahorrar en costosas reconfiguraciones de desarrollo más adelante.</p>
 
-<p>El viaje desde la idea hasta la versión 1 se trata de aprender, iterar y mantenerse enfocado. Comienza con validación, construye algo simple, recopila retroalimentación y sigue iterando. Antes de que te des cuenta, tendrás la versión 1 y un camino claro hacia la versión 2.</p>`,
+<p><strong>3. ¿Quién lo va a construir?</strong></p>
+
+<p>Como puedes ver, construir va más allá del desarrollo, y asociarse con un equipo de diseño de productos SaaS como Trailmerge puede ser valioso para aliviar parte de la carga de tus hombros, guiándote hacia y a través de la etapa de desarrollo y el lanzamiento de tu primera pieza de software orientada al cliente.</p>
+
+<p>En cuanto al equipo de desarrollo en sí, piensa en la pila tecnológica que quieres usar, tus restricciones presupuestarias, zonas horarias y los términos de la relación. Querrás encontrar un equipo que conozca la tecnología que estás apuntando (Por ejemplo, ¿estás construyendo una aplicación móvil nativa, una aplicación de escritorio o una aplicación web?), con quien puedas comunicarte fácilmente en tu flujo de trabajo diario, y que encaje en la estrategia a largo plazo para tu negocio. Estamos felices de ayudarte a pensar en estas grandes preguntas también.</p>
+
+<p>Bueno, ahí lo tienes. Has encontrado la oportunidad, vas por ella, y ahora estás armado con algunas preguntas para hacerte a ti mismo. Gran parte de construir una startup es aprender, y las respuestas a estas preguntas te ayudarán a avanzar. ¡Sigue adelante – estamos animándote!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
@@ -446,41 +466,42 @@ export const blogPostsEs: BlogPost[] = [
 		slug: "learning-the-core-of-successful-saas-startup",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg",
 		title: "Aprender: El Núcleo de una Startup SaaS Exitosa",
-		date: "22 DE OCTUBRE, 2020",
+		date: "29 DE OCTUBRE, 2020",
 		category: "SAAS",
 		excerpt: "Una startup es una organización en busca de un modelo de negocio sostenible. Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup.",
 		imageAlt: "Mano sosteniendo un mapa examinándolo",
-		content: `<p>Una startup es una organización en busca de un modelo de negocio sostenible. Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup.</p>
+		content: `<p>Una startup es una organización en busca de un modelo de negocio sostenible.</p>
 
-<p>Piénsalo: las empresas establecidas tienen modelos de negocio probados. Saben quiénes son sus clientes, por qué pagarán y cómo entregar valor de manera rentable. Las startups, por definición, no tienen eso todavía. Están buscando, experimentando y aprendiendo su camino hacia un modelo de negocio sostenible.</p>
+<p>Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup. "Startup" no es una descripción de la edad, el tamaño, la popularidad o los ingresos de una empresa. Todavía podemos etiquetar justificadamente entidades grandes y conocidas como DoorDash, Airbnb y Slack como startups. Todavía están aprendiendo y buscando un modelo de negocio sostenible que se escale continuamente (¡y lo han estado haciendo muy bien hasta ahora!).</p>
 
-<h2>El aprendizaje es el núcleo</h2>
+<p>Hoy, nos vamos a enfocar en un solo elemento de esta definición: "en busca de".</p>
 
-<p>El aprendizaje está en el núcleo de cada startup exitosa. Esto no se trata solo de leer libros o asistir a conferencias, se trata de aprendizaje sistemático y continuo a través de la experimentación y la retroalimentación.</p>
+<p>Comenzamos nuevas empresas con una idea, una pasión o un deseo de ganar dinero. Pensamos en la gran salida, soñamos con el éxito y hacemos planes. Y seamos claros – esto no es algo malo. ¡La visión es importante!</p>
 
-<p>Necesitas aprender sobre tus clientes: ¿Quiénes son realmente? ¿Qué problemas enfrentan? ¿Por qué están dispuestos a pagar? Necesitas aprender sobre tu mercado: ¿Quiénes son tus competidores? ¿Cuál es tu posicionamiento? ¿Qué tendencias están dando forma a tu industria?</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/12xvz9NssSkaS4/giphy.gif" alt="Nos vemos en el futuro" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Nos vemos en el futuro. (via Giphy)</p>
+</div>
 
-<p>Necesitas aprender sobre tu producto: ¿Resuelve problemas reales? ¿Es mejor que las alternativas? ¿Qué características importan más? Y necesitas aprender sobre tu modelo de negocio: ¿Cómo ganarás dinero? ¿Cuáles son tus economías unitarias? ¿Cómo escalarás?</p>
+<p>Pero en el núcleo de una búsqueda exitosa de un modelo de negocio sostenible, debe haber aprendizaje.</p>
 
-<h2>Abraza la incertidumbre</h2>
+<p>Piensa en ello: Estamos empezando desde cero. Los fundadores de SaaS no son franquiciados, a quienes se les entrega un modelo de negocio empaquetado y ya probado para replicar. Necesitamos definir nuevos procesos en cada área del negocio: producto, diseño, desarrollo, ventas, marketing, operaciones de clientes, finanzas, recursos humanos. Necesitamos probar las aguas de los canales de distribución, los paisajes competitivos, las ofertas de productos, las estrategias de precios y más.</p>
 
-<p>Abraza la incertidumbre y construye una cultura de aprendizaje continuo. La mayoría de los fundadores se sienten incómodos con la incertidumbre. Quieren respuestas, planes y certeza. Pero las startups operan en la incertidumbre por definición. Cuanto más rápido puedas sentirte cómodo sin saber, más rápido podrás aprender lo que necesitas saber.</p>
+<p>Lo que hemos hecho en otros lugares ciertamente informará lo que intentamos en este nuevo contexto, pero siempre hay nuevas variables en cada nueva startup – nuevos mercados, nuevos miembros del equipo, nuevos usuarios, nuevos compradores. Si bien pude transferir algunas mejores prácticas de mi tiempo trabajando con el equipo de UX empresarial en The Home Depot, dirigir un equipo de diseño dentro de UserIQ, una startup SaaS de éxito del cliente, es un entorno muy diferente con demandas y consideraciones únicas. La forma en que funcionó antes no va a ser cómo funcionará esta vez.</p>
 
-<p>En lugar de pretender que tienes todas las respuestas, reconoce lo que no sabes. Crea hipótesis, pruébalas, aprende de los resultados y ajusta. Este ciclo de aprendizaje es cómo navegas desde la incertidumbre hacia la claridad.</p>
+<p>Entonces, ¿qué estamos tratando de aprender con cada uno de los esfuerzos de nuestra empresa? Un buen lugar para comenzar es haciendo un inventario de nuestras suposiciones, luego poniéndolas a prueba. Aquí hay algunos pasos prácticos que podemos tomar para aprender en nuestras operaciones diarias:</p>
 
-<h2>Construye el aprendizaje en tu proceso</h2>
+<ul>
+	<li>La investigación generativa (encuestas, entrevistas con usuarios, investigación observacional) puede darnos información sobre las motivaciones, puntos de dolor y comportamientos de clientes y usuarios.</li>
+	<li>Los prototipos pueden decirnos sobre la usabilidad y deseabilidad de nuestro producto antes de que gastemos un montón de dinero en desarrollo, y pueden incluso usarse para iniciar conversaciones de ventas con clientes.</li>
+	<li>A través de un producto temprano, podemos aprender sobre qué características son realmente valoradas, qué mejoras solicitan los clientes y qué tan bien nuestra dirección se ajusta al mercado que estamos apuntando.</li>
+	<li>Nuestras campañas de marketing no son solo un producto final – Pueden ser fuentes de información valiosa si estamos escuchando.</li>
+	<li>Ejecutar standups y retrospectivas regulares del equipo en un entorno de apoyo y reflexivo puede llevarnos de procesos crudos a colaboración bien definida en la que los miembros del equipo pueden prosperar y la eficiencia se optimiza.</li>
+</ul>
 
-<p>Haz del aprendizaje una parte sistemática de cómo operas. Configura ciclos de retroalimentación regulares con clientes. Crea experimentos para probar suposiciones. Mide lo que importa. Documenta lo que aprendes. Comparte ideas en todo tu equipo.</p>
+<p>Y rodearte de personas conocedoras con diferentes perspectivas y énfasis – empleados, proveedores, agencias y socios estratégicos – puede ser una experiencia de aprendizaje valiosa para impulsarte hacia adelante.</p>
 
-<p>Las startups que tienen éxito no son las que tienen las mejores ideas iniciales, son las que aprenden más rápido. Son las que pueden identificar rápidamente lo que no está funcionando, pivotar cuando sea necesario y duplicar lo que sí está funcionando.</p>
-
-<h2>Aprende del fracaso</h2>
-
-<p>Finalmente, aprende del fracaso. No todos los experimentos funcionarán. No todas las hipótesis serán correctas. No todas las características resonarán. Eso está bien, siempre y cuando aprendas de ello.</p>
-
-<p>El fracaso solo se desperdicia si no extraes aprendizaje de él. Cada experimento fallido te enseña algo. Cada suposición equivocada revela una verdad. Cada característica que no resuena te muestra lo que los usuarios realmente valoran.</p>
-
-<p>Recuerda: no estás construyendo un producto, estás construyendo una organización de aprendizaje. El producto es solo el vehículo para aprender. Cuanto más rápido aprendas, más rápido encontrarás ese modelo de negocio sostenible. Y eso es lo que hace que una startup tenga éxito.</p>`,
+<p>Por supuesto, el aprendizaje solo no nos va a impulsar al éxito. Debemos tener la voluntad y el coraje de adaptarnos, cambiar de rumbo e incluso *suspira* decir no a algunas de las cosas que hemos imaginado. Se trata de humildad, tenacidad y un deseo de mejorar. ¡Así es como comenzamos!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",

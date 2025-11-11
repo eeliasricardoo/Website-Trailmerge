@@ -417,39 +417,59 @@ export const blogPosts: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "Identifying an opportunity is a great place to start. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry. The only problem is you don't know where to begin.",
 		imageAlt: "Hiking boots illustration",
-		content: `<p>Identifying an opportunity is a great place to start. You've spotted a gap in the market, identified a problem that needs solving, or seen a way to do something better than it's been done before. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry.</p>
+		content: `<p>B2B SaaS founders come in a variety of forms. Oftentimes, they're not the tech geniuses who geek out on the pros and cons of the latest Javascript libraries and frameworks. In many cases, they're not UX designers or product managers who decided to branch out to create a new product.</p>
 
-<p>The only problem is you don't know where to begin. You have the idea, the motivation, and maybe even some early validation, but the path from idea to version 1 feels overwhelming. Where do you start?</p>
+<p>They're folks (this might describe you) from non-technical backgrounds who have seen an opportunity to serve their industry – be it finance, healthcare, real estate, logistics, retail, accounting, education – with effective technology. It could be you've had an epiphany about an open market for a workflow that's not been touched by digital transformation, or it could be you've felt the pain of dealing with a terrible, overpriced incumbent software in your industry.</p>
 
-<h2>Validate before you build</h2>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/bPCwGUF2sKjyE/source.gif" alt="We all want to beat on our computers from time to time" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">We all want to beat on our computers from time to time. (via Giphy)</p>
+</div>
 
-<p>Start by validating your idea with potential users. Before you write a single line of code or design a single screen, make sure people actually want what you're planning to build. Talk to potential customers. Understand their problems deeply. See if your solution resonates.</p>
+<p>Awesome. Identifying an opportunity is a great place to start. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry. The only problem is you don't know where to begin. Building a software product – and a company around that product – is an immensely complex task to be sure, and if you're a non-technical founder, it can feel like you're entering into a different world with a different language a very different approach to how things are done.</p>
 
-<p>Validation doesn't require a product—it requires conversations. Ask questions, listen carefully, and look for signals that you're on the right track. Are people excited? Do they see the value? Would they pay for it?</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/SRx5tBBrTQOBi/source.gif" alt="No idea what I'm doing" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">No idea what I'm doing. (via Giphy)</p>
+</div>
 
-<h2>Start simple</h2>
+<p>With that, here are a few quick questions to consider:</p>
 
-<p>Build a simple prototype or landing page to test interest. You don't need a full product to validate demand. A simple landing page with a clear value proposition and a way to capture interest can tell you a lot. A clickable prototype can help you test usability before building the real thing.</p>
+<p><strong>1. Who am I building this for?</strong></p>
 
-<p>The goal isn't to build something perfect—it's to build something that helps you learn. Each iteration should answer questions and inform the next step.</p>
+<p>Well, I'll tell you this much: you're not building your platform for you. Sure, you may have found a lot of problems with the current way of doing things in your industry and you may have a lot of great ideas about how to solve those problems. But there are a couple big assumptions here: 1) Your experience is nearly identical to that of your users. 2) Your solutions will solve the problems you identified near perfectly.</p>
 
-<h2>Gather feedback early</h2>
+<p>Let's face it – you've started this business with a great vision and solid ideas, but you're also just one person and you're not going to be paying yourself to use your product. Also, you're already committed enough to your idea to have a bias towards it. It's OK, that's only natural. You're a SaaS founder now. You're no longer in the same shoes as your customers. So, we need to understand who the real customer is in order to refine the vision and make the solution even better and more valuable to the market.</p>
 
-<p>Gather feedback early and iterate based on what you learn. Don't wait until you think your product is "ready" to show it to people. The earlier you get feedback, the easier it is to make changes. The longer you wait, the more attached you become to your initial ideas.</p>
+<p>So who is it? Leasing agents at large urban apartment complexes? Winery owners? Sports event promoters?</p>
 
-<p>Create a feedback loop: build something small, show it to users, learn from their reactions, and use that learning to inform what you build next. Repeat this cycle as quickly as possible.</p>
+<p>Now, you can begin to build a foundation of market and user research: What tools do they use? What are their motivators? What are their needs? What are their budgets? What are obstacles to adopting new technologies?</p>
 
-<h2>Focus on one thing</h2>
+<p><strong>2. What exactly am I building?</strong></p>
 
-<p>When building version 1, focus on doing one thing really well rather than many things poorly. Identify the core value proposition—the one thing that makes your product unique and valuable—and make that exceptional.</p>
+<p>You've already come to the table with an idea worth researching and investing in. You have a long-term vision for a unique solution. But there are many details that need to be ironed out. Various forms of research, as well as some good understanding of feature dependencies, will help you bring definition to the vision at a low cost.</p>
 
-<p>You can add features later. For version 1, nail the core experience. Make it so good that early users become advocates, not just customers.</p>
+<p>This is where product management and UX design come in. If you skip ahead to building, you run the risk of incurring significant design debt and spending a lot of money on an ill-defined scope. There are lots of things to think about that come up throughout the process of creating software:</p>
 
-<h2>Ship and learn</h2>
+<ul>
+	<li>Which features should be included in the first release (hint: think small and focus on what you can learn)?</li>
+	<li>What should happen when the user clicks this?</li>
+	<li>What kinds of inputs will we allow in this field?</li>
+	<li>How should the navigation be organized?</li>
+	<li>What does the user's workflow look like in completing the core task?</li>
+	<li>How should different pieces of data relate to one another?</li>
+	<li>What components will be needed to build the front-end, and what should they look like?</li>
+</ul>
 
-<p>Finally, remember that version 1 isn't the finish line—it's the starting line. Ship something, learn from how people use it, and iterate. The best products aren't built in isolation; they're refined through real-world use.</p>
+<p>Defining these kinds of questions can take quite a lot of effort, but doing so with the insights provided by research and within the parameters of a well-defined product strategy can save on costly development rework later on.</p>
 
-<p>The journey from idea to version 1 is about learning, iterating, and staying focused. Start with validation, build something simple, gather feedback, and keep iterating. Before you know it, you'll have version 1—and a clear path to version 2.</p>`,
+<p><strong>3. Who's going to build it?</strong></p>
+
+<p>As you can see, building goes beyond development, and partnering with a SaaS product design team like Trailmerge can be valuable for taking some of the burden off your shoulders, guiding you to and through the development stage and launch of your first customer-facing piece of software.</p>
+
+<p>As far as the development team itself, think about the tech stack you want to use, your budget constraints, time zones, and the terms of the relationship. You'll want to find a team who knows the tech you're targeting (For example, are you building a native mobile app, a desktop app, or a web app?), who you can communicate with easily in your daily workflow, and who fits into the long-term strategy for your business. We're happy to help you think through these big questions as well.</p>
+
+<p>Well, there you have it. You've found the opportunity, you're going for it, and now you're armed with some questions to ask yourself. So much of building a startup is learning, and the answers to these questions will help you move forward. Keep at it – we're rooting for you!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
@@ -460,41 +480,42 @@ export const blogPosts: BlogPost[] = [
 		slug: "learning-the-core-of-successful-saas-startup",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg",
 		title: "Learning: The Core of a Successful SaaS Startup",
-		date: "OCTOBER 22, 2020",
+		date: "OCTOBER 29, 2020",
 		category: "SAAS",
 		excerpt: "A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup.",
 		imageAlt: "Hand holding a map examining it",
-		content: `<p>A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup.</p>
+		content: `<p>A startup is an organization in search of a sustainable business model.</p>
 
-<p>Think about it: established companies have proven business models. They know who their customers are, what they'll pay for, and how to deliver value profitably. Startups, by definition, don't have that yet. They're searching, experimenting, and learning their way to a sustainable business model.</p>
+<p>I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup. "Startup" is not a description of the age, size, popularity, or revenue of a company. We can still justifiably label large, well-known entities like DoorDash, Airbnb, and Slack as startups. They are still learning and searching for a continually scaling, sustainable business model (and have been doing a great job of it so far!).</p>
 
-<h2>Learning is the core</h2>
+<p>Today, we're going to focus on a single element of this definition: "in search of."</p>
 
-<p>Learning is at the core of every successful startup. This isn't just about reading books or attending conferences—it's about systematic, continuous learning through experimentation and feedback.</p>
+<p>We start new companies with an idea, a passion, or a desire to cash in. We think ahead to the big exit, we dream of success, and we make plans. And let's be clear – this is not a bad thing. Vision is important!</p>
 
-<p>You need to learn about your customers: Who are they really? What problems do they face? What are they willing to pay for? You need to learn about your market: Who are your competitors? What's your positioning? What trends are shaping your industry?</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/12xvz9NssSkaS4/giphy.gif" alt="See you in the future" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">See you in the future. (via Giphy)</p>
+</div>
 
-<p>You need to learn about your product: Does it solve real problems? Is it better than alternatives? What features matter most? And you need to learn about your business model: How will you make money? What's your unit economics? How will you scale?</p>
+<p>But at the core of a successful search for a sustainable business model, there needs to be learning.</p>
 
-<h2>Embrace uncertainty</h2>
+<p>Think about it: We're starting from zero. SaaS founders are not franchisees, handed a packaged, already proven business model to replicate. We need to define new processes in every area of business: product, design, development, sales, marketing, customer operations, finance, human resources. We need to test the waters of distribution channels, competitive landscapes, product offerings, pricing strategies, and more.</p>
 
-<p>Embrace uncertainty and build a culture of continuous learning. Most founders are uncomfortable with uncertainty. They want answers, plans, and certainty. But startups operate in uncertainty by definition. The faster you can get comfortable with not knowing, the faster you can learn what you need to know.</p>
+<p>What we've done elsewhere will certainly inform what we try in this new context, but there are always new variables in every new startup – new markets, new team members, new users, new buyers. While I was able to transfer some best practices from my time working with the enterprise UX team at The Home Depot, running a design team within UserIQ, a customer success SaaS startup, is a vastly different environment with unique demands and considerations. The way it's worked before is not going to be how it's going to work this time.</p>
 
-<p>Instead of pretending you have all the answers, acknowledge what you don't know. Create hypotheses, test them, learn from the results, and adjust. This learning loop is how you navigate from uncertainty to clarity.</p>
+<p>So, what are we trying to learn with each of our company's efforts? A good place to start is by taking inventory of our assumptions, then putting them to the test. Here's some practical steps we can take to learn in our everyday operations:</p>
 
-<h2>Build learning into your process</h2>
+<ul>
+	<li>Generative research (surveys, user interviews, observational research) can give us insight into customer and user motivations, pain points, and behaviors.</li>
+	<li>Prototypes can tell us about the usability and desirability of our product before we drop a fat wad of cash on development, and can even be used to kickstart sales conversations with customers.</li>
+	<li>Through an early product, we can learn about which features are actually valued, what customers request in enhancements, and how well our direction fits the market we're targeting.</li>
+	<li>Our marketing campaigns are not just an end product – They can be sources of valuable information if we're listening.</li>
+	<li>Running standups and regular team retrospectives in a supportive, reflective environment can move us from raw processes to well-defined collaboration in which team members can thrive and efficiency is optimized.</li>
+</ul>
 
-<p>Make learning a systematic part of how you operate. Set up regular feedback loops with customers. Create experiments to test assumptions. Measure what matters. Document what you learn. Share insights across your team.</p>
+<p>And surrounding yourself with knowledgeable people with different perspectives and emphases – employees, vendors, agencies, and strategic partners – can be a valuable learning experience to propel you forward.</p>
 
-<p>The startups that succeed aren't the ones with the best initial ideas—they're the ones that learn fastest. They're the ones that can quickly identify what's not working, pivot when necessary, and double down on what is working.</p>
-
-<h2>Learn from failure</h2>
-
-<p>Finally, learn from failure. Not every experiment will work. Not every hypothesis will be correct. Not every feature will resonate. That's okay—as long as you learn from it.</p>
-
-<p>Failure is only wasted if you don't extract learning from it. Every failed experiment teaches you something. Every wrong assumption reveals a truth. Every feature that doesn't resonate shows you what users actually value.</p>
-
-<p>Remember: you're not building a product—you're building a learning organization. The product is just the vehicle for learning. The faster you learn, the faster you'll find that sustainable business model. And that's what makes a startup successful.</p>`,
+<p>Of course, learning alone is not going to propel us to success. We must have a willingness and a courage to adapt, change course, and even *gasp* say no to some of what we've envisioned. It's all about humility, tenacity, and a desire to improve. That's how we start up!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
