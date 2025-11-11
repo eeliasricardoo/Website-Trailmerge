@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ContactModal from '../../components/ContactModal.astro';
-import { getAllPosts } from '../../data/blogPosts';
+import Layout from '../../../layouts/Layout.astro';
+import Navbar from '../../../components/Navbar.astro';
+import Footer from '../../../components/Footer.astro';
+import ContactModal from '../../../components/ContactModal.astro';
+import { getAllPosts } from '../../../data/blogPosts';
 
 export async function getStaticPaths() {
 	const posts = getAllPosts();
@@ -14,13 +14,14 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const lang = 'en';
 
 if (!post) {
-	return Astro.redirect('/blog');
+	return Astro.redirect('/en/blog');
 }
 
 // Prepare article data for JSON-LD schema
-const articleUrl = new URL(`/blog/${post.slug}`, Astro.site).href;
+const articleUrl = new URL(`/en/blog/${post.slug}`, Astro.site).href;
 const articleData = {
 	title: post.title,
 	description: post.excerpt,
@@ -35,8 +36,8 @@ const articleData = {
 
 // Breadcrumbs for blog posts
 const breadcrumbs = [
-	{ name: "Home", url: "https://trailmerge.com/" },
-	{ name: "Blog", url: "https://trailmerge.com/blog/" },
+	{ name: "Home", url: "https://trailmerge.com/en/" },
+	{ name: "Blog", url: "https://trailmerge.com/en/blog/" },
 	{ name: post.title, url: articleUrl }
 ];
 
@@ -51,8 +52,9 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 	articleData={articleData}
 	breadcrumbs={breadcrumbs}
 	keywords={keywords}
+	lang={lang}
 >
-	<Navbar />
+	<Navbar lang={lang} />
 
 	<main id="main-content">
 		<!-- Blog Post Detail Page -->
@@ -104,9 +106,9 @@ const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product 
 		</article>
 	</main>
 
-	<Footer />
+	<Footer lang={lang} />
 
-	<ContactModal />
+	<ContactModal lang={lang} />
 </Layout>
 
 <style is:global>

@@ -1,10 +1,10 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
-import ContactModal from '../components/ContactModal.astro';
-import { getAllPosts } from '../data/blogPosts';
-import { useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import ContactModal from '../../components/ContactModal.astro';
+import { getAllPosts } from '../../data/blogPosts';
+import { useTranslations } from '../../i18n/utils';
 
 const lang = 'en';
 const t = useTranslations(lang);
@@ -13,8 +13,8 @@ const blogPosts = getAllPosts();
 // SEO keywords and breadcrumbs
 const keywords = "UX design blog, B2B SaaS articles, product design tips, MVP strategy, design best practices, SaaS founders";
 const breadcrumbs = [
-	{ name: "Home", url: "https://trailmerge.com/" },
-	{ name: "Blog", url: "https://trailmerge.com/blog/" }
+	{ name: "Home", url: "https://trailmerge.com/en/" },
+	{ name: "Blog", url: "https://trailmerge.com/en/blog/" }
 ];
 ---
 
@@ -44,12 +44,12 @@ const breadcrumbs = [
 				{blogPosts.map((post) => (
 					<article class="blog-post-item">
 						<div class="blog-post-thumbnail">
-							<a href={`/blog/${post.slug}`} class="blog-thumbnail-link">
+							<a href={`/en/blog/${post.slug}`} class="blog-thumbnail-link">
 								<img src={post.image} alt={post.imageAlt} class="blog-post-image" loading="lazy" />
 							</a>
 						</div>
 						<div class="blog-post-content">
-							<a href={`/blog/${post.slug}`} class="blog-post-title-link">
+							<a href={`/en/blog/${post.slug}`} class="blog-post-title-link">
 								<h2 class="blog-post-title">{post.title}</h2>
 							</a>
 							<div class="spacer-s"></div>
@@ -63,7 +63,7 @@ const breadcrumbs = [
 							<div class="spacer-s"></div>
 							<p class="blog-post-excerpt">{post.excerpt}</p>
 							<div class="spacer-s"></div>
-							<a href={`/blog/${post.slug}`} class="blog-read-more">{t('blog.readMore')}</a>
+							<a href={`/en/blog/${post.slug}`} class="blog-read-more">{t('blog.readMore')}</a>
 						</div>
 					</article>
 				))}

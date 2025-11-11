@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import AsideSection from '../../components/AsideSection.astro';
+import ServicesSection from '../../components/ServicesSection.astro';
+import CompaniesSection from '../../components/CompaniesSection.astro';
+import Testimonial from '../../components/Testimonial.astro';
+import CaseStudy from '../../components/CaseStudy.astro';
+import OfferSection from '../../components/OfferSection.astro';
+import BlogSection from '../../components/BlogSection.astro';
+import Footer from '../../components/Footer.astro';
+import ContactModal from '../../components/ContactModal.astro';
+import TestimonialSchema from '../../components/TestimonialSchema.astro';
+
+// Import images for testimonials and case studies
+import SeanHeadshot from '../../assets/images/Sean-Headshot.png';
+import AndyHeadshot from '../../assets/images/Andy-Headshot.png';
+import TourialScreenshots from '../../assets/images/Tourial-Screenshots.png';
+
+const lang = 'en';
+
+// SEO keywords for homepage
+const keywords = "UX design agency, B2B SaaS design, MVP design, product design, design audit, UI/UX services, SaaS startup design, Atlanta UX agency";
+const title = "UX Design Agency for B2B SaaS Startups – Trailmerge";
+const description = "Scalable UI/UX services for SaaS including MVP design, product overhaul, and design audits. Schedule a free consultation to get started.";
+---
+
+<Layout keywords={keywords} title={title} description={description} lang={lang}>
+	<Navbar lang={lang} />
+	<main id="main-content">
+		<Hero lang={lang} />
+
+		<AsideSection lang={lang} />
+
+	<ServicesSection lang={lang} />
+
+	<CompaniesSection lang={lang} />
+
+	<Testimonial
+		image={SeanHeadshot}
+		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
+		author="Sean Grapevine"
+		position="Founder"
+		company="LoanShout"
+	/>
+	<TestimonialSchema
+		author="Sean Grapevine"
+		position="Founder"
+		company="LoanShout"
+		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
+	/>
+
+	<CaseStudy 
+		image="https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/6115a548caa9f623017a1227_LoanShout%20Screenshots.png"
+		title="LoanShout"
+		description="Trailmerge guided this non-technical SaaS founder from concept to first users, transforming home loan communication along the way."
+		linkText="Read More"
+		linkUrl="#"
+		imageAlt="LoanShout Screenshots"
+	/>
+
+	<OfferSection />
+
+	<CaseStudy 
+		image={TourialScreenshots}
+		title="Tourial"
+		description="Trailmerge crafted a scalable design system and designed new features in partnership with this Atlanta-based startup team focused on improving the SaaS sales process."
+		linkText="Read More"
+		linkUrl="#"
+		imageAlt="Tourial Screenshots"
+	/>
+
+	<Testimonial
+		image={AndyHeadshot}
+		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
+		author="Andy Binkley"
+		position="Co-founder & CEO"
+		company="Tourial"
+	/>
+	<TestimonialSchema
+		author="Andy Binkley"
+		position="Co-founder & CEO"
+		company="Tourial"
+		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
+	/>
+
+	<BlogSection lang="en" />
+	</main>
+
+	<Footer lang="en" />
+
+	<ContactModal lang="en" />
+</Layout>
+
+<style is:global>
+	/* Additional styles for specific elements */
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 32px;
+	}
+
+	.blog-feed-post-wrapper {
+		text-align: left;
+		flex-direction: column;
+		align-items: flex-start;
+		display: flex;
+	}
+
+	.blog-feed-image {
+		object-fit: cover;
+		border-radius: 8px;
+		width: 100%;
+		height: 240px;
+		margin-bottom: 0;
+	}
+
+	.blog-feed-details {
+		align-items: center;
+		display: flex;
+	}
+
+	.blog-feed-text {
+		color: var(--grey-3);
+	}
+
+	.divider {
+		background-color: var(--grey-3);
+		width: 2px;
+		height: 16px;
+		margin-left: 8px;
+		margin-right: 8px;
+	}
+
+	.text-link {
+		color: var(--pimento);
+		font-weight: 700;
+		transition: opacity 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+		text-decoration: none;
+	}
+
+	.text-link:hover {
+		opacity: 0.65;
+	}
+
+	.text-span-4 {
+		font-weight: 600;
+	}
+
+	.success-message,
+	.error-message {
+		display: none;
+		padding: 16px;
+		border-radius: 4px;
+		margin-top: 16px;
+	}
+
+	.success-message {
+		background-color: var(--green-100);
+		color: var(--green-900);
+		border: 1px solid var(--green-500);
+	}
+
+	.error-message {
+		background-color: var(--cinnamon-100);
+		color: var(--cinnamon-500);
+		border: 1px solid var(--cinnamon-500);
+	}
+
+	@media (max-width: 768px) {
+		.grid-5 .div-block-35,
+		.grid-5 .div-block-36 {
+			display: none;
+		}
+
+		.blog-grid {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.blog-feed-post-wrapper {
+			max-width: 100%;
+		}
+
+		.blog-feed-image {
+			height: 200px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.blog-grid {
+			gap: 32px;
+		}
+
+		.blog-feed-image {
+			height: 180px;
+		}
+
+		.blog-feed-text {
+			font-size: 14px;
+		}
+	}
+</style>
+
