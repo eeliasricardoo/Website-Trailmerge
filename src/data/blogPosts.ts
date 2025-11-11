@@ -18,7 +18,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
 	{
 		slug: "help-how-do-i-build-out-my-product-design-team",
-		image: "/images/Backpack.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/62c87755e04d61389fbc8d0b_gabriella-clare-marino-_NPCTr9XsGc-unsplash-p-800.jpeg",
 		title: "Help! How do I build out my product design team?",
 		date: "JULY 8, 2022",
 		category: "DESIGN TEAMS",
@@ -59,7 +59,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-2",
-		image: "/images/Coffee.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60c0cdd56e2414337cf33013_ran-berkovich-xU0ZD-TsmmU-unsplash-p-3200.jpeg",
 		title: "How Do I Prioritize Features? Part 2 of 2",
 		date: "JUNE 9, 2021",
 		category: "SAAS",
@@ -75,17 +75,32 @@ export const blogPosts: BlogPost[] = [
 
 <p>When evaluating features through a technical lens, consider: How long will this take to build? What dependencies does it create? Will it require new infrastructure or third-party services? Does it align with your current tech stack, or will it require new expertise?</p>
 
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/Bw2icOlhL9Iv6/source.gif" alt="Constraints keep us from hurting ourselves" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Constraints keep us from hurting ourselves... most of the time. (via Giphy)</p>
+</div>
+
 <h2>Business constraints</h2>
 
 <p>Business constraints encompass your budget, timeline, market position, and strategic goals. A feature might be highly requested by customers, but if it doesn't align with your business model or revenue goals, it might not be the right priority.</p>
 
 <p>Consider questions like: Does this feature support our business model? Will it help us acquire or retain customers? Does it differentiate us from competitors? Is this the right time in our company's lifecycle to build this?</p>
 
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/QU3VPCKslm8sF0TO0v/source.gif" alt="Don't let your important features get blocked" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Don't let your important features get blocked. (via Giphy)</p>
+</div>
+
 <h2>Resource constraints</h2>
 
 <p>Resource constraints involve your team size, skill sets, and capacity. You might have brilliant ideas, but if you don't have the right people or enough bandwidth, those ideas will remain just that—ideas.</p>
 
 <p>Be honest about: Do we have the right skills on the team? How much capacity do we actually have? What other priorities are competing for attention? Can we realistically deliver this within our timeline?</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/leWwDRvSI49jy/source.gif" alt="Taking on tons of features can be a battle" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Taking on tons of features can be a battle. (via Giphy)</p>
+</div>
 
 <h2>Balancing the equation</h2>
 
@@ -102,7 +117,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-1",
-		image: "/images/Binoculars.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60a813feba638c0e3ef14854_valery-fedotov-CqX6IhVj2TI-unsplash-p-3200.jpeg",
 		title: "How Do I Prioritize Features? Part 1 of 2",
 		date: "MAY 21, 2021",
 		category: "SAAS",
@@ -137,7 +152,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "how-to-ask-good-questions-when-building-saas-product",
-		image: "/images/Compass.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/6080815fbafc572380901b88_artem-maltsev-0CvHQ62gwY8-unsplash-p-800.jpeg",
 		title: "How to Ask Good Questions When Building a SaaS Product",
 		date: "APRIL 21, 2021",
 		category: "SAAS",
@@ -180,7 +195,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "lets-talk-design-debt",
-		image: "/images/Knot.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db17540b5ef6754da71c6_ruth-enyedi-zuwx2tvI_iM-unsplash(1)-p-800.jpeg",
 		title: "Let's Talk Design Debt: What is it and what could it cost me?",
 		date: "APRIL 7, 2021",
 		category: "SAAS",
@@ -223,7 +238,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "your-mvp-is-missing-the-point",
-		image: "/images/Lantern.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5fe2481631ad4401f048b2d6_the-creativv-2YFpp3NvHy8-unsplash-p-800.jpeg",
 		title: "Your MVP is Missing the Point",
 		date: "DECEMBER 22, 2020",
 		category: "SAAS",
@@ -266,7 +281,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "idea-to-version-1-how-do-i-get-started",
-		image: "/images/Boots.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b92fdfd4bf0e27021d439_david-kovalenko-G85VuTpw6jg-unsplash-p-800.jpeg",
 		title: "Idea to Version 1: How Do I Get Started?",
 		date: "OCTOBER 30, 2020",
 		category: "SAAS",
@@ -313,7 +328,7 @@ export const blogPosts: BlogPost[] = [
 	},
 	{
 		slug: "learning-the-core-of-successful-saas-startup",
-		image: "/images/Map.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg",
 		title: "Learning: The Core of a Successful SaaS Startup",
 		date: "OCTOBER 22, 2020",
 		category: "SAAS",

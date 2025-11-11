@@ -4,7 +4,7 @@ import { type BlogPost } from './blogPosts';
 export const blogPostsEs: BlogPost[] = [
 	{
 		slug: "help-how-do-i-build-out-my-product-design-team",
-		image: "/images/Backpack.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/62c87755e04d61389fbc8d0b_gabriella-clare-marino-_NPCTr9XsGc-unsplash-p-800.jpeg",
 		title: "¡Ayuda! ¿Cómo construyo mi equipo de diseño de producto?",
 		date: "8 DE JULIO, 2022",
 		category: "EQUIPOS DE DISEÑO",
@@ -45,7 +45,7 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-2",
-		image: "/images/Coffee.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60c0cdd56e2414337cf33013_ran-berkovich-xU0ZD-TsmmU-unsplash-p-3200.jpeg",
 		title: "¿Cómo Priorizo Características? Parte 2 de 2",
 		date: "9 DE JUNIO, 2021",
 		category: "SAAS",
@@ -61,17 +61,32 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Al evaluar características a través de una lente técnica, considera: ¿Cuánto tiempo tomará construir esto? ¿Qué dependencias crea? ¿Requerirá nueva infraestructura o servicios de terceros? ¿Se alinea con tu stack tecnológico actual, o requerirá nueva experiencia?</p>
 
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/Bw2icOlhL9Iv6/source.gif" alt="Constraints keep us from hurting ourselves" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Constraints keep us from hurting ourselves... most of the time. (via Giphy)</p>
+</div>
+
 <h2>Restricciones comerciales</h2>
 
 <p>Las restricciones comerciales abarcan tu presupuesto, cronograma, posición en el mercado y objetivos estratégicos. Una característica puede ser muy solicitada por los clientes, pero si no se alinea con tu modelo de negocio u objetivos de ingresos, podría no ser la prioridad correcta.</p>
 
 <p>Considera preguntas como: ¿Esta característica apoya nuestro modelo de negocio? ¿Nos ayudará a adquirir o retener clientes? ¿Nos diferencia de los competidores? ¿Es el momento adecuado en el ciclo de vida de nuestra empresa para construir esto?</p>
 
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/QU3VPCKslm8sF0TO0v/source.gif" alt="Don't let your important features get blocked" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Don't let your important features get blocked. (via Giphy)</p>
+</div>
+
 <h2>Restricciones de recursos</h2>
 
 <p>Las restricciones de recursos involucran el tamaño de tu equipo, conjuntos de habilidades y capacidad. Podrías tener ideas brillantes, pero si no tienes las personas adecuadas o suficiente ancho de banda, esas ideas seguirán siendo solo eso: ideas.</p>
 
 <p>Sé honesto acerca de: ¿Tenemos las habilidades adecuadas en el equipo? ¿Cuánta capacidad tenemos realmente? ¿Qué otras prioridades están compitiendo por atención? ¿Podemos entregar esto de manera realista dentro de nuestro cronograma?</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/leWwDRvSI49jy/source.gif" alt="Taking on tons of features can be a battle" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Taking on tons of features can be a battle. (via Giphy)</p>
+</div>
 
 <h2>Equilibrando la ecuación</h2>
 
@@ -88,7 +103,7 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-1",
-		image: "/images/Binoculars.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60a813feba638c0e3ef14854_valery-fedotov-CqX6IhVj2TI-unsplash-p-3200.jpeg",
 		title: "¿Cómo Priorizo Características? Parte 1 de 2",
 		date: "21 DE MAYO, 2021",
 		category: "SAAS",
@@ -123,7 +138,7 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "how-to-ask-good-questions-when-building-saas-product",
-		image: "/images/Compass.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/6080815fbafc572380901b88_artem-maltsev-0CvHQ62gwY8-unsplash-p-800.jpeg",
 		title: "Cómo Hacer Buenas Preguntas al Construir un Producto SaaS",
 		date: "21 DE ABRIL, 2021",
 		category: "SAAS",
@@ -166,7 +181,7 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "lets-talk-design-debt",
-		image: "/images/Knot.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db17540b5ef6754da71c6_ruth-enyedi-zuwx2tvI_iM-unsplash(1)-p-800.jpeg",
 		title: "Hablemos de Deuda de Diseño: ¿Qué es y qué me podría costar?",
 		date: "7 DE ABRIL, 2021",
 		category: "SAAS",
@@ -209,7 +224,7 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "your-mvp-is-missing-the-point",
-		image: "/images/Lantern.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5fe2481631ad4401f048b2d6_the-creativv-2YFpp3NvHy8-unsplash-p-800.jpeg",
 		title: "Tu MVP está Perdiendo el Punto",
 		date: "22 DE DICIEMBRE, 2020",
 		category: "SAAS",
@@ -252,7 +267,7 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "idea-to-version-1-how-do-i-get-started",
-		image: "/images/Boots.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b92fdfd4bf0e27021d439_david-kovalenko-G85VuTpw6jg-unsplash-p-800.jpeg",
 		title: "De la Idea a la Versión 1: ¿Cómo Empiezo?",
 		date: "30 DE OCTUBRE, 2020",
 		category: "SAAS",
@@ -299,7 +314,7 @@ export const blogPostsEs: BlogPost[] = [
 	},
 	{
 		slug: "learning-the-core-of-successful-saas-startup",
-		image: "/images/Map.png",
+		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg",
 		title: "Aprender: El Núcleo de una Startup SaaS Exitosa",
 		date: "22 DE OCTUBRE, 2020",
 		category: "SAAS",
