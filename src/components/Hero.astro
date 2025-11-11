@@ -48,6 +48,10 @@ const t = useTranslations(lang as 'en' | 'es');
 
 	.body-block.hero-wrapper.home-hero {
 		background-image: url('/images/Hero-Backdrop.svg');
+		--backdrop-scale: 1;
+		background-size: auto calc(70% * var(--backdrop-scale));
+		background-position: 100% 0;
+		transition: background-size 0.1s ease-out;
 	}
 
 	.hero-wrapper {
@@ -178,18 +182,22 @@ const t = useTranslations(lang as 'en' | 'es');
 
 	@media (max-width: 768px) {
 		.body-block.hero-wrapper {
-			padding-top: 104px;
+			padding-top: 0;
+			padding-bottom: 64px;
 			min-height: auto;
 			height: auto;
+			background-size: auto 60%;
+			flex-direction: column;
 		}
 
 		.hero-wrapper .content-container {
-			padding: 0 16px;
+			padding: 0 20px;
+			order: 2;
 		}
 
 		.hero {
 			flex-direction: column;
-			gap: 40px;
+			gap: 32px;
 			align-items: center;
 		}
 
@@ -206,26 +214,40 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.hero-subtitle {
-			font-size: 24px !important;
+			font-size: 22px !important;
 			line-height: 1.4 !important;
 		}
 
+		.hero-cta-button {
+			padding: 12px 24px;
+			font-size: 16px;
+		}
+
 		.hero-illustration-wrapper {
+			position: relative;
 			width: 100%;
+			height: 300px;
 			justify-content: center;
+			padding-top: 56px;
+			order: 1;
+			inset: auto;
 		}
 
 		.hero-illustration {
+			position: relative;
+			width: 100%;
 			max-width: 100%;
-			height: 350px;
+			height: 100%;
 			background-position: center center;
+			background-size: auto 90%;
 		}
 	}
 
 	@media (max-width: 480px) {
 		.body-block.hero-wrapper {
-			padding-top: 88px;
-			padding-bottom: 40px;
+			padding-top: 0;
+			padding-bottom: 48px;
+			background-size: auto 50%;
 		}
 
 		.hero-wrapper .content-container {
@@ -233,7 +255,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.hero {
-			gap: 32px;
+			gap: 24px;
 		}
 
 		.hero-content-left h1 {
@@ -247,14 +269,23 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.hero-cta-button {
-			padding: 12px 20px;
+			padding: 10px 20px;
 			font-size: 14px;
+			width: 100%;
+			max-width: 240px;
+		}
+
+		.hero-illustration-wrapper {
+			height: 260px;
+			padding-top: 48px;
 		}
 
 		.hero-illustration {
+			width: 100%;
 			max-width: 100%;
-			height: 250px;
+			height: 100%;
 			background-position: center center;
+			background-size: auto 85%;
 		}
 	}
 </style>

@@ -25,15 +25,15 @@ export const testimonialsEn: Testimonial[] = [
 // Spanish testimonials
 export const testimonialsEs: Testimonial[] = [
 	{
-		quote: "Trailmerge ha marcado la diferencia entre el éxito y el fracaso de nuestra startup en etapa inicial.",
+		quote: "Trailmerge marcó la diferencia entre el éxito y el fracaso de nuestra startup en fase inicial.",
 		author: "Sean Grapevine",
-		position: "Fundador",
+		position: "Fundador de",
 		company: "LoanShout"
 	},
 	{
-		quote: "Trailmerge es capaz de interpretar mucha información dispersa sobre nuestras metas de diseño y UX y unirla de una manera que tiene sentido.",
+		quote: "Trailmerge logra interpretar información dispersa sobre nuestras metas de diseño y UX, y organizarla de manera coherente y accionable.",
 		author: "Andy Binkley",
-		position: "Cofundador y CEO",
+		position: "Cofundador y CEO de",
 		company: "Tourial"
 	}
 ];
