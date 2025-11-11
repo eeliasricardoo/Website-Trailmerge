@@ -294,35 +294,46 @@ export const blogPosts: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product... but months later, you hit the initial shock of design debt.",
 		imageAlt: "Knot illustration",
-		content: `<p>You're a non-technical founder with an awesome B2B SaaS concept. You've validated the idea, secured some early customers, and you're ready to build. You know you need to hire a developer to build your software product, so you find a talented engineer, share your vision, and watch as your product starts taking shape.</p>
+		content: `<p>Imagine with me for a second. You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product and you've heard no one wants to invest in your startup until you have something built, so you go straight to the developer or dev shop your friend recommended.</p>
 
-<p>But months later, you hit the initial shock of design debt. Your developer built exactly what you asked for, but it doesn't feel right. Users are confused. The interface is clunky. Adding new features feels like pulling teeth. What went wrong?</p>
+<p>The developer takes your money and your requirements and gets to work. You communicate back and forth on requirements and technical constraints that you kind of understand and you've made decisions to the best of your ability based on those conversations. As far as design goes, you've sketched together a few flows and back-of-the-napkin wireframes. Your developer has taken those and interpreted them, making several design decisions when building out the product. $30,000 dollars in and 6 months later, you have a product.</p>
 
-<h2>What is design debt?</h2>
+<p>You launch and get some initial interest, but not enough to really get the traction you're looking for. Your customers make some feature requests, so you drop another $50,000 over the next 6 months building out these features. The good news: You've gotten some great features out during that time and as you become more competitive in your feature offering, you're seeing more revenue coming in. You now have a decent-sized customer base.</p>
 
-<p>Design debt accumulates when design decisions are made hastily or without proper planning. It's the accumulation of quick fixes, inconsistent patterns, and unplanned design choices that make your product harder to use, harder to maintain, and harder to scale.</p>
+<p>With all these customers, there's a whole new set of issues. You're seeing loads of support tickets coming in about frustrating workflows, features not working as expected, and errors popping up that customers don't know how to interpret or resolve. Time spent dedicated to supporting customers is skyrocketing, and with it you're having to pay for additional help on customer support and dev. Ouch! You've hit the initial shock of design debt.</p>
 
-<p>Unlike technical debt, which developers understand and discuss openly, design debt often goes unnoticed until it's too late. But its impact can be just as severe—if not more so—because it directly affects your users' experience.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/l0HlNmF2VCrXqjlSM/giphy.gif" alt="Wait, what?" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Wait, what? (via Giphy)</p>
+</div>
 
-<h2>The cost of design debt</h2>
+<p>But that's just the beginning. You start working with your dev team to fix design problems where you can identify them, diverting valuable time from new features and strategic projects.</p>
 
-<p>Design debt can slow down future development because every new feature requires working around existing inconsistencies. It impacts user experience because confusing interfaces reduce adoption and increase support costs. It affects your brand because inconsistent design makes your product feel unprofessional.</p>
+<p>Finally, you hear about how bringing on a UX designer can help. You spend the time and money to recruit and bring the new designer up to speed. The designer audits the current platform and recommends a redesign, which could take longer than the original build. You're able to get a few new features slipped into the redesign, but the time and effort costs you a year of valuable time just reconfiguring the current foundations instead of making further progress. Meanwhile, you're reeling from excessive churn and damage to your brand's reputation in the market. Bam! You're now encountering the full cost of design debt.</p>
 
-<p>Most critically, design debt compounds. The longer you wait to address it, the more expensive it becomes to fix. What might have been a simple refactor early on becomes a complete redesign later.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/ESt8At0PXpmj6/giphy.gif" alt="That cost more than expected!" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">That cost more than expected! (via Giphy)</p>
+</div>
 
-<h2>How design debt accumulates</h2>
+<p>The vast majority of developers I've worked with (or whose work I've inherited) are not great designers. That might sound like I'm throwing my friends in engineering under the bus (sorry, y'all), but truthfully, the very reason they're amazing developers is why they shouldn't be doing design.</p>
 
-<p>Design debt often starts innocently. You need a feature quickly, so you skip the design process. You copy a pattern from another product without considering if it fits your context. You make "temporary" design decisions that become permanent. You prioritize speed over consistency.</p>
+<p>Developers are highly attuned to the technology they work with – constraints, functionality, possibilities. They're superstars at translating defined requirements into working software in the most efficient way possible. Developers thrive on technical language and technical workflows, and oftentimes are too deeply familiar with the tech and the way they've built the platform to really empathize with the experience of a non-technical user.</p>
 
-<p>Each decision seems small in isolation, but together they create a product that's harder to use and harder to maintain.</p>
+<p>Designers, on the other hand, are focused on representing the users' perspective. Non-technical users, by and large, don't understand the difference between a 404 error and 500 error. Users often don't see the "clearly labeled" button that developers can quickly point out because of the hundreds of hours they've spent building the corresponding workflows.</p>
 
-<h2>Preventing design debt</h2>
+<p>This focus on the users' experience, enhanced through conducting user research enables SaaS product designers to design data structures, workflows, navigation, layout, in-app messaging, and interactions that intuitively make sense to users. One of the common misconceptions is that UX designers are brought in to make the UI look pretty. While designers certainly take pride in aesthetic excellence and in delivering delight, it's far from the only deliverable. In essence, UX designers define the details of the requirements that a developer will build, told from a user's point of view.</p>
 
-<p>Understanding and addressing design debt early is crucial for long-term success. Invest in design upfront, even if it feels like it's slowing you down. Create design systems and patterns that can scale. Make consistency a priority, not an afterthought.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db410c105305eba75446e_Design%20Debt%20Chart.png" alt="Cost to change a design over time" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Cost to change a design over time (Hint: it costs a lot more once it's built!)</p>
+</div>
 
-<p>If you're already dealing with design debt, don't ignore it. Create a plan to address it incrementally. Fix the most critical issues first, then establish processes to prevent new debt from accumulating.</p>
+<p>UX designers are the architects and developers are the builders. Imagine jumping straight to hiring a construction crew to build your new skyscraper with no architect involved in the process until the first 15 stories have been completed. The analogy breaks down to an extent in that software is an iterative process. But iterations can be extremely expensive if the right people aren't involved at the right time.</p>
 
-<p>Remember: every product has some design debt. The question isn't whether you'll have it, but how you'll manage it. The best products are built by teams that recognize design debt early and address it proactively.</p>`,
+<p>So, what's the alternate scenario? What's the recommendation? Bring in design support early, before dev starts building. An hour of a senior designer's time is much less expensive than an hour each multiplied by the multiple developers it will take to build out the design.</p>
+
+<p>There will always be some design debt that accrues in an iterative Agile SaaS environment, but working with an experienced design partner, like Trailmerge, at the outset and over the long-term can help you dramatically reduce the severity of support needs and rework at a time when you want to be focused on growth.</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
@@ -337,35 +348,61 @@ export const blogPosts: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for \"minimum viable product.\" But what's the point of it?",
 		imageAlt: "Lantern illustration",
-		content: `<p>How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for "minimum viable product." We've all heard the term thrown around in startup circles, investor meetings, and product discussions. But what's the point of it?</p>
+		content: `<p>How would you define an MVP?</p>
 
-<p>Too many founders treat MVP as an excuse to ship something half-baked. They focus on the "minimum" part—what's the least we can build?—and forget about the "viable" part. Or worse, they forget about the real purpose: learning.</p>
+<p>Yeah, I think most of us in the tech startup world know it stands for "minimum viable product." But what's the point of it?</p>
 
-<h2>The real purpose of an MVP</h2>
+<p>Well, I've often seen this term used to mean "a hunk o' software thrown together quickly to get something out the door so we can start making money off this bad boy!"</p>
 
-<p>An MVP should be about learning and validation, not just building the smallest possible product. The goal isn't to ship fast for the sake of shipping fast. The goal is to learn what you need to know to make better decisions.</p>
+<p>Hold up – let's make sure we're going the right direction first before we sink all this cash into a costly Field of Dreams, SaaS edition.</p>
 
-<p>What do you need to learn? Do customers actually have this problem? Will they pay to solve it? Can you solve it in a way that's better than alternatives? What features matter most? What's your go-to-market strategy?</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/qVtmVS0eailqg/source.gif" alt="Field of Dreams" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Works for rando baseball ghosts in a cornfield, but not so much in SaaS. (via Giphy)</p>
+</div>
 
-<h2>Minimum viable learning</h2>
+<p>First off, an MVP is not always software, even if the end goal has to do with software.</p>
 
-<p>Instead of asking "What's the minimum we can build?" ask "What's the minimum we need to learn?" Focus on what you need to learn to make better decisions, not just what you can build quickly.</p>
+<p>Eric Reis (in Lean Startup) and Steve Blank (in The Startup Owner's Manual) both give examples of MVPs that are not just beta versions of the eventual product.</p>
 
-<p>Sometimes the minimum viable learning requires building a product. Sometimes it requires a landing page, a prototype, or even just conversations. The form should follow the learning objective, not the other way around.</p>
+<p>Reis' often cited example is that of Zappos, an online shoe retailer which was acquired by Amazon, whose MVP involved an existing platform and shoes purchased on demand from local shoe stores – more on this in a second.</p>
 
-<h2>Viable means valuable</h2>
+<p>Blank, on the other hand, mentions that a simple landing page can act as an MVP.</p>
 
-<p>The "viable" in MVP means your product must deliver real value, even if it's minimal. An MVP that doesn't solve a real problem or provide real value isn't viable—it's just a prototype or a demo.</p>
+<p>Ok, sure, but how?</p>
 
-<p>Your MVP should be something customers would actually use and potentially pay for, even if it's missing features you plan to add later. If it's not valuable enough for early adopters, it's not an MVP.</p>
+<p>Well, now would be a good time to go back to the purpose of an MVP. I really appreciate Rik Higham's thoughts on the matter in his Hacker Noon article a few years back:</p>
 
-<h2>Learning loops</h2>
+<p>"There is a flaw at the heart of the term Minimum Viable Product: it's not a product. It's a way of testing whether you've found a problem worth solving."</p>
 
-<p>Think of your MVP as the first iteration in a learning loop: build, measure, learn, repeat. Each iteration should teach you something new that informs the next iteration. The faster you can cycle through these loops, the faster you'll build a product that truly serves your customers.</p>
+<p>In his article, he goes on to assert that we should be focused on testing our single riskiest assumption with the least possible amount of effort and cost. When we start a business, have an idea for a product, or even just start working on new features, we carry a number of assumptions with us:</p>
 
-<p>Don't fall into the trap of building an MVP and then immediately moving to "the real product." Your MVP should inform your real product. Use what you learn to make better decisions about what to build next.</p>
+<ul>
+	<li>Lots of people are dealing with this problem and are motivated to solve it.</li>
+	<li>People are willing to invest money, time, effort to adopt a solution to the problem.</li>
+	<li>Enough of the market will want my particular solution to this problem.</li>
+	<li>I can create a sustainable business around solving this problem.</li>
+</ul>
 
-<p>Remember: an MVP isn't a destination—it's a starting point. It's your first step toward building something great, not an excuse to build something mediocre.</p>`,
+<p>The list goes on and on. And some assumptions carry a much higher risk than others. For example, the assumption that "Users will enjoy cute illustrated animations in the app" is much less risky than the assumption that "Users will be willing to provide their bank account information to us in order to use the core feature of our app." The user experience won't suffer much (and the bottom line even less) if people don't 100% love the cute dancing duckling on your confirmation screen, but an attitude that determines adoption of the main part of your solution can be make-or-break for your entire business.</p>
+
+<p>Zappos was built by testing a risky assumption before they built a platform: "People will be willing to buy shoes they haven't tried on in a store." Airbnb had to test the assumption that Americans would be willing to open their homes to complete strangers, and, in turn, stay in strangers' homes. In early stages, a landing page can work to test whether or not the target market gets excited about a concept or identifies with a problem.</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/vmv47p4zksWDC/source.gif" alt="Test it out" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Test it out, see if it will come to life! (via Giphy)</p>
+</div>
+
+<p>A few years back, I performed research and design work for a founder with a two-sided marketplace concept. Instead of building out the whole app to start, he found success in testing the value of his service through a Google Form and phone calls, manually coordinating the two sides of the marketplace in a way that reflected the coordination the platform would perform automatically in the future.</p>
+
+<p>It can be simple – Start with this:</p>
+
+<ul>
+	<li>List out your riskiest assumptions. Ask peers, team members, and/or external experts to help you identify subconscious assumptions.</li>
+	<li>Develop a plan to test the next big assumption. For example, you might be able to test the assumption that "realtors will be willing to purchase this product" using mockups of a few screens and a landing page. A prototype might do the trick in other cases. A fully built app might be needed (though it should, in most cases, be built in bite-sized Agile releases for optimal learning), or a few video calls with people who fit your target market may tell you all you need to know. Involving a UX design team like Trailmerge early in the process can be a cost-effective way to quickly arrive at key learnings.</li>
+</ul>
+
+<p>Remember: The central activity of a startup is to learn and improve with the goal of a sustainable business model. Understanding the assumptions you carry and testing them one-by-one scientific method style is a key step to learning and succeeding, and it can start small!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",

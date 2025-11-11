@@ -280,35 +280,46 @@ export const blogPostsEs: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software... pero meses después, enfrentas el impacto inicial de la deuda de diseño.",
 		imageAlt: "Ilustración de nudo",
-		content: `<p>Eres un fundador no técnico con un concepto B2B SaaS increíble. Has validado la idea, asegurado algunos clientes iniciales y estás listo para construir. Sabes que necesitas contratar a un desarrollador para construir tu producto de software, así que encuentras un ingeniero talentoso, compartes tu visión y observas cómo tu producto comienza a tomar forma.</p>
+		content: `<p>Imagina conmigo por un segundo. Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software y has escuchado que nadie quiere invertir en tu startup hasta que tengas algo construido, así que vas directamente al desarrollador o tienda de desarrollo que tu amigo recomendó.</p>
 
-<p>Pero meses después, enfrentas el impacto inicial de la deuda de diseño. Tu desarrollador construyó exactamente lo que pediste, pero no se siente bien. Los usuarios están confundidos. La interfaz es torpe. Agregar nuevas características se siente como sacar dientes. ¿Qué salió mal?</p>
+<p>El desarrollador toma tu dinero y tus requisitos y se pone a trabajar. Te comunicas de ida y vuelta sobre requisitos y restricciones técnicas que entiendes un poco y has tomado decisiones lo mejor que puedes basándote en esas conversaciones. En cuanto al diseño, has esbozado algunos flujos y wireframes improvisados. Tu desarrollador ha tomado esos y los ha interpretado, tomando varias decisiones de diseño al construir el producto. $30,000 dólares y 6 meses después, tienes un producto.</p>
 
-<h2>¿Qué es la deuda de diseño?</h2>
+<p>Lanzas y obtienes algo de interés inicial, pero no lo suficiente para realmente obtener la tracción que buscas. Tus clientes hacen algunas solicitudes de características, así que gastas otros $50,000 durante los próximos 6 meses construyendo estas características. La buena noticia: Has obtenido algunas características geniales durante ese tiempo y a medida que te vuelves más competitivo en tu oferta de características, estás viendo más ingresos entrando. Ahora tienes una base de clientes de tamaño decente.</p>
 
-<p>La deuda de diseño se acumula cuando las decisiones de diseño se toman apresuradamente o sin la planificación adecuada. Es la acumulación de soluciones rápidas, patrones inconsistentes y elecciones de diseño no planificadas que hacen que tu producto sea más difícil de usar, más difícil de mantener y más difícil de escalar.</p>
+<p>Con todos estos clientes, hay un conjunto completamente nuevo de problemas. Estás viendo montones de tickets de soporte llegando sobre flujos de trabajo frustrantes, características que no funcionan como se esperaba, y errores apareciendo que los clientes no saben cómo interpretar o resolver. El tiempo dedicado a apoyar a los clientes se está disparando, y con eso tienes que pagar ayuda adicional en soporte al cliente y desarrollo. ¡Ay! Has golpeado el impacto inicial de la deuda de diseño.</p>
 
-<p>A diferencia de la deuda técnica, que los desarrolladores entienden y discuten abiertamente, la deuda de diseño a menudo pasa desapercibida hasta que es demasiado tarde. Pero su impacto puede ser igual de severo, si no más, porque afecta directamente la experiencia de tus usuarios.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/l0HlNmF2VCrXqjlSM/giphy.gif" alt="Wait, what?" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Wait, what? (via Giphy)</p>
+</div>
 
-<h2>El costo de la deuda de diseño</h2>
+<p>Pero eso es solo el comienzo. Comienzas a trabajar con tu equipo de desarrollo para arreglar problemas de diseño donde puedes identificarlos, desviando tiempo valioso de nuevas características y proyectos estratégicos.</p>
 
-<p>La deuda de diseño puede ralentizar el desarrollo futuro porque cada nueva característica requiere trabajar alrededor de inconsistencias existentes. Impacta la experiencia del usuario porque las interfaces confusas reducen la adopción y aumentan los costos de soporte. Afecta tu marca porque el diseño inconsistente hace que tu producto se sienta poco profesional.</p>
+<p>Finalmente, escuchas sobre cómo traer un diseñador UX puede ayudar. Gastas el tiempo y el dinero para reclutar y poner al nuevo diseñador al día. El diseñador audita la plataforma actual y recomienda un rediseño, que podría tomar más tiempo que la construcción original. Puedes obtener algunas características nuevas deslizadas en el rediseño, pero el tiempo y el esfuerzo te cuestan un año de tiempo valioso solo reconfigurando las bases actuales en lugar de hacer más progreso. Mientras tanto, estás tambaleándote por la rotación excesiva y el daño a la reputación de tu marca en el mercado. ¡Bam! Ahora estás encontrando el costo completo de la deuda de diseño.</p>
 
-<p>Más críticamente, la deuda de diseño se compone. Cuanto más esperes para abordarla, más cara se vuelve de arreglar. Lo que podría haber sido una refactorización simple temprano se convierte en un rediseño completo más tarde.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/ESt8At0PXpmj6/giphy.gif" alt="That cost more than expected!" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">That cost more than expected! (via Giphy)</p>
+</div>
 
-<h2>Cómo se acumula la deuda de diseño</h2>
+<p>La gran mayoría de los desarrolladores con los que he trabajado (o cuyo trabajo he heredado) no son grandes diseñadores. Eso podría sonar como si estuviera echando a mis amigos en ingeniería bajo el autobús (lo siento, todos), pero honestamente, la misma razón por la que son desarrolladores increíbles es por la que no deberían estar haciendo diseño.</p>
 
-<p>La deuda de diseño a menudo comienza inocentemente. Necesitas una característica rápidamente, así que te saltas el proceso de diseño. Copias un patrón de otro producto sin considerar si se ajusta a tu contexto. Tomas decisiones de diseño "temporales" que se vuelven permanentes. Priorizas la velocidad sobre la consistencia.</p>
+<p>Los desarrolladores están muy sintonizados con la tecnología con la que trabajan – restricciones, funcionalidad, posibilidades. Son superestrellas traduciendo requisitos definidos en software funcional de la manera más eficiente posible. Los desarrolladores prosperan en lenguaje técnico y flujos de trabajo técnicos, y a menudo están demasiado familiarizados con la tecnología y la forma en que han construido la plataforma para realmente empatizar con la experiencia de un usuario no técnico.</p>
 
-<p>Cada decisión parece pequeña en aislamiento, pero juntas crean un producto que es más difícil de usar y más difícil de mantener.</p>
+<p>Los diseñadores, por otro lado, se enfocan en representar la perspectiva de los usuarios. Los usuarios no técnicos, en general, no entienden la diferencia entre un error 404 y un error 500. Los usuarios a menudo no ven el botón "claramente etiquetado" que los desarrolladores pueden señalar rápidamente debido a las cientos de horas que han pasado construyendo los flujos de trabajo correspondientes.</p>
 
-<h2>Prevenir la deuda de diseño</h2>
+<p>Este enfoque en la experiencia de los usuarios, mejorado a través de la realización de investigación de usuarios, permite a los diseñadores de productos SaaS diseñar estructuras de datos, flujos de trabajo, navegación, diseño, mensajería en la aplicación e interacciones que intuitivamente tienen sentido para los usuarios. Uno de los conceptos erróneos comunes es que los diseñadores UX son traídos para hacer que la UI se vea bonita. Si bien los diseñadores ciertamente se enorgullecen de la excelencia estética y en entregar deleite, está lejos de ser el único entregable. En esencia, los diseñadores UX definen los detalles de los requisitos que un desarrollador construirá, contados desde el punto de vista de un usuario.</p>
 
-<p>Comprender y abordar la deuda de diseño temprano es crucial para el éxito a largo plazo. Invierte en diseño por adelantado, incluso si sientes que te está ralentizando. Crea sistemas de diseño y patrones que puedan escalar. Haz que la consistencia sea una prioridad, no una idea tardía.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db410c105305eba75446e_Design%20Debt%20Chart.png" alt="Cost to change a design over time" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Cost to change a design over time (Hint: it costs a lot more once it's built!)</p>
+</div>
 
-<p>Si ya estás lidiando con deuda de diseño, no la ignores. Crea un plan para abordarla incrementalmente. Corrige los problemas más críticos primero, luego establece procesos para prevenir que se acumule nueva deuda.</p>
+<p>Los diseñadores UX son los arquitectos y los desarrolladores son los constructores. Imagina saltar directamente a contratar una tripulación de construcción para construir tu nuevo rascacielos sin ningún arquitecto involucrado en el proceso hasta que las primeras 15 historias se hayan completado. La analogía se descompone hasta cierto punto en que el software es un proceso iterativo. Pero las iteraciones pueden ser extremadamente costosas si las personas correctas no están involucradas en el momento correcto.</p>
 
-<p>Recuerda: cada producto tiene algo de deuda de diseño. La pregunta no es si la tendrás, sino cómo la gestionarás. Los mejores productos son construidos por equipos que reconocen la deuda de diseño temprano y la abordan proactivamente.</p>`,
+<p>Entonces, ¿cuál es el escenario alternativo? ¿Cuál es la recomendación? Trae apoyo de diseño temprano, antes de que el desarrollo comience a construir. Una hora del tiempo de un diseñador senior es mucho menos costosa que una hora cada una multiplicada por los múltiples desarrolladores que tomará construir el diseño.</p>
+
+<p>Siempre habrá algo de deuda de diseño que se acumule en un entorno SaaS Agile iterativo, pero trabajar con un socio de diseño experimentado, como Trailmerge, desde el principio y a largo plazo puede ayudarte a reducir dramáticamente la severidad de las necesidades de soporte y re-trabajo en un momento en que quieres estar enfocado en el crecimiento.</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
@@ -323,35 +334,61 @@ export const blogPostsEs: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa \"producto mínimo viable\". Pero, ¿cuál es el punto?",
 		imageAlt: "Ilustración de linterna",
-		content: `<p>¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa "producto mínimo viable". Todos hemos escuchado el término lanzado en círculos de startups, reuniones de inversionistas y discusiones de productos. Pero, ¿cuál es el punto?</p>
+		content: `<p>¿Cómo definirías un MVP?</p>
 
-<p>Demasiados fundadores tratan al MVP como una excusa para enviar algo a medias. Se enfocan en la parte "mínimo": ¿qué es lo menos que podemos construir?, y olvidan la parte "viable". O peor, olvidan el propósito real: aprender.</p>
+<p>Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa "producto mínimo viable". Pero, ¿cuál es el punto?</p>
 
-<h2>El propósito real de un MVP</h2>
+<p>Bueno, a menudo he visto este término usado para significar "¡un pedazo de software arrojado rápidamente para sacar algo por la puerta para que podamos empezar a ganar dinero con este chico malo!"</p>
 
-<p>Un MVP debe tratarse de aprendizaje y validación, no solo de construir el producto más pequeño posible. El objetivo no es enviar rápido por el simple hecho de enviar rápido. El objetivo es aprender lo que necesitas saber para tomar mejores decisiones.</p>
+<p>Espera – asegurémonos de ir en la dirección correcta primero antes de hundir todo este dinero en un costoso Campo de los Sueños, edición SaaS.</p>
 
-<p>¿Qué necesitas aprender? ¿Los clientes realmente tienen este problema? ¿Pagarán por resolverlo? ¿Puedes resolverlo de una manera mejor que las alternativas? ¿Qué características importan más? ¿Cuál es tu estrategia de salida al mercado?</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/qVtmVS0eailqg/source.gif" alt="Field of Dreams" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Works for rando baseball ghosts in a cornfield, but not so much in SaaS. (via Giphy)</p>
+</div>
 
-<h2>Aprendizaje mínimo viable</h2>
+<p>Primero, un MVP no siempre es software, incluso si el objetivo final tiene que ver con software.</p>
 
-<p>En lugar de preguntar "¿Qué es lo mínimo que podemos construir?" pregunta "¿Qué es lo mínimo que necesitamos aprender?" Concéntrate en lo que necesitas aprender para tomar mejores decisiones, no solo en lo que puedes construir rápidamente.</p>
+<p>Eric Reis (en Lean Startup) y Steve Blank (en The Startup Owner's Manual) ambos dan ejemplos de MVPs que no son solo versiones beta del producto eventual.</p>
 
-<p>A veces, el aprendizaje mínimo viable requiere construir un producto. A veces requiere una página de destino, un prototipo o incluso solo conversaciones. La forma debe seguir el objetivo de aprendizaje, no al revés.</p>
+<p>El ejemplo frecuentemente citado de Reis es el de Zappos, un minorista de zapatos en línea que fue adquirido por Amazon, cuyo MVP involucró una plataforma existente y zapatos comprados bajo demanda de tiendas de zapatos locales – más sobre esto en un segundo.</p>
 
-<h2>Viable significa valioso</h2>
+<p>Blank, por otro lado, menciona que una simple página de destino puede actuar como un MVP.</p>
 
-<p>El "viable" en MVP significa que tu producto debe entregar valor real, incluso si es mínimo. Un MVP que no resuelve un problema real o proporciona valor real no es viable, es solo un prototipo o una demostración.</p>
+<p>Ok, seguro, pero ¿cómo?</p>
 
-<p>Tu MVP debe ser algo que los clientes realmente usarían y potencialmente pagarían, incluso si le faltan características que planeas agregar más tarde. Si no es lo suficientemente valioso para los early adopters, no es un MVP.</p>
+<p>Bueno, ahora sería un buen momento para volver al propósito de un MVP. Realmente aprecio los pensamientos de Rik Higham sobre el tema en su artículo de Hacker Noon hace unos años:</p>
 
-<h2>Ciclos de aprendizaje</h2>
+<p>"Hay un defecto en el corazón del término Producto Mínimo Viable: no es un producto. Es una forma de probar si has encontrado un problema que vale la pena resolver."</p>
 
-<p>Piensa en tu MVP como la primera iteración en un ciclo de aprendizaje: construir, medir, aprender, repetir. Cada iteración debe enseñarte algo nuevo que informe la siguiente iteración. Cuanto más rápido puedas recorrer estos ciclos, más rápido construirás un producto que realmente sirva a tus clientes.</p>
+<p>En su artículo, continúa afirmando que deberíamos estar enfocados en probar nuestra suposición más riesgosa con la menor cantidad posible de esfuerzo y costo. Cuando comenzamos un negocio, tenemos una idea para un producto, o incluso solo comenzamos a trabajar en nuevas características, llevamos una serie de suposiciones con nosotros:</p>
 
-<p>No caigas en la trampa de construir un MVP y luego moverte inmediatamente a "el producto real". Tu MVP debe informar tu producto real. Usa lo que aprendes para tomar mejores decisiones sobre qué construir a continuación.</p>
+<ul>
+	<li>Muchas personas están lidiando con este problema y están motivadas para resolverlo.</li>
+	<li>Las personas están dispuestas a invertir dinero, tiempo, esfuerzo para adoptar una solución al problema.</li>
+	<li>Suficiente del mercado querrá mi solución particular a este problema.</li>
+	<li>Puedo crear un negocio sostenible alrededor de resolver este problema.</li>
+</ul>
 
-<p>Recuerda: un MVP no es un destino, es un punto de partida. Es tu primer paso hacia construir algo grandioso, no una excusa para construir algo mediocre.</p>`,
+<p>La lista continúa y continúa. Y algunas suposiciones llevan un riesgo mucho mayor que otras. Por ejemplo, la suposición de que "Los usuarios disfrutarán de animaciones ilustradas lindas en la aplicación" es mucho menos riesgosa que la suposición de que "Los usuarios estarán dispuestos a proporcionarnos su información de cuenta bancaria para usar la característica principal de nuestra aplicación." La experiencia del usuario no sufrirá mucho (y la línea de fondo aún menos) si las personas no aman al 100% el patito bailarín lindo en tu pantalla de confirmación, pero una actitud que determina la adopción de la parte principal de tu solución puede ser decisiva para todo tu negocio.</p>
+
+<p>Zappos fue construido probando una suposición riesgosa antes de construir una plataforma: "Las personas estarán dispuestas a comprar zapatos que no han probado en una tienda." Airbnb tuvo que probar la suposición de que los estadounidenses estarían dispuestos a abrir sus hogares a completos extraños, y a su vez, quedarse en hogares de extraños. En las primeras etapas, una página de destino puede funcionar para probar si el mercado objetivo se emociona con un concepto o se identifica con un problema.</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/vmv47p4zksWDC/source.gif" alt="Test it out" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Test it out, see if it will come to life! (via Giphy)</p>
+</div>
+
+<p>Hace unos años, realicé trabajo de investigación y diseño para un fundador con un concepto de mercado de dos lados. En lugar de construir toda la aplicación para comenzar, encontró éxito probando el valor de su servicio a través de un Formulario de Google y llamadas telefónicas, coordinando manualmente los dos lados del mercado de una manera que reflejaba la coordinación que la plataforma realizaría automáticamente en el futuro.</p>
+
+<p>Puede ser simple – Comienza con esto:</p>
+
+<ul>
+	<li>Enumera tus suposiciones más riesgosas. Pide a compañeros, miembros del equipo y/o expertos externos que te ayuden a identificar suposiciones subconscientes.</li>
+	<li>Desarrolla un plan para probar la próxima gran suposición. Por ejemplo, podrías ser capaz de probar la suposición de que "los agentes inmobiliarios estarán dispuestos a comprar este producto" usando maquetas de algunas pantallas y una página de destino. Un prototipo podría hacer el truco en otros casos. Una aplicación completamente construida podría ser necesaria (aunque debería, en la mayoría de los casos, ser construida en lanzamientos Agile en pequeños bocados para un aprendizaje óptimo), o algunas videollamadas con personas que encajan en tu mercado objetivo pueden decirte todo lo que necesitas saber. Involucrar un equipo de diseño UX como Trailmerge temprano en el proceso puede ser una forma rentable de llegar rápidamente a aprendizajes clave.</li>
+</ul>
+
+<p>Recuerda: La actividad central de una startup es aprender y mejorar con el objetivo de un modelo de negocio sostenible. Entender las suposiciones que llevas y probarlas una por una estilo método científico es un paso clave para aprender y tener éxito, ¡y puede comenzar pequeño!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
