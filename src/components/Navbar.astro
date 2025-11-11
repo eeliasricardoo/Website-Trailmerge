@@ -112,6 +112,16 @@ if (isBlogPost) {
 				languageButton.focus();
 			}
 		});
+
+		// Save language preference when user clicks on language option
+		const languageOptions = document.querySelectorAll('.language-option');
+		languageOptions.forEach(option => {
+			option.addEventListener('click', (e) => {
+				const href = (e.target as HTMLAnchorElement).href;
+				const lang = href.includes('/es') ? 'es' : 'en';
+				localStorage.setItem('preferred-language', lang);
+			});
+		});
 	}
 </script>
 
