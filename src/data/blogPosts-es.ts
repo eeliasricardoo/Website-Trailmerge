@@ -172,35 +172,100 @@ export const blogPostsEs: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.",
 		imageAlt: "Ilustración de brújula",
-		content: `<p>Construir un gran producto SaaS requiere entender profundamente a tus usuarios. Pero aquí está el problema: la mayoría de los fundadores y líderes de producto no están haciendo las preguntas correctas. Están preguntando qué características quieren los usuarios, cuando deberían estar preguntando por qué los usuarios necesitan esas características. Están preguntando sobre soluciones, cuando deberían estar preguntando sobre problemas.</p>
+		imageCredit: "Blog Photo by Artem Maltsev on Unsplash",
+		content: `<p>Como instructor en General Assembly, una de las principales cosas que quería que mi cohorte se llevara del programa intensivo de diseño UX de 10 semanas era esto: cómo hacer las preguntas correctas.</p>
 
-<p>Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.</p>
+<p>Los píxeles son geniales y todo eso – y, sin duda, definen el resultado del trabajo que hacemos como diseñadores de productos. Pero las buenas preguntas son la base del buen diseño, y necesitarás saber cómo hacerlas si estás interesado en identificar qué características y funcionalidades tendrán un impacto en tu mercado.</p>
 
-<h2>Haz preguntas abiertas</h2>
+<p>Primero, necesitarás entender qué información esperas obtener haciendo preguntas. ¿Está relacionada con comportamientos y preferencias actuales? ¿Es retroalimentación sobre una idea que tienes? ¿Es si los clientes están dispuestos a pagar por tu producto o no?</p>
 
-<p>Las buenas preguntas te ayudan a entender las necesidades del usuario, validar suposiciones y construir mejores productos. Concéntrate en preguntas abiertas que fomenten respuestas detalladas. En lugar de "¿Te gusta la característica X?" pregunta "Cuéntame sobre tu proceso actual para [tarea]." En lugar de "¿Usarías esto?" pregunta "Explícame cómo manejas [problema] hoy."</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/XBpEStoQ5rftPFA8rh/giphy.gif" alt="Next question" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Next question. (via Giphy)</p>
+</div>
 
-<p>Las preguntas abiertas revelan contexto, motivaciones y restricciones que tal vez nunca descubrirías con preguntas de sí/no. Te ayudan a entender el "por qué" detrás del comportamiento del usuario, no solo el "qué."</p>
+<p>En esta publicación, nos enfocaremos en preguntas en descubrimiento de clientes y entrevistas con usuarios, aunque estos principios se pueden aplicar al trabajo con partes interesadas, sesiones de ideación y más.</p>
 
-<h2>Enfócate en problemas, no en soluciones</h2>
+<p>Echemos un vistazo a los elementos esenciales de las buenas preguntas que revelarán perspectivas claras, precisas y accionables:</p>
 
-<p>Cuando los usuarios sugieren características, profundiza en el problema subyacente. Si alguien dice "Necesito un tablero," pregunta qué información están tratando de acceder y por qué. Si solicitan un botón específico, pregunta qué acción están tratando de realizar y qué les impide hacerlo ahora.</p>
+<p><strong>1. Define los objetivos de investigación y las preguntas con anticipación.</strong></p>
 
-<p>Los usuarios son expertos en sus problemas, pero tú eres el experto en soluciones. Al entender los problemas profundamente, puedes diseñar mejores soluciones de las que los usuarios sugieren inicialmente.</p>
+<p>Soy un gran fanático de salirme del guión. Era el niño que lograba hacer bastante bien en las presentaciones escolares con poca preparación. El hecho es que es importante prepararse por algunas razones:</p>
 
-<h2>Explora el contexto</h2>
+<ul>
+	<li>Los objetivos claros te ayudarán a entender qué información buscar en tu investigación (y por lo tanto, qué metodologías usar y qué preguntas hacer).</li>
+	<li>Serás menos propenso a olvidar hacer preguntas importantes.</li>
+	<li>Tus datos serán más confiables porque estás haciendo preguntas consistentes en todos los participantes.</li>
+	<li>Podrás elaborar preguntas no capciosas para reducir el sesgo de los participantes y mejorar la confiabilidad de las perspectivas de investigación, lo que nos lleva a...</li>
+</ul>
 
-<p>Las grandes preguntas exploran el contexto alrededor de las necesidades del usuario. ¿Qué está sucediendo antes de que necesiten esta característica? ¿Qué sucede después? ¿Quién más está involucrado? ¿Qué herramientas están usando? ¿Dentro de qué restricciones están trabajando?</p>
+<p><strong>2. Evita preguntas capciosas.</strong></p>
 
-<p>El contexto te ayuda a diseñar características que se ajustan naturalmente a los flujos de trabajo de los usuarios en lugar de forzarlos a adaptarse a tu producto.</p>
+<p>En The Mom Test, Rob Fitzpatrick da una ilustración conmovedora de los peligros de hacer preguntas capciosas. Aquí hay una pequeña paráfrasis:</p>
 
-<h2>Valida suposiciones</h2>
+<p><em>Emprendedor: "¿Te gusta mi idea?"</em><br />
+<em>Mamá: "¡Por supuesto, cariño!"</em><br />
+<em>Emprendedor: "Oh, dulce. ¡Voy a ser rico!"</em></p>
 
-<p>Usa preguntas para probar tus suposiciones. Si asumes que los usuarios quieren un rendimiento más rápido, pregúntales sobre su experiencia actual. Si asumes que una característica es crítica, pregunta qué sucede cuando no está disponible. Si asumes que los usuarios entienden un concepto, pídeles que lo expliquen con sus propias palabras.</p>
+<p>Fitzpatrick luego elabora sobre el peligro de que las personas – no solo madres cariñosas, sino familia, amigos y extraños por igual – le digan a los investigadores lo que quieren escuchar para ser "amables" en lugar de la verdad dura que necesitan saber.</p>
 
-<p>Tus suposiciones son hipótesis hasta que se validen. Las buenas preguntas te ayudan a separar lo que sabes de lo que crees que sabes.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/wRfVij0ow9h28/source.gif" alt="Moral support" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">El apoyo es agradable y todo, pero las mentiras piadosas pueden llevar a la ruina. (via Giphy)</p>
+</div>
 
-<p>Recuerda, el objetivo no es confirmar lo que ya crees, es descubrir lo que no sabes. Los mejores productos provienen de hacer preguntas que desafíen tus suposiciones y revelen nuevas perspectivas.</p>`,
+<p>Hay otros métodos para navegar alrededor de estos falsos positivos, pero un primer paso fácil es dejar de hacer preguntas de sí/no, especialmente las relacionadas con preferencias.</p>
+
+<p><strong>3. Usa tus palabras de pregunta "W".</strong></p>
+
+<p>¿Qué tipos de preguntas hacer, entonces? ¡Las abiertas!</p>
+
+<p>Una gran base para formar estas preguntas comenzando con las 5 Ws:</p>
+
+<ul>
+	<li>Quién</li>
+	<li>Qué</li>
+	<li>Cuándo</li>
+	<li>Dónde</li>
+	<li>Por qué</li>
+	<li>Cómo (ok, no son 5, y no es una W, pero tenemos que incluirlo)</li>
+</ul>
+
+<p>Esta es una manera fácil, pero no la única, de formar preguntas que no sean de sí/no que alentarán a los entrevistados a proporcionar respuestas descriptivas. Si te sientes especialmente aventurero, prueba algunos indicadores que comiencen con, "¿Hasta qué punto…?" y "En una escala del 1 al 5, …?"</p>
+
+<p><strong>4. Haz preguntas de seguimiento (especialmente ¿Por qué?)</strong></p>
+
+<p>Si tienes niños pequeños (yo tengo cuatro), probablemente estés familiarizado con largas sesiones de interrogatorio compuestas enteramente de esta sola palabra: "¿Por qué?"</p>
+
+<p>¿Por qué, preguntas? 🙃</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/2fuSGwfvM77J1sAzxj/giphy.gif" alt="4 year old girls ask around 390 questions a day" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">This seems about right for my daughter. (via Giphy)</p>
+</div>
+
+<p>Bueno, es simple, esa pequeña palabra puede producir mucha información útil mientras los niños aprenden sobre el mundo que los rodea. Capas y capas de información útil. También puede ayudarte como emprendedor o persona de producto a llegar al núcleo de algunos problemas complicados, como Eric Ries señala en The Lean Startup al elaborar sobre el principio de los 5 Por qués.</p>
+
+<p><strong>5. No solo preguntes. Observa.</strong></p>
+
+<p>El comportamiento observado (o incluso contado) típicamente es más confiable que las afirmaciones especulativas que hacen los entrevistados. Sí, puedo decir que definitivamente tomaría un viaje de fin de semana a la luna si tuviera la oportunidad. Pero si miras mi comportamiento, verías que ni siquiera he gastado dinero para volar fuera del país en los últimos años. No exactamente ajuste producto-mercado, ¿verdad? Confía en el historial más que en las preferencias, esperanzas y deseos expresados.</p>
+
+<p><strong>6. Practica la escucha activa.</strong></p>
+
+<p>La escucha activa es la técnica de estar completamente presente y comprometido en lo que alguien está diciendo. Es esencial para el descubrimiento de clientes y la investigación de usuarios. Además de dar contacto visual y lenguaje corporal que demuestre interés y cuidado en lo que el entrevistado está hablando, la escucha activa implica repetir frases cortas y hacer preguntas aclaratorias, por ejemplo, "Parece que has estado luchando con tu software actual porque la navegación es confusa. ¿Es correcto?" La escucha activa no solo ayuda a asegurar que tu información sea precisa, también puede ayudar a que los entrevistados se sientan más cómodos porque se sienten seguros y entendidos.</p>
+
+<p><strong>7. Solo agrega curiosidad.</strong></p>
+
+<p>Puedes escuchar activamente sin permitir que tus suposiciones sean desafiadas. Esté dispuesto a dejar que los datos te lleven a nuevas ideas, nuevos entendimientos del problema y nuevas soluciones potenciales.</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/Uod3eEQvIMHYHl88U2/giphy.gif" alt="Keep those questions coming" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Keep asking to keep learning! (via Giphy)</p>
+</div>
+
+<p>Estos simplemente representan los fundamentos de hacer buenas preguntas. A medida que ganes más práctica, notarás qué funciona y qué produce datos engañosos. Es un proceso iterativo desarrollar estas habilidades. ¿El siguiente paso? ¡Ve a hablar con algunas personas y ve qué perspectivas descubres!</p>
+
+<p>¡Oh, y siéntete libre de hacernos cualquier pregunta que tengas sobre este tema también!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",

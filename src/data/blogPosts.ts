@@ -186,35 +186,100 @@ export const blogPosts: BlogPost[] = [
 		category: "SAAS",
 		excerpt: "Improve your questioning technique with these foundations for asking good questions when building your SaaS product.",
 		imageAlt: "Compass illustration",
-		content: `<p>Building a great SaaS product requires understanding your users deeply. But here's the thing: most founders and product leaders aren't asking the right questions. They're asking what features users want, when they should be asking why users need those features. They're asking about solutions, when they should be asking about problems.</p>
+		imageCredit: "Blog Photo by Artem Maltsev on Unsplash",
+		content: `<p>As an instructor at General Assembly, one of the main things I wanted my cohort to take away from the 10-week UX design immersive was this: how to ask the right questions.</p>
 
-<p>Improve your questioning technique with these foundations for asking good questions when building your SaaS product.</p>
+<p>Pixels are great and all – and, to be sure, they define the output of the work we do as product designers. But good questions are the foundation of good design, and you'll need to know how to ask them if you're interested in identifying which features and functionality will make an impact in your market.</p>
 
-<h2>Ask open-ended questions</h2>
+<p>First, you'll need to understand what information you're hoping to gain by asking questions. Is it related to current behaviors and preferences? Is it feedback on an idea you have? Is it whether or not customers are willing to pay for your product?</p>
 
-<p>Good questions help you understand user needs, validate assumptions, and build better products. Focus on open-ended questions that encourage detailed responses. Instead of "Do you like feature X?" ask "Tell me about your current process for [task]." Instead of "Would you use this?" ask "Walk me through how you handle [problem] today."</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/XBpEStoQ5rftPFA8rh/giphy.gif" alt="Next question" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Next question. (via Giphy)</p>
+</div>
 
-<p>Open-ended questions reveal context, motivations, and constraints that you might never discover with yes/no questions. They help you understand the "why" behind user behavior, not just the "what."</p>
+<p>In this post, we'll be focusing on questions in customer discovery and user interviews, though these principles can be applied to working with stakeholders, ideation sessions, and more.</p>
 
-<h2>Focus on problems, not solutions</h2>
+<p>Let's take a look at the essentials to good questions that will uncover clear, accurate, and actionable insights:</p>
 
-<p>When users suggest features, dig into the underlying problem. If someone says "I need a dashboard," ask what information they're trying to access and why. If they request a specific button, ask what action they're trying to accomplish and what's preventing them from doing it now.</p>
+<p><strong>1. Define research goals and questions ahead of time.</strong></p>
 
-<p>Users are experts on their problems, but you're the expert on solutions. By understanding problems deeply, you can design better solutions than what users initially suggest.</p>
+<p>I'm a big fan of going off-script. I was the kid who managed to do pretty well in school presentations with little preparation. The fact of the matter is, it's important to prepare for a few reasons:</p>
 
-<h2>Explore the context</h2>
+<ul>
+	<li>Clear goals will help you to understand what information to seek out in your research (and therefore which methodologies to use and which questions to ask).</li>
+	<li>You'll be less likely to forget to ask important questions.</li>
+	<li>Your data will be more reliable because you're asking consistent questions across all participants.</li>
+	<li>You'll be able to craft non-leading questions to reduce biasing participants and enhance reliability of research insights, which brings us to...</li>
+</ul>
 
-<p>Great questions explore the context around user needs. What's happening before they need this feature? What happens after? Who else is involved? What tools are they using? What constraints are they working within?</p>
+<p><strong>2. Avoid leading questions.</strong></p>
 
-<p>Context helps you design features that fit naturally into users' workflows rather than forcing them to adapt to your product.</p>
+<p>In The Mom Test, Rob Fitzpatrick gives a poignant illustration of the dangers of asking leading questions. Here's a little paraphrase:</p>
 
-<h2>Validate assumptions</h2>
+<p><em>Entrepreneur: "Do you like my idea?"</em><br />
+<em>Mom: "Of course, honey!"</em><br />
+<em>Entrepreneur: "Oh sweet. I'm going to be rich!"</em></p>
 
-<p>Use questions to test your assumptions. If you assume users want faster performance, ask them about their current experience. If you assume a feature is critical, ask what happens when it's not available. If you assume users understand a concept, ask them to explain it in their own words.</p>
+<p>Fitzpatrick then elaborates on the danger of people – not just doting mothers, but family, friends, and strangers alike – telling researchers what they want to hear to be "nice" rather than the hard truth they need to know.</p>
 
-<p>Your assumptions are hypotheses until validated. Good questions help you separate what you know from what you think you know.</p>
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/wRfVij0ow9h28/source.gif" alt="Moral support" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Support's nice and all, but white lies can lead to ruin. (via Giphy)</p>
+</div>
 
-<p>Remember, the goal isn't to confirm what you already believe—it's to discover what you don't know. The best products come from asking questions that challenge your assumptions and reveal new insights.</p>`,
+<p>There are other methods to navigate around these false positives, but one easy first step is to stop asking yes/no questions, especially those pertaining to preferences.</p>
+
+<p><strong>3. Use your W question words.</strong></p>
+
+<p>What kinds of questions to ask, then? Open-ended ones!</p>
+
+<p>A great foundation to forming these questions by starting with 5 Ws:</p>
+
+<ul>
+	<li>Who</li>
+	<li>What</li>
+	<li>When</li>
+	<li>Where</li>
+	<li>Why</li>
+	<li>How (ok, not 5, and not a W, but we gotta throw it in there)</li>
+</ul>
+
+<p>This is an easy way, but not the only way, to form non-yes/no questions that will encourage interviewees to provide descriptive responses. If you're feeling extra adventurous, go for some prompts that begin with, "To what extent…?" and "On a scale of 1-5, …?"</p>
+
+<p><strong>4. Ask follow up questions (especially Why?)</strong></p>
+
+<p>If you have young kids (I have four), you're likely familiar with long interrogation sessions entirely composed of this single word: "Why?"</p>
+
+<p>Why, you ask? 🙃</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/2fuSGwfvM77J1sAzxj/giphy.gif" alt="4 year old girls ask around 390 questions a day" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">This seems about right for my daughter. (via Giphy)</p>
+</div>
+
+<p>Well, it's simple, that one little word can produce a lot of helpful information as kids learn about the world around them. Layers upon layers of helpful information. It can also help you as an entrepreneur or product person get to the core of some hairy problems, as Eric Ries notes in The Lean Startup when elaborating on the principle of the 5 Whys.</p>
+
+<p><strong>5. Don't just ask. Observe.</strong></p>
+
+<p>Observed (or even recounted) behavior is typically more reliable than speculative assertions that interviewees make. Yes, I may say I would totally take a weekend trip to the moon if I had the chance. But if you look at my behavior, you'd see I haven't even spent money to fly out of the country in the last few years. Not exactly product-market fit, right? Trust the track record more than voiced preferences, hopes, and wishes.</p>
+
+<p><strong>6. Practice active listening.</strong></p>
+
+<p>Active listening is the technique of being fully present and engaged in what someone is saying. It's essential to customer discovery and user research. In addition to giving eye contact and body language that demonstrates interest and care in what the interviewee is talking about, active listening involves repeating back short phrases and asking clarifying questions, for example, "It sounds like you've been struggling with your current software because the navigation is confusing. Is that right?" Not only does active listening help ensure your information is accurate, it can also help interviewees feel more at ease because they feel safe and understood.</p>
+
+<p><strong>7. Just add curiosity.</strong></p>
+
+<p>You can actively listen without allowing your assumptions to be challenged. Be willing to let the data take you to new ideas, new understandings of the problem, and new potential solutions.</p>
+
+<div style="margin: 32px 0; text-align: center;">
+	<img src="https://media.giphy.com/media/Uod3eEQvIMHYHl88U2/giphy.gif" alt="Keep those questions coming" style="max-width: 100%; height: auto; border-radius: 4px;" />
+	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Keep asking to keep learning! (via Giphy)</p>
+</div>
+
+<p>These simply represent the foundations of asking good questions. As you gain more practice, you'll notice what works and what produces misleading data. It's an iterative process to develop these skills. The next step? Go talk to some folks and see what insights you uncover!</p>
+
+<p>Oh, and feel free to ask us any questions you have about this topic as well!</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
