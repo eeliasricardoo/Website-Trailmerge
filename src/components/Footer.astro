@@ -50,7 +50,7 @@ const {
 	],
 	copyright = t('footer.copyright'),
 	ctaButtonText = t('footer.cta'),
-	ctaButtonUrl = "#"
+	ctaButtonUrl = "https://calendar.app.google/9LexXxAa7U6qSVgj6"
 } = Astro.props;
 ---
 
@@ -89,7 +89,7 @@ const {
 						</ul>
 						<div class="spacer-l"></div>
 						{index === linkGroups.length - 1 && (
-							<a id="footer-contact" href={ctaButtonUrl} class="footer-cta-button open-modal button dark-button">{ctaButtonText}</a>
+							<a id="footer-contact" href={ctaButtonUrl} target="_blank" rel="noopener noreferrer" class="footer-cta-button button dark-button">{ctaButtonText}</a>
 						)}
 					</div>
 				))}
