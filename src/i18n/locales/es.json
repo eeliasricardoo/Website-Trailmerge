@@ -107,6 +107,11 @@
     "description": "Artículos útiles para fundadores y líderes de producto B2B SaaS sobre mejores prácticas de diseño UX y estrategia de producto.",
     "seePost": "Ver artículo",
     "readMore": "Leer más",
+    "postTitleSuffix": "Blog de Trailmerge",
+    "breadcrumbs": {
+      "home": "Inicio",
+      "blog": "Blog"
+    },
     "seo": {
       "keywords": "blog diseño UX, artículos B2B SaaS, consejos diseño producto, estrategia MVP, mejores prácticas diseño, fundadores SaaS"
     }

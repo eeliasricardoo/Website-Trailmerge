@@ -4,6 +4,7 @@ import Navbar from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
 import ContactModal from '../../../components/ContactModal.astro';
 import { getAllPostsEs } from '../../../data/blogPosts-es';
+import { useTranslations } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
 	const posts = getAllPostsEs();
@@ -15,6 +16,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const lang = 'es';
+const t = useTranslations(lang);
 
 if (!post) {
 	return Astro.redirect('/es/blog');
@@ -70,8 +72,8 @@ const articleData = {
 
 // Breadcrumbs for blog posts
 const breadcrumbs = [
-	{ name: "Inicio", url: "https://trailmerge.com/es/" },
-	{ name: "Blog", url: "https://trailmerge.com/es/blog/" },
+	{ name: t('blog.breadcrumbs.home'), url: "https://trailmerge.com/es/" },
+	{ name: t('blog.breadcrumbs.blog'), url: "https://trailmerge.com/es/blog/" },
 	{ name: post.title, url: articleUrl }
 ];
 
@@ -80,7 +82,7 @@ const keywords = `${post.category}, ${post.title}, diseño UX, B2B SaaS, diseño
 ---
 
 <Layout
-	title={`${post.title} – Trailmerge Blog`}
+	title={`${post.title} – ${t('blog.postTitleSuffix')}`}
 	description={post.excerpt}
 	schemaType="article"
 	articleData={articleData}
