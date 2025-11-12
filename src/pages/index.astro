@@ -1,57 +1,30 @@
 ---
-// Detect language preference from Accept-Language header
-const acceptLanguage = Astro.request.headers.get('accept-language') || '';
-
-// Parse languages and find preferred language
-const languages = acceptLanguage
-	.split(',')
-	.map(lang => {
-		const [locale, q = '1'] = lang.trim().split(';q=');
-		return { locale: locale.toLowerCase(), quality: parseFloat(q) };
-	})
-	.sort((a, b) => b.quality - a.quality);
-
-// Check if Spanish is preferred
-const prefersSpanish = languages.some(lang => 
-	lang.locale.startsWith('es') || 
-	lang.locale.includes('es')
-);
-
-// Redirect based on language preference
-if (prefersSpanish) {
-	return Astro.redirect('/es/', 302);
-}
-
-// Default to English
-return Astro.redirect('/en/', 302);
+// This page is handled by middleware.ts which redirects to /en/ or /es/
+// based on the user's Accept-Language header
+// Client-side fallback is provided for static builds
 ---
 
-<script is:inline>
-	// Client-side fallback for static builds (runs only if server redirect didn't work)
-	(function() {
-		// Check if we're still on root path (redirect didn't happen)
-		if (window.location.pathname === '/') {
-			// Check for saved preference first
-			const savedLang = localStorage.getItem('preferred-language');
-			
-			if (savedLang) {
-				window.location.href = savedLang === 'es' ? '/es/' : '/en/';
-				return;
-			}
-			
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Redirecting...</title>
+	<meta name="robots" content="noindex, nofollow">
+	<script is:inline>
+		// Client-side language detection fallback
+		(function() {
 			// Detect browser language
 			const browserLang = navigator.language || navigator.userLanguage || 'en';
 			const prefersSpanish = browserLang.toLowerCase().startsWith('es');
 			
 			// Redirect based on browser language
-			if (prefersSpanish) {
-				localStorage.setItem('preferred-language', 'es');
-				window.location.href = '/es/';
-			} else {
-				localStorage.setItem('preferred-language', 'en');
-				window.location.href = '/en/';
-			}
-		}
-	})();
-</script>
+			window.location.href = prefersSpanish ? '/es/' : '/en/';
+		})();
+	</script>
+</head>
+<body>
+	<p>Redirecting...</p>
+</body>
+</html>
 
