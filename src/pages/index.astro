@@ -1,40 +1,12 @@
 ---
 // This page redirects to /en/ or /es/ based on the user's browser language
 // Required by Astro i18n for root redirect to default locale
----
+// The middleware handles the redirect, but we need this file for Astro i18n
+// If middleware doesn't catch it, redirect to default locale
+const acceptLanguage = Astro.request.headers.get('accept-language') || '';
+const prefersSpanish = acceptLanguage.toLowerCase().includes('es');
+const redirectUrl = prefersSpanish ? '/es/' : '/en/';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Redirecting...</title>
-	<meta name="robots" content="noindex, nofollow">
-	<script is:inline>
-		// Immediate redirect based on browser language
-		(function() {
-			try {
-				// Get browser language
-				const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-				
-				// Check if Spanish is preferred (es, es-ES, es-MX, etc.)
-				const prefersSpanish = browserLang.startsWith('es');
-				
-				// Redirect immediately
-				const targetUrl = prefersSpanish ? '/es/' : '/en/';
-				window.location.replace(targetUrl);
-			} catch (e) {
-				// Fallback to English if anything fails
-				window.location.replace('/en/');
-			}
-		})();
-	</script>
-</head>
-<body>
-	<p>Redirecting...</p>
-	<noscript>
-		<p>Please enable JavaScript to continue, or <a href="/en/">click here</a> to go to the English version.</p>
-	</noscript>
-</body>
-</html>
+return Astro.redirect(redirectUrl, 302);
+---
 
