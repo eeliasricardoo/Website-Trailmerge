@@ -28,7 +28,7 @@ export default defineConfig({
 					item.priority = 1.0;
 				}
 				// About page
-				else if (item.url.includes('/en/about') || item.url.includes('/es/sobre-nosotros')) {
+				else if (item.url.includes('/en/about') || item.url.includes('/es/about') || item.url.includes('/es/sobre-nosotros')) {
 					item.changefreq = 'monthly';
 					item.priority = 0.9;
 				}
@@ -36,6 +36,11 @@ export default defineConfig({
 				else if (item.url === 'https://trailmerge.com/en/blog/' || item.url === 'https://trailmerge.com/es/blog/') {
 					item.changefreq = 'weekly';
 					item.priority = 0.9;
+				}
+				// Privacy page
+				else if (item.url.includes('/en/privacy') || item.url.includes('/es/privacy') || item.url.includes('/es/privacidad')) {
+					item.changefreq = 'monthly';
+					item.priority = 0.8;
 				}
 				// Blog posts
 				else if (item.url.includes('/en/blog/') || item.url.includes('/es/blog/')) {

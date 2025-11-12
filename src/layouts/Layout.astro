@@ -46,13 +46,15 @@ const currentPath = Astro.url.pathname;
 const routeMap = {
 	'/': { en: '/en', es: '/es' },
 	'/en': { en: '/en', es: '/es' },
-	'/en/about': { en: '/en/about', es: '/es/sobre-nosotros' },
+	'/en/about': { en: '/en/about', es: '/es/about' },
 	'/en/blog': { en: '/en/blog', es: '/es/blog' },
-	'/en/privacy': { en: '/en/privacy', es: '/es/privacidad' },
+	'/en/privacy': { en: '/en/privacy', es: '/es/privacy' },
 	'/es': { en: '/en', es: '/es' },
-	'/es/sobre-nosotros': { en: '/en/about', es: '/es/sobre-nosotros' },
+	'/es/about': { en: '/en/about', es: '/es/about' },
+	'/es/sobre-nosotros': { en: '/en/about', es: '/es/about' },
 	'/es/blog': { en: '/en/blog', es: '/es/blog' },
-	'/es/privacidad': { en: '/en/privacy', es: '/es/privacidad' },
+	'/es/privacy': { en: '/en/privacy', es: '/es/privacy' },
+	'/es/privacidad': { en: '/en/privacy', es: '/es/privacy' },
 };
 
 // Handle blog post slugs

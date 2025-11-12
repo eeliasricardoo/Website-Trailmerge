@@ -20,9 +20,16 @@ import SeanHeadshot from '../../assets/images/Sean-Headshot.png';
 import AndyHeadshot from '../../assets/images/Andy-Headshot.png';
 import TourialScreenshots from '../../assets/images/Tourial-Screenshots.png';
 
-const lang = 'en';
-const t = useTranslations(lang);
-const testimonials = getTestimonialsByLang(lang);
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'en' } },
+		{ params: { lang: 'es' } },
+	];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as 'en' | 'es');
+const testimonials = getTestimonialsByLang(lang as 'en' | 'es');
 
 // SEO keywords for homepage
 const keywords = t('homepage.seo.keywords');

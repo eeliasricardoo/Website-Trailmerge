@@ -4,31 +4,79 @@ import Navbar from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
 import ContactModal from '../../../components/ContactModal.astro';
 import { getAllPosts } from '../../../data/blogPosts';
+import { getAllPostsEs } from '../../../data/blogPosts-es';
 import { useTranslations } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
-	const posts = getAllPosts();
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: { post },
-	}));
+	const enPosts = getAllPosts();
+	const esPosts = getAllPostsEs();
+	
+	const paths = [
+		...enPosts.map((post) => ({
+			params: { lang: 'en', slug: post.slug },
+			props: { post, lang: 'en' },
+		})),
+		...esPosts.map((post) => ({
+			params: { lang: 'es', slug: post.slug },
+			props: { post, lang: 'es' },
+		})),
+	];
+	
+	return paths;
 }
 
-const { post } = Astro.props;
-const lang = 'en';
-const t = useTranslations(lang);
+const { post, lang } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
 
 if (!post) {
-	return Astro.redirect('/en/blog');
+	return Astro.redirect(`/${lang}/blog`);
+}
+
+// Helper function to parse Spanish date format (e.g., "8 DE JULIO, 2022")
+function parseSpanishDate(dateString: string): Date {
+	if (lang === 'en') {
+		return new Date(dateString);
+	}
+	
+	const monthMap: { [key: string]: string } = {
+		'ENERO': '01', 'FEBRERO': '02', 'MARZO': '03', 'ABRIL': '04',
+		'MAYO': '05', 'JUNIO': '06', 'JULIO': '07', 'AGOSTO': '08',
+		'SEPTIEMBRE': '09', 'OCTUBRE': '10', 'NOVIEMBRE': '11', 'DICIEMBRE': '12'
+	};
+
+	// Parse format like "8 DE JULIO, 2022" or "22 DE DICIEMBRE, 2020"
+	const match = dateString.match(/(\d+)\s+DE\s+([A-ZÁÉÍÓÚÑ]+),\s+(\d{4})/i);
+	if (match) {
+		const day = match[1].padStart(2, '0');
+		const monthName = match[2].toUpperCase();
+		const month = monthMap[monthName] || '01';
+		const year = match[3];
+		const date = new Date(`${year}-${month}-${day}`);
+		
+		// Validate the date
+		if (isNaN(date.getTime())) {
+			// If invalid, return current date as fallback
+			return new Date();
+		}
+		return date;
+	}
+
+	// Fallback: try to parse as regular date
+	const fallbackDate = new Date(dateString);
+	if (isNaN(fallbackDate.getTime())) {
+		// If still invalid, return current date
+		return new Date();
+	}
+	return fallbackDate;
 }
 
 // Prepare article data for JSON-LD schema
-const articleUrl = new URL(`/en/blog/${post.slug}`, Astro.site).href;
+const articleUrl = new URL(`/${lang}/blog/${post.slug}`, Astro.site).href;
 const articleData = {
 	title: post.title,
 	description: post.excerpt,
 	image: post.image,
-	datePublished: new Date(post.date).toISOString(),
+	datePublished: parseSpanishDate(post.date).toISOString(),
 	author: {
 		name: post.author.name,
 		image: post.author.image
@@ -38,13 +86,15 @@ const articleData = {
 
 // Breadcrumbs for blog posts
 const breadcrumbs = [
-	{ name: t('blog.breadcrumbs.home'), url: "https://trailmerge.com/en/" },
-	{ name: t('blog.breadcrumbs.blog'), url: "https://trailmerge.com/en/blog/" },
+	{ name: t('blog.breadcrumbs.home'), url: `https://trailmerge.com/${lang}/` },
+	{ name: t('blog.breadcrumbs.blog'), url: `https://trailmerge.com/${lang}/blog/` },
 	{ name: post.title, url: articleUrl }
 ];
 
 // Generate keywords from post title and category
-const keywords = `${post.category}, ${post.title}, UX design, B2B SaaS, product design, Trailmerge`;
+const keywords = lang === 'en' 
+	? `${post.category}, ${post.title}, UX design, B2B SaaS, product design, Trailmerge`
+	: `${post.category}, ${post.title}, diseño UX, B2B SaaS, diseño de producto, Trailmerge`;
 ---
 
 <Layout
