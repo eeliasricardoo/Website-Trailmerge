@@ -6,22 +6,22 @@
     "home": "Inicio de Trailmerge"
   },
   "hero": {
-    "title": "Lleva tu producto al siguiente nivel",
-    "subtitle": "El camino hacia UX y desarrollo de clase mundial para aplicaciones SaaS y empresariales",
+    "title": "Eleva tu software empresarial",
+    "subtitle": "Toma el camino del diseño personalizado para la excelencia operativa",
     "cta": "Agenda una consulta"
   },
   "services": {
     "ignite": {
-      "title": "Impulsa tu práctica de diseño",
-      "description": "Te guiamos para construir sistemas de diseño robustos y procesos colaborativos que potencian todo tu equipo."
+      "title": "Enciende tu transformación digital",
+      "description": "Trabajaremos contigo para crear una estrategia de transformación digital robusta y visión a largo plazo para tus operaciones y software."
     },
     "evaluate": {
-      "title": "Audita la experiencia de tu aplicación",
-      "description": "Nuestro equipo de especialistas realiza auditorías integrales de usabilidad con análisis heurístico avanzado en todas las áreas críticas de tu producto."
+      "title": "Aprende de tu equipo y clientes",
+      "description": "Nuestro equipo de especialistas en diseño y transformación digital realizará investigación y descubrimiento para revelar y priorizar áreas para mejorar."
     },
     "scale": {
-      "title": "Escala tu equipo de diseño",
-      "description": "Amplía las capacidades de UX de tu equipo sin sobrecargar desarrollo. Construye productos de clase mundial con el equipo del tamaño justo para tus necesidades."
+      "title": "Empieza la ascensión",
+      "description": "Nuestro equipo colaborará el tuyo en estrecha colaboración para llevar a tu equipo y sus herramientas de software al siguiente nivel."
     }
   },
   "footer": {
@@ -31,7 +31,7 @@
     "resources": "Recursos",
     "blog": "Blog",
     "cta": "Solicita una consulta",
-    "copyright": "© 2024 Trailmerge Ltd Co. Todos los derechos reservados.",
+    "copyright": "© {year} Trailmerge Ltd Co. Todos los derechos reservados.",
     "address": {
       "line1": "3100 Interstate North Circle SE",
       "line2": "Suite 200",
@@ -46,32 +46,32 @@
     "readMore": "Leer más"
   },
   "about": {
-    "title": "Acerca de Trailmerge",
-    "subtitle": "Como tu equipo de contratación y reclutamiento de diseño de producto, Trailmerge se adapta a la etapa y procesos de tu startup para encontrar diseñadores y líderes que mejor se ajusten a tus necesidades.",
+    "title": "Sobre Trailmerge",
+    "subtitle": "Como tu equipo de transformación digital, experiencia de usuario y desarrollo de software personalizado, Trailmerge mejora los flujos de trabajo de tu equipo para que avancen hacia sus objetivos.",
     "seo": {
-      "title": "Acerca de Trailmerge – Agencia UX para B2B SaaS",
-      "description": "Trailmerge es una agencia UI/UX especializada en diseño de producto B2B SaaS desde MVP hasta los primeros usuarios y más allá. Escalamos con tu producto y negocio.",
-      "keywords": "acerca de Trailmerge, equipo de diseño UX, expertos B2B SaaS, agencia de diseño de producto, equipo de diseño Atlanta"
+      "title": "Sobre Trailmerge – Transformación digital y desarrollo de software personalizado con impulso de UX",
+      "description": "Trailmerge es una agencia de transformación digital orientada al diseño, con especialidación en estrategia de procesos y desarrollo de software personalizado para empresas en crecimiento.",
+      "keywords": "sobre Trailmerge, equipo de diseño UX, agencia de transformación digital, desarrollo de software personalizado, equipo de desarrollo de software Atlanta"
     },
     "vision": {
-      "paragraph1": "En Trailmerge, nuestra visión es promover la abundancia de vida y oportunidades.",
-      "paragraph2": "Esto define cómo trabajamos con nuestro equipo y clientes: la mentoría y el desarrollo son fundamentales para nosotros.",
-      "paragraph3": "Así es como nos asociamos contigo: acompañando a los equipos internos para apoyar sus sueños de impacto y crecimiento."
+      "paragraph1": "En Trailmerge, nuestra visión es promover la abundancia de vida y oportunidad.",
+      "paragraph2": "Esto define cómo trabajamos con nuestro equipo y clientes – la mentoría y el desarrollo son fundamentales para nosotros.",
+      "paragraph3": "Así aliamos a nuestros clientes – avanzamos juntos a los equipos internos para apoyar sus sueños de impacto y su crecimiento."
     },
     "values": {
       "title": "Nuestros Valores",
       "value1": "Oportunidad para personas talentosas y apasionadas",
       "value2": "Responsabilidad individual, éxitos compartidos",
-      "value3": "Tecnología para las personas, no personas para la tecnología",
+      "value3": "La tecnología existe para servir a las personas, no las personas a la tecnología",
       "value4": "Una cultura de honor y libertad",
       "value5": "Los miembros de nuestro equipo son humanos, no \"recursos\"",
-      "value6": "Todos crecemos y todos mentorizamos",
+      "value6": "Todos crecemos y todos mentoreamos",
       "value7": "Comunicación proactiva y amigable"
     }
   },
   "contact": {
     "title": "Agenda tu consulta",
-    "description": "El viaje comienza con un simple primer paso. Envíanos un mensaje: cuéntanos sobre tu proyecto, tus ideas, tu visión, y trabajaremos juntos para hacerla realidad.",
+    "description": "El viaje comienza con un simple primer paso. Envíanos un mensaje – cuéntanos sobre tu proyecto, tus ideas, tu visión – y trabajaremos juntos para hacerla realidad.",
     "form": {
       "nameLabel": "Nombre",
       "namePlaceholder": "Nombre y apellido",
@@ -92,19 +92,19 @@
     }
   },
   "aside": {
-    "text": "Trailmerge potencia equipos de producto SaaS y empresariales con experiencia comprobada en UX, desarrollo y diseño de producto. Implementamos las mejores prácticas estratégicas para impulsar la usabilidad y adopción de tu aplicación."
+    "text": "Trailmerge potencia equipos de operaciones y tecnología empresariales con consultoría estratégica sobre transformación digital, experiencia en UX y producto y desarrollo de software personalizado, para conquistar ineficiencias costosas y elevar la excelencia de tu equipo."
   },
   "offer": {
     "title": "¿Cómo se compara tu producto con la competencia?",
     "buttonText": "Solicita tu auditoría de diseño personalizada"
   },
   "companies": {
-    "title": "Empresas que confían en nosotros",
-    "description": "Hemos trabajado con docenas de startups desde etapa temprana hasta equipos empresariales multinacionales, empoderando a sus equipos para alcanzar el éxito y prosperar en su día a día."
+    "title": "Empresas que hemos servido",
+    "description": "Hemos tenido el honor de trabajar con equipos increíbles desde startups en etapa temprana hasta equipos empresariales multinacionales, empoderando a sus equipos para alcanzar el éxito y prosperar en su día a día."
   },
   "blog": {
-    "title": "Blog de Trailmerge – Insights de Diseño para B2B SaaS",
-    "description": "Artículos útiles para fundadores y líderes de producto B2B SaaS sobre mejores prácticas de diseño UX y estrategia de producto.",
+    "title": "Blog de Trailmerge – Consejos de transformación digital y desarrollo de software empresarial",
+    "description": "Artículos útiles para líderes de operaciones y tecnología sobre mejores prácticas de transformación digital y desarrollo de software.",
     "seePost": "Ver artículo",
     "readMore": "Leer más",
     "postTitleSuffix": "Blog de Trailmerge",
@@ -113,7 +113,7 @@
       "blog": "Blog"
     },
     "seo": {
-      "keywords": "blog diseño UX, artículos B2B SaaS, consejos diseño producto, estrategia MVP, mejores prácticas diseño, fundadores SaaS"
+      "keywords": "blog de transformación digital, artículos de desarrollo de software empresarial, consejos de diseño de producto, estrategia MVP, mejores prácticas de diseño, líderes de operaciones y tecnología, artículos de UX empresarial"
     }
   },
   "caseStudies": {
@@ -130,9 +130,9 @@
   },
   "homepage": {
     "seo": {
-      "title": "Agencia de Diseño UX para Startups B2B SaaS – Trailmerge",
-      "description": "Servicios escalables de UI/UX para SaaS incluyendo diseño MVP, renovación de producto y auditorías de diseño. Agenda una consulta para comenzar.",
-      "keywords": "Agencia de diseño UX, diseño B2B SaaS, diseño MVP, diseño de producto, auditoría de diseño, servicios UI/UX, diseño startup SaaS, agencia UX Atlanta"
+      "title": "Agencia de transformación digital y desarrollo de software empresarial personalizado – Trailmerge",
+      "description": "Servicios escalables de transformación digital y desarrollo de software personalizado para empresas en crecimiento incluyendo consultoría estratégica, diseño UX empresarial y desarrollo de sistemas internos. Agenda una consulta para comenzar.",
+      "keywords": "agencia de transformación digital y desarrollo de software empresarial personalizado, consultoría estratégica, diseño UX empresarial, desarrollo de sistemas internos, agencia de desarrollo de software Atlanta"
     }
   },
   "privacy": {

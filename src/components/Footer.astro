@@ -31,11 +31,6 @@ const currentYear = new Date().getFullYear();
 
 const {
 	logo = TrailmergeLogoGrey,
-	addressLines = [
-		t('footer.address.line1'),
-		t('footer.address.line2'),
-		t('footer.address.line3')
-	],
 	linkGroups = [
 		{
 			title: t('footer.about'),
@@ -51,13 +46,20 @@ const {
 			]
 		}
 	],
-	copyrightText = t('footer.copyright'),
 	ctaButtonText = t('footer.cta'),
 	ctaButtonUrl = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2E0Pl1V454vAAYQJxhS2H0Q4vxa_6-sgcUXQB4cBaCn_jtRYLNMGMp-ka5p-cuCkExM8X1fC19"
 } = Astro.props;
 
-// Replace any 4-digit year in copyright text with current year
-const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
+// Define address lines and copyright text with translations
+const addressLines = [
+	t('footer.address.line1'),
+	t('footer.address.line2'),
+	t('footer.address.line3')
+];
+
+const copyrightText = t('footer.copyright');
+// Replace {year} placeholder with current year
+const copyright = copyrightText.replace(/{year}/g, currentYear.toString());
 ---
 
 <!-- Footer -->
@@ -70,7 +72,7 @@ const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
 				</a>
 				<div class="spacer-l"></div>
 				<div class="help-text">
-					{addressLines.map((line) => (
+					{addressLines.map((line: string) => (
 						<div>{line}</div>
 					))}
 				</div>
