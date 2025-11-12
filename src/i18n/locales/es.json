@@ -106,6 +106,28 @@
     "title": "Blog de Trailmerge – Insights de Diseño para B2B SaaS",
     "description": "Artículos útiles para fundadores y líderes de producto B2B SaaS sobre mejores prácticas de diseño UX y estrategia de producto.",
     "seePost": "Ver artículo",
-    "readMore": "Leer más"
+    "readMore": "Leer más",
+    "seo": {
+      "keywords": "blog diseño UX, artículos B2B SaaS, consejos diseño producto, estrategia MVP, mejores prácticas diseño, fundadores SaaS"
+    }
+  },
+  "caseStudies": {
+    "loanshout": {
+      "title": "LoanShout",
+      "description": "Trailmerge guió a este fundador desde el concepto hasta usuarios reales, transformando la comunicación de préstamos hipotecarios en el proceso.",
+      "imageAlt": "Capturas de pantalla de LoanShout"
+    },
+    "tourial": {
+      "title": "Tourial",
+      "description": "Trailmerge diseñó un sistema escalable y desarrolló nuevas funcionalidades en colaboración con este equipo enfocado en optimizar el proceso de ventas SaaS.",
+      "imageAlt": "Capturas de pantalla de Tourial"
+    }
+  },
+  "homepage": {
+    "seo": {
+      "title": "Agencia de Diseño UX para Startups B2B SaaS – Trailmerge",
+      "description": "Servicios escalables de UI/UX para SaaS incluyendo diseño MVP, renovación de producto y auditorías de diseño. Agenda una consulta para comenzar.",
+      "keywords": "Agencia de diseño UX, diseño B2B SaaS, diseño MVP, diseño de producto, auditoría de diseño, servicios UI/UX, diseño startup SaaS, agencia UX Atlanta"
+    }
   }
 }

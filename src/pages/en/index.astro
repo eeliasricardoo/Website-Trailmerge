@@ -12,6 +12,8 @@ import BlogSection from '../../components/BlogSection.astro';
 import Footer from '../../components/Footer.astro';
 import ContactModal from '../../components/ContactModal.astro';
 import TestimonialSchema from '../../components/TestimonialSchema.astro';
+import { useTranslations } from '../../i18n/utils';
+import { getTestimonialsByLang } from '../../data/testimonials';
 
 // Import images for testimonials and case studies
 import SeanHeadshot from '../../assets/images/Sean-Headshot.png';
@@ -19,11 +21,13 @@ import AndyHeadshot from '../../assets/images/Andy-Headshot.png';
 import TourialScreenshots from '../../assets/images/Tourial-Screenshots.png';
 
 const lang = 'en';
+const t = useTranslations(lang);
+const testimonials = getTestimonialsByLang(lang);
 
 // SEO keywords for homepage
-const keywords = "UX design agency, B2B SaaS design, MVP design, product design, design audit, UI/UX services, SaaS startup design, Atlanta UX agency";
-const title = "UX Design Agency for B2B SaaS Startups – Trailmerge";
-const description = "Scalable UI/UX services for SaaS including MVP design, product overhaul, and design audits. Schedule a free consultation to get started.";
+const keywords = t('homepage.seo.keywords');
+const title = t('homepage.seo.title');
+const description = t('homepage.seo.description');
 ---
 
 <Layout keywords={keywords} title={title} description={description} lang={lang}>
@@ -39,58 +43,58 @@ const description = "Scalable UI/UX services for SaaS including MVP design, prod
 
 	<Testimonial
 		image={SeanHeadshot}
-		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
-		author="Sean Grapevine"
-		position="Founder"
-		company="LoanShout"
+		quote={testimonials[0].quote}
+		author={testimonials[0].author}
+		position={testimonials[0].position}
+		company={testimonials[0].company}
 	/>
 	<TestimonialSchema
-		author="Sean Grapevine"
-		position="Founder"
-		company="LoanShout"
-		quote="Trailmerge has been the difference between success and failure for our early-stage startup."
+		author={testimonials[0].author}
+		position={testimonials[0].position}
+		company={testimonials[0].company}
+		quote={testimonials[0].quote}
 	/>
 
 	<CaseStudy 
 		image="https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/6115a548caa9f623017a1227_LoanShout%20Screenshots.png"
-		title="LoanShout"
-		description="Trailmerge guided this non-technical SaaS founder from concept to first users, transforming home loan communication along the way."
-		linkText="Read More"
+		title={t('caseStudies.loanshout.title')}
+		description={t('caseStudies.loanshout.description')}
+		linkText={t('common.readMore')}
 		linkUrl="#"
-		imageAlt="LoanShout Screenshots"
+		imageAlt={t('caseStudies.loanshout.imageAlt')}
 	/>
 
-	<OfferSection />
+	<OfferSection lang={lang} />
 
 	<CaseStudy 
 		image={TourialScreenshots}
-		title="Tourial"
-		description="Trailmerge crafted a scalable design system and designed new features in partnership with this Atlanta-based startup team focused on improving the SaaS sales process."
-		linkText="Read More"
+		title={t('caseStudies.tourial.title')}
+		description={t('caseStudies.tourial.description')}
+		linkText={t('common.readMore')}
 		linkUrl="#"
-		imageAlt="Tourial Screenshots"
+		imageAlt={t('caseStudies.tourial.imageAlt')}
 	/>
 
 	<Testimonial
 		image={AndyHeadshot}
-		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
-		author="Andy Binkley"
-		position="Co-founder & CEO"
-		company="Tourial"
+		quote={testimonials[1].quote}
+		author={testimonials[1].author}
+		position={testimonials[1].position}
+		company={testimonials[1].company}
 	/>
 	<TestimonialSchema
-		author="Andy Binkley"
-		position="Co-founder & CEO"
-		company="Tourial"
-		quote="Trailmerge is able to interpret a lot of scattered information around our design and UX goals and piece it together in a way that makes sense."
+		author={testimonials[1].author}
+		position={testimonials[1].position}
+		company={testimonials[1].company}
+		quote={testimonials[1].quote}
 	/>
 
-	<BlogSection lang="en" />
+	<BlogSection lang={lang} />
 	</main>
 
-	<Footer lang="en" />
+	<Footer lang={lang} />
 
-	<ContactModal lang="en" />
+	<ContactModal lang={lang} />
 </Layout>
 
 <style is:global>

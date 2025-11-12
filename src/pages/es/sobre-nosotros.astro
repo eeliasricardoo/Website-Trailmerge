@@ -8,7 +8,8 @@ import Footer from '../../components/Footer.astro';
 import ContactModal from '../../components/ContactModal.astro';
 import { useTranslations } from '../../i18n/utils';
 
-const t = useTranslations('es');
+const lang = 'es';
+const t = useTranslations(lang);
 
 // SEO keywords and breadcrumbs
 const keywords = t('about.seo.keywords');
@@ -23,21 +24,21 @@ const breadcrumbs = [
 	description={t('about.seo.description')}
 	keywords={keywords}
 	breadcrumbs={breadcrumbs}
-	lang="es"
+	lang={lang}
 >
-	<Navbar lang="es" />
+	<Navbar lang={lang} />
 
 	<main id="main-content">
-		<AboutHero lang="es" />
+		<AboutHero lang={lang} />
 
-		<JumboTextSection lang="es" />
+		<JumboTextSection lang={lang} />
 
-		<ValuesSection lang="es" />
+		<ValuesSection lang={lang} />
 	</main>
 
-	<Footer lang="es" />
+	<Footer lang={lang} />
 
-	<ContactModal lang="es" />
+	<ContactModal lang={lang} />
 </Layout>
 
 <style is:global>

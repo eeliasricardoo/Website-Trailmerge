@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "about": "Sobre",
+    "blog": "Blog",
+    "contact": "Contato",
+    "home": "Início Trailmerge"
+  },
+  "hero": {
+    "title": "Eleve seu produto",
+    "subtitle": "O caminho para UX e desenvolvimento de classe mundial para aplicações SaaS e empresariais",
+    "cta": "Solicite uma consulta"
+  },
+  "services": {
+    "ignite": {
+      "title": "Impulsione sua prática",
+      "description": "Vamos guiá-lo na construção de uma prática de design de produto forte e centrada em Agile, sistemas de design eficientes e processos para toda a equipe."
+    },
+    "evaluate": {
+      "title": "Avalie a UX do seu app",
+      "description": "Nossa equipe de especialistas em usabilidade de SaaS e empresas conduzirá uma auditoria de design UX para destacar e priorizar áreas de melhoria."
+    },
+    "scale": {
+      "title": "Amplie o design",
+      "description": "Aumente os esforços de UX em sua equipe trazendo um membro de design fracionário para levar seu produto ao próximo nível."
+    }
+  },
+  "footer": {
+    "about": "Sobre",
+    "careers": "Carreiras",
+    "privacy": "Privacidade",
+    "resources": "Recursos",
+    "blog": "Blog",
+    "cta": "Solicite uma consulta",
+    "copyright": "© 2024 Trailmerge Ltd Co. Todos os direitos reservados.",
+    "address": {
+      "line1": "3100 Interstate North Circle SE",
+      "line2": "Suite 200",
+      "line3": "Atlanta, GA 30339"
+    }
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro",
+    "submit": "Enviar",
+    "close": "Fechar",
+    "readMore": "Leia mais"
+  },
+  "about": {
+    "title": "Sobre a Trailmerge",
+    "subtitle": "Como sua equipe de design de produto e desenvolvimento de software, a Trailmerge<br> melhora seus fluxos de trabalho para que você possa<br> avançar em direção aos seus objetivos.",
+    "seo": {
+      "title": "Sobre a Trailmerge – Agência UX para B2B SaaS",
+      "description": "Trailmerge é uma agência UI/UX especializada em design de produto B2B SaaS desde MVP até os primeiros usuários e além. Escalamos com seu produto e negócio.",
+      "keywords": "sobre Trailmerge, equipe de design UX, especialistas B2B SaaS, agência de design de produto, equipe de design Atlanta"
+    },
+    "vision": {
+      "paragraph1": "Na Trailmerge, nossa visão é promover abundância de vida e oportunidade.",
+      "paragraph2": "Isso impulsiona como operamos com nossos membros de equipe e nossos clientes – mentoria e desenvolvimento são uma parte central de quem somos.",
+      "paragraph3": "É assim também que nos associamos com nossos clientes – jornando com equipes internas para apoiar seus sonhos de impacto e seu crescimento."
+    },
+    "values": {
+      "title": "Nossos Valores",
+      "value1": "Oportunidade para pessoas talentosas e apaixonadas",
+      "value2": "Responsabilidade individual, sucessos compartilhados",
+      "value3": "Tecnologia para pessoas, não pessoas para tecnologia",
+      "value4": "Uma cultura de honra e liberdade",
+      "value5": "Nossos membros de equipe são humanos, não \"recursos\"",
+      "value6": "Todos nós crescemos e todos nós mentoramos",
+      "value7": "Comunicação proativa e amigável"
+    }
+  },
+  "contact": {
+    "title": "Agende sua consulta gratuita",
+    "description": "A jornada juntos começa com um simples primeiro passo. Envie-nos uma mensagem - conte-nos um pouco sobre seu projeto, suas ideias, seu sonho - e estaremos a caminho de torná-lo realidade.",
+    "form": {
+      "nameLabel": "Nome",
+      "namePlaceholder": "Nome e Sobrenome",
+      "emailLabel": "Endereço de Email",
+      "emailPlaceholder": "ola@seusite.com",
+      "emailHelp": "Nunca compartilharemos seu email com mais ninguém.",
+      "messageLabel": "Mensagem",
+      "messagePlaceholder": "Conte-nos sobre seu projeto...",
+      "optinLabel": "Por favor, envie-me atualizações e conteúdo útil da Trailmerge.",
+      "honeypotLabel": "Marque isso apenas se você for um bot.",
+      "submitButton": "Enviar",
+      "submitWait": "Por favor, aguarde...",
+      "closeButton": "Fechar formulário de contato"
+    },
+    "messages": {
+      "success": "Ótimo primeiro passo! Recebemos sua mensagem e entraremos em contato em breve.",
+      "error": "Hmm... Algo deu errado ao enviar o formulário. Tente novamente!"
+    }
+  },
+  "aside": {
+    "text": "A Trailmerge equipa equipes de produto SaaS e empresariais com expertise em experiência do usuário e desenvolvimento, design de produto especializado e melhores práticas estratégicas para elevar a usabilidade e adoção do seu aplicativo SaaS ou empresarial."
+  },
+  "offer": {
+    "title": "Como seu produto se compara?",
+    "buttonText": "Obtenha uma Auditoria de Design SaaS"
+  },
+  "companies": {
+    "title": "Empresas que atendemos",
+    "description": "Tivemos a honra de fazer parceria com equipes incríveis, desde startups B2B SaaS em fase de ideia até equipes multinacionais Enterprise, para capacitar as pessoas a alcançar, ter sucesso e prosperar em suas vidas de trabalho diárias."
+  },
+  "blog": {
+    "title": "Blog Trailmerge – Insights de Design para B2B SaaS",
+    "description": "Artigos úteis para fundadores e líderes de produto B2B SaaS sobre os tópicos de melhores práticas de design UX e estratégia de produto.",
+    "seePost": "Ver Post do Blog",
+    "readMore": "Leia mais",
+    "seo": {
+      "keywords": "blog design UX, artigos B2B SaaS, dicas design produto, estratégia MVP, melhores práticas design, fundadores SaaS"
+    }
+  },
+  "caseStudies": {
+    "loanshout": {
+      "title": "LoanShout",
+      "description": "A Trailmerge orientou este fundador de SaaS não técnico desde o conceito até os primeiros usuários, transformando a comunicação de empréstimos imobiliários ao longo do caminho.",
+      "imageAlt": "Capturas de tela do LoanShout"
+    },
+    "tourial": {
+      "title": "Tourial",
+      "description": "A Trailmerge criou um sistema de design escalável e projetou novos recursos em parceria com esta equipe startup baseada em Atlanta, focada em melhorar o processo de vendas SaaS.",
+      "imageAlt": "Capturas de tela do Tourial"
+    }
+  },
+  "homepage": {
+    "seo": {
+      "title": "Agência de Design UX para Startups B2B SaaS – Trailmerge",
+      "description": "Serviços escaláveis de UI/UX para SaaS, incluindo design MVP, reformulação de produto e auditorias de design. Agende uma consulta gratuita para começar.",
+      "keywords": "agência design UX, design B2B SaaS, design MVP, design de produto, auditoria de design, serviços UI/UX, design startup SaaS, agência UX Atlanta"
+    }
+  }
+}
+
