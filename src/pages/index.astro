@@ -1,7 +1,6 @@
 ---
-// This page is handled by middleware.ts which redirects to /en/ or /es/
-// based on the user's Accept-Language header
-// Client-side fallback is provided for static builds
+// This page redirects to /en/ or /es/ based on the user's browser language
+// For static builds, this uses client-side JavaScript
 ---
 
 <!DOCTYPE html>
@@ -12,19 +11,30 @@
 	<title>Redirecting...</title>
 	<meta name="robots" content="noindex, nofollow">
 	<script is:inline>
-		// Client-side language detection fallback
+		// Immediate redirect based on browser language
 		(function() {
-			// Detect browser language
-			const browserLang = navigator.language || navigator.userLanguage || 'en';
-			const prefersSpanish = browserLang.toLowerCase().startsWith('es');
-			
-			// Redirect based on browser language
-			window.location.href = prefersSpanish ? '/es/' : '/en/';
+			try {
+				// Get browser language
+				const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+				
+				// Check if Spanish is preferred (es, es-ES, es-MX, etc.)
+				const prefersSpanish = browserLang.startsWith('es');
+				
+				// Redirect immediately
+				const targetUrl = prefersSpanish ? '/es/' : '/en/';
+				window.location.replace(targetUrl);
+			} catch (e) {
+				// Fallback to English if anything fails
+				window.location.replace('/en/');
+			}
 		})();
 	</script>
 </head>
 <body>
 	<p>Redirecting...</p>
+	<noscript>
+		<p>Please enable JavaScript to continue, or <a href="/en/">click here</a> to go to the English version.</p>
+	</noscript>
 </body>
 </html>
 
