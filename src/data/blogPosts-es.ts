@@ -40,13 +40,13 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		},
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-2",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60c0cdd56e2414337cf33013_ran-berkovich-xU0ZD-TsmmU-unsplash-p-3200.jpeg",
-		title: "¿Cómo Priorizo Características? Parte 2 de 2",
+		title: "¿Cómo priorizo funciones? Parte 2 de 2",
 		date: "9 DE JUNIO, 2021",
 		category: "SAAS",
 		excerpt: "En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. El siguiente paso es mezclar las restricciones.",
@@ -57,9 +57,9 @@ export const blogPostsEs: BlogPost[] = [
 
 <h2>Restricciones técnicas</h2>
 
-<p>Las restricciones técnicas incluyen tu stack tecnológico actual, limitaciones de infraestructura y la complejidad de implementar ciertas características. Algunas características pueden sonar geniales desde la perspectiva del cliente pero podrían requerir cambios arquitectónicos significativos o introducir deuda técnica.</p>
+<p>Las restricciones técnicas incluyen tu stack tecnológico actual, limitaciones de infraestructura y la complejidad de implementar ciertas funciones. Algunas funciones pueden sonar geniales desde la perspectiva del cliente pero podrían requerir cambios arquitectónicos significativos o introducir deuda técnica.</p>
 
-<p>Al evaluar características a través de una lente técnica, considera: ¿Cuánto tiempo tomará construir esto? ¿Qué dependencias crea? ¿Requerirá nueva infraestructura o servicios de terceros? ¿Se alinea con tu stack tecnológico actual, o requerirá nueva experiencia?</p>
+<p>Al evaluar funciones a través de una lente técnica, considera: ¿Cuánto tiempo tomará construir esto? ¿Qué dependencias crea? ¿Requerirá nueva infraestructura o servicios de terceros? ¿Se alinea con tu stack tecnológico actual, o requerirá nueva experiencia?</p>
 
 <div style="margin: 32px 0; text-align: center;">
 	<img src="https://media.giphy.com/media/Bw2icOlhL9Iv6/source.gif" alt="Constraints keep us from hurting ourselves" style="max-width: 100%; height: auto; border-radius: 4px;" />
@@ -68,9 +68,9 @@ export const blogPostsEs: BlogPost[] = [
 
 <h2>Restricciones comerciales</h2>
 
-<p>Las restricciones comerciales abarcan tu presupuesto, cronograma, posición en el mercado y objetivos estratégicos. Una característica puede ser muy solicitada por los clientes, pero si no se alinea con tu modelo de negocio u objetivos de ingresos, podría no ser la prioridad correcta.</p>
+<p>Las restricciones comerciales abarcan tu presupuesto, cronograma, posición en el mercado y objetivos estratégicos. Una función puede ser muy solicitada por los clientes, pero si no se alinea con tu modelo de negocio u objetivos de ingresos, podría no ser la prioridad correcta.</p>
 
-<p>Considera preguntas como: ¿Esta característica apoya nuestro modelo de negocio? ¿Nos ayudará a adquirir o retener clientes? ¿Nos diferencia de los competidores? ¿Es el momento adecuado en el ciclo de vida de nuestra empresa para construir esto?</p>
+<p>Considera preguntas como: ¿Esta función apoya nuestro modelo de negocio? ¿Nos ayudará a adquirir o retener clientes? ¿Nos diferencia de los competidores? ¿Es el momento adecuado en el ciclo de vida de nuestra empresa para construir esto?</p>
 
 <div style="margin: 32px 0; text-align: center;">
 	<img src="https://media.giphy.com/media/QU3VPCKslm8sF0TO0v/source.gif" alt="Don't let your important features get blocked" style="max-width: 100%; height: auto; border-radius: 4px;" />
@@ -90,7 +90,7 @@ export const blogPostsEs: BlogPost[] = [
 
 <h2>Equilibrando la ecuación</h2>
 
-<p>El arte de la priorización viene de equilibrar las necesidades del cliente con estos tres tipos de restricciones. Una característica que obtiene una puntuación alta en valor para el cliente pero baja en viabilidad podría necesitar esperar. Por el contrario, una característica que es fácil de construir pero no sirve bien a los clientes probablemente no debería priorizarse.</p>
+<p>El arte de la priorización viene de equilibrar las necesidades del cliente con estos tres tipos de restricciones. Una función que obtiene una puntuación alta en valor para el cliente pero baja en viabilidad podría necesitar esperar. Por el contrario, una función que es fácil de construir pero no sirve bien a los clientes probablemente no debería priorizarse.</p>
 
 <p>Crea un marco que pese todos estos factores. Algunos equipos usan sistemas de puntuación, otros usan matrices, y algunos confían en discusiones estructuradas. El método importa menos que asegurarte de que estás considerando el panorama completo antes de tomar decisiones.</p>
 
@@ -98,20 +98,20 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
 		slug: "how-do-i-prioritize-features-part-1",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60a813feba638c0e3ef14854_valery-fedotov-CqX6IhVj2TI-unsplash-p-3200.jpeg",
-		title: "¿Cómo Priorizo Características? Parte 1 de 2",
+		title: "¿Cómo priorizo funciones? Parte 1 de 2",
 		date: "21 DE MAYO, 2021",
 		category: "SAAS",
 		excerpt: "Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero...",
 		imageAlt: "Ilustración de binoculares",
-		content: `<p>Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Tu tablero de visión probablemente está desbordado con características que revolucionarían tu industria, deleitarían a tus usuarios y harían llorar a tus competidores. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero.</p>
+		content: `<p>Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Tu tablero de visión probablemente está desbordado con funciones que revolucionarían tu industria, deleitarían a tus usuarios y harían llorar a tus competidores. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero.</p>
 
-<p>Cada solicitud de característica se siente urgente. Cada sesión de retroalimentación del cliente revela otra capacidad "imprescindible". Cada lanzamiento de competidor te hace cuestionar tu hoja de ruta. Entonces, ¿cómo decides qué construir primero?</p>
+<p>Cada solicitud de función se siente urgente. Cada sesión de retroalimentación del cliente revela otra capacidad "imprescindible". Cada lanzamiento de competidor te hace cuestionar tu hoja de ruta. Entonces, ¿cómo decides qué construir primero?</p>
 
 <div style="margin: 32px 0; text-align: center;">
 	<img src="https://media.giphy.com/media/lHBbcpFTS5c2Y/giphy.gif" alt="DON'T CARE HOW I WANT IT NOW" style="max-width: 100%; height: auto; border-radius: 4px;" />
@@ -122,9 +122,9 @@ export const blogPostsEs: BlogPost[] = [
 
 <h2>Recuerda Para Quién Estás Construyendo</h2>
 
-<p>Antes de poder priorizar características efectivamente, necesitas entender para quién estás construyendo. Esto significa ir más allá de las personas genéricas de usuario y entender las necesidades específicas, puntos de dolor y objetivos de tu audiencia objetivo. ¿Estás construyendo para clientes empresariales que necesitan características robustas de seguridad y cumplimiento? ¿O estás dirigiendo a pequeñas empresas que necesitan simplicidad y configuración rápida?</p>
+<p>Antes de poder priorizar funciones efectivamente, necesitas entender para quién estás construyendo. Esto significa ir más allá de las personas genéricas de usuario y entender las necesidades específicas, puntos de dolor y objetivos de tu audiencia objetivo. ¿Estás construyendo para clientes empresariales que necesitan funciones robustas de seguridad y cumplimiento? ¿O estás dirigiendo a pequeñas empresas que necesitan simplicidad y configuración rápida?</p>
 
-<p>Entender tu audiencia objetivo te ayuda a tomar mejores decisiones sobre qué características importan más. Una característica que es crítica para un segmento de usuario podría ser irrelevante para otro. Cuanto más específico puedas ser sobre para quién estás construyendo, más fácil se vuelve priorizar.</p>
+<p>Entender tu audiencia objetivo te ayuda a tomar mejores decisiones sobre qué funciones importan más. Una función que es crítica para un segmento de usuario podría ser irrelevante para otro. Cuanto más específico puedas ser sobre para quién estás construyendo, más fácil se vuelve priorizar.</p>
 
 <div style="margin: 32px 0; text-align: center;">
 	<img src="https://media.giphy.com/media/RaLIOPl8MLyWA/source.gif" alt="Do your research" style="max-width: 100%; height: auto; border-radius: 4px;" />
@@ -144,30 +144,30 @@ export const blogPostsEs: BlogPost[] = [
 
 <h2>¿Qué Va a Vender?</h2>
 
-<p>Para muchos productos, especialmente B2B SaaS, ciertas características son esenciales para cerrar tratos. Estas son las características que los prospectos preguntan durante las llamadas de ventas, las capacidades que te diferencian de los competidores y la funcionalidad que justifica tu precio.</p>
+<p>Para muchos productos, especialmente B2B SaaS, ciertas funciones son esenciales para cerrar tratos. Estas son las funciones que los prospectos preguntan durante las llamadas de ventas, las capacidades que te diferencian de los competidores y la funcionalidad que justifica tu precio.</p>
 
-<p>Entender qué características impulsan las ventas requiere hablar con tu equipo de ventas, analizar datos de ganancia/pérdida y escuchar lo que los prospectos realmente dicen durante las demostraciones. ¿Qué características los emocionan? ¿Qué capacidades piden? ¿Qué preocupaciones plantean que los hacen alejarse?</p>
+<p>Entender qué funciones impulsan las ventas requiere hablar con tu equipo de ventas, analizar datos de ganancia/pérdida y escuchar lo que los prospectos realmente dicen durante las demostraciones. ¿Qué funciones los emocionan? ¿Qué capacidades piden? ¿Qué preocupaciones plantean que los hacen alejarse?</p>
 
 <div style="margin: 32px 0; text-align: center;">
 	<img src="https://media.giphy.com/media/443jTW1yjUiwXOlQ2g/source.gif" alt="What do your potential customers actually want to buy?" style="max-width: 100%; height: auto; border-radius: 4px;" />
 	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">What do your potential customers actually want to buy? (via Giphy)</p>
 </div>
 
-<p>Es importante distinguir entre lo que los prospectos dicen que quieren y lo que realmente necesitan. Las personas a menudo piden características basadas en lo que han visto en otros productos, no necesariamente lo que resolvería sus problemas específicos. Confía en los datos de comportamiento pasado: ¿qué características usan realmente tus clientes actuales? ¿Qué flujos de trabajo siguen? ¿Qué problemas resuelven con tu producto?</p>
+<p>Es importante distinguir entre lo que los prospectos dicen que quieren y lo que realmente necesitan. Las personas a menudo piden funciones basadas en lo que han visto en otros productos, no necesariamente lo que resolvería sus problemas específicos. Confía en los datos de comportamiento pasado: ¿qué funciones usan realmente tus clientes actuales? ¿Qué flujos de trabajo siguen? ¿Qué problemas resuelven con tu producto?</p>
 
 <h2>Próximos pasos: Aplicar Restricciones</h2>
 
-<p>Entender las necesidades del cliente, los problemas de usabilidad y los impulsores de ventas es solo el primer paso. En la parte dos de esta serie, exploraremos cómo equilibrar estas prioridades centradas en el cliente con restricciones del mundo real: limitaciones técnicas, requisitos comerciales y disponibilidad de recursos. Porque incluso las características más importantes necesitan ser factibles de construir.</p>`,
+<p>Entender las necesidades del cliente, los problemas de usabilidad y los impulsores de ventas es solo el primer paso. En la parte dos de esta serie, exploraremos cómo equilibrar estas prioridades centradas en el cliente con restricciones del mundo real: limitaciones técnicas, requisitos comerciales y disponibilidad de recursos. Porque incluso las funciones más importantes necesitan ser factibles de construir.</p>`,
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
 		slug: "how-to-ask-good-questions-when-building-saas-product",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/6080815fbafc572380901b88_artem-maltsev-0CvHQ62gwY8-unsplash-p-800.jpeg",
-		title: "Cómo Hacer Buenas Preguntas al Construir un Producto SaaS",
+		title: "Cómo hacer buenas preguntas al construir un producto SaaS",
 		date: "21 DE ABRIL, 2021",
 		category: "SAAS",
 		excerpt: "Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.",
@@ -175,7 +175,7 @@ export const blogPostsEs: BlogPost[] = [
 		imageCredit: "Blog Photo by Artem Maltsev on Unsplash",
 		content: `<p>Como instructor en General Assembly, una de las principales cosas que quería que mi cohorte se llevara del programa intensivo de diseño UX de 10 semanas era esto: cómo hacer las preguntas correctas.</p>
 
-<p>Los píxeles son geniales y todo eso – y, sin duda, definen el resultado del trabajo que hacemos como diseñadores de productos. Pero las buenas preguntas son la base del buen diseño, y necesitarás saber cómo hacerlas si estás interesado en identificar qué características y funcionalidades tendrán un impacto en tu mercado.</p>
+<p>Los píxeles son geniales y todo eso – y, sin duda, definen el resultado del trabajo que hacemos como diseñadores de productos. Pero las buenas preguntas son la base del buen diseño, y necesitarás saber cómo hacerlas si estás interesado en identificar qué funciones y funcionalidades tendrán un impacto en tu mercado.</p>
 
 <p>Primero, necesitarás entender qué información esperas obtener haciendo preguntas. ¿Está relacionada con comportamientos y preferencias actuales? ¿Es retroalimentación sobre una idea que tienes? ¿Es si los clientes están dispuestos a pagar por tu producto o no?</p>
 
@@ -269,13 +269,13 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
 		slug: "lets-talk-design-debt",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db17540b5ef6754da71c6_ruth-enyedi-zuwx2tvI_iM-unsplash(1)-p-800.jpeg",
-		title: "Hablemos de Deuda de Diseño: ¿Qué es y qué me podría costar?",
+		title: "Hablemos de deuda de diseño: ¿Qué es y qué me podría costar?",
 		date: "7 DE ABRIL, 2021",
 		category: "SAAS",
 		excerpt: "Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software... pero meses después, enfrentas el impacto inicial de la deuda de diseño.",
@@ -284,18 +284,18 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>El desarrollador toma tu dinero y tus requisitos y se pone a trabajar. Te comunicas de ida y vuelta sobre requisitos y restricciones técnicas que entiendes un poco y has tomado decisiones lo mejor que puedes basándote en esas conversaciones. En cuanto al diseño, has esbozado algunos flujos y wireframes improvisados. Tu desarrollador ha tomado esos y los ha interpretado, tomando varias decisiones de diseño al construir el producto. $30,000 dólares y 6 meses después, tienes un producto.</p>
 
-<p>Lanzas y obtienes algo de interés inicial, pero no lo suficiente para realmente obtener la tracción que buscas. Tus clientes hacen algunas solicitudes de características, así que gastas otros $50,000 durante los próximos 6 meses construyendo estas características. La buena noticia: Has obtenido algunas características geniales durante ese tiempo y a medida que te vuelves más competitivo en tu oferta de características, estás viendo más ingresos entrando. Ahora tienes una base de clientes de tamaño decente.</p>
+<p>Lanzas y obtienes algo de interés inicial, pero no lo suficiente para realmente obtener la tracción que buscas. Tus clientes hacen algunas solicitudes de funciones, así que gastas otros $50,000 durante los próximos 6 meses construyendo estas funciones. La buena noticia: Has obtenido algunas funciones geniales durante ese tiempo y a medida que te vuelves más competitivo en tu oferta de funciones, estás viendo más ingresos entrando. Ahora tienes una base de clientes de tamaño decente.</p>
 
-<p>Con todos estos clientes, hay un conjunto completamente nuevo de problemas. Estás viendo montones de tickets de soporte llegando sobre flujos de trabajo frustrantes, características que no funcionan como se esperaba, y errores apareciendo que los clientes no saben cómo interpretar o resolver. El tiempo dedicado a apoyar a los clientes se está disparando, y con eso tienes que pagar ayuda adicional en soporte al cliente y desarrollo. ¡Ay! Has golpeado el impacto inicial de la deuda de diseño.</p>
+<p>Con todos estos clientes, hay un conjunto completamente nuevo de problemas. Estás viendo montones de tickets de soporte llegando sobre flujos de trabajo frustrantes, funciones que no funcionan como se esperaba, y errores apareciendo que los clientes no saben cómo interpretar o resolver. El tiempo dedicado a apoyar a los clientes se está disparando, y con eso tienes que pagar ayuda adicional en soporte al cliente y desarrollo. ¡Ay! Has golpeado el impacto inicial de la deuda de diseño.</p>
 
 <div style="margin: 32px 0; text-align: center;">
 	<img src="https://media.giphy.com/media/l0HlNmF2VCrXqjlSM/giphy.gif" alt="Wait, what?" style="max-width: 100%; height: auto; border-radius: 4px;" />
 	<p style="margin-top: 8px; font-size: 14px; color: var(--grey-3); font-style: italic;">Wait, what? (via Giphy)</p>
 </div>
 
-<p>Pero eso es solo el comienzo. Comienzas a trabajar con tu equipo de desarrollo para arreglar problemas de diseño donde puedes identificarlos, desviando tiempo valioso de nuevas características y proyectos estratégicos.</p>
+<p>Pero eso es solo el comienzo. Comienzas a trabajar con tu equipo de desarrollo para arreglar problemas de diseño donde puedes identificarlos, desviando tiempo valioso de nuevas funciones y proyectos estratégicos.</p>
 
-<p>Finalmente, escuchas sobre cómo traer un diseñador UX puede ayudar. Gastas el tiempo y el dinero para reclutar y poner al nuevo diseñador al día. El diseñador audita la plataforma actual y recomienda un rediseño, que podría tomar más tiempo que la construcción original. Puedes obtener algunas características nuevas deslizadas en el rediseño, pero el tiempo y el esfuerzo te cuestan un año de tiempo valioso solo reconfigurando las bases actuales en lugar de hacer más progreso. Mientras tanto, estás tambaleándote por la rotación excesiva y el daño a la reputación de tu marca en el mercado. ¡Bam! Ahora estás encontrando el costo completo de la deuda de diseño.</p>
+<p>Finalmente, escuchas sobre cómo traer un diseñador UX puede ayudar. Gastas el tiempo y el dinero para reclutar y poner al nuevo diseñador al día. El diseñador audita la plataforma actual y recomienda un rediseño, que podría tomar más tiempo que la construcción original. Puedes obtener algunas funciones nuevas deslizadas en el rediseño, pero el tiempo y el esfuerzo te cuestan un año de tiempo valioso solo reconfigurando las bases actuales en lugar de hacer más progreso. Mientras tanto, estás tambaleándote por la rotación excesiva y el daño a la reputación de tu marca en el mercado. ¡Bam! Ahora estás encontrando el costo completo de la deuda de diseño.</p>
 
 <div style="margin: 32px 0; text-align: center;">
 	<img src="https://media.giphy.com/media/ESt8At0PXpmj6/giphy.gif" alt="That cost more than expected!" style="max-width: 100%; height: auto; border-radius: 4px;" />
@@ -323,13 +323,13 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
 		slug: "your-mvp-is-missing-the-point",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5fe2481631ad4401f048b2d6_the-creativv-2YFpp3NvHy8-unsplash-p-800.jpeg",
-		title: "Tu MVP está Perdiendo el Punto",
+		title: "Tu MVP está perdiendo el punto",
 		date: "22 DE DICIEMBRE, 2020",
 		category: "SAAS",
 		excerpt: "¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa \"producto mínimo viable\". Pero, ¿cuál es el punto?",
@@ -361,7 +361,7 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>"Hay un defecto en el corazón del término Producto Mínimo Viable: no es un producto. Es una forma de probar si has encontrado un problema que vale la pena resolver."</p>
 
-<p>En su artículo, continúa afirmando que deberíamos estar enfocados en probar nuestra suposición más riesgosa con la menor cantidad posible de esfuerzo y costo. Cuando comenzamos un negocio, tenemos una idea para un producto, o incluso solo comenzamos a trabajar en nuevas características, llevamos una serie de suposiciones con nosotros:</p>
+<p>En su artículo, continúa afirmando que deberíamos estar enfocados en probar nuestra suposición más riesgosa con la menor cantidad posible de esfuerzo y costo. Cuando comenzamos un negocio, tenemos una idea para un producto, o incluso solo comenzamos a trabajar en nuevas funciones, llevamos una serie de suposiciones con nosotros:</p>
 
 <ul>
 	<li>Muchas personas están lidiando con este problema y están motivadas para resolverlo.</li>
@@ -370,7 +370,7 @@ export const blogPostsEs: BlogPost[] = [
 	<li>Puedo crear un negocio sostenible alrededor de resolver este problema.</li>
 </ul>
 
-<p>La lista continúa y continúa. Y algunas suposiciones llevan un riesgo mucho mayor que otras. Por ejemplo, la suposición de que "Los usuarios disfrutarán de animaciones ilustradas lindas en la aplicación" es mucho menos riesgosa que la suposición de que "Los usuarios estarán dispuestos a proporcionarnos su información de cuenta bancaria para usar la característica principal de nuestra aplicación." La experiencia del usuario no sufrirá mucho (y la línea de fondo aún menos) si las personas no aman al 100% el patito bailarín lindo en tu pantalla de confirmación, pero una actitud que determina la adopción de la parte principal de tu solución puede ser decisiva para todo tu negocio.</p>
+<p>La lista continúa y continúa. Y algunas suposiciones llevan un riesgo mucho mayor que otras. Por ejemplo, la suposición de que "Los usuarios disfrutarán de animaciones ilustradas lindas en la aplicación" es mucho menos riesgosa que la suposición de que "Los usuarios estarán dispuestos a proporcionarnos su información de cuenta bancaria para usar la función principal de nuestra aplicación." La experiencia del usuario no sufrirá mucho (y la línea de fondo aún menos) si las personas no aman al 100% el patito bailarín lindo en tu pantalla de confirmación, pero una actitud que determina la adopción de la parte principal de tu solución puede ser decisiva para todo tu negocio.</p>
 
 <p>Zappos fue construido probando una suposición riesgosa antes de construir una plataforma: "Las personas estarán dispuestas a comprar zapatos que no han probado en una tienda." Airbnb tuvo que probar la suposición de que los estadounidenses estarían dispuestos a abrir sus hogares a completos extraños, y a su vez, quedarse en hogares de extraños. En las primeras etapas, una página de destino puede funcionar para probar si el mercado objetivo se emociona con un concepto o se identifica con un problema.</p>
 
@@ -392,13 +392,13 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
 		slug: "idea-to-version-1-how-do-i-get-started",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b92fdfd4bf0e27021d439_david-kovalenko-G85VuTpw6jg-unsplash-p-800.jpeg",
-		title: "De la Idea a la Versión 1: ¿Cómo Empiezo?",
+		title: "De la idea a la versión 1: ¿Cómo empiezo?",
 		date: "30 DE OCTUBRE, 2020",
 		category: "SAAS",
 		excerpt: "Identificar una oportunidad es un gran lugar para comenzar. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria. El único problema es que no sabes por dónde empezar.",
@@ -433,12 +433,12 @@ export const blogPostsEs: BlogPost[] = [
 
 <p><strong>2. ¿Qué exactamente estoy construyendo?</strong></p>
 
-<p>Ya has llegado a la mesa con una idea que vale la pena investigar e invertir. Tienes una visión a largo plazo para una solución única. Pero hay muchos detalles que necesitan resolverse. Varias formas de investigación, así como una buena comprensión de las dependencias de características, te ayudarán a dar definición a la visión a bajo costo.</p>
+<p>Ya has llegado a la mesa con una idea que vale la pena investigar e invertir. Tienes una visión a largo plazo para una solución única. Pero hay muchos detalles que necesitan resolverse. Varias formas de investigación, así como una buena comprensión de las dependencias de funciones, te ayudarán a dar definición a la visión a bajo costo.</p>
 
 <p>Aquí es donde entran la gestión de productos y el diseño UX. Si te adelantas a construir, corres el riesgo de incurrir en una deuda de diseño significativa y gastar mucho dinero en un alcance mal definido. Hay muchas cosas en las que pensar que surgen a lo largo del proceso de creación de software:</p>
 
 <ul>
-	<li>¿Qué características deberían incluirse en el primer lanzamiento (pista: piensa en pequeño y enfócate en lo que puedes aprender)?</li>
+	<li>¿Qué funciones deberían incluirse en el primer lanzamiento (pista: piensa en pequeño y enfócate en lo que puedes aprender)?</li>
 	<li>¿Qué debería pasar cuando el usuario hace clic en esto?</li>
 	<li>¿Qué tipos de entradas permitiremos en este campo?</li>
 	<li>¿Cómo debería organizarse la navegación?</li>
@@ -459,13 +459,13 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	},
 	{
 		slug: "learning-the-core-of-successful-saas-startup",
 		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg",
-		title: "Aprender: El Núcleo de una Startup SaaS Exitosa",
+		title: "Aprender: El núcleo de una startup SaaS exitosa",
 		date: "29 DE OCTUBRE, 2020",
 		category: "SAAS",
 		excerpt: "Una startup es una organización en busca de un modelo de negocio sostenible. Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup.",
@@ -494,7 +494,7 @@ export const blogPostsEs: BlogPost[] = [
 <ul>
 	<li>La investigación generativa (encuestas, entrevistas con usuarios, investigación observacional) puede darnos información sobre las motivaciones, puntos de dolor y comportamientos de clientes y usuarios.</li>
 	<li>Los prototipos pueden decirnos sobre la usabilidad y deseabilidad de nuestro producto antes de que gastemos un montón de dinero en desarrollo, y pueden incluso usarse para iniciar conversaciones de ventas con clientes.</li>
-	<li>A través de un producto temprano, podemos aprender sobre qué características son realmente valoradas, qué mejoras solicitan los clientes y qué tan bien nuestra dirección se ajusta al mercado que estamos apuntando.</li>
+	<li>A través de un producto temprano, podemos aprender sobre qué funciones son realmente valoradas, qué mejoras solicitan los clientes y qué tan bien nuestra dirección se ajusta al mercado que estamos apuntando.</li>
 	<li>Nuestras campañas de marketing no son solo un producto final – Pueden ser fuentes de información valiosa si estamos escuchando.</li>
 	<li>Ejecutar standups y retrospectivas regulares del equipo en un entorno de apoyo y reflexivo puede llevarnos de procesos crudos a colaboración bien definida en la que los miembros del equipo pueden prosperar y la eficiencia se optimiza.</li>
 </ul>
@@ -505,7 +505,7 @@ export const blogPostsEs: BlogPost[] = [
 		author: {
 			name: "Mark Tegtmeier",
 			image: "/images/Mark.png",
-			bio: "Mark Tegtmeier es el fundador de Trailmerge, con amplia experiencia en diseño en diversas industrias y pasión por desarrollar talento tecnológico."
+			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
 		}
 	}
 ];

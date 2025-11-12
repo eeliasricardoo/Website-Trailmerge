@@ -14,23 +14,28 @@ const currentPath = Astro.url.pathname;
 
 // Route mapping between English and Spanish
 const routeMap = {
-	'/': { en: '/', es: '/es' },
-	'/about': { en: '/about', es: '/es/acerca' },
-	'/blog': { en: '/blog', es: '/es/blog' },
-	'/es': { en: '/', es: '/es' },
-	'/es/acerca': { en: '/about', es: '/es/acerca' },
-	'/es/blog': { en: '/blog', es: '/es/blog' },
+	'/': { en: '/en', es: '/es' },
+	'/en': { en: '/en', es: '/es' },
+	'/en/about': { en: '/en/about', es: '/es/about' },
+	'/en/blog': { en: '/en/blog', es: '/es/blog' },
+	'/en/privacy': { en: '/en/privacy', es: '/es/privacy' },
+	'/es': { en: '/en', es: '/es' },
+	'/es/about': { en: '/en/about', es: '/es/about' },
+	'/es/sobre-nosotros': { en: '/en/about', es: '/es/about' },
+	'/es/blog': { en: '/en/blog', es: '/es/blog' },
+	'/es/privacy': { en: '/en/privacy', es: '/es/privacy' },
+	'/es/privacidad': { en: '/en/privacy', es: '/es/privacy' },
 };
 
 // Handle blog post slugs
-const isBlogPost = currentPath.match(/^\/blog\//) || currentPath.match(/^\/es\/blog\//);
-let enUrl = '/';
+const isBlogPost = currentPath.match(/^\/en\/blog\//) || currentPath.match(/^\/es\/blog\//);
+let enUrl = '/en';
 let esUrl = '/es';
 
 if (isBlogPost) {
 	// For blog posts, keep the same slug but change the language prefix
-	const slug = currentPath.replace(/^\/(es\/)?blog\//, '');
-	enUrl = `/blog/${slug}`;
+	const slug = currentPath.replace(/^\/(en\/|es\/)?blog\//, '');
+	enUrl = `/en/blog/${slug}`;
 	esUrl = `/es/blog/${slug}`;
 } else if (routeMap[currentPath]) {
 	// Use route mapping for known routes
@@ -38,8 +43,8 @@ if (isBlogPost) {
 	esUrl = routeMap[currentPath].es;
 } else {
 	// Fallback: remove language prefix and add appropriate one
-	const pathWithoutLang = currentPath.replace(/^\/(es)/, '') || '/';
-	enUrl = pathWithoutLang === '/' ? '/' : pathWithoutLang;
+	const pathWithoutLang = currentPath.replace(/^\/(en|es)/, '') || '/';
+	enUrl = pathWithoutLang === '/' ? '/en' : `/en${pathWithoutLang}`;
 	esUrl = `/es${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
 }
 ---
@@ -47,13 +52,13 @@ if (isBlogPost) {
 <!-- Navigation -->
 <div class="navigation" role="banner">
 	<div class="navigation-container-full">
-		<a href={lang === 'es' ? '/es' : '/'} id="nav-logo" aria-label={t('nav.home')} class="brand">
+		<a href={lang === 'es' ? '/es' : '/en'} id="nav-logo" aria-label={t('nav.home')} class="brand">
 			<img src={TrailmergeLogo.src} alt="Trailmerge Logo" class="logo nav-logo" />
 		</a>
 		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
-			<a href={lang === 'es' ? '/es/acerca' : '/about'} id="nav-about" class="nav-link">{t('nav.about')}</a>
-			<a href={lang === 'es' ? '/es/blog' : '/blog'} id="nav-blog" class="nav-link">{t('nav.blog')}</a>
+			<a href={lang === 'es' ? '/es/about' : '/en/about'} id="nav-about" class="nav-link">{t('nav.about')}</a>
+			<a href={lang === 'es' ? '/es/blog' : '/en/blog'} id="nav-blog" class="nav-link">{t('nav.blog')}</a>
 			<div class="language-switcher">
 				<button class="language-switcher-button" aria-label="Select language" aria-expanded="false" aria-haspopup="true" id="language-switcher-button">
 					<svg class="globe-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -110,6 +115,16 @@ if (isBlogPost) {
 				languageButton.setAttribute('aria-expanded', 'false');
 				languageButton.focus();
 			}
+		});
+
+		// Save language preference when user clicks on language option
+		const languageOptions = document.querySelectorAll('.language-option');
+		languageOptions.forEach(option => {
+			option.addEventListener('click', (e) => {
+				const href = (e.target as HTMLAnchorElement).href;
+				const lang = href.includes('/es') ? 'es' : 'en';
+				localStorage.setItem('preferred-language', lang);
+			});
 		});
 	}
 </script>
@@ -278,7 +293,8 @@ if (isBlogPost) {
 
 	.navbar-button:hover {
 		background-color: var(--green-500);
-		color: var(--white);
+		color: var(--grey-5);
+		box-shadow: 2px 2px 5px rgba(21, 26, 23, 0.2);
 	}
 
 	/* Mobile menu styles */

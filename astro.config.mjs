@@ -12,7 +12,7 @@ export default defineConfig({
 		defaultLocale: 'en',
 		locales: ['en', 'es'],
 		routing: {
-			prefixDefaultLocale: false
+			prefixDefaultLocale: true
 		}
 	},
 	integrations: [
@@ -23,22 +23,27 @@ export default defineConfig({
 			// Custom priority per route
 			serialize(item) {
 				// Homepage - highest priority
-				if (item.url === 'https://trailmerge.com/') {
+				if (item.url === 'https://trailmerge.com/en/' || item.url === 'https://trailmerge.com/es/') {
 					item.changefreq = 'daily';
 					item.priority = 1.0;
 				}
 				// About page
-				else if (item.url.includes('/about')) {
+				else if (item.url.includes('/en/about') || item.url.includes('/es/about') || item.url.includes('/es/sobre-nosotros')) {
 					item.changefreq = 'monthly';
 					item.priority = 0.9;
 				}
 				// Blog listing
-				else if (item.url === 'https://trailmerge.com/blog/') {
+				else if (item.url === 'https://trailmerge.com/en/blog/' || item.url === 'https://trailmerge.com/es/blog/') {
 					item.changefreq = 'weekly';
 					item.priority = 0.9;
 				}
+				// Privacy page
+				else if (item.url.includes('/en/privacy') || item.url.includes('/es/privacy') || item.url.includes('/es/privacidad')) {
+					item.changefreq = 'monthly';
+					item.priority = 0.8;
+				}
 				// Blog posts
-				else if (item.url.includes('/blog/')) {
+				else if (item.url.includes('/en/blog/') || item.url.includes('/es/blog/')) {
 					item.changefreq = 'monthly';
 					item.priority = 0.8;
 				}

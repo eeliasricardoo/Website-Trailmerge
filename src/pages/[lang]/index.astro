@@ -20,25 +20,33 @@ import SeanHeadshot from '../../assets/images/Sean-Headshot.png';
 import AndyHeadshot from '../../assets/images/Andy-Headshot.png';
 import TourialScreenshots from '../../assets/images/Tourial-Screenshots.png';
 
-const t = useTranslations('es');
-const testimonials = getTestimonialsByLang('es');
+export async function getStaticPaths() {
+	return [
+		{ params: { lang: 'en' } },
+		{ params: { lang: 'es' } },
+	];
+}
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as 'en' | 'es');
+const testimonials = getTestimonialsByLang(lang as 'en' | 'es');
 
 // SEO keywords for homepage
-const keywords = "Agencia de diseño UX, diseño B2B SaaS, diseño MVP, diseño de producto, auditoría de diseño, servicios UI/UX, diseño startup SaaS, agencia UX Atlanta";
-const title = "Agencia de Diseño UX para Startups B2B SaaS – Trailmerge";
-const description = "Servicios escalables de UI/UX para SaaS incluyendo diseño MVP, renovación de producto y auditorías de diseño. Agenda una consulta para comenzar.";
+const keywords = t('homepage.seo.keywords');
+const title = t('homepage.seo.title');
+const description = t('homepage.seo.description');
 ---
 
-<Layout keywords={keywords} title={title} description={description} lang="es">
-	<Navbar lang="es" />
+<Layout keywords={keywords} title={title} description={description} lang={lang}>
+	<Navbar lang={lang} />
 	<main id="main-content">
-		<Hero lang="es" />
+		<Hero lang={lang} />
 
-		<AsideSection lang="es" />
+		<AsideSection lang={lang} />
 
-	<ServicesSection lang="es" />
+	<ServicesSection lang={lang} />
 
-	<CompaniesSection lang="es" />
+	<CompaniesSection lang={lang} />
 
 	<Testimonial
 		image={SeanHeadshot}
@@ -54,24 +62,24 @@ const description = "Servicios escalables de UI/UX para SaaS incluyendo diseño 
 		quote={testimonials[0].quote}
 	/>
 
-	<CaseStudy
+	<CaseStudy 
 		image="https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/6115a548caa9f623017a1227_LoanShout%20Screenshots.png"
-		title="LoanShout"
-		description="Trailmerge guió a este fundador desde el concepto hasta usuarios reales, transformando la comunicación de préstamos hipotecarios en el proceso."
+		title={t('caseStudies.loanshout.title')}
+		description={t('caseStudies.loanshout.description')}
 		linkText={t('common.readMore')}
 		linkUrl="#"
-		imageAlt="Capturas de pantalla de LoanShout"
+		imageAlt={t('caseStudies.loanshout.imageAlt')}
 	/>
 
-	<OfferSection lang="es" />
+	<OfferSection lang={lang} />
 
-	<CaseStudy
+	<CaseStudy 
 		image={TourialScreenshots}
-		title="Tourial"
-		description="Trailmerge diseñó un sistema escalable y desarrolló nuevas funcionalidades en colaboración con este equipo enfocado en optimizar el proceso de ventas SaaS."
+		title={t('caseStudies.tourial.title')}
+		description={t('caseStudies.tourial.description')}
 		linkText={t('common.readMore')}
 		linkUrl="#"
-		imageAlt="Capturas de pantalla de Tourial"
+		imageAlt={t('caseStudies.tourial.imageAlt')}
 	/>
 
 	<Testimonial
@@ -88,12 +96,12 @@ const description = "Servicios escalables de UI/UX para SaaS incluyendo diseño 
 		quote={testimonials[1].quote}
 	/>
 
-	<BlogSection lang="es" />
+	<BlogSection lang={lang} />
 	</main>
 
-	<Footer lang="es" />
+	<Footer lang={lang} />
 
-	<ContactModal lang="es" />
+	<ContactModal lang={lang} />
 </Layout>
 
 <style is:global>
@@ -179,7 +187,30 @@ const description = "Servicios escalables de UI/UX para SaaS incluyendo diseño 
 
 		.blog-grid {
 			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.blog-feed-post-wrapper {
+			max-width: 100%;
+		}
+
+		.blog-feed-image {
+			height: 200px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.blog-grid {
 			gap: 32px;
+		}
+
+		.blog-feed-image {
+			height: 180px;
+		}
+
+		.blog-feed-text {
+			font-size: 14px;
 		}
 	}
 </style>
+

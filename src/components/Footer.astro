@@ -31,33 +31,35 @@ const currentYear = new Date().getFullYear();
 
 const {
 	logo = TrailmergeLogoGrey,
-	addressLines = [
-		t('footer.address.line1'),
-		t('footer.address.line2'),
-		t('footer.address.line3')
-	],
 	linkGroups = [
 		{
 			title: t('footer.about'),
 			links: [
 				{ text: t('footer.careers'), url: "https://trailmerge.breezy.hr/", target: "_blank" },
-				{ text: t('footer.privacy'), url: lang === 'es' ? "/es/privacidad" : "/privacy" }
+				{ text: t('footer.privacy'), url: lang === 'es' ? "/es/privacidad" : "/en/privacy" }
 			]
 		},
 		{
 			title: t('footer.resources'),
 			links: [
-				{ text: t('footer.blog'), url: lang === 'es' ? "/es/blog" : "/blog" }
+				{ text: t('footer.blog'), url: lang === 'es' ? "/es/blog" : "/en/blog" }
 			]
 		}
 	],
-	copyrightText = t('footer.copyright'),
 	ctaButtonText = t('footer.cta'),
-	ctaButtonUrl = "https://calendar.app.google/9LexXxAa7U6qSVgj6"
+	ctaButtonUrl = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2E0Pl1V454vAAYQJxhS2H0Q4vxa_6-sgcUXQB4cBaCn_jtRYLNMGMp-ka5p-cuCkExM8X1fC19"
 } = Astro.props;
 
-// Replace any 4-digit year in copyright text with current year
-const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
+// Define address lines and copyright text with translations
+const addressLines = [
+	t('footer.address.line1'),
+	t('footer.address.line2'),
+	t('footer.address.line3')
+];
+
+const copyrightText = t('footer.copyright');
+// Replace {year} placeholder with current year
+const copyright = copyrightText.replace(/{year}/g, currentYear.toString());
 ---
 
 <!-- Footer -->
@@ -65,12 +67,12 @@ const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
 	<div class="content-container">
 		<div class="footer-flex-container">
 			<div class="footer-logo-area">
-				<a href={lang === 'es' ? '/es' : '/'} aria-current="page" class="footer-logo-link w--current">
+				<a href={lang === 'es' ? '/es' : '/en'} aria-current="page" class="footer-logo-link w--current">
 					<img src={logo.src} alt="Trailmerge Wordmark" class="footer-image" />
 				</a>
 				<div class="spacer-l"></div>
 				<div class="help-text">
-					{addressLines.map((line) => (
+					{addressLines.map((line: string) => (
 						<div>{line}</div>
 					))}
 				</div>
@@ -80,7 +82,7 @@ const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
 				{linkGroups.map((group, index) => (
 					<div class={`footer-links-group ${index === linkGroups.length - 1 ? 'last-item' : ''}`}>
 						{group.title === t('footer.about') ? (
-							<a href={lang === 'es' ? '/es/acerca' : '/about'} class="footer-heading-link">{group.title}</a>
+							<a href={lang === 'es' ? '/es/sobre-nosotros' : '/en/about'} class="footer-heading-link">{group.title}</a>
 						) : (
 							<h2 class="footer-heading">{group.title}</h2>
 						)}
@@ -95,7 +97,7 @@ const copyright = copyrightText.replace(/\d{4}/, currentYear.toString());
 						</ul>
 						<div class="spacer-l"></div>
 						{index === linkGroups.length - 1 && (
-							<a id="footer-contact" href={ctaButtonUrl} target="_blank" rel="noopener noreferrer" class="footer-cta-button button dark-button">{ctaButtonText}</a>
+							<a id="footer-contact" href="#" class="open-modal footer-cta-button button dark-button">{ctaButtonText}</a>
 						)}
 					</div>
 				))}
