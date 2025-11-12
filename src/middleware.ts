@@ -15,9 +15,10 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
 		const redirectUrl = prefersSpanish ? '/es/' : '/en/';
 		
 		return new Response(null, {
-			status: 302,
+			status: 307,
 			headers: {
 				'Location': redirectUrl,
+				'Cache-Control': 'no-cache, no-store, must-revalidate',
 			},
 		});
 	}

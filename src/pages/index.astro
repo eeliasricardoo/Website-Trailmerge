@@ -1,12 +1,38 @@
 ---
-// This page redirects to /en/ or /es/ based on the user's browser language
-// Required by Astro i18n for root redirect to default locale
-// The middleware handles the redirect, but we need this file for Astro i18n
-// If middleware doesn't catch it, redirect to default locale
-const acceptLanguage = Astro.request.headers.get('accept-language') || '';
-const prefersSpanish = acceptLanguage.toLowerCase().includes('es');
-const redirectUrl = prefersSpanish ? '/es/' : '/en/';
-
-return Astro.redirect(redirectUrl, 302);
+// Required by Astro i18n
+// In dev/SSR: middleware handles redirect
+// In static builds: generates minimal HTML that redirects instantly via JavaScript
+if (import.meta.env.SSR) {
+	const acceptLanguage = Astro.request.headers.get('accept-language') || '';
+	const prefersSpanish = acceptLanguage.toLowerCase().includes('es');
+	const redirectUrl = prefersSpanish ? '/es/' : '/en/';
+	
+	return new Response(null, {
+		status: 307,
+		headers: {
+			'Location': redirectUrl,
+			'Cache-Control': 'no-cache',
+		},
+	});
+}
 ---
-
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<script is:inline>
+		// Immediate redirect before any rendering - detects browser language
+		(function() {
+			try {
+				const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+				const prefersSpanish = browserLang.startsWith('es');
+				const targetUrl = prefersSpanish ? '/es/' : '/en/';
+				window.location.replace(targetUrl);
+			} catch (e) {
+				window.location.replace('/en/');
+			}
+		})();
+	</script>
+</head>
+<body></body>
+</html>
