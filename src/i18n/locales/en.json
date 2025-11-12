@@ -6,22 +6,22 @@
     "home": "Trailmerge home"
   },
   "hero": {
-    "title": "Elevate your product",
-    "subtitle": "Take the path to best-in-class UX and development for SaaS & enterprise apps",
-    "cta": "Request A Consult"
+    "title": "Elevate your business software",
+    "subtitle": "Take the design-first path to operational excellence",
+    "cta": "Schedule a Consult"
   },
   "services": {
     "ignite": {
-      "title": "Ignite your practice",
-      "description": "We'll guide you in building a strong, Agile-centered product design practice, efficient design systems, and team-wide processes."
+      "title": "Ignite your digital transformation",
+      "description": "We'll work with you to craft a strong, Agile transformation strategy and long-term vision for your business operations and software."
     },
     "evaluate": {
-      "title": "Evaluate your app's UX",
-      "description": "Our team of SaaS & enterprise usability specialists will conduct a UX design audit to highlight and prioritize areas for improvement."
+      "title": "Learn from your team and customers",
+      "description": "Our team of design and digital transformation specialists will conduct research and discovery to uncover and prioritize areas for improvement."
     },
     "scale": {
-      "title": "Scale up design",
-      "description": "Augment UX efforts on your team by bringing on a fractional design team member to take your product to the next level."
+      "title": "Start the climb",
+      "description": "Our team will come alongside yours in close collaboration to bring your team and their software tools to the next level."
     }
   },
   "footer": {
@@ -30,8 +30,8 @@
     "privacy": "Privacy",
     "resources": "Resources",
     "blog": "Blog",
-    "cta": "Request A Consult",
-    "copyright": "© 2024 Trailmerge Ltd Co. All rights reserved.",
+    "cta": "Schedule a Consult",
+    "copyright": "© {year} Trailmerge Ltd Co. All rights reserved.",
     "address": {
       "line1": "3100 Interstate North Circle SE",
       "line2": "Suite 200",
@@ -47,11 +47,11 @@
   },
   "about": {
     "title": "About Trailmerge",
-    "subtitle": "As your product design and software <br>development team, Trailmerge<br> improves your workflows so you can<br> advance towards your goals.",
+    "subtitle": "As your digital transformation, user experience, and custom software development team, Trailmerge improves your team's workflows so you can advance towards your goals.",
     "seo": {
-      "title": "About Trailmerge – UX Agency for B2B SaaS",
-      "description": "Trailmerge is a UI/UX agency specializing in B2B SaaS product design from MVP to first users and beyond. We scale with your product and business.",
-      "keywords": "about Trailmerge, UX design team, B2B SaaS experts, product design agency, Atlanta design team"
+      "title": "About Trailmerge – UX-Driven Digital Transformation and Custom Software Development",
+      "description": "Trailmerge is a design-first digital transformation agency specializing in process strategy and custom software development for growing businesses.",
+      "keywords": "about Trailmerge, UX design team, digital transformation agency, custom software development, Atlanta software development team"
     },
     "vision": {
       "paragraph1": "At Trailmerge, our vision is to promote abundance of life and opportunity.",
@@ -92,7 +92,7 @@
     }
   },
   "aside": {
-    "text": "Trailmerge equips SaaS and enterprise product teams with user experience and development expertise, specialized product design, and strategic best practices to level up the usability and adoption of your SaaS or enterprise application."
+    "text": "Trailmerge equips enterprise operations and technology teams with strategic digital transformation consulting, user experience and product expertise, and custom software development, to conquer costly inefficiencies and level up your team's excellence."
   },
   "offer": {
     "title": "How does your product stack up?",
@@ -103,8 +103,8 @@
     "description": "We've had the honor of partnering with amazing teams from idea-stage B2B SaaS startups to multinational Enterprise teams to empower people to achieve, succeed, and thrive in their daily work lives."
   },
   "blog": {
-    "title": "Trailmerge Blog – Design Insights for B2B SaaS",
-    "description": "Helpful articles for B2B SaaS founders and product leaders on the topics of UX design best practices and product strategy.",
+    "title": "Trailmerge Blog – Digital Transformation and Enterprise Software Development Insights",
+    "description": "Helpful articles for operations and technology leaders on the topics of digital transformation and software development best practices.",
     "seePost": "See Blog Post",
     "readMore": "Read More",
     "postTitleSuffix": "Trailmerge Blog",
@@ -113,7 +113,7 @@
       "blog": "Blog"
     },
     "seo": {
-      "keywords": "UX design blog, B2B SaaS articles, product design tips, MVP strategy, design best practices, SaaS founders"
+      "keywords": "digital transformation blog, enterprise software development articles, product design tips, MVP strategy, software design best practices, operations and technology leaders, enterprise UX articles"
     }
   },
   "caseStudies": {
@@ -130,9 +130,9 @@
   },
   "homepage": {
     "seo": {
-      "title": "UX Design Agency for B2B SaaS Startups – Trailmerge",
-      "description": "Scalable UI/UX services for SaaS including MVP design, product overhaul, and design audits. Schedule a free consultation to get started.",
-      "keywords": "UX design agency, B2B SaaS design, MVP design, product design, design audit, UI/UX services, SaaS startup design, Atlanta UX agency"
+      "title": "Custom Digital Transformation and Enterprise Software Development Agency – Trailmerge",
+      "description": "Scalable custom digital transformation and enterprise software development services for growing businesses including strategic consulting, enterprise UX and product design, and internal system development. Schedule a free consultation to get started.",
+      "keywords": "custom digital transformation agency, enterprise software development agency, strategic consulting, enterprise UX, product design, internal systems development, Atlanta software development agency"
     }
   }
 }
