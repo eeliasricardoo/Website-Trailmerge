@@ -1,7 +1,7 @@
 ---
 // Required by Astro i18n
 // In dev/SSR: middleware handles redirect
-// In static builds: generates minimal HTML that redirects instantly via JavaScript
+// In static builds: generates minimal HTML that redirects instantly
 if (import.meta.env.SSR) {
 	const acceptLanguage = Astro.request.headers.get('accept-language') || '';
 	const prefersSpanish = acceptLanguage.toLowerCase().includes('es');
@@ -16,23 +16,8 @@ if (import.meta.env.SSR) {
 	});
 }
 ---
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<script is:inline>
-		// Immediate redirect before any rendering - detects browser language
-		(function() {
-			try {
-				const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
-				const prefersSpanish = browserLang.startsWith('es');
-				const targetUrl = prefersSpanish ? '/es/' : '/en/';
-				window.location.replace(targetUrl);
-			} catch (e) {
-				window.location.replace('/en/');
-			}
-		})();
-	</script>
-</head>
-<body></body>
-</html>
+<!doctype html>
+<script is:inline>
+// Ultra-fast redirect - executes before any rendering
+(function(){var l=(navigator.language||navigator.userLanguage||'en').toLowerCase();window.location.replace(l.startsWith('es')?'/es/':'/en/');})();
+</script>
