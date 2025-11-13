@@ -5,6 +5,7 @@ import db from '@astrojs/db';
 import node from '@astrojs/node';
 import studioCMS from 'studiocms';
 import studioCMSMd from '@studiocms/md';
+import studioCMSBlog from '@studiocms/blog';
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,9 +26,30 @@ export default defineConfig({
 	integrations: [
 		db(),
 		studioCMS({
-			dbStartPage: true, // Enable setup page to initialize database
+			dbStartPage: false, // Setup complete - disabled as instructed
+			dashboardConfig: {
+				dashboardEnabled: true,
+				dashboardRouteOverride: '/admin',
+			},
+			contentRenderer: 'astro',
+			verbose: false,
+			includedIntegrations: {
+				useAstroDBIntegration: false, // We're already including @astrojs/db
+			},
+			overrides: {
+				CustomImageService: undefined,
+			},
 			plugins: [
 				studioCMSMd(),
+				studioCMSBlog({
+					blog: {
+						title: 'Trailmerge Blog',
+						description: 'Insights on product design and SaaS development',
+						enableRSS: true,
+					},
+					injectDefaultRoutes: false, // Don't inject default blog routes
+					injectRoutes: false, // We manage our own routes with i18n support
+				}),
 			],
 		}),
 		sitemap({

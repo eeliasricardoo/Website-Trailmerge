@@ -1,29 +1,20 @@
 import type { MiddlewareHandler } from 'astro';
 
 export const onRequest: MiddlewareHandler = async (context, next) => {
-	const { url, request } = context;
+	const { url } = context;
 
-	// Only handle root path redirects
-	if (url.pathname === '/' || url.pathname === '') {
-		// Get Accept-Language header
-		const acceptLanguage = request.headers.get('accept-language') || '';
-
-		// Check if Spanish is preferred
-		const prefersSpanish = acceptLanguage.toLowerCase().includes('es');
-
-		// Redirect to appropriate locale
-		const redirectUrl = prefersSpanish ? '/es/' : '/en/';
-
-		return new Response(null, {
-			status: 307,
-			headers: {
-				'Location': redirectUrl,
-				'Cache-Control': 'no-cache, no-store, must-revalidate',
-			},
-		});
+	// Skip middleware for StudioCMS routes
+	if (
+		url.pathname.startsWith('/admin') ||
+		url.pathname.startsWith('/start') ||
+		url.pathname.startsWith('/studiocms') ||
+		url.pathname.startsWith('/studiocms_api')
+	) {
+		return next();
 	}
 
-	// Continue with normal request handling
+	// Let all other routes pass through normally
+	// The index.astro page will handle the root redirect
 	return next();
 };
 
