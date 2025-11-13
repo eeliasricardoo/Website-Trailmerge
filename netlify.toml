@@ -1,0 +1,23 @@
+# Netlify configuration
+[build]
+  publish = "dist"
+
+# Clean URLs - remove index.html
+[[redirects]]
+  from = "/:path*/index.html"
+  to = "/:path*/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+# Pretty URLs
+[build.processing]
+  skip_processing = false
+
+[build.processing.html]
+  pretty_urls = true

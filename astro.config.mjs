@@ -8,6 +8,7 @@ export default defineConfig({
 	base: '/',
 	output: 'static',
 	compressHTML: true,
+	trailingSlash: 'always',
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'es'],
@@ -53,6 +54,7 @@ export default defineConfig({
 		})
 	],
 	build: {
+		format: 'directory',
 		inlineStylesheets: 'auto',
 	},
 	vite: {

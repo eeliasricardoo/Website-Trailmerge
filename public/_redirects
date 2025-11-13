@@ -1,0 +1,5 @@
+# Remove index.html from URLs
+/*/index.html /*/  301!
+/index.html /  301!
+
+# Language redirects are handled by the root index.html JavaScript
