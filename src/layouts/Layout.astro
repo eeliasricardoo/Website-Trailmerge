@@ -179,8 +179,54 @@ const isStaging = Astro.site?.hostname === 'staging.trailmerge.com' ||
 		<link rel="dns-prefetch" href="https://images.unsplash.com" />
 		<link rel="dns-prefetch" href="https://uploads-ssl.webflow.com" />
 		
+		<!-- Cookie Consent - Silktide -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+		<script is:inline src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+		<script is:inline define:vars={{ lang }}>
+			window.addEventListener('load', function() {
+				const translations = {
+					en: {
+						message: 'We use cookies to ensure you get the best experience on our website.',
+						dismiss: 'Accept',
+						link: 'Learn more',
+						href: '/en/privacy/'
+					},
+					es: {
+						message: 'Utilizamos cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.',
+						dismiss: 'Aceptar',
+						link: 'Más información',
+						href: '/es/privacy/'
+					}
+				};
+
+				const currentLang = lang || 'en';
+				const t = translations[currentLang] || translations.en;
+
+				window.cookieconsent.initialise({
+					palette: {
+						popup: {
+							background: '#2e3a33',
+							text: '#fcfcfc'
+						},
+						button: {
+							background: '#c1e3cb',
+							text: '#2e3a33'
+						}
+					},
+					theme: 'classic',
+					position: 'bottom',
+					content: {
+						message: t.message,
+						dismiss: t.dismiss,
+						link: t.link,
+						href: t.href
+					}
+				});
+			});
+		</script>
+
 		<!-- Analytics -->
-		<script src="https://t.contentsquare.net/uxa/ecd5d357203b8.js"></script>
+		<script is:inline src="https://t.contentsquare.net/uxa/ecd5d357203b8.js"></script>
 
 		<!-- Structured Data (JSON-LD) -->
 		<SEOSchema
@@ -1381,6 +1427,111 @@ const isStaging = Astro.site?.hostname === 'staging.trailmerge.com' ||
 
 		.div-block-20 {
 			gap: 16px;
+		}
+	}
+
+	/* Cookie Consent Custom Styles */
+
+	/* Overlay backdrop */
+	.cc-window::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(2px);
+		z-index: -1;
+		animation: fadeIn 0.3s ease-in-out;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.cc-window {
+		font-family: Bitter, Georgia, serif !important;
+		border-radius: 8px 8px 0 0 !important;
+		box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2) !important;
+		padding: 24px !important;
+		max-width: 100% !important;
+		position: fixed !important;
+		z-index: 9999 !important;
+		animation: slideUp 0.4s ease-out;
+	}
+
+	@keyframes slideUp {
+		from {
+			transform: translateY(100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
+
+	.cc-message {
+		font-size: 15px !important;
+		line-height: 1.6 !important;
+		margin-bottom: 0 !important;
+	}
+
+	.cc-btn {
+		font-family: Bitter, Georgia, serif !important;
+		font-weight: 700 !important;
+		font-size: 15px !important;
+		padding: 10px 20px !important;
+		border-radius: 4px !important;
+		transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+		box-shadow: 1px 1px 2px rgba(21, 26, 23, 0.3) !important;
+	}
+
+	.cc-btn:hover {
+		background-color: var(--green-500) !important;
+		box-shadow: 2px 2px 5px rgba(21, 26, 23, 0.2) !important;
+		transform: translateY(-1px);
+	}
+
+	.cc-link {
+		color: var(--mint) !important;
+		text-decoration: underline !important;
+		font-weight: 500 !important;
+		transition: color 0.2s ease !important;
+	}
+
+	.cc-link:hover {
+		color: var(--green-500) !important;
+	}
+
+	@media (max-width: 768px) {
+		.cc-window {
+			padding: 20px !important;
+		}
+
+		.cc-message {
+			font-size: 14px !important;
+		}
+
+		.cc-btn {
+			font-size: 14px !important;
+			padding: 8px 16px !important;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.cc-window {
+			padding: 16px !important;
+		}
+
+		.cc-message {
+			font-size: 13px !important;
 		}
 	}
 </style>
