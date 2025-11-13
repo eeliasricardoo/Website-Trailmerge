@@ -1,14 +1,19 @@
----
-// Required by Astro i18n
-// Client-side language detection and redirect
----
-<!doctype html>
+import { writeFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const indexPath = join(__dirname, '..', 'dist', 'index.html');
+
+const indexContent = `<!doctype html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Redirecting...</title>
 	<meta name="robots" content="noindex">
-	<script is:inline>
+	<script>
 	// Ultra-fast redirect - executes before any rendering
 	(function(){
 		var l=(navigator.language||navigator.userLanguage||'en').toLowerCase();
@@ -23,4 +28,7 @@
 	<p>Redirecting based on your language preference...</p>
 	<p><a href="/en/">English</a> | <a href="/es/">Español</a></p>
 </body>
-</html>
+</html>`;
+
+writeFileSync(indexPath, indexContent);
+console.log('✓ Generated custom index.html with language detection');
