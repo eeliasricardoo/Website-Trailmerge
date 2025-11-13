@@ -1,0 +1,25 @@
+---
+// Language detection redirect for /privacy
+---
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Redirecting...</title>
+	<meta name="robots" content="noindex">
+	<script is:inline>
+	// Ultra-fast redirect - executes before any rendering
+	(function(){
+		var l=(navigator.language||navigator.userLanguage||'en').toLowerCase();
+		window.location.replace(l.startsWith('es')?'/es/privacy/':'/en/privacy/');
+	})();
+	</script>
+	<noscript>
+		<meta http-equiv="refresh" content="0;url=/en/privacy/">
+	</noscript>
+</head>
+<body>
+	<p>Redirecting based on your language preference...</p>
+	<p><a href="/en/privacy/">English</a> | <a href="/es/privacy/">Español</a></p>
+</body>
+</html>

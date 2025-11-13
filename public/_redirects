@@ -2,4 +2,9 @@
 /*/index.html /*/  301!
 /index.html /  301!
 
-# Language redirects are handled by the root index.html JavaScript
+# Language detection redirects are handled by JavaScript in:
+# - / (root)
+# - /blog
+# - /about
+# - /privacy
+# - /blog/:slug
