@@ -5,7 +5,7 @@
 # Clean URLs - remove index.html
 [[redirects]]
   from = "/:path*/index.html"
-  to = "/:path*/"
+  to = "/:path*"
   status = 301
   force = true
 

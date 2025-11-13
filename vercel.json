@@ -1,10 +1,9 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true,
   "redirects": [
     {
       "source": "/:path*/index.html",
-      "destination": "/:path*/",
+      "destination": "/:path*",
       "permanent": true
     },
     {

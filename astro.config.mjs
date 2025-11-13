@@ -8,7 +8,7 @@ export default defineConfig({
 	base: '/',
 	output: 'static',
 	compressHTML: true,
-	trailingSlash: 'always',
+	trailingSlash: 'ignore',
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'es'],
