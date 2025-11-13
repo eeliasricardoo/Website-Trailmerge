@@ -63,10 +63,23 @@ const copperFormId = lang === 'es'
 
 		if (!modalBackdrop || !closeModalButton) return;
 
-		// Open modal
+		// Flag to prevent multiple redirects
+		let hasRedirected = false;
+
+		// Function to redirect to calendar (only once)
+		const redirectToCalendar = () => {
+			if (hasRedirected) return;
+			hasRedirected = true;
+			modalBackdrop.classList.remove('active');
+			document.body.style.overflow = 'auto';
+			window.location.href = calendarUrl;
+		};
+
+		// Reset redirect flag when modal opens
 		openModalButtons.forEach(button => {
 			button.addEventListener('click', function(e) {
 				e.preventDefault();
+				hasRedirected = false; // Reset flag on modal open
 				modalBackdrop.classList.add('active');
 				document.body.style.overflow = 'hidden';
 			});
@@ -98,115 +111,110 @@ const copperFormId = lang === 'es'
 		// Listen for form submission success from Copper Forms iframe
 		// Copper Forms sends postMessage when form is submitted successfully
 		window.addEventListener('message', function(event) {
+			// Only process if modal is open and haven't redirected yet
+			if (!modalBackdrop.classList.contains('active') || hasRedirected) return;
+
 			// Check if message is from Copper Forms domain
 			if (event.origin.includes('copper.com') || event.origin.includes('forms.copper.com')) {
-				// Check for form submission success messages
-				if (event.data && (
+				// Check for SPECIFIC form submission success messages from Copper Forms
+				if (event.data && typeof event.data === 'object' && (
 					event.data.type === 'form-submit' ||
 					event.data.type === 'copper-form-submit' ||
-					event.data.status === 'success' ||
-					event.data.message === 'form-submitted' ||
-					typeof event.data === 'string' && event.data.includes('success')
+					(event.data.status === 'success' && event.data.type) ||
+					event.data.message === 'form-submitted'
 				)) {
-					// Close modal and redirect to calendar
-					modalBackdrop.classList.remove('active');
-					document.body.style.overflow = 'auto';
-					window.location.href = calendarUrl;
+					console.log('Form submission detected via postMessage:', event.data);
+					redirectToCalendar();
 				}
 			}
 		});
 
-		// Fallback: Monitor iframe for form submission indicators
-		// Check iframe content changes and URL changes that might indicate successful submission
+		// Fallback: Monitor iframe URL changes (more reliable than DOM inspection)
 		const iframe = document.querySelector('iframe[id^="wYsDRF6aDG9YgnPCCJjiXJ"], iframe[id^="5dNTzeqzanj9McnokQfpFq"]');
 		if (iframe) {
-			let checkCount = 0;
-			const maxChecks = 60; // Check for up to 30 seconds (500ms * 60)
-			let lastIframeUrl = iframe.src;
-			let formSubmitted = false;
-			
+			const originalUrl = iframe.src;
+			let checkInterval = null;
+
 			// Listen for iframe load events (happens when form redirects after submission)
 			iframe.addEventListener('load', function() {
-				// Small delay to allow success page to render
+				// Only check if modal is open
+				if (!modalBackdrop.classList.contains('active') || hasRedirected) return;
+
+				// Wait a bit to allow iframe to settle
 				setTimeout(() => {
-					if (!formSubmitted) {
-						try {
-							const currentUrl = iframe.contentWindow?.location.href || iframe.src;
-							// If URL changed from original embed URL, form was likely submitted
-							if (currentUrl && currentUrl !== lastIframeUrl && !currentUrl.includes('type=embed')) {
-								formSubmitted = true;
-								modalBackdrop.classList.remove('active');
-								document.body.style.overflow = 'auto';
-								window.location.href = calendarUrl;
-							}
-						} catch (e) {
-							// CORS error - can't access iframe URL
+					if (hasRedirected || !modalBackdrop.classList.contains('active')) return;
+
+					try {
+						const currentUrl = iframe.contentWindow?.location.href || iframe.src;
+						// Check if URL changed to a non-embed URL (indicates form submission redirect)
+						if (currentUrl && currentUrl !== originalUrl && !currentUrl.includes('type=embed')) {
+							console.log('Form submission detected via URL change:', currentUrl);
+							redirectToCalendar();
 						}
+					} catch (e) {
+						// CORS error - can't access iframe URL, rely on postMessage
 					}
-				}, 1000);
+				}, 1500);
 			});
-			
-			const checkInterval = setInterval(() => {
-				if (formSubmitted) {
-					clearInterval(checkInterval);
-					return;
-				}
-				
-				checkCount++;
-				
-				// Check if iframe URL changed (indicates form submission/redirect)
-				try {
-					const currentUrl = iframe.contentWindow?.location.href || iframe.src;
-					if (currentUrl && currentUrl !== lastIframeUrl && !currentUrl.includes('type=embed')) {
-						// URL changed, likely form was submitted
-						formSubmitted = true;
+
+			// Periodic check as additional fallback (less aggressive)
+			const startChecking = () => {
+				if (checkInterval) clearInterval(checkInterval);
+
+				let checkCount = 0;
+				const maxChecks = 40; // Check for up to 20 seconds (500ms * 40)
+
+				checkInterval = setInterval(() => {
+					// Stop if modal closed or already redirected
+					if (!modalBackdrop.classList.contains('active') || hasRedirected) {
 						clearInterval(checkInterval);
-						modalBackdrop.classList.remove('active');
-						document.body.style.overflow = 'auto';
-						window.location.href = calendarUrl;
 						return;
 					}
-					lastIframeUrl = currentUrl || lastIframeUrl;
-				} catch (e) {
-					// CORS error - can't access iframe URL
-				}
-				
-				try {
-					// Try to access iframe content (may fail due to CORS)
-					const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-					if (iframeDoc) {
-						// Look for success indicators in the iframe
-						const successElements = iframeDoc.querySelectorAll(
-							'[class*="success"], [class*="thank"], [id*="success"], [id*="thank"], .success-message, .thank-you, [data-success]'
-						);
-						
-						if (successElements.length > 0) {
-							formSubmitted = true;
+
+					checkCount++;
+
+					try {
+						const currentUrl = iframe.contentWindow?.location.href;
+						if (currentUrl && currentUrl !== originalUrl && !currentUrl.includes('type=embed')) {
+							console.log('Form submission detected via periodic check:', currentUrl);
 							clearInterval(checkInterval);
-							modalBackdrop.classList.remove('active');
-							document.body.style.overflow = 'auto';
-							window.location.href = calendarUrl;
+							redirectToCalendar();
 							return;
 						}
+					} catch (e) {
+						// CORS error - expected, rely on other methods
 					}
-				} catch (e) {
-					// CORS error - can't access iframe content, rely on postMessage
-				}
-				
-				// Stop checking after max attempts
-				if (checkCount >= maxChecks) {
-					clearInterval(checkInterval);
-				}
-			}, 500);
 
-			// Stop checking when modal is closed
-			const stopChecking = () => {
-				clearInterval(checkInterval);
+					// Stop checking after max attempts
+					if (checkCount >= maxChecks) {
+						clearInterval(checkInterval);
+					}
+				}, 500);
 			};
-			
+
+			// Start checking when modal opens
+			openModalButtons.forEach(button => {
+				button.addEventListener('click', function() {
+					startChecking();
+				});
+			});
+
+			// Stop checking when modal closes
+			const stopChecking = () => {
+				if (checkInterval) {
+					clearInterval(checkInterval);
+					checkInterval = null;
+				}
+			};
+
 			closeModalButton.addEventListener('click', stopChecking);
 			modalBackdrop.addEventListener('click', function(e) {
 				if (e.target === modalBackdrop) {
+					stopChecking();
+				}
+			});
+			document.addEventListener('keydown', function(e) {
+				if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
 					stopChecking();
 				}
 			});

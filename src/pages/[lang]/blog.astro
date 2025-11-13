@@ -49,12 +49,12 @@ const breadcrumbs = [
 				{blogPosts.map((post) => (
 					<article class="blog-post-item">
 						<div class="blog-post-thumbnail">
-							<a href={`/${lang}/blog/${post.slug}`} class="blog-thumbnail-link">
+							<a href={`/${lang}/blog/${post.slug}/`} class="blog-thumbnail-link">
 								<img src={post.image} alt={post.imageAlt} class="blog-post-image" loading="lazy" />
 							</a>
 						</div>
 						<div class="blog-post-content">
-							<a href={`/${lang}/blog/${post.slug}`} class="blog-post-title-link">
+							<a href={`/${lang}/blog/${post.slug}/`} class="blog-post-title-link">
 								<h2 class="blog-post-title">{post.title}</h2>
 							</a>
 							<div class="spacer-s"></div>
@@ -68,7 +68,7 @@ const breadcrumbs = [
 							<div class="spacer-s"></div>
 							<p class="blog-post-excerpt">{post.excerpt}</p>
 							<div class="spacer-s"></div>
-							<a href={`/${lang}/blog/${post.slug}`} class="blog-read-more">{t('blog.readMore')}</a>
+							<a href={`/${lang}/blog/${post.slug}/`} class="blog-read-more">{t('blog.readMore')}</a>
 						</div>
 					</article>
 				))}

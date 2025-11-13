@@ -28,7 +28,7 @@ const latestPosts = allBlogPosts.slice(0, 3).map(post => ({
 	title: post.title,
 	author: post.author.name,
 	date: post.date,
-	linkUrl: `${langPrefix}/blog/${post.slug}`,
+	linkUrl: `${langPrefix}/blog/${post.slug}/`,
 	imageAlt: post.imageAlt
 }));
 

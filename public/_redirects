@@ -1,0 +1,10 @@
+# Remove index.html from URLs
+/*/index.html /*/  301!
+/index.html /  301!
+
+# Language detection redirects are handled by JavaScript in:
+# - / (root)
+# - /blog
+# - /about
+# - /privacy
+# - /blog/:slug

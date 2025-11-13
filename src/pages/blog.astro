@@ -1,6 +1,5 @@
 ---
-// Required by Astro i18n
-// Client-side language detection and redirect
+// Language detection redirect for /blog
 ---
 <!doctype html>
 <html>
@@ -12,15 +11,15 @@
 	// Ultra-fast redirect - executes before any rendering
 	(function(){
 		var l=(navigator.language||navigator.userLanguage||'en').toLowerCase();
-		window.location.replace(l.startsWith('es')?'/es/':'/en/');
+		window.location.replace(l.startsWith('es')?'/es/blog/':'/en/blog/');
 	})();
 	</script>
 	<noscript>
-		<meta http-equiv="refresh" content="0;url=/en/">
+		<meta http-equiv="refresh" content="0;url=/en/blog/">
 	</noscript>
 </head>
 <body>
 	<p>Redirecting based on your language preference...</p>
-	<p><a href="/en/">English</a> | <a href="/es/">Español</a></p>
+	<p><a href="/en/blog/">English</a> | <a href="/es/blog/">Español</a></p>
 </body>
 </html>
