@@ -1,12 +1,17 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import db from '@astrojs/db';
+import node from '@astrojs/node';
+import studioCMS from 'studiocms';
+import studioCMSMd from '@studiocms/md';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://trailmerge.com',
 	base: '/',
-	output: 'static',
+	output: 'server',
+	adapter: node({ mode: 'standalone' }),
 	compressHTML: true,
 	trailingSlash: 'ignore',
 	i18n: {
@@ -18,6 +23,13 @@ export default defineConfig({
 		}
 	},
 	integrations: [
+		db(),
+		studioCMS({
+			dbStartPage: true, // Enable setup page to initialize database
+			plugins: [
+				studioCMSMd(),
+			],
+		}),
 		sitemap({
 			changefreq: 'weekly',
 			priority: 0.7,
