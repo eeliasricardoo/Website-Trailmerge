@@ -25,16 +25,17 @@ export default defineConfig({
 	},
 	integrations: [
 		db(),
+		// StudioCMS must be before sitemap to ensure routes are injected before i18n processes them
 		studioCMS({
 			dbStartPage: false, // Setup complete - disabled as instructed
 			dashboardConfig: {
 				dashboardEnabled: true,
-				dashboardRouteOverride: '/admin',
+				dashboardRouteOverride: '/studio-admin', // Use a more specific route that won't conflict with i18n
 			},
 			contentRenderer: 'astro',
-			verbose: false,
+			verbose: true, // Enable verbose to see what routes are being created
 			includedIntegrations: {
-				useAstroDBIntegration: false, // We're already including @astrojs/db
+				useAstroDBIntegration: true, // Enable StudioCMS to create its own DB tables
 			},
 			overrides: {
 				CustomImageService: undefined,
@@ -131,5 +132,9 @@ export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: 'viewport',
+	},
+	server: {
+		port: 4321,
+		host: true,
 	},
 });
