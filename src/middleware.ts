@@ -6,6 +6,7 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
 	// Skip middleware for StudioCMS routes
 	if (
 		url.pathname.startsWith('/admin') ||
+		url.pathname.startsWith('/dashboard') ||
 		url.pathname.startsWith('/studio-admin') ||
 		url.pathname.startsWith('/cms') ||
 		url.pathname.startsWith('/start') ||

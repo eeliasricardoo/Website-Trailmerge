@@ -30,12 +30,13 @@ export default defineConfig({
 			dbStartPage: false, // Setup complete - disabled as instructed
 			dashboardConfig: {
 				dashboardEnabled: true,
-				dashboardRouteOverride: '/studio-admin', // Use a more specific route that won't conflict with i18n
+				// Remove dashboardRouteOverride to use StudioCMS default route (/dashboard)
+				// This route won't conflict with i18n [lang] pattern
 			},
 			contentRenderer: 'astro',
 			verbose: true, // Enable verbose to see what routes are being created
 			includedIntegrations: {
-				useAstroDBIntegration: true, // Enable StudioCMS to create its own DB tables
+				useAstroDBIntegration: true, // StudioCMS will create its own DB tables
 			},
 			overrides: {
 				CustomImageService: undefined,

@@ -33,6 +33,7 @@ try {
 				month: 'long', 
 				day: 'numeric' 
 			}).toUpperCase() : '',
+			publishedAt: page.publishedAt ? new Date(page.publishedAt) : new Date(0), // Keep original date for sorting
 			category: page.category || 'BLOG',
 			image: page.image || '',
 			imageAlt: page.imageAlt || page.title || '',
@@ -49,7 +50,13 @@ try {
 }
 
 // Combine posts: StudioCMS posts first, then static posts
-const blogPosts = [...studiocmsPosts, ...staticPosts];
+// Sort all posts by date (most recent first)
+const blogPosts = [...studiocmsPosts, ...staticPosts].sort((a, b) => {
+	// Use publishedAt for StudioCMS posts, or parse date string for static posts
+	const dateA = a.publishedAt || (a.date ? new Date(a.date.replace(/(\w+)\s+(\d+),\s+(\d+)/, '$2 $1 $3')) : new Date(0));
+	const dateB = b.publishedAt || (b.date ? new Date(b.date.replace(/(\w+)\s+(\d+),\s+(\d+)/, '$2 $1 $3')) : new Date(0));
+	return dateB.getTime() - dateA.getTime(); // Most recent first
+});
 
 // SEO keywords and breadcrumbs  
 const keywords = t('blog.seo.keywords');
