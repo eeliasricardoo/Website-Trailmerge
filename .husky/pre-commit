@@ -1,0 +1,93 @@
+#!/usr/bin/env sh
+
+# Colors for output
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo "🔍 Running security checks..."
+
+# Check for sensitive patterns in staged files
+FORBIDDEN_PATTERNS=(
+    "api[_-]?key"
+    "secret[_-]?key"
+    "password"
+    "bearer[_-]?token"
+    "auth[_-]?token"
+    "private[_-]?key"
+    "access[_-]?key"
+    "client[_-]?secret"
+    "jwt[_-]?secret"
+    "encryption[_-]?key"
+    "ASTRO_DB_APP_TOKEN"
+    "CMS_ENCRYPTION_KEY"
+    "eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]*"  # JWT tokens
+    "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"  # UUIDs
+)
+
+# Check for files that should never be committed
+FORBIDDEN_FILES=(
+    ".env"
+    ".env.local"
+    ".env.production"
+    ".env.development"
+    "*.pem"
+    "*.key"
+    "*.p12"
+    "credentials.json"
+    "service-account.json"
+)
+
+# Get list of staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$STAGED_FILES" ]; then
+    echo "✅ No staged files to check"
+    exit 0
+fi
+
+# Check for forbidden files
+for file in $STAGED_FILES; do
+    for pattern in "${FORBIDDEN_FILES[@]}"; do
+        if [[ "$file" == $pattern ]]; then
+            echo "${RED}❌ ERROR: Attempting to commit sensitive file: $file${NC}"
+            echo "${YELLOW}⚠️  This file contains sensitive information and should not be committed.${NC}"
+            exit 1
+        fi
+    done
+done
+
+# Check file contents for sensitive patterns
+for file in $STAGED_FILES; do
+    # Skip binary files, node_modules, .example files, husky hooks, and security docs
+    if [[ "$file" == *"node_modules"* ]] || [[ "$file" == *".example"* ]] || [[ "$file" == *".husky/"* ]] || [[ "$file" == "SECURITY_"* ]] || [[ "$file" == *".png" ]] || [[ "$file" == *".jpg" ]] || [[ "$file" == *".jpeg" ]] || [[ "$file" == *".gif" ]] || [[ "$file" == *".ico" ]] || [[ "$file" == *".woff"* ]] || [[ "$file" == *".ttf" ]] || [[ "$file" == *".eot" ]] || [[ "$file" == *".svg" ]] || [[ "$file" == *".pdf" ]]; then
+        continue
+    fi
+
+    # Check if file exists (it might be deleted)
+    if [ ! -f "$file" ]; then
+        continue
+    fi
+
+    for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
+        # Case-insensitive search
+        if grep -iE "$pattern" "$file" > /dev/null 2>&1; then
+            # Exclude package-lock.json and package.json from certain patterns
+            if [[ "$file" == "package-lock.json" ]] || [[ "$file" == "package.json" ]]; then
+                continue
+            fi
+
+            echo "${RED}❌ ERROR: Potential sensitive data found in $file${NC}"
+            echo "${YELLOW}Pattern matched: $pattern${NC}"
+            echo ""
+            echo "${YELLOW}If this is a false positive, you can:${NC}"
+            echo "  1. Review the file and ensure no real credentials are present"
+            echo "  2. Use git commit --no-verify to bypass this check (USE WITH CAUTION)"
+            echo ""
+            exit 1
+        fi
+    done
+done
+
+echo "✅ Security checks passed!"
+exit 0

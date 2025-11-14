@@ -6,7 +6,8 @@
     "dev": "astro dev --remote --port 4321",
     "build": "astro build --remote",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/db": "^0.18.2",
@@ -20,6 +21,7 @@
     "studiocms": "^0.1.0-beta.30"
   },
   "devDependencies": {
+    "husky": "^9.1.7",
     "terser": "^5.44.1"
   }
 }
