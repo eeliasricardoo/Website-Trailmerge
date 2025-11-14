@@ -17,6 +17,9 @@ pnpm-debug.log*
 .env
 .env.production
 
+# security documentation (contains sensitive info)
+SECURITY_*.md
+
 # macOS-specific files
 .DS_Store
 
