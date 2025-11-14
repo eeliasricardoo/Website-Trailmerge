@@ -127,9 +127,8 @@ npm run build
 The built files will be in the `dist/` directory, ready for deployment to any static hosting service.
 
 ### Recommended Hosting Platforms
+- Google Cloud Storage (currently deployed)
 - Vercel
-- Netlify
-- GitHub Pages
 - AWS S3 + CloudFront
 
 ## 🔧 Configuration
