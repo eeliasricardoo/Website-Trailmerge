@@ -1,4 +1,7 @@
 ---
+// SSR mode - no prerender or getStaticPaths needed
+export const prerender = false;
+
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Hero from '../../components/Hero.astro';
@@ -20,14 +23,17 @@ import SeanHeadshot from '../../assets/images/Sean-Headshot.png';
 import AndyHeadshot from '../../assets/images/Andy-Headshot.png';
 import TourialScreenshots from '../../assets/images/Tourial-Screenshots.png';
 
-export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'es' } },
-	];
+const { lang } = Astro.params || { lang: 'en' };
+
+// Ignore StudioCMS routes - they should not be captured by i18n
+// Return 404 immediately if lang is not a valid locale
+if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
+	return new Response(null, { 
+		status: 404,
+		statusText: 'Not Found'
+	});
 }
 
-const { lang } = Astro.params;
 const t = useTranslations(lang as 'en' | 'es');
 const testimonials = getTestimonialsByLang(lang as 'en' | 'es');
 

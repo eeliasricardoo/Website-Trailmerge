@@ -1,18 +1,14 @@
 ---
+// SSR mode - no getStaticPaths needed
+export const prerender = false;
+
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
 import ContactModal from '../../components/ContactModal.astro';
 import { useTranslations } from '../../i18n/utils';
 
-export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'es' } },
-	];
-}
-
-const { lang } = Astro.params;
+const { lang } = Astro.params || { lang: 'en' };
 const t = useTranslations(lang as 'en' | 'es');
 
 // SEO keywords and breadcrumbs

@@ -1,12 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import db from '@astrojs/db';
+import node from '@astrojs/node';
+import studioCMS from 'studiocms';
+import studioCMSMd from '@studiocms/md';
+import studioCMSBlog from '@studiocms/blog';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://trailmerge.com',
 	base: '/',
-	output: 'static',
+	output: 'server',
+	adapter: node({ mode: 'standalone' }),
 	compressHTML: true,
 	trailingSlash: 'ignore',
 	i18n: {
@@ -18,6 +24,36 @@ export default defineConfig({
 		}
 	},
 	integrations: [
+		db(),
+		// StudioCMS must be before sitemap to ensure routes are injected before i18n processes them
+		studioCMS({
+			dbStartPage: false, // Setup complete - disabled as instructed
+			dashboardConfig: {
+				dashboardEnabled: true,
+				// Remove dashboardRouteOverride to use StudioCMS default route (/dashboard)
+				// This route won't conflict with i18n [lang] pattern
+			},
+			contentRenderer: 'astro',
+			verbose: true, // Enable verbose to see what routes are being created
+			includedIntegrations: {
+				useAstroDBIntegration: true, // StudioCMS will create its own DB tables
+			},
+			overrides: {
+				CustomImageService: undefined,
+			},
+			plugins: [
+				studioCMSMd(),
+				studioCMSBlog({
+					blog: {
+						title: 'Trailmerge Blog',
+						description: 'Insights on product design and SaaS development',
+						enableRSS: true,
+					},
+					injectDefaultRoutes: false, // Don't inject default blog routes
+					injectRoutes: false, // We manage our own routes with i18n support
+				}),
+			],
+		}),
 		sitemap({
 			changefreq: 'weekly',
 			priority: 0.7,
@@ -97,5 +133,9 @@ export default defineConfig({
 	prefetch: {
 		prefetchAll: true,
 		defaultStrategy: 'viewport',
+	},
+	server: {
+		port: 4321,
+		host: true,
 	},
 });

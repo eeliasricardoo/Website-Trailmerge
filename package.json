@@ -3,17 +3,21 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build && node scripts/post-build.js",
+    "dev": "astro dev --remote --port 4321",
+    "build": "astro build --remote",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/db": "^0.18.2",
     "@astrojs/node": "^9.5.0",
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
+    "@studiocms/blog": "^0.1.0-beta.30",
+    "@studiocms/md": "^0.1.0-beta.30",
     "astro": "^5.14.7",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "studiocms": "^0.1.0-beta.30"
   },
   "devDependencies": {
     "terser": "^5.44.1"
