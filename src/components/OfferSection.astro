@@ -17,9 +17,9 @@ const t = useTranslations(lang as 'en' | 'es');
 const {
 	title = t('offer.title'),
 	buttonText = t('offer.buttonText'),
-	buttonUrl = "https://forms.gle/ufj74gqNJSiabci79",
+	buttonUrl = 'https://forms.gle/ufj74gqNJSiabci79',
 	image = DesignAuditImage,
-	imageWidth = 248
+	imageWidth = 248,
 } = Astro.props;
 ---
 
@@ -31,12 +31,20 @@ const {
 				<div class="side-content">
 					<h3><strong>{title}</strong></h3>
 					<div class="spacer-m"></div>
-					<a id="audit-button" href={buttonUrl} target="_blank" class="button dark-button">{buttonText}</a>
+					<a id="audit-button" href={buttonUrl} target="_blank" class="button dark-button"
+						>{buttonText}</a
+					>
 				</div>
 			</div>
 			<div class="div-block-21"></div>
 			<div class="div-block-22">
-				<img src={image.src} loading="lazy" width={imageWidth} alt="SaaS design audit illustration showing product evaluation checklist" class="image-25" />
+				<img
+					src={image.src}
+					loading="lazy"
+					width={imageWidth}
+					alt="SaaS design audit illustration showing product evaluation checklist"
+					class="image-25"
+				/>
 			</div>
 		</div>
 	</div>

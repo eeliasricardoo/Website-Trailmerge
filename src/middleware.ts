@@ -20,4 +20,3 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
 	// The index.astro page will handle the root redirect
 	return next();
 };
-

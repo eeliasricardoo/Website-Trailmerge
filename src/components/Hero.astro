@@ -12,7 +12,8 @@ const t = useTranslations(lang as 'en' | 'es');
 <!-- Hero Section -->
 <div class="body-block hero-wrapper home-hero" id="hero-section">
 	<div class="hero-illustration-wrapper">
-		<div class="hero-illustration" id="hero-illustration" data-bg-image="/images/Hero-Art.png"></div>
+		<div class="hero-illustration" id="hero-illustration" data-bg-image="/images/Hero-Art.png">
+		</div>
 	</div>
 	<div class="content-container">
 		<div class="hero">
@@ -142,7 +143,9 @@ const t = useTranslations(lang as 'en' | 'es');
 		padding-top: 0;
 		will-change: transform;
 		transform-origin: center center;
-		transition: transform 0.1s ease-out, background-image 0.3s ease-in;
+		transition:
+			transform 0.1s ease-out,
+			background-image 0.3s ease-in;
 	}
 
 	.hero-illustration.bg-loaded {

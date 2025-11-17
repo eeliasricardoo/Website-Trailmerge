@@ -8,13 +8,13 @@ export interface Props {
 	imageAlt?: string;
 }
 
-const { 
-	image, 
-	title, 
-	description, 
-	linkText = "Read More", 
-	linkUrl = "#",
-	imageAlt = ""
+const {
+	image,
+	title,
+	description,
+	linkText = 'Read More',
+	linkUrl = '#',
+	imageAlt = '',
 } = Astro.props;
 
 const imageSrc = typeof image === 'string' ? image : image.src;
@@ -23,7 +23,12 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 <!-- Case Study -->
 <div class="body-block">
 	<div class="content-container">
-		<img src={imageSrc} loading="lazy" alt={imageAlt || `${title} Screenshots`} class="constrained-full-image" />
+		<img
+			src={imageSrc}
+			loading="lazy"
+			alt={imageAlt || `${title} Screenshots`}
+			class="constrained-full-image"
+		/>
 		<div class="spacer-xl"></div>
 		<div class="side-title-area">
 			<div class="side-title">
@@ -31,12 +36,16 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 			</div>
 			<div class="side-content">
 				<p>{description}</p>
-				{linkText && linkUrl !== "#" && (
-					<>
-						<div class="spacer-m hidden"></div>
-						<a href={linkUrl} class="button hidden">{linkText}</a>
-					</>
-				)}
+				{
+					linkText && linkUrl !== '#' && (
+						<>
+							<div class="spacer-m hidden" />
+							<a href={linkUrl} class="button hidden">
+								{linkText}
+							</a>
+						</>
+					)
+				}
 			</div>
 		</div>
 	</div>

@@ -10,10 +10,7 @@ export interface Props {
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 
-const {
-	title = t('companies.title'),
-	description = t('companies.description')
-} = Astro.props;
+const { title = t('companies.title'), description = t('companies.description') } = Astro.props;
 ---
 
 <!-- Companies Section -->
@@ -32,16 +29,31 @@ const {
 		<div class="spacer-xl"></div>
 		<div class="companies-grid">
 			<div class="item-block">
-				<img src="/images/AchieveIt-Logo.svg" loading="lazy" alt="AchieveIt company logo" class="logo" />
+				<img
+					src="/images/AchieveIt-Logo.svg"
+					loading="lazy"
+					alt="AchieveIt company logo"
+					class="logo"
+				/>
 			</div>
 			<div class="item-block">
-				<img src="/images/LoanShout-Logo.svg" loading="lazy" alt="LoanShout company logo" class="logo" />
+				<img
+					src="/images/LoanShout-Logo.svg"
+					loading="lazy"
+					alt="LoanShout company logo"
+					class="logo"
+				/>
 			</div>
 			<div class="item-block">
 				<img src="/images/Staat-Logo.svg" loading="lazy" alt="Staat company logo" class="logo" />
 			</div>
 			<div class="item-block">
-				<img src="/images/Tourial-Logo.svg" loading="lazy" alt="Tourial company logo" class="logo" />
+				<img
+					src="/images/Tourial-Logo.svg"
+					loading="lazy"
+					alt="Tourial company logo"
+					class="logo"
+				/>
 			</div>
 			<div class="item-block">
 				<img src="/images/UserIQ-Logo.svg" loading="lazy" alt="UserIQ company logo" class="logo" />

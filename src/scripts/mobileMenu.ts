@@ -1,5 +1,5 @@
 // Mobile menu functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 	const menuButton = document.querySelector('.menu-button') as HTMLButtonElement;
 	const navMenu = document.querySelector('.nav-menu-green') as HTMLElement;
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		const isExpanded = navMenu.classList.contains('active');
 		menuButton.setAttribute('aria-expanded', isExpanded.toString());
 
-		menuButton.addEventListener('click', function() {
+		menuButton.addEventListener('click', function () {
 			const isCurrentlyExpanded = navMenu.classList.contains('active');
 
 			navMenu.classList.toggle('active');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 
 		// Close menu with Escape key
-		document.addEventListener('keydown', function(e) {
+		document.addEventListener('keydown', function (e) {
 			if (e.key === 'Escape' && navMenu.classList.contains('active')) {
 				navMenu.classList.remove('active');
 				menuButton.classList.remove('active');
@@ -29,11 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 
 		// Trap focus inside menu when open
-		const focusableElements = navMenu.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
+		const focusableElements = navMenu.querySelectorAll(
+			'a, button, [tabindex]:not([tabindex="-1"])'
+		);
 		const firstFocusable = focusableElements[0] as HTMLElement;
 		const lastFocusable = focusableElements[focusableElements.length - 1] as HTMLElement;
 
-		navMenu.addEventListener('keydown', function(e) {
+		navMenu.addEventListener('keydown', function (e) {
 			if (!navMenu.classList.contains('active')) return;
 
 			if (e.key === 'Tab') {

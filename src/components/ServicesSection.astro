@@ -21,18 +21,18 @@ const services: ServiceItem[] = [
 	{
 		icon: FireIcon,
 		title: t('services.ignite.title'),
-		description: t('services.ignite.description')
+		description: t('services.ignite.description'),
 	},
 	{
 		icon: MagnifyingGlassIcon,
 		title: t('services.evaluate.title'),
-		description: t('services.evaluate.description')
+		description: t('services.evaluate.description'),
 	},
 	{
 		icon: CaribinerIcon,
 		title: t('services.scale.title'),
-		description: t('services.scale.description')
-	}
+		description: t('services.scale.description'),
+	},
 ];
 ---
 
@@ -40,14 +40,21 @@ const services: ServiceItem[] = [
 <div class="body-block">
 	<div class="content-container">
 		<div class="items-across">
-			{services.map((service, index) => (
-				<div class={`item-block ${index === services.length - 1 ? 'item-block-last' : ''}`}>
-					<img src={service.icon.src} loading="lazy" alt={`${service.title} icon`} class="item-image" />
-					<h4>{service.title}</h4>
-					<div class="spacer-s"></div>
-					<p>{service.description}</p>
-				</div>
-			))}
+			{
+				services.map((service, index) => (
+					<div class={`item-block ${index === services.length - 1 ? 'item-block-last' : ''}`}>
+						<img
+							src={service.icon.src}
+							loading="lazy"
+							alt={`${service.title} icon`}
+							class="item-image"
+						/>
+						<h4>{service.title}</h4>
+						<div class="spacer-s" />
+						<p>{service.description}</p>
+					</div>
+				))
+			}
 		</div>
 	</div>
 </div>

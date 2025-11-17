@@ -140,7 +140,7 @@
 
 .grid-5 {
 	display: grid;
-	grid-template: "." / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template: '.' / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	justify-content: center;
 	align-items: center;
 	width: 100%;

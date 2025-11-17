@@ -23,13 +23,13 @@ const t = useTranslations(lang as 'en' | 'es');
 // Get the latest 3 blog posts from the data file
 const allBlogPosts = lang === 'es' ? getAllPostsEs() : getAllPosts();
 const langPrefix = lang === 'es' ? '/es' : '/en';
-const latestPosts = allBlogPosts.slice(0, 3).map(post => ({
+const latestPosts = allBlogPosts.slice(0, 3).map((post) => ({
 	image: post.image,
 	title: post.title,
 	author: post.author.name,
 	date: post.date,
 	linkUrl: `${langPrefix}/blog/${post.slug}/`,
-	imageAlt: post.imageAlt
+	imageAlt: post.imageAlt,
 }));
 
 const { posts = latestPosts } = Astro.props;
@@ -39,21 +39,30 @@ const { posts = latestPosts } = Astro.props;
 <div class="body-block">
 	<div class="content-container">
 		<div class="blog-grid">
-			{posts.map((post) => (
-				<div class="blog-feed-post-wrapper">
-					<img src={post.image} loading="lazy" alt={post.imageAlt || post.title} class="blog-feed-image" />
-					<div class="spacer-m"></div>
-					<h4>{post.title}</h4>
-					<div class="spacer-s"></div>
-					<div class="blog-feed-details">
-						<div class="blog-feed-text">{post.author}</div>
-						<div class="divider"></div>
-						<div class="blog-feed-text">{post.date}</div>
+			{
+				posts.map((post) => (
+					<div class="blog-feed-post-wrapper">
+						<img
+							src={post.image}
+							loading="lazy"
+							alt={post.imageAlt || post.title}
+							class="blog-feed-image"
+						/>
+						<div class="spacer-m" />
+						<h4>{post.title}</h4>
+						<div class="spacer-s" />
+						<div class="blog-feed-details">
+							<div class="blog-feed-text">{post.author}</div>
+							<div class="divider" />
+							<div class="blog-feed-text">{post.date}</div>
+						</div>
+						<div class="spacer-xs" />
+						<a href={post.linkUrl || '#'} class="text-link">
+							{t('blog.seePost')}
+						</a>
 					</div>
-					<div class="spacer-xs"></div>
-					<a href={post.linkUrl || "#"} class="text-link">{t('blog.seePost')}</a>
-				</div>
-			))}
+				))
+			}
 		</div>
 	</div>
 </div>

@@ -20,14 +20,15 @@ const translations: Record<Language, CookieConsentTranslations> = {
 		message: 'We use cookies to ensure you get the best experience on our website.',
 		dismiss: 'Accept',
 		link: 'Learn more',
-		href: '/en/privacy/'
+		href: '/en/privacy/',
 	},
 	es: {
-		message: 'Utilizamos cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.',
+		message:
+			'Utilizamos cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.',
 		dismiss: 'Aceptar',
 		link: 'Más información',
-		href: '/es/privacy/'
-	}
+		href: '/es/privacy/',
+	},
 };
 
 /**
@@ -49,12 +50,12 @@ export function initCookieConsent(lang: Language = 'en'): void {
 		palette: {
 			popup: {
 				background: '#2e3a33',
-				text: '#fcfcfc'
+				text: '#fcfcfc',
 			},
 			button: {
 				background: '#c1e3cb',
-				text: '#2e3a33'
-			}
+				text: '#2e3a33',
+			},
 		},
 		theme: 'classic',
 		position: 'bottom',
@@ -62,8 +63,8 @@ export function initCookieConsent(lang: Language = 'en'): void {
 			message: t.message,
 			dismiss: t.dismiss,
 			link: t.link,
-			href: t.href
-		}
+			href: t.href,
+		},
 	});
 }
 
@@ -75,7 +76,7 @@ if (typeof window !== 'undefined') {
 	window.addEventListener('load', () => {
 		// Try to get language from document or default to 'en'
 		const htmlLang = document.documentElement.lang;
-		const lang: Language = (htmlLang === 'es' || htmlLang === 'es-ES') ? 'es' : 'en';
+		const lang: Language = htmlLang === 'es' || htmlLang === 'es-ES' ? 'es' : 'en';
 		initCookieConsent(lang);
 	});
 }

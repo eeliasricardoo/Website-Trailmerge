@@ -90,4 +90,26 @@ for file in $STAGED_FILES; do
 done
 
 echo "✅ Security checks passed!"
+
+# Run linting and formatting checks
+echo ""
+echo "🎨 Running code quality checks..."
+
+# Check formatting
+echo "  → Checking code formatting..."
+if ! npm run format:check --silent; then
+    echo "${RED}❌ ERROR: Code formatting issues found${NC}"
+    echo "${YELLOW}Run 'npm run format' to fix formatting issues${NC}"
+    exit 1
+fi
+
+# Run linting
+echo "  → Running ESLint..."
+if ! npm run lint --silent; then
+    echo "${RED}❌ ERROR: Linting issues found${NC}"
+    echo "${YELLOW}Run 'npm run lint:fix' to fix auto-fixable issues${NC}"
+    exit 1
+fi
+
+echo "✅ Code quality checks passed!"
 exit 0

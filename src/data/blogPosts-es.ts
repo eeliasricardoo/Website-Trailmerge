@@ -3,13 +3,15 @@ import { type BlogPost } from './blogPosts';
 // Spanish translations of blog posts (titles, categories, excerpts)
 export const blogPostsEs: BlogPost[] = [
 	{
-		slug: "help-how-do-i-build-out-my-product-design-team",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/62c87755e04d61389fbc8d0b_gabriella-clare-marino-_NPCTr9XsGc-unsplash-p-800.jpeg",
-		title: "¡Ayuda! ¿Cómo construyo mi equipo de diseño de producto?",
-		date: "8 DE JULIO, 2022",
-		category: "EQUIPOS DE DISEÑO",
-		excerpt: "En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas. Sin embargo, contratar y encontrar diseñadores efectivos puede ser un proceso que consume tiempo y es desafiante.",
-		imageAlt: "Ilustración de mochila de senderismo",
+		slug: 'help-how-do-i-build-out-my-product-design-team',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/62c87755e04d61389fbc8d0b_gabriella-clare-marino-_NPCTr9XsGc-unsplash-p-800.jpeg',
+		title: '¡Ayuda! ¿Cómo construyo mi equipo de diseño de producto?',
+		date: '8 DE JULIO, 2022',
+		category: 'EQUIPOS DE DISEÑO',
+		excerpt:
+			'En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas. Sin embargo, contratar y encontrar diseñadores efectivos puede ser un proceso que consume tiempo y es desafiante.',
+		imageAlt: 'Ilustración de mochila de senderismo',
 		content: `<p>En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas por igual, y más empresas están comenzando a reconocer su beneficio para reducir la rotación, impulsar la adopción y mejorar la eficiencia de los usuarios. Un gran equipo de diseño puede ser la diferencia entre un buen producto y un producto estelar.</p>
 
 <p>Sin embargo, contratar y encontrar diseñadores efectivos puede ser un proceso que consume tiempo y es desafiante.</p>
@@ -38,19 +40,21 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Aunque formar un equipo de diseño puede ser una tarea desalentadora, con tiempo y paciencia los resultados valdrán todo el esfuerzo. ¡Brindo por tu equipo de diseño, que podría hacer que el mundo sea un poco más increíble!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
 		},
 	},
 	{
-		slug: "how-do-i-prioritize-features-part-2",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60c0cdd56e2414337cf33013_ran-berkovich-xU0ZD-TsmmU-unsplash-p-3200.jpeg",
-		title: "¿Cómo priorizo funciones? Parte 2 de 2",
-		date: "9 DE JUNIO, 2021",
-		category: "SAAS",
-		excerpt: "En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. El siguiente paso es mezclar las restricciones.",
-		imageAlt: "Ilustración de taza de café",
+		slug: 'how-do-i-prioritize-features-part-2',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60c0cdd56e2414337cf33013_ran-berkovich-xU0ZD-TsmmU-unsplash-p-3200.jpeg',
+		title: '¿Cómo priorizo funciones? Parte 2 de 2',
+		date: '9 DE JUNIO, 2021',
+		category: 'SAAS',
+		excerpt:
+			'En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. El siguiente paso es mezclar las restricciones.',
+		imageAlt: 'Ilustración de taza de café',
 		content: `<p>En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. Exploramos cómo comprender las necesidades, puntos de dolor y objetivos de tus usuarios debe ser la base de cualquier marco de priorización. Pero las necesidades del cliente por sí solas no cuentan toda la historia.</p>
 
 <p>El siguiente paso es mezclar las restricciones. El desarrollo de productos del mundo real ocurre dentro de límites, y reconocer estas restricciones te ayuda a tomar decisiones más realistas y alcanzables.</p>
@@ -96,19 +100,21 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Recuerda, las restricciones no son necesariamente malas: te obligan a ser creativo y enfocado. Los mejores productos a menudo surgen de trabajar dentro de limitaciones, no de recursos ilimitados.</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
+		},
 	},
 	{
-		slug: "how-do-i-prioritize-features-part-1",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60a813feba638c0e3ef14854_valery-fedotov-CqX6IhVj2TI-unsplash-p-3200.jpeg",
-		title: "¿Cómo priorizo funciones? Parte 1 de 2",
-		date: "21 DE MAYO, 2021",
-		category: "SAAS",
-		excerpt: "Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero...",
-		imageAlt: "Ilustración de binoculares",
+		slug: 'how-do-i-prioritize-features-part-1',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60a813feba638c0e3ef14854_valery-fedotov-CqX6IhVj2TI-unsplash-p-3200.jpeg',
+		title: '¿Cómo priorizo funciones? Parte 1 de 2',
+		date: '21 DE MAYO, 2021',
+		category: 'SAAS',
+		excerpt:
+			'Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero...',
+		imageAlt: 'Ilustración de binoculares',
 		content: `<p>Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Tu tablero de visión probablemente está desbordado con funciones que revolucionarían tu industria, deleitarían a tus usuarios y harían llorar a tus competidores. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero.</p>
 
 <p>Cada solicitud de función se siente urgente. Cada sesión de retroalimentación del cliente revela otra capacidad "imprescindible". Cada lanzamiento de competidor te hace cuestionar tu hoja de ruta. Entonces, ¿cómo decides qué construir primero?</p>
@@ -159,20 +165,22 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Entender las necesidades del cliente, los problemas de usabilidad y los impulsores de ventas es solo el primer paso. En la parte dos de esta serie, exploraremos cómo equilibrar estas prioridades centradas en el cliente con restricciones del mundo real: limitaciones técnicas, requisitos comerciales y disponibilidad de recursos. Porque incluso las funciones más importantes necesitan ser factibles de construir.</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
+		},
 	},
 	{
-		slug: "how-to-ask-good-questions-when-building-saas-product",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/6080815fbafc572380901b88_artem-maltsev-0CvHQ62gwY8-unsplash-p-800.jpeg",
-		title: "Cómo hacer buenas preguntas al construir un producto SaaS",
-		date: "21 DE ABRIL, 2021",
-		category: "SAAS",
-		excerpt: "Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.",
-		imageAlt: "Ilustración de brújula",
-		imageCredit: "Blog Photo by Artem Maltsev on Unsplash",
+		slug: 'how-to-ask-good-questions-when-building-saas-product',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/6080815fbafc572380901b88_artem-maltsev-0CvHQ62gwY8-unsplash-p-800.jpeg',
+		title: 'Cómo hacer buenas preguntas al construir un producto SaaS',
+		date: '21 DE ABRIL, 2021',
+		category: 'SAAS',
+		excerpt:
+			'Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.',
+		imageAlt: 'Ilustración de brújula',
+		imageCredit: 'Blog Photo by Artem Maltsev on Unsplash',
 		content: `<p>Como instructor en General Assembly, una de las principales cosas que quería que mi cohorte se llevara del programa intensivo de diseño UX de 10 semanas era esto: cómo hacer las preguntas correctas.</p>
 
 <p>Los píxeles son geniales y todo eso – y, sin duda, definen el resultado del trabajo que hacemos como diseñadores de productos. Pero las buenas preguntas son la base del buen diseño, y necesitarás saber cómo hacerlas si estás interesado en identificar qué funciones y funcionalidades tendrán un impacto en tu mercado.</p>
@@ -267,19 +275,21 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>¡Oh, y siéntete libre de hacernos cualquier pregunta que tengas sobre este tema también!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
+		},
 	},
 	{
-		slug: "lets-talk-design-debt",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db17540b5ef6754da71c6_ruth-enyedi-zuwx2tvI_iM-unsplash(1)-p-800.jpeg",
-		title: "Hablemos de deuda de diseño: ¿Qué es y qué me podría costar?",
-		date: "7 DE ABRIL, 2021",
-		category: "SAAS",
-		excerpt: "Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software... pero meses después, enfrentas el impacto inicial de la deuda de diseño.",
-		imageAlt: "Ilustración de nudo",
+		slug: 'lets-talk-design-debt',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db17540b5ef6754da71c6_ruth-enyedi-zuwx2tvI_iM-unsplash(1)-p-800.jpeg',
+		title: 'Hablemos de deuda de diseño: ¿Qué es y qué me podría costar?',
+		date: '7 DE ABRIL, 2021',
+		category: 'SAAS',
+		excerpt:
+			'Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software... pero meses después, enfrentas el impacto inicial de la deuda de diseño.',
+		imageAlt: 'Ilustración de nudo',
 		content: `<p>Imagina conmigo por un segundo. Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software y has escuchado que nadie quiere invertir en tu startup hasta que tengas algo construido, así que vas directamente al desarrollador o tienda de desarrollo que tu amigo recomendó.</p>
 
 <p>El desarrollador toma tu dinero y tus requisitos y se pone a trabajar. Te comunicas de ida y vuelta sobre requisitos y restricciones técnicas que entiendes un poco y has tomado decisiones lo mejor que puedes basándote en esas conversaciones. En cuanto al diseño, has esbozado algunos flujos y wireframes improvisados. Tu desarrollador ha tomado esos y los ha interpretado, tomando varias decisiones de diseño al construir el producto. $30,000 dólares y 6 meses después, tienes un producto.</p>
@@ -321,19 +331,21 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Siempre habrá algo de deuda de diseño que se acumule en un entorno SaaS Agile iterativo, pero trabajar con un socio de diseño experimentado, como Trailmerge, desde el principio y a largo plazo puede ayudarte a reducir dramáticamente la severidad de las necesidades de soporte y re-trabajo en un momento en que quieres estar enfocado en el crecimiento.</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
+		},
 	},
 	{
-		slug: "your-mvp-is-missing-the-point",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5fe2481631ad4401f048b2d6_the-creativv-2YFpp3NvHy8-unsplash-p-800.jpeg",
-		title: "Tu MVP está perdiendo el punto",
-		date: "22 DE DICIEMBRE, 2020",
-		category: "SAAS",
-		excerpt: "¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa \"producto mínimo viable\". Pero, ¿cuál es el punto?",
-		imageAlt: "Ilustración de linterna",
+		slug: 'your-mvp-is-missing-the-point',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5fe2481631ad4401f048b2d6_the-creativv-2YFpp3NvHy8-unsplash-p-800.jpeg',
+		title: 'Tu MVP está perdiendo el punto',
+		date: '22 DE DICIEMBRE, 2020',
+		category: 'SAAS',
+		excerpt:
+			'¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa "producto mínimo viable". Pero, ¿cuál es el punto?',
+		imageAlt: 'Ilustración de linterna',
 		content: `<p>¿Cómo definirías un MVP?</p>
 
 <p>Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa "producto mínimo viable". Pero, ¿cuál es el punto?</p>
@@ -390,19 +402,21 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Recuerda: La actividad central de una startup es aprender y mejorar con el objetivo de un modelo de negocio sostenible. Entender las suposiciones que llevas y probarlas una por una estilo método científico es un paso clave para aprender y tener éxito, ¡y puede comenzar pequeño!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
+		},
 	},
 	{
-		slug: "idea-to-version-1-how-do-i-get-started",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b92fdfd4bf0e27021d439_david-kovalenko-G85VuTpw6jg-unsplash-p-800.jpeg",
-		title: "De la idea a la versión 1: ¿Cómo empiezo?",
-		date: "30 DE OCTUBRE, 2020",
-		category: "SAAS",
-		excerpt: "Identificar una oportunidad es un gran lugar para comenzar. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria. El único problema es que no sabes por dónde empezar.",
-		imageAlt: "Ilustración de botas de senderismo",
+		slug: 'idea-to-version-1-how-do-i-get-started',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b92fdfd4bf0e27021d439_david-kovalenko-G85VuTpw6jg-unsplash-p-800.jpeg',
+		title: 'De la idea a la versión 1: ¿Cómo empiezo?',
+		date: '30 DE OCTUBRE, 2020',
+		category: 'SAAS',
+		excerpt:
+			'Identificar una oportunidad es un gran lugar para comenzar. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria. El único problema es que no sabes por dónde empezar.',
+		imageAlt: 'Ilustración de botas de senderismo',
 		content: `<p>Los fundadores de SaaS B2B vienen en una variedad de formas. A menudo, no son los genios tecnológicos que se emocionan con los pros y los contras de las últimas bibliotecas y marcos de Javascript. En muchos casos, no son diseñadores UX o gerentes de producto que decidieron ramificarse para crear un nuevo producto.</p>
 
 <p>Son personas (esto podría describirte) de antecedentes no técnicos que han visto una oportunidad para servir a su industria – ya sea finanzas, atención médica, bienes raíces, logística, retail, contabilidad, educación – con tecnología efectiva. Podría ser que hayas tenido una epifanía sobre un mercado abierto para un flujo de trabajo que no ha sido tocado por la transformación digital, o podría ser que hayas sentido el dolor de lidiar con un software terrible y sobrevalorado en tu industria.</p>
@@ -457,19 +471,21 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Bueno, ahí lo tienes. Has encontrado la oportunidad, vas por ella, y ahora estás armado con algunas preguntas para hacerte a ti mismo. Gran parte de construir una startup es aprender, y las respuestas a estas preguntas te ayudarán a avanzar. ¡Sigue adelante – estamos animándote!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
+		},
 	},
 	{
-		slug: "learning-the-core-of-successful-saas-startup",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg",
-		title: "Aprender: El núcleo de una startup SaaS exitosa",
-		date: "29 DE OCTUBRE, 2020",
-		category: "SAAS",
-		excerpt: "Una startup es una organización en busca de un modelo de negocio sostenible. Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup.",
-		imageAlt: "Mano sosteniendo un mapa examinándolo",
+		slug: 'learning-the-core-of-successful-saas-startup',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg',
+		title: 'Aprender: El núcleo de una startup SaaS exitosa',
+		date: '29 DE OCTUBRE, 2020',
+		category: 'SAAS',
+		excerpt:
+			'Una startup es una organización en busca de un modelo de negocio sostenible. Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup.',
+		imageAlt: 'Mano sosteniendo un mapa examinándolo',
 		content: `<p>Una startup es una organización en busca de un modelo de negocio sostenible.</p>
 
 <p>Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup. "Startup" no es una descripción de la edad, el tamaño, la popularidad o los ingresos de una empresa. Todavía podemos etiquetar justificadamente entidades grandes y conocidas como DoorDash, Airbnb y Slack como startups. Todavía están aprendiendo y buscando un modelo de negocio sostenible que se escale continuamente (¡y lo han estado haciendo muy bien hasta ahora!).</p>
@@ -503,15 +519,15 @@ export const blogPostsEs: BlogPost[] = [
 
 <p>Por supuesto, el aprendizaje solo no nos va a impulsar al éxito. Debemos tener la voluntad y el coraje de adaptarnos, cambiar de rumbo e incluso *suspira* decir no a algunas de las cosas que hemos imaginado. Se trata de humildad, tenacidad y un deseo de mejorar. ¡Así es como comenzamos!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas."
-		}
-	}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'El fundador Mark Tegtmeier aporta años de experiencia en diseño a Trailmerge. Ha trabajado con startups en etapa temprana, agencias de diseño y software, gobierno y empresas, impulsándolos más allá en su visión de producto. Esposo de una, padre de cuatro y homesteader urbano, Mark ama desarrollar talento tecnológico y acompañar a fundadores con visiones ambiciosas para sus productos y empresas.',
+		},
+	},
 ];
 
 export function getPostBySlugEs(slug: string): BlogPost | undefined {
-	return blogPostsEs.find(post => post.slug === slug);
+	return blogPostsEs.find((post) => post.slug === slug);
 }
 
 export function getAllPostsEs(): BlogPost[] {

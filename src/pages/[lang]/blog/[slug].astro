@@ -25,17 +25,21 @@ if (!post) {
 		const studiocmsPage = allPages
 			.map(({ data }) => data)
 			.find((page) => page.slug === slug && page.package === '@studiocms/blog');
-		
+
 		if (studiocmsPage) {
 			post = {
 				slug: studiocmsPage.slug,
 				title: studiocmsPage.title || '',
 				excerpt: studiocmsPage.excerpt || '',
-				date: studiocmsPage.publishedAt ? new Date(studiocmsPage.publishedAt).toLocaleDateString('en-US', { 
-					year: 'numeric', 
-					month: 'long', 
-					day: 'numeric' 
-				}).toUpperCase() : '',
+				date: studiocmsPage.publishedAt
+					? new Date(studiocmsPage.publishedAt)
+							.toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})
+							.toUpperCase()
+					: '',
 				category: studiocmsPage.category || 'BLOG',
 				image: studiocmsPage.image || '',
 				imageAlt: studiocmsPage.imageAlt || studiocmsPage.title || '',
@@ -43,9 +47,9 @@ if (!post) {
 				author: {
 					name: studiocmsPage.author?.name || 'Trailmerge Team',
 					image: studiocmsPage.author?.image || '/images/default-author.png',
-					bio: studiocmsPage.author?.bio || ''
+					bio: studiocmsPage.author?.bio || '',
 				},
-				fromStudioCMS: true
+				fromStudioCMS: true,
 			};
 		}
 	} catch (error) {
@@ -62,11 +66,20 @@ function parseSpanishDate(dateString: string): Date {
 	if (lang === 'en') {
 		return new Date(dateString);
 	}
-	
+
 	const monthMap: { [key: string]: string } = {
-		'ENERO': '01', 'FEBRERO': '02', 'MARZO': '03', 'ABRIL': '04',
-		'MAYO': '05', 'JUNIO': '06', 'JULIO': '07', 'AGOSTO': '08',
-		'SEPTIEMBRE': '09', 'OCTUBRE': '10', 'NOVIEMBRE': '11', 'DICIEMBRE': '12'
+		ENERO: '01',
+		FEBRERO: '02',
+		MARZO: '03',
+		ABRIL: '04',
+		MAYO: '05',
+		JUNIO: '06',
+		JULIO: '07',
+		AGOSTO: '08',
+		SEPTIEMBRE: '09',
+		OCTUBRE: '10',
+		NOVIEMBRE: '11',
+		DICIEMBRE: '12',
 	};
 
 	// Parse format like "8 DE JULIO, 2022" or "22 DE DICIEMBRE, 2020"
@@ -77,7 +90,7 @@ function parseSpanishDate(dateString: string): Date {
 		const month = monthMap[monthName] || '01';
 		const year = match[3];
 		const date = new Date(`${year}-${month}-${day}`);
-		
+
 		// Validate the date
 		if (isNaN(date.getTime())) {
 			// If invalid, return current date as fallback
@@ -104,22 +117,23 @@ const articleData = {
 	datePublished: parseSpanishDate(post.date).toISOString(),
 	author: {
 		name: post.author.name,
-		image: post.author.image
+		image: post.author.image,
 	},
-	url: articleUrl
+	url: articleUrl,
 };
 
 // Breadcrumbs for blog posts
 const breadcrumbs = [
 	{ name: t('blog.breadcrumbs.home'), url: `https://trailmerge.com/${lang}/` },
 	{ name: t('blog.breadcrumbs.blog'), url: `https://trailmerge.com/${lang}/blog/` },
-	{ name: post.title, url: articleUrl }
+	{ name: post.title, url: articleUrl },
 ];
 
 // Generate keywords from post title and category
-const keywords = lang === 'en' 
-	? `${post.category}, ${post.title}, UX design, B2B SaaS, product design, Trailmerge`
-	: `${post.category}, ${post.title}, diseño UX, B2B SaaS, diseño de producto, Trailmerge`;
+const keywords =
+	lang === 'en'
+		? `${post.category}, ${post.title}, UX design, B2B SaaS, product design, Trailmerge`
+		: `${post.category}, ${post.title}, diseño UX, B2B SaaS, diseño de producto, Trailmerge`;
 ---
 
 <Layout
@@ -136,50 +150,54 @@ const keywords = lang === 'en'
 	<main id="main-content">
 		<!-- Blog Post Detail Page -->
 		<article class="blog-detail-page">
-		<div class="blog-detail-content">
-			<!-- Hero Image -->
-			<div class="blog-detail-hero">
-				<img src={post.image} alt={post.imageAlt} class="blog-detail-image" />
-			</div>
-
-			<!-- Post Content -->
-			<div class="blog-detail-wrapper">
-			<div class="blog-detail-header">
-				<h1 class="blog-detail-title">{post.title}</h1>
-				<div class="blog-post-meta">
-					<span class="blog-post-date">{post.date}</span>
-					<span class="blog-meta-divider"> | </span>
-					<span class="blog-post-category">{post.category}</span>
+			<div class="blog-detail-content">
+				<!-- Hero Image -->
+				<div class="blog-detail-hero">
+					<img src={post.image} alt={post.imageAlt} class="blog-detail-image" />
 				</div>
-			</div>
 
-			<div class="spacer-2xl"></div>
+				<!-- Post Content -->
+				<div class="blog-detail-wrapper">
+					<div class="blog-detail-header">
+						<h1 class="blog-detail-title">{post.title}</h1>
+						<div class="blog-post-meta">
+							<span class="blog-post-date">{post.date}</span>
+							<span class="blog-meta-divider"> | </span>
+							<span class="blog-post-category">{post.category}</span>
+						</div>
+					</div>
 
-				<!-- Blog Content -->
-				<div class="blog-detail-body" set:html={post.content} />
+					<div class="spacer-2xl"></div>
 
-				{post.imageCredit && (
-					<div class="spacer-xl"></div>
-					<p class="blog-image-credit">{post.imageCredit}</p>
-				)}
+					<!-- Blog Content -->
+					<div class="blog-detail-body" set:html={post.content} />
 
-				<div class="spacer-2xl"></div>
+					{
+						post.imageCredit && (
+							<>
+								<div class="spacer-xl" />
+								<p class="blog-image-credit">{post.imageCredit}</p>
+							</>
+						)
+					}
 
-				<!-- Author Bio -->
-				<div class="blog-author-section">
-					<div class="blog-author-divider"></div>
-					<div class="spacer-xl"></div>
-					<div class="blog-author-content">
-						<img src={post.author.image} alt={post.author.name} class="blog-author-image" />
-						<div class="blog-author-info">
-							<h2 class="blog-author-name">{post.author.name}</h2>
-							<div class="spacer-s"></div>
-							<p class="blog-author-bio">{post.author.bio}</p>
+					<div class="spacer-2xl"></div>
+
+					<!-- Author Bio -->
+					<div class="blog-author-section">
+						<div class="blog-author-divider"></div>
+						<div class="spacer-xl"></div>
+						<div class="blog-author-content">
+							<img src={post.author.image} alt={post.author.name} class="blog-author-image" />
+							<div class="blog-author-info">
+								<h2 class="blog-author-name">{post.author.name}</h2>
+								<div class="spacer-s"></div>
+								<p class="blog-author-bio">{post.author.bio}</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		</article>
 	</main>
 
@@ -213,17 +231,17 @@ const keywords = lang === 'en'
 		margin: 0 auto !important;
 	}
 
-	article.blog-detail-page .blog-detail-body div[style*="text-align: center"] {
+	article.blog-detail-page .blog-detail-body div[style*='text-align: center'] {
 		margin: 40px 0 !important;
 		text-align: center !important;
 	}
 
-	article.blog-detail-page .blog-detail-body div[style*="text-align: center"] img {
+	article.blog-detail-page .blog-detail-body div[style*='text-align: center'] img {
 		margin: 0 auto 12px auto !important;
 		border-radius: 8px !important;
 	}
 
-	article.blog-detail-page .blog-detail-body div[style*="text-align: center"] p {
+	article.blog-detail-page .blog-detail-body div[style*='text-align: center'] p {
 		color: var(--grey-3) !important;
 		font-size: 14px !important;
 		font-style: italic !important;
@@ -288,7 +306,7 @@ const keywords = lang === 'en'
 			font-size: 16px !important;
 		}
 
-		article.blog-detail-page .blog-detail-body div[style*="text-align: center"] {
+		article.blog-detail-page .blog-detail-body div[style*='text-align: center'] {
 			margin: 32px 0 !important;
 		}
 
@@ -309,11 +327,11 @@ const keywords = lang === 'en'
 			font-size: 15px !important;
 		}
 
-		article.blog-detail-page .blog-detail-body div[style*="text-align: center"] {
+		article.blog-detail-page .blog-detail-body div[style*='text-align: center'] {
 			margin: 24px 0 !important;
 		}
 
-		article.blog-detail-page .blog-detail-body div[style*="text-align: center"] p {
+		article.blog-detail-page .blog-detail-body div[style*='text-align: center'] p {
 			font-size: 13px !important;
 		}
 
@@ -592,4 +610,3 @@ const keywords = lang === 'en'
 		}
 	}
 </style>
-

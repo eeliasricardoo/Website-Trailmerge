@@ -58,7 +58,7 @@ export function getLanguageUrls(currentPath: string): RouteMap {
 		const slug = currentPath.replace(/^\/(en\/|es\/)?blog\//, '').replace(/\/$/, '');
 		return {
 			en: `/en/blog/${slug}/`,
-			es: `/es/blog/${slug}/`
+			es: `/es/blog/${slug}/`,
 		};
 	}
 
@@ -71,7 +71,7 @@ export function getLanguageUrls(currentPath: string): RouteMap {
 	const pathWithoutLang = currentPath.replace(/^\/(en|es)/, '').replace(/\/$/, '') || '/';
 	return {
 		en: pathWithoutLang === '/' ? '/en/' : `/en${pathWithoutLang}/`,
-		es: pathWithoutLang === '/' ? '/es/' : `/es${pathWithoutLang}/`
+		es: pathWithoutLang === '/' ? '/es/' : `/es${pathWithoutLang}/`,
 	};
 }
 
@@ -87,6 +87,6 @@ export function getAlternateUrls(currentPath: string, siteUrl: string): Alternat
 
 	return {
 		en: new URL(languageUrls.en, siteUrl).href,
-		es: new URL(languageUrls.es, siteUrl).href
+		es: new URL(languageUrls.es, siteUrl).href,
 	};
 }

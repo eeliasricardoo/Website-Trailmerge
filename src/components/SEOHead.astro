@@ -19,14 +19,14 @@ interface Props {
 }
 
 const {
-	title = "UX Design Agency for B2B SaaS Startups – Trailmerge",
-	description = "Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started.",
-	ogImage = "https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png",
+	title = 'UX Design Agency for B2B SaaS Startups – Trailmerge',
+	description = 'Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started.',
+	ogImage = 'https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png',
 	canonicalURL,
 	lang = 'en',
 	keywords,
 	alternateUrls,
-	isStaging = false
+	isStaging = false,
 } = Astro.props;
 
 // Set og:locale based on language
@@ -42,12 +42,14 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 {keywords && <meta name="keywords" content={keywords} />}
 
 <!-- Block crawlers on staging -->
-{isStaging && (
-	<>
-		<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
-		<meta name="googlebot" content="noindex, nofollow" />
-	</>
-)}
+{
+	isStaging && (
+		<>
+			<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+			<meta name="googlebot" content="noindex, nofollow" />
+		</>
+	)
+}
 
 <!-- Hreflang Tags for Multi-language Support -->
 <link rel="alternate" hreflang="en" href={alternateUrls.en} />

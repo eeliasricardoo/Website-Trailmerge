@@ -5,6 +5,7 @@ A modern, responsive website built with Astro for Trailmerge, a UX design consul
 ## 🚀 Project Overview
 
 Trailmerge helps SaaS and enterprise product teams elevate their design through:
+
 - **UX Design Audits** - Comprehensive evaluation of your application's user experience
 - **Design System Development** - Building scalable, consistent design practices
 - **Team Augmentation** - Fractional design team members to scale your efforts
@@ -44,17 +45,20 @@ src/
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd trailmerge-website/Astro
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -73,12 +77,14 @@ npm run dev
 The website uses a consistent design system with CSS custom properties for colors and spacing:
 
 ### Color Palette
+
 - **Primary Green**: Used for CTAs and brand elements
 - **Mint**: Accent color for highlights
 - **Grey Scale**: Various shades for text and backgrounds
 - **Cinnamon**: Used for error states and warnings
 
 ### Typography
+
 - Clean, modern typography optimized for readability
 - Consistent heading hierarchy
 - Responsive font sizing
@@ -86,6 +92,7 @@ The website uses a consistent design system with CSS custom properties for color
 ## 📱 Features
 
 ### Homepage Sections
+
 - **Hero Section** - Main value proposition with CTA
 - **Services Overview** - Three core service offerings
 - **Client Showcase** - Featured companies and testimonials
@@ -94,6 +101,7 @@ The website uses a consistent design system with CSS custom properties for color
 - **Contact Modal** - Lead generation form
 
 ### Interactive Elements
+
 - Responsive navigation with mobile menu
 - Contact modal with form validation
 - Smooth scrolling and transitions
@@ -102,6 +110,7 @@ The website uses a consistent design system with CSS custom properties for color
 ## 🖼️ Assets
 
 All images are optimized and stored in the `src/assets/images/` directory:
+
 - Company logos (AchieveIt, LoanShout, Staat, Tourial, UserIQ)
 - Team headshots
 - Service illustrations
@@ -111,6 +120,7 @@ All images are optimized and stored in the `src/assets/images/` directory:
 ## 📱 Responsive Design
 
 The website is fully responsive with:
+
 - Mobile-first approach
 - Flexible grid layouts
 - Optimized typography scaling
@@ -120,6 +130,7 @@ The website is fully responsive with:
 ## 🚀 Deployment
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
@@ -127,6 +138,7 @@ npm run build
 The built files will be in the `dist/` directory, ready for deployment to any static hosting service.
 
 ### Recommended Hosting Platforms
+
 - Google Cloud Storage (currently deployed)
 - Vercel
 - AWS S3 + CloudFront
@@ -134,6 +146,7 @@ The built files will be in the `dist/` directory, ready for deployment to any st
 ## 🔧 Configuration
 
 The project uses a minimal Astro configuration (`astro.config.mjs`). You can extend it with:
+
 - Integrations (React, Vue, Svelte)
 - Build optimizations
 - Deployment settings
@@ -142,6 +155,7 @@ The project uses a minimal Astro configuration (`astro.config.mjs`). You can ext
 ## 📝 Content Management
 
 Currently, content is managed directly in Astro components. For future scalability, consider:
+
 - Headless CMS integration (Contentful, Strapi)
 - Markdown-based content
 - Dynamic routing for blog posts

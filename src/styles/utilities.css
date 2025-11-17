@@ -1,18 +1,34 @@
 /* Utility Classes */
 
 /* Spacers */
-.spacer-xs { height: 4px; }
-.spacer-s { height: 8px; }
-.spacer-m { height: 16px; }
-.spacer-l { height: 24px; }
-.spacer-xl { height: 32px; }
-.spacer-2xl { height: 40px; }
+.spacer-xs {
+	height: 4px;
+}
+.spacer-s {
+	height: 8px;
+}
+.spacer-m {
+	height: 16px;
+}
+.spacer-l {
+	height: 24px;
+}
+.spacer-xl {
+	height: 32px;
+}
+.spacer-2xl {
+	height: 40px;
+}
 
 /* Text utilities */
-.light-text { color: var(--white); }
+.light-text {
+	color: var(--white);
+}
 
 /* Display utilities */
-.hidden { display: none; }
+.hidden {
+	display: none;
+}
 
 /* Visually hidden but accessible to screen readers */
 .visually-hidden {

@@ -31,15 +31,15 @@ interface Props {
 }
 
 const {
-	title = "UX Design Agency for B2B SaaS Startups – Trailmerge",
-	description = "Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started.",
-	ogImage = "https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png",
+	title = 'UX Design Agency for B2B SaaS Startups – Trailmerge',
+	description = 'Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started.',
+	ogImage = 'https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png',
 	canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 	schemaType = 'organization',
 	articleData,
 	breadcrumbs,
 	keywords,
-	lang = 'en'
+	lang = 'en',
 } = Astro.props;
 
 // Get alternate language URLs for hreflang
@@ -50,8 +50,9 @@ const alternateUrls = getAlternateUrls(currentPath, Astro.site?.href || '');
 const htmlLang = lang === 'es' ? 'es' : 'en-US';
 
 // Detect if we're on staging
-const isStaging = Astro.site?.hostname === 'staging.trailmerge.com' ||
-                  Astro.url.hostname === 'staging.trailmerge.com';
+const isStaging =
+	Astro.site?.hostname === 'staging.trailmerge.com' ||
+	Astro.url.hostname === 'staging.trailmerge.com';
 ---
 
 <!doctype html>
@@ -101,8 +102,15 @@ const isStaging = Astro.site?.hostname === 'staging.trailmerge.com' ||
 		<link rel="dns-prefetch" href="https://uploads-ssl.webflow.com" />
 
 		<!-- Cookie Consent - Silktide -->
-		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-		<script is:inline src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+		/>
+		<script
+			is:inline
+			src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
+			data-cfasync="false"></script>
 
 		<!-- Analytics -->
 		<script is:inline src="https://t.contentsquare.net/uxa/ecd5d357203b8.js"></script>
@@ -126,7 +134,7 @@ const isStaging = Astro.site?.hostname === 'staging.trailmerge.com' ||
 
 			// Get language from HTML tag
 			const htmlLang = document.documentElement.lang;
-			const lang = (htmlLang === 'es' || htmlLang === 'es-ES') ? 'es' : 'en';
+			const lang = htmlLang === 'es' || htmlLang === 'es-ES' ? 'es' : 'en';
 
 			// Initialize cookie consent on load
 			window.addEventListener('load', () => {

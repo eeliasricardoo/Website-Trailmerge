@@ -17,13 +17,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
 	{
-		slug: "help-how-do-i-build-out-my-product-design-team",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/62c87755e04d61389fbc8d0b_gabriella-clare-marino-_NPCTr9XsGc-unsplash-p-800.jpeg",
-		title: "Help! How do I build out my product design team?",
-		date: "JULY 8, 2022",
-		category: "DESIGN TEAMS",
-		excerpt: "In today's market, designers are becoming increasingly valuable for startups and established companies alike. Yet, hiring and finding effective designers can be time-consuming and challenging.",
-		imageAlt: "Hiking backpack illustration",
+		slug: 'help-how-do-i-build-out-my-product-design-team',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/62c87755e04d61389fbc8d0b_gabriella-clare-marino-_NPCTr9XsGc-unsplash-p-800.jpeg',
+		title: 'Help! How do I build out my product design team?',
+		date: 'JULY 8, 2022',
+		category: 'DESIGN TEAMS',
+		excerpt:
+			"In today's market, designers are becoming increasingly valuable for startups and established companies alike. Yet, hiring and finding effective designers can be time-consuming and challenging.",
+		imageAlt: 'Hiking backpack illustration',
 		content: `<p>In today's market, designers are becoming increasingly valuable for startups and established companies alike, and more companies are starting to recognize their benefit to reducing churn, driving adoption, and improving users' efficiency. A great design team can be the difference between a good product and a stellar product.</p>
 
 <p>Yet, hiring and finding effective designers can be time-consuming and challenging.</p>
@@ -52,19 +54,21 @@ export const blogPosts: BlogPost[] = [
 
 <p>Though forming a design team can be a daunting task, with time and patience the results will be worth all of the effort! Here's to your design team, which might just make the world a little more amazing!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
 		},
 	},
 	{
-		slug: "how-do-i-prioritize-features-part-2",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60c0cdd56e2414337cf33013_ran-berkovich-xU0ZD-TsmmU-unsplash-p-3200.jpeg",
-		title: "How Do I Prioritize Features? Part 2 of 2",
-		date: "JUNE 9, 2021",
-		category: "SAAS",
-		excerpt: "In part one of this series, we discussed customer-centered data points that can help form product strategy. The next step is to mix in constraints.",
-		imageAlt: "Coffee cup illustration",
+		slug: 'how-do-i-prioritize-features-part-2',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60c0cdd56e2414337cf33013_ran-berkovich-xU0ZD-TsmmU-unsplash-p-3200.jpeg',
+		title: 'How Do I Prioritize Features? Part 2 of 2',
+		date: 'JUNE 9, 2021',
+		category: 'SAAS',
+		excerpt:
+			'In part one of this series, we discussed customer-centered data points that can help form product strategy. The next step is to mix in constraints.',
+		imageAlt: 'Coffee cup illustration',
 		content: `<p>In part one of this series, we discussed customer-centered data points that can help form product strategy. We explored how understanding your users' needs, pain points, and goals should be the foundation of any prioritization framework. But customer needs alone don't tell the whole story.</p>
 
 <p>The next step is to mix in constraints. Real-world product development happens within boundaries, and acknowledging these constraints helps you make more realistic and achievable decisions.</p>
@@ -110,19 +114,21 @@ export const blogPosts: BlogPost[] = [
 
 <p>Remember, constraints aren't necessarily bad—they force you to be creative and focused. The best products often emerge from working within limitations, not from unlimited resources.</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+		},
 	},
 	{
-		slug: "how-do-i-prioritize-features-part-1",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60a813feba638c0e3ef14854_valery-fedotov-CqX6IhVj2TI-unsplash-p-3200.jpeg",
-		title: "How Do I Prioritize Features? Part 1 of 2",
-		date: "MAY 21, 2021",
-		category: "SAAS",
-		excerpt: "If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money...",
-		imageAlt: "Binoculars illustration",
+		slug: 'how-do-i-prioritize-features-part-1',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/60a813feba638c0e3ef14854_valery-fedotov-CqX6IhVj2TI-unsplash-p-3200.jpeg',
+		title: 'How Do I Prioritize Features? Part 1 of 2',
+		date: 'MAY 21, 2021',
+		category: 'SAAS',
+		excerpt:
+			"If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money...",
+		imageAlt: 'Binoculars illustration',
 		content: `<p>If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. Your vision board is probably overflowing with features that would revolutionize your industry, delight your users, and make your competitors weep. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money.</p>
 
 <p>Every feature request feels urgent. Every customer feedback session reveals another "must-have" capability. Every competitor launch makes you question your roadmap. So how do you decide what to build first?</p>
@@ -173,20 +179,22 @@ export const blogPosts: BlogPost[] = [
 
 <p>Understanding customer needs, usability issues, and sales drivers is just the first step. In part two of this series, we'll explore how to balance these customer-centered priorities with real-world constraints: technical limitations, business requirements, and resource availability. Because even the most important features need to be feasible to build.</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+		},
 	},
 	{
-		slug: "how-to-ask-good-questions-when-building-saas-product",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/6080815fbafc572380901b88_artem-maltsev-0CvHQ62gwY8-unsplash-p-800.jpeg",
-		title: "How to Ask Good Questions When Building a SaaS Product",
-		date: "APRIL 21, 2021",
-		category: "SAAS",
-		excerpt: "Improve your questioning technique with these foundations for asking good questions when building your SaaS product.",
-		imageAlt: "Compass illustration",
-		imageCredit: "Blog Photo by Artem Maltsev on Unsplash",
+		slug: 'how-to-ask-good-questions-when-building-saas-product',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/6080815fbafc572380901b88_artem-maltsev-0CvHQ62gwY8-unsplash-p-800.jpeg',
+		title: 'How to Ask Good Questions When Building a SaaS Product',
+		date: 'APRIL 21, 2021',
+		category: 'SAAS',
+		excerpt:
+			'Improve your questioning technique with these foundations for asking good questions when building your SaaS product.',
+		imageAlt: 'Compass illustration',
+		imageCredit: 'Blog Photo by Artem Maltsev on Unsplash',
 		content: `<p>As an instructor at General Assembly, one of the main things I wanted my cohort to take away from the 10-week UX design immersive was this: how to ask the right questions.</p>
 
 <p>Pixels are great and all – and, to be sure, they define the output of the work we do as product designers. But good questions are the foundation of good design, and you'll need to know how to ask them if you're interested in identifying which features and functionality will make an impact in your market.</p>
@@ -281,19 +289,21 @@ export const blogPosts: BlogPost[] = [
 
 <p>Oh, and feel free to ask us any questions you have about this topic as well!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+		},
 	},
 	{
-		slug: "lets-talk-design-debt",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db17540b5ef6754da71c6_ruth-enyedi-zuwx2tvI_iM-unsplash(1)-p-800.jpeg",
+		slug: 'lets-talk-design-debt',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/606db17540b5ef6754da71c6_ruth-enyedi-zuwx2tvI_iM-unsplash(1)-p-800.jpeg',
 		title: "Let's Talk Design Debt: What is it and what could it cost me?",
-		date: "APRIL 7, 2021",
-		category: "SAAS",
-		excerpt: "You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product... but months later, you hit the initial shock of design debt.",
-		imageAlt: "Knot illustration",
+		date: 'APRIL 7, 2021',
+		category: 'SAAS',
+		excerpt:
+			"You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product... but months later, you hit the initial shock of design debt.",
+		imageAlt: 'Knot illustration',
 		content: `<p>Imagine with me for a second. You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product and you've heard no one wants to invest in your startup until you have something built, so you go straight to the developer or dev shop your friend recommended.</p>
 
 <p>The developer takes your money and your requirements and gets to work. You communicate back and forth on requirements and technical constraints that you kind of understand and you've made decisions to the best of your ability based on those conversations. As far as design goes, you've sketched together a few flows and back-of-the-napkin wireframes. Your developer has taken those and interpreted them, making several design decisions when building out the product. $30,000 dollars in and 6 months later, you have a product.</p>
@@ -335,19 +345,21 @@ export const blogPosts: BlogPost[] = [
 
 <p>There will always be some design debt that accrues in an iterative Agile SaaS environment, but working with an experienced design partner, like Trailmerge, at the outset and over the long-term can help you dramatically reduce the severity of support needs and rework at a time when you want to be focused on growth.</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+		},
 	},
 	{
-		slug: "your-mvp-is-missing-the-point",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5fe2481631ad4401f048b2d6_the-creativv-2YFpp3NvHy8-unsplash-p-800.jpeg",
-		title: "Your MVP is Missing the Point",
-		date: "DECEMBER 22, 2020",
-		category: "SAAS",
-		excerpt: "How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for \"minimum viable product.\" But what's the point of it?",
-		imageAlt: "Lantern illustration",
+		slug: 'your-mvp-is-missing-the-point',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5fe2481631ad4401f048b2d6_the-creativv-2YFpp3NvHy8-unsplash-p-800.jpeg',
+		title: 'Your MVP is Missing the Point',
+		date: 'DECEMBER 22, 2020',
+		category: 'SAAS',
+		excerpt:
+			'How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for "minimum viable product." But what\'s the point of it?',
+		imageAlt: 'Lantern illustration',
 		content: `<p>How would you define an MVP?</p>
 
 <p>Yeah, I think most of us in the tech startup world know it stands for "minimum viable product." But what's the point of it?</p>
@@ -404,19 +416,21 @@ export const blogPosts: BlogPost[] = [
 
 <p>Remember: The central activity of a startup is to learn and improve with the goal of a sustainable business model. Understanding the assumptions you carry and testing them one-by-one scientific method style is a key step to learning and succeeding, and it can start small!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+		},
 	},
 	{
-		slug: "idea-to-version-1-how-do-i-get-started",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b92fdfd4bf0e27021d439_david-kovalenko-G85VuTpw6jg-unsplash-p-800.jpeg",
-		title: "Idea to Version 1: How Do I Get Started?",
-		date: "OCTOBER 30, 2020",
-		category: "SAAS",
-		excerpt: "Identifying an opportunity is a great place to start. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry. The only problem is you don't know where to begin.",
-		imageAlt: "Hiking boots illustration",
+		slug: 'idea-to-version-1-how-do-i-get-started',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b92fdfd4bf0e27021d439_david-kovalenko-G85VuTpw6jg-unsplash-p-800.jpeg',
+		title: 'Idea to Version 1: How Do I Get Started?',
+		date: 'OCTOBER 30, 2020',
+		category: 'SAAS',
+		excerpt:
+			"Identifying an opportunity is a great place to start. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry. The only problem is you don't know where to begin.",
+		imageAlt: 'Hiking boots illustration',
 		content: `<p>B2B SaaS founders come in a variety of forms. Oftentimes, they're not the tech geniuses who geek out on the pros and cons of the latest Javascript libraries and frameworks. In many cases, they're not UX designers or product managers who decided to branch out to create a new product.</p>
 
 <p>They're folks (this might describe you) from non-technical backgrounds who have seen an opportunity to serve their industry – be it finance, healthcare, real estate, logistics, retail, accounting, education – with effective technology. It could be you've had an epiphany about an open market for a workflow that's not been touched by digital transformation, or it could be you've felt the pain of dealing with a terrible, overpriced incumbent software in your industry.</p>
@@ -471,19 +485,21 @@ export const blogPosts: BlogPost[] = [
 
 <p>Well, there you have it. You've found the opportunity, you're going for it, and now you're armed with some questions to ask yourself. So much of building a startup is learning, and the answers to these questions will help you move forward. Keep at it – we're rooting for you!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
-		}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+		},
 	},
 	{
-		slug: "learning-the-core-of-successful-saas-startup",
-		image: "https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg",
-		title: "Learning: The Core of a Successful SaaS Startup",
-		date: "OCTOBER 29, 2020",
-		category: "SAAS",
-		excerpt: "A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup.",
-		imageAlt: "Hand holding a map examining it",
+		slug: 'learning-the-core-of-successful-saas-startup',
+		image:
+			'https://cdn.prod.website-files.com/5f21852057e32cd33932fc16/5f9b8ef55d4ba34a9d30655e_daniil-silantev-ioYwosPYC0U-unsplash-p-1080.jpeg',
+		title: 'Learning: The Core of a Successful SaaS Startup',
+		date: 'OCTOBER 29, 2020',
+		category: 'SAAS',
+		excerpt:
+			'A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup.',
+		imageAlt: 'Hand holding a map examining it',
 		content: `<p>A startup is an organization in search of a sustainable business model.</p>
 
 <p>I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup. "Startup" is not a description of the age, size, popularity, or revenue of a company. We can still justifiably label large, well-known entities like DoorDash, Airbnb, and Slack as startups. They are still learning and searching for a continually scaling, sustainable business model (and have been doing a great job of it so far!).</p>
@@ -517,18 +533,17 @@ export const blogPosts: BlogPost[] = [
 
 <p>Of course, learning alone is not going to propel us to success. We must have a willingness and a courage to adapt, change course, and even *gasp* say no to some of what we've envisioned. It's all about humility, tenacity, and a desire to improve. That's how we start up!</p>`,
 		author: {
-			name: "Mark Tegtmeier",
-			image: "/images/Mark.png",
-			bio: "Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies."
-		}
-	}
+			name: 'Mark Tegtmeier',
+			image: '/images/Mark.png',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+		},
+	},
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-	return blogPosts.find(post => post.slug === slug);
+	return blogPosts.find((post) => post.slug === slug);
 }
 
 export function getAllPosts(): BlogPost[] {
 	return blogPosts;
 }
-

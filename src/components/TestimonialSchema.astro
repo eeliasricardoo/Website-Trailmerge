@@ -11,29 +11,29 @@ interface Props {
 const { author, position, company, quote, rating = 5 } = Astro.props;
 
 const reviewSchema = {
-	"@context": "https://schema.org",
-	"@type": "Review",
-	"itemReviewed": {
-		"@type": "Organization",
-		"name": "Trailmerge",
-		"url": "https://trailmerge.com"
+	'@context': 'https://schema.org',
+	'@type': 'Review',
+	itemReviewed: {
+		'@type': 'Organization',
+		name: 'Trailmerge',
+		url: 'https://trailmerge.com',
 	},
-	"author": {
-		"@type": "Person",
-		"name": author,
-		"jobTitle": position,
-		"worksFor": {
-			"@type": "Organization",
-			"name": company
-		}
+	author: {
+		'@type': 'Person',
+		name: author,
+		jobTitle: position,
+		worksFor: {
+			'@type': 'Organization',
+			name: company,
+		},
 	},
-	"reviewBody": quote,
-	"reviewRating": {
-		"@type": "Rating",
-		"ratingValue": rating,
-		"bestRating": 5,
-		"worstRating": 1
-	}
+	reviewBody: quote,
+	reviewRating: {
+		'@type': 'Rating',
+		ratingValue: rating,
+		bestRating: 5,
+		worstRating: 1,
+	},
 };
 ---
 

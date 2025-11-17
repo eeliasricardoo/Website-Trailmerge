@@ -11,7 +11,7 @@ function updateZoom() {
 	const scrollPercent = Math.min(scrolled / heroHeight, 1);
 
 	// Scale from 1 to 1.3 based on scroll - applied to backdrop via CSS variable
-	const scale = 1 + (scrollPercent * 0.3);
+	const scale = 1 + scrollPercent * 0.3;
 
 	heroSection.style.setProperty('--backdrop-scale', scale.toString());
 

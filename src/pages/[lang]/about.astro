@@ -16,15 +16,16 @@ const t = useTranslations(lang as 'en' | 'es');
 
 // SEO keywords and breadcrumbs
 const keywords = t('about.seo.keywords');
-const breadcrumbs = lang === 'en' 
-	? [
-		{ name: "Home", url: "https://trailmerge.com/en/" },
-		{ name: "About", url: "https://trailmerge.com/en/about/" }
-	]
-	: [
-		{ name: "Inicio", url: "https://trailmerge.com/es/" },
-		{ name: "Acerca", url: "https://trailmerge.com/es/sobre-nosotros/" }
-	];
+const breadcrumbs =
+	lang === 'en'
+		? [
+				{ name: 'Home', url: 'https://trailmerge.com/en/' },
+				{ name: 'About', url: 'https://trailmerge.com/en/about/' },
+			]
+		: [
+				{ name: 'Inicio', url: 'https://trailmerge.com/es/' },
+				{ name: 'Acerca', url: 'https://trailmerge.com/es/sobre-nosotros/' },
+			];
 ---
 
 <Layout
@@ -55,4 +56,3 @@ const breadcrumbs = lang === 'en'
 		background-color: var(--sand);
 	}
 </style>
-

@@ -9,36 +9,39 @@ export async function getStaticPaths() {
 
 	// Combine all unique slugs from both languages
 	const allSlugs = new Set([
-		...enPosts.map(post => post.slug),
-		...esPosts.map(post => post.slug)
+		...enPosts.map((post) => post.slug),
+		...esPosts.map((post) => post.slug),
 	]);
 
-	return Array.from(allSlugs).map(slug => ({
-		params: { slug }
+	return Array.from(allSlugs).map((slug) => ({
+		params: { slug },
 	}));
 }
 
 const { slug } = Astro.params;
 ---
+
 <!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>Redirecting...</title>
-	<meta name="robots" content="noindex">
-	<script is:inline define:vars={{ slug }}>
-	// Ultra-fast redirect - executes before any rendering
-	(function(){
-		var l=(navigator.language||navigator.userLanguage||'en').toLowerCase();
-		window.location.replace(l.startsWith('es')?'/es/blog/' + slug + '/':'/en/blog/' + slug + '/');
-	})();
-	</script>
-	<noscript>
-		<meta http-equiv="refresh" content={`0;url=/en/blog/${slug}/`}>
-	</noscript>
-</head>
-<body>
-	<p>Redirecting based on your language preference...</p>
-	<p><a href={`/en/blog/${slug}/`}>English</a> | <a href={`/es/blog/${slug}/`}>Español</a></p>
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Redirecting...</title>
+		<meta name="robots" content="noindex" />
+		<script is:inline define:vars={{ slug }}>
+			// Ultra-fast redirect - executes before any rendering
+			(function () {
+				var l = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+				window.location.replace(
+					l.startsWith('es') ? '/es/blog/' + slug + '/' : '/en/blog/' + slug + '/'
+				);
+			})();
+		</script>
+		<noscript>
+			<meta http-equiv="refresh" content={`0;url=/en/blog/${slug}/`} />
+		</noscript>
+	</head>
+	<body>
+		<p>Redirecting based on your language preference...</p>
+		<p><a href={`/en/blog/${slug}/`}>English</a> | <a href={`/es/blog/${slug}/`}>Español</a></p>
+	</body>
 </html>

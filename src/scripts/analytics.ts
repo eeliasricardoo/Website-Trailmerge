@@ -6,9 +6,11 @@ declare global {
 }
 
 export function initAnalytics() {
-	window.plausible = window.plausible || function() {
-		(window.plausible.q = window.plausible.q || []).push(arguments);
-	};
+	window.plausible =
+		window.plausible ||
+		function () {
+			(window.plausible.q = window.plausible.q || []).push(arguments);
+		};
 }
 
 export function trackNavEvents() {
@@ -24,15 +26,21 @@ export function trackNavEvents() {
 	const footerContact = document.getElementById('footer-contact');
 
 	if (navLogo) navLogo.addEventListener('click', () => window.plausible('Nav Logo - Home'));
-	if (navServices) navServices.addEventListener('click', () => window.plausible('Nav Services - Home'));
+	if (navServices)
+		navServices.addEventListener('click', () => window.plausible('Nav Services - Home'));
 	if (navTalent) navTalent.addEventListener('click', () => window.plausible('Nav Talent - Home'));
 	if (navAbout) navAbout.addEventListener('click', () => window.plausible('Nav About - Home'));
 	if (navBlog) navBlog.addEventListener('click', () => window.plausible('Nav Blog - Home'));
-	if (navContact) navContact.addEventListener('click', () => window.plausible('Nav Contact Button - Home'));
-	if (heroContact) heroContact.addEventListener('click', () => window.plausible('Hero Contact Button - Home'));
-	if (servicesButton) servicesButton.addEventListener('click', () => window.plausible('Services Button - Home'));
-	if (auditButton) auditButton.addEventListener('click', () => window.plausible('Audit Button - Home'));
-	if (footerContact) footerContact.addEventListener('click', () => window.plausible('Footer Contact Button - Home'));
+	if (navContact)
+		navContact.addEventListener('click', () => window.plausible('Nav Contact Button - Home'));
+	if (heroContact)
+		heroContact.addEventListener('click', () => window.plausible('Hero Contact Button - Home'));
+	if (servicesButton)
+		servicesButton.addEventListener('click', () => window.plausible('Services Button - Home'));
+	if (auditButton)
+		auditButton.addEventListener('click', () => window.plausible('Audit Button - Home'));
+	if (footerContact)
+		footerContact.addEventListener('click', () => window.plausible('Footer Contact Button - Home'));
 }
 
 export function trackModalEvents() {
@@ -43,10 +51,14 @@ export function trackModalEvents() {
 	const modalSubmit = document.getElementById('modal-submit');
 
 	if (modalName) modalName.addEventListener('click', () => window.plausible('Name Input - Home'));
-	if (modalEmail) modalEmail.addEventListener('click', () => window.plausible('Email Input - Home'));
-	if (modalMessage) modalMessage.addEventListener('click', () => window.plausible('Message Input - Home'));
-	if (modalOptin) modalOptin.addEventListener('click', () => window.plausible('Opt-in Checkbox - Home'));
-	if (modalSubmit) modalSubmit.addEventListener('click', () => window.plausible('Submit Button - Home'));
+	if (modalEmail)
+		modalEmail.addEventListener('click', () => window.plausible('Email Input - Home'));
+	if (modalMessage)
+		modalMessage.addEventListener('click', () => window.plausible('Message Input - Home'));
+	if (modalOptin)
+		modalOptin.addEventListener('click', () => window.plausible('Opt-in Checkbox - Home'));
+	if (modalSubmit)
+		modalSubmit.addEventListener('click', () => window.plausible('Submit Button - Home'));
 }
 
 // Initialize on DOM ready

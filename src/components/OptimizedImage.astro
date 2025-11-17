@@ -24,29 +24,32 @@ const {
 } = Astro.props;
 
 // Check if src is a string (external URL) or local import
-const isExternal = typeof src === 'string' && (src.startsWith('http://') || src.startsWith('https://'));
+const isExternal =
+	typeof src === 'string' && (src.startsWith('http://') || src.startsWith('https://'));
 ---
 
-{isExternal ? (
-	<img
-		src={src}
-		alt={alt}
-		width={width}
-		height={height}
-		class={className}
-		loading={loading}
-		decoding="async"
-	/>
-) : (
-	<Image
-		src={src}
-		alt={alt}
-		width={width}
-		height={height}
-		class={className}
-		loading={loading}
-		format={format}
-		quality={quality}
-		decoding="async"
-	/>
-)}
+{
+	isExternal ? (
+		<img
+			src={src}
+			alt={alt}
+			width={width}
+			height={height}
+			class={className}
+			loading={loading}
+			decoding="async"
+		/>
+	) : (
+		<Image
+			src={src}
+			alt={alt}
+			width={width}
+			height={height}
+			class={className}
+			loading={loading}
+			format={format}
+			quality={quality}
+			decoding="async"
+		/>
+	)
+}
