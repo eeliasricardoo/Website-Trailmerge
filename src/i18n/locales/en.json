@@ -3,7 +3,10 @@
     "about": "About",
     "blog": "Blog",
     "contact": "Contact Us",
-    "home": "Trailmerge home"
+    "home": "Trailmerge home",
+    "projects": "Projects",
+    "services": "Services",
+    "startProject": "Start a Project"
   },
   "hero": {
     "title": "Elevate your business software",

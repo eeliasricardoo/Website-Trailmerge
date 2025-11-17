@@ -3,7 +3,10 @@
     "about": "Sobre Nosotros",
     "blog": "Blog",
     "contact": "Contacto",
-    "home": "Inicio de Trailmerge"
+    "home": "Inicio de Trailmerge",
+    "projects": "Proyectos",
+    "services": "Servicios",
+    "startProject": "Iniciar un Proyecto"
   },
   "hero": {
     "title": "Eleva tu software empresarial",

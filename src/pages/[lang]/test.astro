@@ -1,0 +1,370 @@
+---
+export const prerender = false;
+
+import { ViewTransitions } from 'astro:transitions';
+import SEOHead from '../../components/SEOHead.astro';
+import SEOSchema from '../../components/SEOSchema.astro';
+import { useTranslations } from '../../i18n/utils';
+import { getAlternateUrls } from '../../utils/routeMapping';
+import '../../styles/global.css';
+
+// Import new redesigned components
+import NavbarNew from '../../components/new/NavbarNew.astro';
+import HeroNew from '../../components/new/HeroNew.astro';
+
+const { lang } = Astro.params || { lang: 'en' };
+
+if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
+	return new Response(null, {
+		status: 404,
+		statusText: 'Not Found',
+	});
+}
+
+const t = useTranslations(lang as 'en' | 'es');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const alternateUrls = getAlternateUrls(Astro.url.pathname, Astro.site?.href || '');
+const isStaging =
+	Astro.site?.hostname === 'staging.trailmerge.com' ||
+	Astro.url.hostname === 'staging.trailmerge.com';
+const htmlLang = lang === 'es' ? 'es' : 'en-US';
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+
+		<SEOHead
+			title="Redesign Preview - Trailmerge"
+			description="Preview of the new Trailmerge website redesign"
+			canonicalURL={canonicalURL}
+			lang={lang}
+			alternateUrls={alternateUrls}
+			isStaging={isStaging}
+		/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Young+Serif&family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<SEOSchema
+			type="organization"
+			pageTitle="Redesign Preview"
+			pageDescription="Preview of the new Trailmerge website redesign"
+		/>
+
+		<ViewTransitions />
+	</head>
+	<body>
+		<!-- New Redesigned Components -->
+		<NavbarNew lang={lang} />
+		<HeroNew lang={lang} />
+
+		<!-- Component Showcase Section -->
+		<section class="showcase-section">
+			<div class="showcase-container">
+				<div class="showcase-header">
+					<h2>Redesign Component Showcase</h2>
+					<p>Preview all new components below. Toggle between old and new versions to compare.</p>
+				</div>
+
+				<!-- Component Status Grid -->
+				<div class="component-grid">
+					<div class="component-card completed">
+						<h3>Navbar</h3>
+						<span class="status-badge">Completed</span>
+						<p>New navigation with improved transparency and DM Sans font</p>
+					</div>
+
+					<div class="component-card completed">
+						<h3>Hero</h3>
+						<span class="status-badge">Completed</span>
+						<p>Updated hero section with new layout and typography</p>
+					</div>
+
+					<div class="component-card pending">
+						<h3>Footer</h3>
+						<span class="status-badge pending">Pending</span>
+						<p>Footer redesign - not started</p>
+					</div>
+
+					<div class="component-card pending">
+						<h3>Services Section</h3>
+						<span class="status-badge pending">Pending</span>
+						<p>Services section redesign - not started</p>
+					</div>
+
+					<div class="component-card pending">
+						<h3>Testimonials</h3>
+						<span class="status-badge pending">Pending</span>
+						<p>Testimonial component redesign - not started</p>
+					</div>
+
+					<div class="component-card pending">
+						<h3>Case Studies</h3>
+						<span class="status-badge pending">Pending</span>
+						<p>Case study cards redesign - not started</p>
+					</div>
+				</div>
+
+				<!-- Implementation Guide -->
+				<div class="implementation-guide">
+					<h3>Implementation Guide</h3>
+					<ol>
+						<li>
+							<strong>Create components in /components/new/</strong>
+							<p>Keep original components intact while building new versions</p>
+						</li>
+						<li>
+							<strong>Test on this page</strong>
+							<p>Import and preview new components here before deploying</p>
+						</li>
+						<li>
+							<strong>Swap when ready</strong>
+							<p>Update imports in index.astro to use new components</p>
+						</li>
+						<li>
+							<strong>Archive old components</strong>
+							<p>Move old components to /components/legacy/ or delete after confirming stability</p>
+						</li>
+					</ol>
+				</div>
+
+				<!-- Quick Links -->
+				<div class="quick-links">
+					<h3>Quick Actions</h3>
+					<div class="link-grid">
+						<a href={`/${lang}/`} class="action-link">View Current Site</a>
+						<a href="#" class="action-link secondary">Design System (Coming Soon)</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
+
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+		font-family: 'DM Sans', sans-serif;
+		background-color: var(--off-white);
+	}
+
+	/* Showcase Section */
+	.showcase-section {
+		padding: 80px 20px;
+		background-color: var(--white);
+	}
+
+	.showcase-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.showcase-header {
+		text-align: center;
+		margin-bottom: 60px;
+	}
+
+	.showcase-header h2 {
+		font-family: 'Bitter', serif;
+		font-size: 48px;
+		font-weight: 700;
+		color: var(--grey-5);
+		margin: 0 0 16px 0;
+	}
+
+	.showcase-header p {
+		font-size: 18px;
+		color: var(--grey-4);
+		margin: 0;
+	}
+
+	/* Component Grid */
+	.component-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 24px;
+		margin-bottom: 60px;
+	}
+
+	.component-card {
+		background-color: var(--off-white);
+		border-radius: 8px;
+		padding: 24px;
+		border: 2px solid transparent;
+		transition: all 0.2s ease;
+	}
+
+	.component-card:hover {
+		border-color: var(--green-500);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+
+	.component-card.completed {
+		border-color: var(--mint);
+		background-color: rgba(193, 227, 203, 0.1);
+	}
+
+	.component-card.pending {
+		opacity: 0.7;
+	}
+
+	.component-card h3 {
+		font-family: 'Bitter', serif;
+		font-size: 24px;
+		font-weight: 700;
+		color: var(--grey-5);
+		margin: 0 0 8px 0;
+	}
+
+	.component-card p {
+		font-size: 14px;
+		color: var(--grey-4);
+		margin: 8px 0 0 0;
+		line-height: 1.5;
+	}
+
+	.status-badge {
+		display: inline-block;
+		padding: 4px 12px;
+		border-radius: 12px;
+		font-size: 12px;
+		font-weight: 600;
+		background-color: var(--mint);
+		color: var(--grey-5);
+	}
+
+	.status-badge.pending {
+		background-color: var(--grey-3);
+		color: var(--white);
+	}
+
+	/* Implementation Guide */
+	.implementation-guide {
+		background-color: var(--off-white);
+		border-radius: 8px;
+		padding: 40px;
+		margin-bottom: 40px;
+	}
+
+	.implementation-guide h3 {
+		font-family: 'Bitter', serif;
+		font-size: 32px;
+		font-weight: 700;
+		color: var(--grey-5);
+		margin: 0 0 24px 0;
+	}
+
+	.implementation-guide ol {
+		margin: 0;
+		padding-left: 24px;
+	}
+
+	.implementation-guide li {
+		margin-bottom: 20px;
+		color: var(--grey-4);
+		line-height: 1.6;
+	}
+
+	.implementation-guide li:last-child {
+		margin-bottom: 0;
+	}
+
+	.implementation-guide strong {
+		color: var(--grey-5);
+		font-weight: 600;
+		display: block;
+		margin-bottom: 4px;
+	}
+
+	.implementation-guide p {
+		margin: 0;
+		font-size: 14px;
+	}
+
+	/* Quick Links */
+	.quick-links {
+		text-align: center;
+	}
+
+	.quick-links h3 {
+		font-family: 'Bitter', serif;
+		font-size: 32px;
+		font-weight: 700;
+		color: var(--grey-5);
+		margin: 0 0 24px 0;
+	}
+
+	.link-grid {
+		display: flex;
+		gap: 16px;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.action-link {
+		display: inline-block;
+		padding: 12px 24px;
+		border-radius: 4px;
+		background-color: var(--grey-5);
+		color: var(--white);
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.2s ease;
+	}
+
+	.action-link:hover {
+		background-color: var(--grey-4);
+		transform: translateY(-1px);
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	.action-link.secondary {
+		background-color: transparent;
+		color: var(--grey-5);
+		border: 2px solid var(--grey-5);
+	}
+
+	.action-link.secondary:hover {
+		background-color: var(--grey-5);
+		color: var(--white);
+	}
+
+	/* Responsive */
+	@media (max-width: 768px) {
+		.showcase-header h2 {
+			font-size: 36px;
+		}
+
+		.component-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.implementation-guide {
+			padding: 24px;
+		}
+
+		.implementation-guide h3,
+		.quick-links h3 {
+			font-size: 24px;
+		}
+
+		.link-grid {
+			flex-direction: column;
+		}
+
+		.action-link {
+			width: 100%;
+		}
+	}
+</style>
