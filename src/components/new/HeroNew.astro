@@ -17,7 +17,11 @@ const t = useTranslations(lang as 'en' | 'es');
 			<a href="#" class="hero-cta open-modal">{t('hero.cta')}</a>
 		</div>
 		<div class="hero-visual">
-			<!-- Hero illustration will go here -->
+			<img
+				src="/images/new/home/Landscape.svg"
+				alt="Landscape illustration"
+				class="hero-illustration"
+			/>
 		</div>
 	</div>
 </section>
@@ -94,11 +98,15 @@ const t = useTranslations(lang as 'en' | 'es');
 		position: relative;
 		width: 100%;
 		height: 500px;
-		background-color: var(--mint);
-		border-radius: 8px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.hero-illustration {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
 	}
 
 	@media (max-width: 1024px) {
