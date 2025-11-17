@@ -1,0 +1,9 @@
+/* Global Styles - Trailmerge Website */
+
+/* Import all style modules */
+@import './base.css';
+@import './typography.css';
+@import './utilities.css';
+@import './components.css';
+@import './layout.css';
+@import './responsive.css';

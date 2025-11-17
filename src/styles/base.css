@@ -1,0 +1,61 @@
+/* CSS Variables and Base Styles */
+:root {
+	--off-white: #f5f6f5;
+	--grey-5: #2e3a33;
+	--black: #151a17;
+	--green-700: #3fb86d;
+	--mint: #c1e3cb;
+	--green-500: #8ed3a5;
+	--grey-4: #434d48;
+	--oregano: #063d20;
+	--green-900: #187d42;
+	--green-300: #e9f5ed;
+	--green-100: #f3f8f4;
+	--sand-500: #c2bfbc;
+	--sand-300: #e2deda;
+	--sand-100: #f1efec;
+	--tangerine-500: #f5af59;
+	--tangerine-100: #fceede;
+	--aqua-500: #40d0df;
+	--aqua-100: #c6edf1;
+	--lavender-500: #a9a0e1;
+	--lavender-100: #d4d0e8;
+	--cinnamon-500: #990e0e;
+	--cinnamon-100: #daa;
+	--grey-3: #76807b;
+	--grey-2: #a7acaa;
+	--grey-1: #dfe0df;
+	--white: #fcfcfc;
+	--obsidian: #0b160f;
+	--pimento: #ea5b47;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+html,
+body {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--off-white);
+	color: var(--grey-5);
+	font-family: Bitter, Georgia, serif;
+	font-size: 16px;
+	line-height: 20px;
+}

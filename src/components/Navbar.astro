@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../i18n/utils';
+import { getLanguageUrls } from '../utils/routeMapping';
 import TrailmergeLogo from '../assets/images/Trailmerge-Wordmark-Sand.svg';
 
 export interface Props {
@@ -12,51 +13,8 @@ const t = useTranslations(lang as 'en' | 'es');
 // Get current path for language switcher
 const currentPath = Astro.url.pathname;
 
-// Route mapping between English and Spanish
-const routeMap = {
-	'/': { en: '/en/', es: '/es/' },
-	'/en': { en: '/en/', es: '/es/' },
-	'/en/': { en: '/en/', es: '/es/' },
-	'/en/about': { en: '/en/about/', es: '/es/about/' },
-	'/en/about/': { en: '/en/about/', es: '/es/about/' },
-	'/en/blog': { en: '/en/blog/', es: '/es/blog/' },
-	'/en/blog/': { en: '/en/blog/', es: '/es/blog/' },
-	'/en/privacy': { en: '/en/privacy/', es: '/es/privacy/' },
-	'/en/privacy/': { en: '/en/privacy/', es: '/es/privacy/' },
-	'/es': { en: '/en/', es: '/es/' },
-	'/es/': { en: '/en/', es: '/es/' },
-	'/es/about': { en: '/en/about/', es: '/es/about/' },
-	'/es/about/': { en: '/en/about/', es: '/es/about/' },
-	'/es/sobre-nosotros': { en: '/en/about/', es: '/es/about/' },
-	'/es/sobre-nosotros/': { en: '/en/about/', es: '/es/about/' },
-	'/es/blog': { en: '/en/blog/', es: '/es/blog/' },
-	'/es/blog/': { en: '/en/blog/', es: '/es/blog/' },
-	'/es/privacy': { en: '/en/privacy/', es: '/es/privacy/' },
-	'/es/privacy/': { en: '/en/privacy/', es: '/es/privacy/' },
-	'/es/privacidad': { en: '/en/privacy/', es: '/es/privacy/' },
-	'/es/privacidad/': { en: '/en/privacy/', es: '/es/privacy/' },
-};
-
-// Handle blog post slugs
-const isBlogPost = currentPath.match(/^\/en\/blog\//) || currentPath.match(/^\/es\/blog\//);
-let enUrl = '/en/';
-let esUrl = '/es/';
-
-if (isBlogPost) {
-	// For blog posts, keep the same slug but change the language prefix
-	const slug = currentPath.replace(/^\/(en\/|es\/)?blog\//, '').replace(/\/$/, '');
-	enUrl = `/en/blog/${slug}/`;
-	esUrl = `/es/blog/${slug}/`;
-} else if (routeMap[currentPath]) {
-	// Use route mapping for known routes
-	enUrl = routeMap[currentPath].en;
-	esUrl = routeMap[currentPath].es;
-} else {
-	// Fallback: remove language prefix and add appropriate one
-	const pathWithoutLang = currentPath.replace(/^\/(en|es)/, '').replace(/\/$/, '') || '/';
-	enUrl = pathWithoutLang === '/' ? '/en/' : `/en${pathWithoutLang}/`;
-	esUrl = pathWithoutLang === '/' ? '/es/' : `/es${pathWithoutLang}/`;
-}
+// Get language-specific URLs using centralized utility
+const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 ---
 
 <!-- Navigation -->
