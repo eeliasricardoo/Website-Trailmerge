@@ -1,0 +1,56 @@
+/* Utility Classes */
+
+/* Spacers */
+.spacer-xs { height: 4px; }
+.spacer-s { height: 8px; }
+.spacer-m { height: 16px; }
+.spacer-l { height: 24px; }
+.spacer-xl { height: 32px; }
+.spacer-2xl { height: 40px; }
+
+/* Text utilities */
+.light-text { color: var(--white); }
+
+/* Display utilities */
+.hidden { display: none; }
+
+/* Visually hidden but accessible to screen readers */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+/* Skip to content link for accessibility */
+.skip-to-content {
+	position: absolute;
+	top: -100px;
+	left: 0;
+	background: var(--oregano);
+	color: var(--white);
+	padding: 12px 24px;
+	text-decoration: none;
+	font-weight: 600;
+	z-index: 10000;
+	transition: top 0.3s;
+	border-radius: 0 0 8px 0;
+}
+
+.skip-to-content:focus {
+	top: 0;
+	outline: 2px solid var(--mint);
+	outline-offset: 2px;
+}
+
+/* Help text */
+.help-text {
+	color: var(--grey-2);
+	font-size: 14px;
+	line-height: 1.5;
+}
