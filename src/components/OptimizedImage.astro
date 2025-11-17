@@ -10,6 +10,9 @@ interface Props {
 	loading?: 'lazy' | 'eager';
 	format?: 'avif' | 'webp' | 'png' | 'jpg';
 	quality?: number;
+	widths?: number[];
+	sizes?: string;
+	fetchpriority?: 'high' | 'low' | 'auto';
 }
 
 const {
@@ -21,6 +24,9 @@ const {
 	loading = 'lazy',
 	format = 'webp',
 	quality = 80,
+	widths = [400, 800, 1200],
+	sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px',
+	fetchpriority = 'auto',
 } = Astro.props;
 
 // Check if src is a string (external URL) or local import
@@ -38,6 +44,7 @@ const isExternal =
 			class={className}
 			loading={loading}
 			decoding="async"
+			fetchpriority={fetchpriority}
 		/>
 	) : (
 		<Image
@@ -45,11 +52,14 @@ const isExternal =
 			alt={alt}
 			width={width}
 			height={height}
+			widths={widths}
+			sizes={sizes}
 			class={className}
 			loading={loading}
 			format={format}
 			quality={quality}
 			decoding="async"
+			fetchpriority={fetchpriority}
 		/>
 	)
 }
