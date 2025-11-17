@@ -1,0 +1,71 @@
+---
+export const prerender = false;
+
+import { ViewTransitions } from 'astro:transitions';
+import SEOHead from '../../components/SEOHead.astro';
+import SEOSchema from '../../components/SEOSchema.astro';
+import { useTranslations } from '../../i18n/utils';
+import { getAlternateUrls } from '../../utils/routeMapping';
+import '../../styles/global.css';
+
+// Import new redesigned components
+import NavbarNew from '../../components/new/NavbarNew.astro';
+import HeroNew from '../../components/new/HeroNew.astro';
+
+const { lang } = Astro.params || { lang: 'en' };
+
+if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
+	return new Response(null, {
+		status: 404,
+		statusText: 'Not Found',
+	});
+}
+
+const t = useTranslations(lang as 'en' | 'es');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const alternateUrls = getAlternateUrls(Astro.url.pathname, Astro.site?.href || '');
+const isStaging =
+	Astro.site?.hostname === 'staging.trailmerge.com' ||
+	Astro.url.hostname === 'staging.trailmerge.com';
+const htmlLang = lang === 'es' ? 'es' : 'en-US';
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+		<meta name="generator" content={Astro.generator} />
+
+		<SEOHead
+			title={t('homepage.seo.title')}
+			description={t('homepage.seo.description')}
+			canonicalURL={canonicalURL}
+			lang={lang}
+			alternateUrls={alternateUrls}
+			isStaging={isStaging}
+		/>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Young+Serif&family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<SEOSchema
+			type="website"
+			pageTitle={t('homepage.seo.title')}
+			pageDescription={t('homepage.seo.description')}
+		/>
+
+		<ViewTransitions />
+	</head>
+	<body>
+		<NavbarNew lang={lang} />
+		<main id="main-content">
+			<HeroNew lang={lang} />
+		</main>
+	</body>
+</html>
