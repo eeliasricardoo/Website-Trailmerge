@@ -37,23 +37,26 @@
 }
 
 .aside-center {
-	background-color: var(--grey-5);
-	border-radius: 4px;
+	background-color: #44413d;
+	border-radius: 8px;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	max-width: 1200px;
 	min-height: 124px;
-	padding: 40px;
+	padding: 48px 56px;
 	display: flex;
 	z-index: 2;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);
 }
 
 .aside-center p {
 	color: var(--white);
+	font-family: 'Bitter', serif;
 	font-size: 18px;
-	line-height: 1.6;
+	line-height: 1.7;
 	margin: 0;
+	text-align: center;
 }
 
 .ribbon-right-container {
