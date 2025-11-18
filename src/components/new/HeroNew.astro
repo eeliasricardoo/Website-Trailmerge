@@ -14,6 +14,14 @@ const t = useTranslations(lang as 'en' | 'es');
 	<div class="parallax-container">
 		<!-- Landscape Group -->
 		<div class="landscape-group">
+			<div class="parallax-layer layer-blob" data-speed="0.1">
+				<img
+					src="/images/new/home/Vector Blob.svg"
+					alt="Vector Blob"
+					class="parallax-image"
+					loading="eager"
+				/>
+			</div>
 			<div class="parallax-layer layer-clouds" data-speed="0.2">
 				<img
 					src="/images/new/home/landscape/Clouds.svg"
@@ -87,6 +95,7 @@ const t = useTranslations(lang as 'en' | 'es');
 				const isForestRight = layer.classList.contains('layer-forest-right');
 				const isMountains = layer.classList.contains('layer-mountains');
 				const isClouds = layer.classList.contains('layer-clouds');
+				const isBlob = layer.classList.contains('layer-blob');
 				const isBird = layer.classList.contains('layer-bird');
 
 				if (isMountains) {
@@ -95,6 +104,9 @@ const t = useTranslations(lang as 'en' | 'es');
 				} else if (isClouds) {
 					// Centralizar horizontalmente e aplicar parallax vertical
 					(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), ${yPos}px)`;
+				} else if (isBlob) {
+					// Aplicar rotação e parallax vertical
+					(layer as HTMLElement).style.transform = `rotate(1.867deg) translateY(${yPos}px)`;
 				} else if (isForest || isForestRight) {
 					(layer as HTMLElement).style.transform = `translateY(${yPos}px)`;
 				} else if (isBird) {
@@ -121,6 +133,7 @@ const t = useTranslations(lang as 'en' | 'es');
 			const isForestRight = layer.classList.contains('layer-forest-right');
 			const isMountains = layer.classList.contains('layer-mountains');
 			const isClouds = layer.classList.contains('layer-clouds');
+			const isBlob = layer.classList.contains('layer-blob');
 			const isBird = layer.classList.contains('layer-bird');
 
 			if (isMountains) {
@@ -129,6 +142,9 @@ const t = useTranslations(lang as 'en' | 'es');
 			} else if (isClouds) {
 				// Centralizar horizontalmente
 				(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), 0px)`;
+			} else if (isBlob) {
+				// Aplicar rotação inicial
+				(layer as HTMLElement).style.transform = `rotate(1.867deg) translateY(0px)`;
 			} else if (isForest || isForestRight) {
 				(layer as HTMLElement).style.transform = `translateY(0px)`;
 			} else if (isBird) {
@@ -214,6 +230,17 @@ const t = useTranslations(lang as 'en' | 'es');
 		display: block;
 	}
 
+	.layer-blob {
+		z-index: -1;
+		width: 1463.516px;
+		height: 1312.615px;
+		right: -150px;
+		top: -230px;
+		flex-shrink: 0;
+		transform: rotate(1.867deg);
+		box-sizing: border-box;
+	}
+
 	.layer-clouds {
 		z-index: 0;
 		width: 2193.518px;
@@ -258,6 +285,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		z-index: 4;
 		width: 36px;
 		height: 18px;
+		left: 900px;
 		top: 114px;
 		flex-shrink: 0;
 		transform: rotate(1.21deg);
@@ -341,6 +369,12 @@ const t = useTranslations(lang as 'en' | 'es');
 			min-height: 500px;
 		}
 
+		.layer-blob {
+			width: 100%;
+			height: auto;
+			max-height: 1312.615px;
+		}
+
 		.layer-clouds {
 			width: 100%;
 			height: auto;
@@ -378,6 +412,12 @@ const t = useTranslations(lang as 'en' | 'es');
 		.hero-wrapper {
 			height: 80vh;
 			min-height: 500px;
+		}
+
+		.layer-blob {
+			width: 100%;
+			height: auto;
+			max-height: 1000px;
 		}
 
 		.layer-clouds {
@@ -432,6 +472,12 @@ const t = useTranslations(lang as 'en' | 'es');
 		.hero-wrapper {
 			height: 70vh;
 			min-height: 400px;
+		}
+
+		.layer-blob {
+			width: 100%;
+			height: auto;
+			max-height: 800px;
 		}
 
 		.layer-clouds {
