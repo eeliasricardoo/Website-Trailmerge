@@ -9,145 +9,374 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<section class="hero-new">
-	<div class="hero-background">
-		<img
-			src="/images/new/home/Landscape.svg"
-			alt="Landscape illustration"
-			class="hero-illustration"
-		/>
-	</div>
-	<div class="hero-content-wrapper">
-		<div class="hero-content">
-			<h1 class="hero-title">{t('hero.title')}</h1>
-			<p class="hero-subtitle">{t('hero.subtitle')}</p>
-			<a href="#" class="hero-cta open-modal">{t('hero.cta')}</a>
+<!-- Hero Section with Parallax Landscape -->
+<div class="hero-wrapper" id="hero-section">
+	<div class="parallax-container">
+		<!-- Landscape Group -->
+		<div class="landscape-group">
+			<div class="parallax-layer layer-mountains" data-speed="0.3">
+				<img
+					src="/images/new/home/landscape/mountains.svg"
+					alt="Mountains"
+					class="parallax-image"
+					loading="eager"
+				/>
+			</div>
+			<div class="parallax-layer layer-forest" data-speed="0.7">
+				<img
+					src="/images/new/home/landscape/Forest.png"
+					alt="Forest"
+					class="parallax-image"
+					loading="eager"
+				/>
+			</div>
+			<div class="parallax-layer layer-bird" data-speed="0.9">
+				<img
+					src="/images/new/home/landscape/Bird.png"
+					alt="Bird"
+					class="parallax-image"
+					loading="eager"
+				/>
+			</div>
 		</div>
 	</div>
-</section>
+
+	<!-- Content Overlay -->
+	<div class="content-container">
+		<div class="hero-content">
+			<h1 class="hero-title">Elevate your<br />operations<br />software</h1>
+		</div>
+	</div>
+</div>
+
+<script>
+	function initParallax() {
+		const heroSection = document.getElementById('hero-section');
+		if (!heroSection) return;
+
+		const parallaxLayers = heroSection.querySelectorAll('.parallax-layer');
+		let ticking = false;
+
+		function updateParallax() {
+			if (!heroSection) return;
+
+			const scrolled = window.pageYOffset;
+			const heroHeight = heroSection.offsetHeight;
+			const scrollPercent = Math.min(scrolled / heroHeight, 1);
+
+			parallaxLayers.forEach((layer) => {
+				const speed = parseFloat(layer.getAttribute('data-speed') || '0.5');
+				const yPos = -(scrolled * speed);
+				const isForest = layer.classList.contains('layer-forest');
+				const isMountains = layer.classList.contains('layer-mountains');
+				const isBird = layer.classList.contains('layer-bird');
+
+				if (isMountains) {
+					// Centralizar horizontalmente e aplicar parallax vertical
+					(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), ${yPos}px)`;
+				} else if (isForest) {
+					(layer as HTMLElement).style.transform = `translateY(${yPos}px)`;
+				} else if (isBird) {
+					(layer as HTMLElement).style.transform = `rotate(1.21deg) translateY(${yPos}px)`;
+				} else {
+					(layer as HTMLElement).style.transform = `translateY(${yPos}px)`;
+				}
+			});
+
+			ticking = false;
+		}
+
+		function requestTick() {
+			if (!ticking) {
+				window.requestAnimationFrame(updateParallax);
+				ticking = true;
+			}
+		}
+
+		window.addEventListener('scroll', requestTick, { passive: true });
+		// Initial call to set transforms
+		parallaxLayers.forEach((layer) => {
+			const isForest = layer.classList.contains('layer-forest');
+			const isMountains = layer.classList.contains('layer-mountains');
+			const isBird = layer.classList.contains('layer-bird');
+
+			if (isMountains) {
+				// Centralizar horizontalmente
+				(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), 0px)`;
+			} else if (isForest) {
+				(layer as HTMLElement).style.transform = `translateY(0px)`;
+			} else if (isBird) {
+				(layer as HTMLElement).style.transform = `rotate(1.21deg) translateY(0px)`;
+			} else {
+				(layer as HTMLElement).style.transform = `translateY(0px)`;
+			}
+		});
+		updateParallax(); // Initial call
+	}
+
+	// Initialize on DOM ready
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initParallax);
+	} else {
+		initParallax();
+	}
+</script>
 
 <style>
-	.hero-new {
-		padding-top: 0;
-		padding-bottom: 0;
+	.hero-wrapper {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
 		min-height: 100vh;
+		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: var(--off-white);
-		position: relative;
-		overflow: hidden;
+		border-radius: 0;
+		background: 
+			/* Pattern SVG overlay - círculos com espaçamento cx/cy = 2, r = 2, opacidade ~90% */
+			url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='2' fill='%23000' opacity='0.1'/%3E%3C/svg%3E"),
+			/* Gradiente Radial Secundário com opacidade 20% */
+				radial-gradient(
+					252.76deg 116.83% at 50% 50%,
+					rgba(255, 255, 255, 0) 0%,
+					rgba(46, 58, 51, 0.2) 40%
+				),
+			/* Gradiente Radial Primário */
+				radial-gradient(256.09deg 112.84% at 96.63% 6.02%, #faefe0 0%, #ccbba3 100%);
+		background-size:
+			4px 4px,
+			100% 100%,
+			100% 100%;
+		background-position:
+			0 0,
+			center,
+			center;
+		background-repeat: repeat, no-repeat, no-repeat;
+		background-attachment: fixed, fixed, fixed;
+		background-blend-mode: normal;
 	}
 
-	.hero-background {
+	.parallax-container {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
 		z-index: 0;
+	}
+
+	.landscape-group {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+	}
+
+	.parallax-layer {
+		position: absolute;
+		will-change: transform;
+		flex-shrink: 0;
+		box-sizing: border-box;
+	}
+
+	.parallax-image {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
+		display: block;
+	}
+
+	.layer-mountains {
+		z-index: 1;
+		width: 3353.65px;
+		height: 295.435px;
+		left: 50%;
+		top: 156px;
+		flex-shrink: 0;
+		transform: translateX(-50%);
+		box-sizing: border-box;
+	}
+
+	.layer-forest {
+		z-index: 3;
+		width: 2046px;
+		height: 341px;
+		left: 796px;
+		top: 282px;
+		flex-shrink: 0;
+	}
+
+	.layer-bird {
+		z-index: 4;
+		width: 36px;
+		height: 18px;
+		left: 1738px;
+		top: 0.2px;
+		flex-shrink: 0;
+		transform: rotate(1.21deg);
+	}
+
+	.content-container {
+		position: absolute;
+		z-index: 10;
+		width: 100%;
+		max-width: 1200px;
+		top: 434px;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	.hero-illustration {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-
-	.hero-content-wrapper {
-		position: relative;
-		z-index: 1;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 60px 20px;
-		width: 100%;
-	}
-
 	.hero-content {
+		text-align: center;
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		gap: 24px;
 		max-width: 800px;
-		margin: 0 auto;
-		text-align: center;
-		align-items: center;
 	}
 
 	.hero-title {
-		font-family: Bitter, serif;
-		font-size: 56px;
-		font-weight: 700;
-		line-height: 1.2;
-		color: var(--grey-5);
+		width: 804px;
+		color: #54504b;
+		text-align: center;
+		text-shadow:
+			0 -2px 4px rgba(0, 0, 0, 0.25),
+			0 2px 4px rgba(255, 255, 255, 0.4);
+		font-family: 'Young Serif', serif;
+		font-size: 88px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 96px;
+		letter-spacing: 2.64px;
 		margin: 0;
 	}
 
 	.hero-subtitle {
-		font-family: Bitter, serif;
-		font-size: 24px;
+		font-family: 'Bitter', serif;
+		font-size: 32px;
 		font-weight: 400;
-		line-height: 1.5;
-		color: var(--grey-4);
+		line-height: 1.4;
+		color: var(--grey-5);
 		margin: 0;
+		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
-	.hero-cta {
-		display: inline-block;
+	.hero-cta-button {
 		background-color: var(--mint);
 		color: var(--grey-5);
-		padding: 14px 28px;
+		border: none;
 		border-radius: 4px;
-		text-decoration: none;
-		font-family: Bitter, serif;
+		padding: 12px 24px;
+		font-family: 'Bitter', serif;
 		font-size: 18px;
 		font-weight: 700;
-		transition: all 0.2s ease;
-		box-shadow: 1px 1px 2px rgba(21, 26, 23, 0.2);
-		width: fit-content;
+		text-decoration: none;
+		box-shadow: 1px 1px 2px rgba(21, 26, 23, 0.5);
+		transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+		margin-top: 8px;
+		display: inline-block;
 	}
 
-	.hero-cta:hover {
+	.hero-cta-button:hover {
 		background-color: var(--green-500);
+		color: var(--grey-5);
 		box-shadow: 2px 2px 5px rgba(21, 26, 23, 0.2);
-		transform: translateY(-1px);
+		transform: translateY(-2px);
 	}
 
+	/* Responsive Design */
 	@media (max-width: 1024px) {
+		.hero-wrapper {
+			min-height: 500px;
+		}
+
+		.layer-mountains {
+			width: 100%;
+			height: auto;
+			max-height: 295.435px;
+		}
+
+		.layer-forest {
+			width: 100%;
+			height: auto;
+			max-height: 341px;
+		}
+
 		.hero-title {
 			font-size: 48px;
 		}
 
 		.hero-subtitle {
-			font-size: 22px;
-		}
-
-		.hero-content-wrapper {
-			padding: 40px 20px;
+			font-size: 28px;
 		}
 	}
 
 	@media (max-width: 768px) {
-		.hero-new {
-			min-height: 100vh;
+		.hero-wrapper {
+			height: 80vh;
+			min-height: 500px;
+		}
+
+		.layer-mountains {
+			width: 100%;
+			height: auto;
+			max-height: 250px;
+		}
+
+		.layer-forest {
+			width: 100%;
+			height: auto;
+			max-height: 250px;
+		}
+
+		.content-container {
+			padding: 0 16px;
+		}
+
+		.hero-content {
+			gap: 20px;
 		}
 
 		.hero-title {
 			font-size: 36px;
+			line-height: 1.3;
 		}
 
 		.hero-subtitle {
-			font-size: 20px;
+			font-size: 22px;
+			line-height: 1.4;
 		}
 
-		.hero-content-wrapper {
-			padding: 30px 16px;
+		.hero-cta-button {
+			padding: 10px 20px;
+			font-size: 16px;
 		}
 	}
 
 	@media (max-width: 480px) {
+		.hero-wrapper {
+			height: 70vh;
+			min-height: 400px;
+		}
+
+		.layer-mountains {
+			width: 100%;
+			height: auto;
+			max-height: 200px;
+		}
+
+		.layer-forest {
+			width: 100%;
+			height: auto;
+			max-height: 200px;
+		}
+
 		.hero-title {
 			font-size: 28px;
 		}
@@ -156,9 +385,11 @@ const t = useTranslations(lang as 'en' | 'es');
 			font-size: 18px;
 		}
 
-		.hero-cta {
+		.hero-cta-button {
+			padding: 10px 18px;
+			font-size: 14px;
 			width: 100%;
-			text-align: center;
+			max-width: 240px;
 		}
 	}
 </style>
