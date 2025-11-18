@@ -14,6 +14,14 @@ const t = useTranslations(lang as 'en' | 'es');
 	<div class="parallax-container">
 		<!-- Landscape Group -->
 		<div class="landscape-group">
+			<div class="parallax-layer layer-clouds" data-speed="0.2">
+				<img
+					src="/images/new/home/landscape/Clouds.svg"
+					alt="Clouds"
+					class="parallax-image"
+					loading="eager"
+				/>
+			</div>
 			<div class="parallax-layer layer-mountains" data-speed="0.3">
 				<img
 					src="/images/new/home/landscape/mountains.svg"
@@ -24,15 +32,23 @@ const t = useTranslations(lang as 'en' | 'es');
 			</div>
 			<div class="parallax-layer layer-forest" data-speed="0.7">
 				<img
-					src="/images/new/home/landscape/Forest.png"
+					src="/images/new/home/landscape/forest-left.svg"
 					alt="Forest"
+					class="parallax-image"
+					loading="eager"
+				/>
+			</div>
+			<div class="parallax-layer layer-forest-right" data-speed="0.7">
+				<img
+					src="/images/new/home/landscape/forest-right.svg"
+					alt="Forest Right"
 					class="parallax-image"
 					loading="eager"
 				/>
 			</div>
 			<div class="parallax-layer layer-bird" data-speed="0.9">
 				<img
-					src="/images/new/home/landscape/Bird.png"
+					src="/images/new/home/landscape/Bird.svg"
 					alt="Bird"
 					class="parallax-image"
 					loading="eager"
@@ -68,13 +84,18 @@ const t = useTranslations(lang as 'en' | 'es');
 				const speed = parseFloat(layer.getAttribute('data-speed') || '0.5');
 				const yPos = -(scrolled * speed);
 				const isForest = layer.classList.contains('layer-forest');
+				const isForestRight = layer.classList.contains('layer-forest-right');
 				const isMountains = layer.classList.contains('layer-mountains');
+				const isClouds = layer.classList.contains('layer-clouds');
 				const isBird = layer.classList.contains('layer-bird');
 
 				if (isMountains) {
 					// Centralizar horizontalmente e aplicar parallax vertical
 					(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), ${yPos}px)`;
-				} else if (isForest) {
+				} else if (isClouds) {
+					// Centralizar horizontalmente e aplicar parallax vertical
+					(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), ${yPos}px)`;
+				} else if (isForest || isForestRight) {
 					(layer as HTMLElement).style.transform = `translateY(${yPos}px)`;
 				} else if (isBird) {
 					(layer as HTMLElement).style.transform = `rotate(1.21deg) translateY(${yPos}px)`;
@@ -97,13 +118,18 @@ const t = useTranslations(lang as 'en' | 'es');
 		// Initial call to set transforms
 		parallaxLayers.forEach((layer) => {
 			const isForest = layer.classList.contains('layer-forest');
+			const isForestRight = layer.classList.contains('layer-forest-right');
 			const isMountains = layer.classList.contains('layer-mountains');
+			const isClouds = layer.classList.contains('layer-clouds');
 			const isBird = layer.classList.contains('layer-bird');
 
 			if (isMountains) {
 				// Centralizar horizontalmente
 				(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), 0px)`;
-			} else if (isForest) {
+			} else if (isClouds) {
+				// Centralizar horizontalmente
+				(layer as HTMLElement).style.transform = `translate(calc(-50% + 0px), 0px)`;
+			} else if (isForest || isForestRight) {
 				(layer as HTMLElement).style.transform = `translateY(0px)`;
 			} else if (isBird) {
 				(layer as HTMLElement).style.transform = `rotate(1.21deg) translateY(0px)`;
@@ -188,6 +214,17 @@ const t = useTranslations(lang as 'en' | 'es');
 		display: block;
 	}
 
+	.layer-clouds {
+		z-index: 0;
+		width: 2193.518px;
+		height: 233.416px;
+		left: 50%;
+		top: 68px;
+		flex-shrink: 0;
+		transform: translateX(-50%);
+		box-sizing: border-box;
+	}
+
 	.layer-mountains {
 		z-index: 1;
 		width: 3353.65px;
@@ -201,10 +238,19 @@ const t = useTranslations(lang as 'en' | 'es');
 
 	.layer-forest {
 		z-index: 3;
-		width: 2046px;
+		width: 660px;
+		height: 314px;
+		top: 424px;
+		left: -20px;
+		flex-shrink: 0;
+	}
+
+	.layer-forest-right {
+		z-index: 3;
+		width: 661px;
 		height: 341px;
-		left: 796px;
-		top: 282px;
+		top: 396px;
+		right: -40px;
 		flex-shrink: 0;
 	}
 
@@ -212,8 +258,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		z-index: 4;
 		width: 36px;
 		height: 18px;
-		left: 1738px;
-		top: 0.2px;
+		top: 114px;
 		flex-shrink: 0;
 		transform: rotate(1.21deg);
 	}
@@ -296,6 +341,12 @@ const t = useTranslations(lang as 'en' | 'es');
 			min-height: 500px;
 		}
 
+		.layer-clouds {
+			width: 100%;
+			height: auto;
+			max-height: 233.416px;
+		}
+
 		.layer-mountains {
 			width: 100%;
 			height: auto;
@@ -303,6 +354,12 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.layer-forest {
+			width: 100%;
+			height: auto;
+			max-height: 314px;
+		}
+
+		.layer-forest-right {
 			width: 100%;
 			height: auto;
 			max-height: 341px;
@@ -323,6 +380,12 @@ const t = useTranslations(lang as 'en' | 'es');
 			min-height: 500px;
 		}
 
+		.layer-clouds {
+			width: 100%;
+			height: auto;
+			max-height: 200px;
+		}
+
 		.layer-mountains {
 			width: 100%;
 			height: auto;
@@ -330,6 +393,12 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.layer-forest {
+			width: 100%;
+			height: auto;
+			max-height: 250px;
+		}
+
+		.layer-forest-right {
 			width: 100%;
 			height: auto;
 			max-height: 250px;
@@ -365,6 +434,12 @@ const t = useTranslations(lang as 'en' | 'es');
 			min-height: 400px;
 		}
 
+		.layer-clouds {
+			width: 100%;
+			height: auto;
+			max-height: 150px;
+		}
+
 		.layer-mountains {
 			width: 100%;
 			height: auto;
@@ -372,6 +447,12 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.layer-forest {
+			width: 100%;
+			height: auto;
+			max-height: 200px;
+		}
+
+		.layer-forest-right {
 			width: 100%;
 			height: auto;
 			max-height: 200px;
