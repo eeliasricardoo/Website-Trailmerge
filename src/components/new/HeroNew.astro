@@ -71,13 +71,7 @@ const t = useTranslations(lang as 'en' | 'es');
 	<!-- Content Overlay -->
 	<div class="content-container parallax-content" data-speed="0.4">
 		<div class="hero-content">
-			<h1 class="hero-title parallax-layer" data-speed="0.05">
-				Elevate your<br />operations<br />software
-			</h1>
-			<p class="hero-subtitle parallax-layer" data-speed="0.08">
-				We build digital solutions that solve real business problems.
-			</p>
-			<a href="#contact" class="hero-cta-button parallax-layer" data-speed="0.1">Start a Project</a>
+			<h1 class="hero-title">Elevate your<br />operations<br />software</h1>
 		</div>
 	</div>
 
@@ -317,7 +311,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		align-items: center;
 		gap: 24px;
 		max-width: 800px;
-		/* Ensure content is visible for parallax but individual items will animate in */
 	}
 
 	.hero-title {
@@ -334,10 +327,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		line-height: 96px;
 		letter-spacing: 2.64px;
 		margin: 0;
-
-		/* Animation */
-		opacity: 0;
-		animation: fadeUp 1s ease-out 0.2s forwards;
 	}
 
 	.hero-subtitle {
@@ -348,10 +337,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		color: var(--grey-5);
 		margin: 0;
 		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
-		/* Animation */
-		opacity: 0;
-		animation: fadeUp 1s ease-out 0.4s forwards;
 	}
 
 	.hero-cta-button {
@@ -368,10 +353,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
 		margin-top: 8px;
 		display: inline-block;
-
-		/* Animation */
-		opacity: 0;
-		animation: fadeUp 1s ease-out 0.6s forwards;
 	}
 
 	.hero-cta-button:hover {
@@ -803,16 +784,5 @@ const t = useTranslations(lang as 'en' | 'es');
 		width: 100%;
 		height: 100%;
 		overflow: visible;
-	}
-
-	@keyframes fadeUp {
-		from {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
 	}
 </style>
