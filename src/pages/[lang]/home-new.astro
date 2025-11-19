@@ -11,7 +11,6 @@ import '../../styles/global.css';
 // Import new redesigned components
 import NavbarNew from '../../components/new/NavbarNew.astro';
 import HeroNew from '../../components/new/HeroNew.astro';
-import AsideSectionNew from '../../components/new/AsideSectionNew.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -66,11 +65,10 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 	<body>
 		<NavbarNew lang={lang} />
 		<main id="main-content">
-			<HeroNew lang={lang} />
-			<AsideSectionNew
+			<HeroNew
 				lang={lang}
-				title="Take the design-first path to the top"
-				text="Trailmerge equips enterprise operations and technology teams with strategic digital transformation consulting, user experience and product expertise, and custom software development, to conquer costly inefficiencies and level up your team's excellence."
+				asideTitle="Take the design-first path to the top"
+				asideText="Trailmerge equips enterprise operations and technology teams with strategic digital transformation consulting, user experience and product expertise, and custom software development, to conquer costly inefficiencies and level up your team's excellence."
 			/>
 		</main>
 	</body>
