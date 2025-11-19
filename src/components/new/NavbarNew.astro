@@ -154,6 +154,18 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 			});
 		});
 	}
+
+	// Navbar scroll effect
+	const navbar = document.querySelector('.navigation');
+	if (navbar) {
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 20) {
+				navbar.classList.add('scrolled');
+			} else {
+				navbar.classList.remove('scrolled');
+			}
+		});
+	}
 </script>
 
 <style>
@@ -165,7 +177,17 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		left: 0;
 		right: 0;
 		z-index: 1000;
-		transition: background-color 0.3s ease;
+		transition:
+			background-color 0.3s ease-in-out,
+			backdrop-filter 0.3s ease-in-out,
+			border-bottom 0.3s ease-in-out;
+	}
+
+	.navigation.scrolled {
+		background-color: rgba(26, 25, 23, 0.9); /* Increased opacity for accessibility */
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Increased border opacity */
 	}
 
 	.navigation-container-full {
@@ -421,7 +443,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 			top: 56px;
 			left: 0;
 			right: 0;
-			background-color: var(--white);
+			background-color: var(--white); /* This needs to be considered for glassmorphism */
 			flex-direction: column;
 			align-items: stretch;
 			padding: 24px 16px;
@@ -431,6 +453,11 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 			visibility: hidden;
 			z-index: 999;
+		}
+
+		/* When mobile menu is open, it should be solid, but glassmorphism when scrolled and closed */
+		.navigation.scrolled .nav-menu-green {
+			background-color: var(--white); /* Keep solid color when menu is open */
 		}
 
 		.nav-menu-green.active {

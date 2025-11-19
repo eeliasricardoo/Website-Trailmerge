@@ -14,63 +14,61 @@ const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <!-- Hero Section with Parallax Landscape -->
-<div class="hero-wrapper" id="hero-section">
-	<div class="parallax-container">
-		<!-- Landscape Group -->
-		<div class="landscape-group">
-			<div class="parallax-layer layer-blob" data-speed="0.1">
-				<img
-					src="/images/new/home/Vector Blob.svg"
-					alt="Vector Blob"
-					class="parallax-image"
-					loading="eager"
-				/>
-			</div>
-			<div class="parallax-layer layer-clouds" data-speed="0.2">
-				<img
-					src="/images/new/home/landscape/Clouds.svg"
-					alt="Clouds"
-					class="parallax-image"
-					loading="eager"
-				/>
-			</div>
-			<div class="parallax-layer layer-mountains" data-speed="0.3">
-				<img
-					src="/images/new/home/landscape/mountains.svg"
-					alt="Mountains"
-					class="parallax-image"
-					loading="eager"
-				/>
-			</div>
-			<div class="parallax-layer layer-forest" data-speed="0.7">
-				<img
-					src="/images/new/home/landscape/forest-left.svg"
-					alt="Forest"
-					class="parallax-image"
-					loading="eager"
-				/>
-			</div>
-			<div class="parallax-layer layer-forest-right" data-speed="0.7">
-				<img
-					src="/images/new/home/landscape/forest-right.svg"
-					alt="Forest Right"
-					class="parallax-image"
-					loading="eager"
-				/>
-			</div>
-			<div class="parallax-layer layer-bird" data-speed="0.9">
-				<img
-					src="/images/new/home/landscape/Bird.svg"
-					alt="Bird"
-					class="parallax-image"
-					loading="eager"
-				/>
-			</div>
+<div class="hero-wrapper parallax-container" id="hero-section">
+	<!-- Landscape Group -->
+	<div class="landscape-group">
+		<div class="parallax-layer layer-blob" data-speed="0.1">
+			<img
+				src="/images/new/home/Vector Blob.svg"
+				alt="Vector Blob"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-clouds" data-speed="0.2">
+			<img
+				src="/images/new/home/landscape/Clouds.svg"
+				alt="Clouds"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-mountains" data-speed="0.3">
+			<img
+				src="/images/new/home/landscape/mountains.svg"
+				alt="Mountains"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-forest" data-speed="0.7">
+			<img
+				src="/images/new/home/landscape/forest-left.svg"
+				alt="Forest"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-forest-right" data-speed="0.7">
+			<img
+				src="/images/new/home/landscape/forest-right.svg"
+				alt="Forest Right"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-bird" data-speed="0.9">
+			<img
+				src="/images/new/home/landscape/Bird.svg"
+				alt="Bird"
+				class="parallax-image"
+				loading="eager"
+			/>
 		</div>
 	</div>
 
 	<!-- Content Overlay -->
-	<div class="content-container parallax-content">
+	<div class="content-container parallax-content" data-speed="0.4">
 		<div class="hero-content">
 			<h1 class="hero-title">Elevate your<br />operations<br />software</h1>
 		</div>
@@ -87,15 +85,22 @@ const t = useTranslations(lang as 'en' | 'es');
 	</div>
 
 	<!-- Our Approach SVG -->
-	<div class="our-approach-container">
+	<div class="our-approach-container parallax-container">
 		<img
 			src="/images/new/home/our-approach/Frame 179.svg"
 			alt="Our Approach"
-			class="our-approach-image"
+			class="our-approach-image parallax-layer"
+			data-speed="-0.2"
 			loading="lazy"
 		/>
-		<img src="/images/new/home/our-approach/Map.svg" alt="Map" class="map-image" loading="lazy" />
-		<div class="our-approach-content">
+		<img
+			src="/images/new/home/our-approach/Map.svg"
+			alt="Map"
+			class="map-image parallax-layer"
+			data-speed="0.3"
+			loading="lazy"
+		/>
+		<div class="our-approach-content parallax-layer" data-speed="0.1">
 			<h3 class="our-approach-title">Our Approach</h3>
 			<div class="our-approach-text">
 				<p>
@@ -165,15 +170,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		background-blend-mode: normal;
 	}
 
-	.parallax-container {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: 0;
-	}
-
 	.landscape-group {
 		position: relative;
 		width: 100%;
@@ -197,7 +193,7 @@ const t = useTranslations(lang as 'en' | 'es');
 	}
 
 	.layer-blob {
-		z-index: -1;
+		z-index: 0;
 		width: 1463.516px;
 		height: 1312.615px;
 		right: -150px;
