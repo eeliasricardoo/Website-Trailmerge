@@ -1,4 +1,5 @@
-// Parallax effect for Hero section landscape layers
+// Parallax effect for Hero section landscape layers with smoothing (lerp)
+
 interface LayerConfig {
 	className: string;
 	// eslint-disable-next-line no-unused-vars
@@ -11,9 +12,8 @@ const LAYER_CONFIGS: LayerConfig[] = [
 	{
 		className: 'layer-mountains',
 		transform: (yPos: number, scrollPercent: number) => {
-			// Scale from 1 to 1.15 (15% bigger) and move down a bit
 			const scale = 1 + scrollPercent * 0.15;
-			const downOffset = scrollPercent * 50; // Move down up to 50px
+			const downOffset = scrollPercent * 50;
 			return `translate(calc(-50% + 0px), ${yPos + downOffset}px) scale(${scale})`;
 		},
 		initialTransform: () => `translate(calc(-50% + 0px), 0px) scale(1)`,
@@ -21,7 +21,6 @@ const LAYER_CONFIGS: LayerConfig[] = [
 	{
 		className: 'layer-clouds',
 		transform: (yPos: number, scrollPercent: number) => {
-			// Scale from 1 to 0.85 (15% smaller)
 			const scale = 1 - scrollPercent * 0.15;
 			return `translate(calc(-50% + 0px), ${yPos}px) scale(${scale})`;
 		},
@@ -36,10 +35,9 @@ const LAYER_CONFIGS: LayerConfig[] = [
 	{
 		className: 'layer-bird',
 		transform: (yPos: number, scrollPercent: number) => {
-			// Scale from 1 to 1.5 (50% bigger), move down and left
 			const scale = 1 + scrollPercent * 0.5;
-			const downOffset = scrollPercent * 40; // Move down up to 40px
-			const leftOffset = -scrollPercent * 60; // Move left up to 60px
+			const downOffset = scrollPercent * 40;
+			const leftOffset = -scrollPercent * 60;
 			return `rotate(1.21deg) translate(${leftOffset}px, ${yPos + downOffset}px) scale(${scale})`;
 		},
 		initialTransform: () => `rotate(1.21deg) translate(0px, 0px) scale(1)`,
@@ -47,9 +45,8 @@ const LAYER_CONFIGS: LayerConfig[] = [
 	{
 		className: 'layer-forest',
 		transform: (yPos: number, scrollPercent: number) => {
-			// Scale from 1 to 1.3 (30% bigger) and move left (negative X)
 			const scale = 1 + scrollPercent * 0.3;
-			const xOffset = -scrollPercent * 100; // Move left up to 100px
+			const xOffset = -scrollPercent * 100;
 			return `translate(${xOffset}px, ${yPos}px) scale(${scale})`;
 		},
 		initialTransform: () => `translate(0px, 0px) scale(1)`,
@@ -57,14 +54,17 @@ const LAYER_CONFIGS: LayerConfig[] = [
 	{
 		className: 'layer-forest-right',
 		transform: (yPos: number, scrollPercent: number) => {
-			// Scale from 1 to 1.3 (30% bigger) and move right (positive X)
 			const scale = 1 + scrollPercent * 0.3;
-			const xOffset = scrollPercent * 100; // Move right up to 100px
+			const xOffset = scrollPercent * 100;
 			return `translate(${xOffset}px, ${yPos}px) scale(${scale})`;
 		},
 		initialTransform: () => `translate(0px, 0px) scale(1)`,
 	},
 ];
+
+function lerp(start: number, end: number, amount: number): number {
+	return (1 - amount) * start + amount * end;
+}
 
 function initParallax() {
 	const heroSection = document.getElementById('hero-section');
@@ -73,84 +73,102 @@ function initParallax() {
 	const parallaxLayers = heroSection.querySelectorAll<HTMLElement>('.parallax-layer');
 	if (parallaxLayers.length === 0) return;
 
-	let ticking = false;
+	const contentContainer = heroSection.querySelector<HTMLElement>('.parallax-content');
 
-	// Find layer config for a given element
-	function getLayerConfig(layer: HTMLElement): LayerConfig | null {
-		return LAYER_CONFIGS.find((config) => layer.classList.contains(config.className)) || null;
-	}
+	// State for each layer
+	const layerStates = Array.from(parallaxLayers).map((layer) => ({
+		layer,
+		currentY: 0,
+		targetY: 0,
+		currentScrollPercent: 0,
+		targetScrollPercent: 0,
+		speed: parseFloat(layer.getAttribute('data-speed') || '0.5'),
+		config: LAYER_CONFIGS.find((config) => layer.classList.contains(config.className)) || null,
+	}));
 
-	// Apply transform to a layer
-	function applyTransform(layer: HTMLElement, yPos: number, scrollPercent: number) {
-		const config = getLayerConfig(layer);
-		if (config) {
-			layer.style.transform = config.transform(yPos, scrollPercent);
-		} else {
-			// Default transform for layers without specific config
-			layer.style.transform = `translateY(${yPos}px)`;
-		}
-	}
+	const contentState = {
+		currentDownOffset: 0,
+		targetDownOffset: 0,
+	};
 
-	// Initialize layer transforms
-	function initializeLayers() {
-		parallaxLayers.forEach((layer) => {
-			const config = getLayerConfig(layer);
-			if (config) {
-				layer.style.transform = config.initialTransform();
-			} else {
-				layer.style.transform = `translateY(0px)`;
-			}
-		});
-	}
-
-	// Update parallax for content text
-	function updateContentParallax(scrollPercent: number) {
-		const contentContainer = heroSection.querySelector<HTMLElement>('.parallax-content');
-		if (contentContainer) {
-			// Move down a bit, similar to mountains but less
-			const downOffset = scrollPercent * 30; // Move down up to 30px
-			// Preserve translateX(-50%) and add translateY
-			contentContainer.style.transform = `translateX(-50%) translateY(${downOffset}px)`;
-		}
-	}
-
-	// Update parallax based on scroll position
-	function updateParallax() {
+	function updateTargets() {
 		if (!heroSection) return;
 
 		const scrolled = window.pageYOffset;
 		const heroHeight = heroSection.offsetHeight;
 		const scrollPercent = Math.min(scrolled / heroHeight, 1);
 
-		parallaxLayers.forEach((layer) => {
-			const speed = parseFloat(layer.getAttribute('data-speed') || '0.5');
-			const yPos = -(scrolled * speed);
-			applyTransform(layer, yPos, scrollPercent);
+		layerStates.forEach((state) => {
+			state.targetY = -(scrolled * state.speed);
+			state.targetScrollPercent = scrollPercent;
 		});
 
-		// Update content parallax
-		updateContentParallax(scrollPercent);
-
-		ticking = false;
-	}
-
-	// Request animation frame for smooth updates
-	function requestTick() {
-		if (!ticking) {
-			window.requestAnimationFrame(updateParallax);
-			ticking = true;
+		if (contentContainer) {
+			contentState.targetDownOffset = scrollPercent * 30; // Move down up to 30px
 		}
 	}
 
-	// Initialize layers on load
-	initializeLayers();
-	updateParallax();
+	function animate() {
+		const smoothing = 0.08; // Adjust this value for more/less smoothing
 
-	// Add scroll event listener with passive flag for better performance
-	window.addEventListener('scroll', requestTick, { passive: true });
+		layerStates.forEach((state) => {
+			state.currentY = lerp(state.currentY, state.targetY, smoothing);
+			state.currentScrollPercent = lerp(
+				state.currentScrollPercent,
+				state.targetScrollPercent,
+				smoothing
+			);
 
-	// Update on resize to recalculate positions
-	window.addEventListener('resize', updateParallax);
+			// Avoid tiny movements to stop animation when idle
+			if (Math.abs(state.currentY - state.targetY) < 0.5) {
+				state.currentY = state.targetY;
+			}
+			if (Math.abs(state.currentScrollPercent - state.targetScrollPercent) < 0.001) {
+				state.currentScrollPercent = state.targetScrollPercent;
+			}
+
+			if (state.config) {
+				state.layer.style.transform = state.config.transform(
+					state.currentY,
+					state.currentScrollPercent
+				);
+			} else {
+				state.layer.style.transform = `translateY(${state.currentY}px)`;
+			}
+		});
+
+		if (contentContainer) {
+			contentState.currentDownOffset = lerp(
+				contentState.currentDownOffset,
+				contentState.targetDownOffset,
+				smoothing
+			);
+			if (Math.abs(contentState.currentDownOffset - contentState.targetDownOffset) < 0.5) {
+				contentState.currentDownOffset = contentState.targetDownOffset;
+			}
+			contentContainer.style.transform = `translateX(-50%) translateY(${contentState.currentDownOffset}px)`;
+		}
+
+		window.requestAnimationFrame(animate);
+	}
+
+	function initialize() {
+		layerStates.forEach(({ layer, config }) => {
+			if (config) {
+				layer.style.transform = config.initialTransform();
+			} else {
+				layer.style.transform = `translateY(0px)`;
+			}
+		});
+
+		updateTargets();
+		animate();
+
+		window.addEventListener('scroll', updateTargets, { passive: true });
+		window.addEventListener('resize', updateTargets);
+	}
+
+	initialize();
 }
 
 // Initialize on DOM ready
