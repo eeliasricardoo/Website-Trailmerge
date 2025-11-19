@@ -14,19 +14,19 @@ const t = useTranslations(lang as 'en' | 'es');
 const { title, text = t('aside.text'), showBannerTags = true } = Astro.props;
 ---
 
-<!-- Aside Section New -->
-<div class="body-block aside-wrapper">
-	<div class="aside-center-container">
-		<div class="aside-center">
-			<div class="div-block-17">
-				{title && <h2 class="aside-title">{title}</h2>}
-				<p class="light-text">{text}</p>
+<!-- Aside Section New - Exclusive component for redesigned home -->
+<div class="aside-new-wrapper">
+	<div class="aside-new-container">
+		<div class="aside-new-center">
+			<div class="aside-new-content">
+				{title && <h2 class="aside-new-title">{title}</h2>}
+				<p class="aside-new-text">{text}</p>
 			</div>
 		</div>
 		{
 			showBannerTags && (
 				<>
-					<div class="ribbon-right-container">
+					<div class="aside-new-ribbon-right">
 						<img
 							src="/images/BannerTag.png"
 							loading="lazy"
@@ -34,7 +34,7 @@ const { title, text = t('aside.text'), showBannerTags = true } = Astro.props;
 							alt="Decorative ribbon banner"
 						/>
 					</div>
-					<div class="ribbon-left-container">
+					<div class="aside-new-ribbon-left">
 						<img
 							src="/images/BannerTagLeft.png"
 							loading="lazy"
@@ -49,84 +49,124 @@ const { title, text = t('aside.text'), showBannerTags = true } = Astro.props;
 </div>
 
 <style>
-	.ribbon-right-container {
-		position: absolute;
-		top: 50%;
-		right: -75px;
-		transform: translateY(-50%);
-		z-index: 1;
+	.aside-new-wrapper {
+		margin-top: 0;
+		padding: 24px 80px;
+		display: flex;
+		overflow: visible;
 	}
 
-	.ribbon-left-container {
-		position: absolute;
-		top: 50%;
-		left: -75px;
-		transform: translateY(-50%);
-		z-index: 1;
-	}
-
-	.ribbon-right-container img,
-	.ribbon-left-container img {
-		display: block;
-	}
-
-	.aside-center-container {
+	.aside-new-container {
+		max-width: 1200px;
 		position: relative;
+		margin: 0 auto;
+		width: 100%;
+		overflow: visible;
 	}
 
-	.aside-center {
-		position: relative;
+	.aside-new-center {
+		background-color: var(--grey-5);
+		border-radius: 8px;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		max-width: 1200px;
+		min-height: 124px;
+		padding: 48px 56px;
+		display: flex;
 		z-index: 2;
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);
+		position: relative;
 	}
 
-	.aside-title {
+	.aside-new-content {
+		width: 100%;
+		text-align: center;
+	}
+
+	.aside-new-title {
 		color: var(--white);
 		font-family: 'Young Serif', serif;
 		font-size: 40px;
 		font-weight: 400;
 		line-height: 1.3;
-		margin: 0;
+		margin: 0 0 16px 0;
 		text-align: center;
 		letter-spacing: 0.5px;
 	}
 
-	.aside-wrapper {
-		margin-top: 0;
+	.aside-new-text {
+		color: var(--white);
+		font-family: 'Bitter', serif;
+		font-size: 18px;
+		line-height: 1.7;
+		margin: 0;
+		text-align: center;
+	}
+
+	.aside-new-ribbon-right {
+		z-index: -1;
+		justify-content: flex-start;
+		align-items: center;
+		display: flex;
+		position: absolute;
+		inset: 2% -6% 0% auto;
+	}
+
+	.aside-new-ribbon-left {
+		z-index: -1;
+		align-items: center;
+		display: flex;
+		position: absolute;
+		inset: 2% auto 0% -6%;
+	}
+
+	.aside-new-ribbon-right img,
+	.aside-new-ribbon-left img {
+		display: block;
+		max-width: none;
+		height: auto;
+		width: 85px;
+		opacity: 1;
+		visibility: visible;
 	}
 
 	@media (max-width: 768px) {
-		.ribbon-right-container,
-		.ribbon-left-container {
+		.aside-new-wrapper {
+			padding: 24px 40px;
+		}
+
+		.aside-new-ribbon-right,
+		.aside-new-ribbon-left {
 			display: none;
 		}
 
-		.aside-title {
+		.aside-new-title {
 			font-size: 32px;
 			margin-bottom: 16px;
 		}
 
-		.aside-wrapper {
-			margin-top: 0;
-			padding-top: 0;
-		}
-
-		.aside-center {
+		.aside-new-center {
 			padding: 32px 24px;
 		}
 	}
 
 	@media (max-width: 480px) {
-		.aside-title {
+		.aside-new-wrapper {
+			padding: 24px 20px;
+		}
+
+		.aside-new-title {
 			font-size: 28px;
 			margin-bottom: 12px;
 		}
 
-		.aside-wrapper {
-			margin-top: 0;
+		.aside-new-center {
+			padding: 32px 24px;
 		}
 
-		.aside-center {
-			padding: 32px 24px;
+		.aside-new-text {
+			font-size: 16px;
 		}
 	}
 </style>
