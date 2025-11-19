@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 import AsideSectionNew from './AsideSectionNew.astro';
+import CompaniesSectionNew from './CompaniesSectionNew.astro';
 
 export interface Props {
 	lang?: string;
@@ -79,6 +80,21 @@ const t = useTranslations(lang as 'en' | 'es');
 	<div class="hero-aside-container">
 		<AsideSectionNew lang={lang} title={asideTitle} text={asideText} />
 	</div>
+
+	<!-- Companies Section inside Hero -->
+	<div class="hero-companies-container">
+		<CompaniesSectionNew lang={lang} />
+	</div>
+
+	<!-- Our Approach SVG -->
+	<div class="our-approach-container">
+		<img
+			src="/images/new/home/our-approach/Frame 179.svg"
+			alt="Our Approach"
+			class="our-approach-image"
+			loading="lazy"
+		/>
+	</div>
 </div>
 
 <script>
@@ -86,12 +102,22 @@ const t = useTranslations(lang as 'en' | 'es');
 </script>
 
 <style>
+	:global(body) {
+		margin: 0;
+		padding: 0;
+	}
+
+	:global(html) {
+		margin: 0;
+		padding: 0;
+	}
+
 	.hero-wrapper {
 		position: relative;
 		width: 100vw;
-		height: 200vh;
-		min-height: 200vh;
-		overflow: hidden;
+		height: 250vh;
+		min-height: 250vh;
+		overflow: visible;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -300,10 +326,48 @@ const t = useTranslations(lang as 'en' | 'es');
 		padding: 0 20px;
 	}
 
+	.hero-companies-container {
+		position: absolute;
+		z-index: 10;
+		width: 100%;
+		max-width: 1200px;
+		top: 1052px;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0 20px;
+	}
+
+	.our-approach-container {
+		position: absolute;
+		z-index: 10;
+		width: 100vw;
+		max-width: 100vw;
+		top: 1300px;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0;
+		margin: 0;
+		display: block;
+		box-sizing: border-box;
+	}
+
+	.our-approach-image {
+		width: 100vw;
+		max-width: 100vw;
+		height: auto;
+		object-fit: cover;
+		display: block;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
 	/* Responsive Design */
 	@media (max-width: 1024px) {
 		.hero-wrapper {
-			min-height: 500px;
+			height: 220vh;
+			min-height: 220vh;
+			overflow: visible;
 		}
 
 		.layer-blob {
@@ -343,12 +407,20 @@ const t = useTranslations(lang as 'en' | 'es');
 		.hero-subtitle {
 			font-size: 28px;
 		}
+
+		.our-approach-container {
+			top: 1200px;
+			padding: 0;
+			width: 100vw;
+			max-width: 100vw;
+		}
 	}
 
 	@media (max-width: 768px) {
 		.hero-wrapper {
-			height: 80vh;
-			min-height: 500px;
+			height: 200vh;
+			min-height: 200vh;
+			overflow: visible;
 		}
 
 		.layer-blob {
@@ -408,12 +480,20 @@ const t = useTranslations(lang as 'en' | 'es');
 			padding: 10px 20px;
 			font-size: 16px;
 		}
+
+		.our-approach-container {
+			top: 1100px;
+			padding: 0;
+			width: 100vw;
+			max-width: 100vw;
+		}
 	}
 
 	@media (max-width: 480px) {
 		.hero-wrapper {
-			height: 70vh;
-			min-height: 400px;
+			height: 180vh;
+			min-height: 180vh;
+			overflow: visible;
 		}
 
 		.layer-blob {
@@ -459,6 +539,13 @@ const t = useTranslations(lang as 'en' | 'es');
 			font-size: 14px;
 			width: 100%;
 			max-width: 240px;
+		}
+
+		.our-approach-container {
+			top: 1000px;
+			padding: 0;
+			width: 100vw;
+			max-width: 100vw;
 		}
 	}
 </style>
