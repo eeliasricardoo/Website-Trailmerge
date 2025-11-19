@@ -66,7 +66,7 @@ const t = useTranslations(lang as 'en' | 'es');
 	</div>
 
 	<!-- Content Overlay -->
-	<div class="content-container">
+	<div class="content-container parallax-content">
 		<div class="hero-content">
 			<h1 class="hero-title">Elevate your<br />operations<br />software</h1>
 		</div>
@@ -81,8 +81,8 @@ const t = useTranslations(lang as 'en' | 'es');
 	.hero-wrapper {
 		position: relative;
 		width: 100vw;
-		height: 100vh;
-		min-height: 100vh;
+		height: 200vh;
+		min-height: 200vh;
 		overflow: hidden;
 		display: flex;
 		align-items: center;
@@ -211,11 +211,15 @@ const t = useTranslations(lang as 'en' | 'es');
 		max-width: 1200px;
 		top: 434px;
 		left: 50%;
-		transform: translateX(-50%);
 		padding: 0 20px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.parallax-content {
+		transform: translateX(-50%);
+		will-change: transform;
 	}
 
 	.hero-content {
