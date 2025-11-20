@@ -38,7 +38,7 @@ const capabilities = [
 <style>
 	.capabilities-wrapper {
 		width: 100%;
-		padding: 80px 20px;
+		padding: 64px 80px;
 		position: relative;
 		/* Background wave/shape can be added here later */
 	}
@@ -66,6 +66,14 @@ const capabilities = [
 		text-align: left;
 	}
 
+	.capabilities-column {
+		display: flex;
+		padding: 0 16px;
+		align-items: flex-start;
+		gap: 16px;
+		flex: 1 0 0;
+	}
+
 	.capabilities-column ul {
 		list-style: none;
 		padding: 0;
@@ -73,6 +81,7 @@ const capabilities = [
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+		width: 100%;
 	}
 
 	.capabilities-column li {
