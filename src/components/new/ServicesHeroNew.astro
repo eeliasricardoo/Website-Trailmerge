@@ -1,0 +1,101 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<section class="services-hero-wrapper">
+	<div class="services-hero-container">
+		<div class="hero-image-col">
+			<img src="/images/new/services/Badges.svg" alt="Services Badges" class="hero-badges" />
+		</div>
+		<div class="hero-content-col">
+			<h1 class="hero-title">Our Services</h1>
+			<p class="hero-text">
+				Trailmerge is a full-service process consulting and custom software development firm, here
+				for you from early discovery through delivery.
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.services-hero-wrapper {
+		width: 100%;
+		padding: 130px 12px 80px 12px; /* Adjusted side padding to match navbar */
+		display: flex;
+		justify-content: center;
+	}
+
+	.services-hero-container {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start; /* Align content to the start */
+		gap: 60px;
+	}
+
+	.hero-image-col {
+		flex: 0 0 auto; /* Don't force it to take half width */
+		display: flex;
+		justify-content: flex-start; /* Align image to the left */
+	}
+
+	.hero-content-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		text-align: left;
+	}
+
+	.hero-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 64px;
+		font-weight: 400;
+		line-height: 1.1;
+		margin: 0;
+	}
+
+	.hero-text {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.5;
+		max-width: 500px;
+		margin: 0;
+	}
+
+	.hero-badges {
+		max-width: 100%;
+		height: auto;
+	}
+
+	@media (max-width: 900px) {
+		.services-hero-container {
+			flex-direction: column;
+			text-align: center;
+			gap: 40px;
+		}
+
+		.hero-image-col {
+			justify-content: center;
+		}
+
+		.hero-content-col {
+			align-items: center;
+			text-align: center;
+		}
+
+		.hero-title {
+			font-size: 48px;
+		}
+	}
+</style>
