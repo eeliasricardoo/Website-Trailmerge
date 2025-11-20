@@ -112,9 +112,17 @@ class ParallaxController {
 	}
 
 	private animate() {
+		if (!this.isHero && !this.isVisible) {
+			requestAnimationFrame(this.animate);
+			return;
+		}
+
 		const smoothing = 0.08;
 
 		this.layers.forEach((layer) => {
+			const previousY = layer.currentY;
+			const previousProgress = layer.currentProgress;
+
 			layer.currentY = lerp(layer.currentY, layer.targetY, smoothing);
 			layer.currentProgress = lerp(layer.currentProgress, layer.targetProgress, smoothing);
 
@@ -123,13 +131,19 @@ class ParallaxController {
 			if (Math.abs(layer.currentProgress - layer.targetProgress) < 0.001)
 				layer.currentProgress = layer.targetProgress;
 
-			if (layer.config) {
-				layer.element.style.transform = layer.config.transform(
-					layer.currentY,
-					layer.currentProgress
-				);
-			} else {
-				layer.element.style.transform = `translateY(${layer.currentY}px)`;
+			// Only update DOM if values actually changed significantly
+			if (
+				Math.abs(layer.currentY - previousY) > 0.01 ||
+				Math.abs(layer.currentProgress - previousProgress) > 0.0001
+			) {
+				if (layer.config) {
+					layer.element.style.transform = layer.config.transform(
+						layer.currentY,
+						layer.currentProgress
+					);
+				} else {
+					layer.element.style.transform = `translateY(${layer.currentY}px)`;
+				}
 			}
 		});
 

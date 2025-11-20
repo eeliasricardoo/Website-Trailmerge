@@ -225,4 +225,9 @@ const t = useTranslations(lang as 'en' | 'es');
 			height: 300px; /* Limit height on mobile */
 		}
 	}
+	.parallax-layer {
+		will-change: transform;
+		/* Hardware acceleration hack if needed, though will-change is usually enough */
+		transform: translateZ(0);
+	}
 </style>
