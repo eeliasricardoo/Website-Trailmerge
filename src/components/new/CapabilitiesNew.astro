@@ -45,9 +45,10 @@ const capabilities = [
 
 	.capabilities-container {
 		width: 100%;
-		max-width: 1000px;
+		max-width: 1200px;
 		margin: 0 auto;
-		text-align: center;
+		text-align: left; /* Left align container content */
+		padding: 0 12px; /* Add padding to match navbar alignment */
 	}
 
 	.section-title {
@@ -55,13 +56,13 @@ const capabilities = [
 		font-family: 'Young Serif', serif;
 		font-size: 56px;
 		font-weight: 400;
-		margin-bottom: 60px;
+		margin-bottom: 40px;
 	}
 
 	.capabilities-list {
 		display: flex;
-		justify-content: center;
-		gap: 80px;
+		justify-content: flex-start; /* Left align the list */
+		gap: 120px; /* Increase gap between columns */
 		text-align: left;
 	}
 
