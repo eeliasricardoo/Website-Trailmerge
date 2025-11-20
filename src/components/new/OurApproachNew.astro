@@ -12,7 +12,7 @@ const t = useTranslations(lang as 'en' | 'es');
 <div class="our-approach-wrapper">
 	<div class="our-approach-container parallax-container" id="our-approach-section">
 		<img
-			src="/images/new/home/our-approach/Frame 179.svg"
+			src="/images/new/home/our-approach/Resizing Mountains.svg"
 			alt="Our Approach"
 			class="our-approach-image parallax-layer"
 			data-speed="-0.1"
@@ -29,15 +29,18 @@ const t = useTranslations(lang as 'en' | 'es');
 			<h3 class="our-approach-title">Our Approach</h3>
 			<div class="our-approach-text">
 				<p>
-					Trailmerge is a design-first software development agency. We are much more interested in <strong
-						>understanding and solving real business problems</strong
-					> than in just moving pixels, building out workflows, and writing code (though when we do these
-					things, we do them with a special care for our craft).
+					<span class="w-700">Trailmerge</span>
+					<span class="w-500">is a</span>
+					<span class="w-700">design-first software development agency.</span> We are much more interested
+					in <span class="w-700">understanding and solving real business problems</span> than in just
+					moving pixels, building out workflows, and writing code (though when we do these things, we
+					do them with a special care for our craft).
 				</p>
 				<p>
 					Research and discovery aren't just checklist items for us, and Agile isn't just about
-					timelines in our process. We are all about{' '}
-					<strong>enabling your team's long-term success</strong>.
+					timelines in our process. We are all about <span class="w-700"
+						>enabling your team's long-term success.</span
+					>
 				</p>
 			</div>
 			<a href="#" class="open-modal button our-approach-button">Start a Project</a>
@@ -52,6 +55,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		overflow: hidden;
 		/* Ensure it takes up space in the flow */
 		min-height: 800px;
+		margin-top: 100px;
 	}
 
 	.our-approach-container {
@@ -71,8 +75,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		height: auto;
 		object-fit: cover;
 		display: block;
-		margin: 0;
-		padding: 0;
 		box-sizing: border-box;
 	}
 
@@ -88,7 +90,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		max-width: 40%;
 		z-index: 11;
 		display: block;
-		padding: 0;
 		box-sizing: border-box;
 	}
 
@@ -127,23 +128,20 @@ const t = useTranslations(lang as 'en' | 'es');
 		font-family: 'DM Sans', sans-serif;
 		font-size: 24px;
 		font-style: normal;
-		font-weight: 700;
+		font-weight: 400;
 		line-height: 32px;
-		margin: 0;
-		padding: 0;
 	}
 
 	.our-approach-text p {
 		margin: 0 0 16px 0;
-		padding: 0;
 	}
 
-	.our-approach-text p:last-child {
-		margin-bottom: 0;
-	}
-
-	.our-approach-text strong {
+	.w-700 {
 		font-weight: 700;
+	}
+
+	.w-500 {
+		font-weight: 500;
 	}
 
 	.our-approach-button {
@@ -171,7 +169,8 @@ const t = useTranslations(lang as 'en' | 'es');
 
 	.our-approach-button:hover {
 		background: #d0826d;
-		box-shadow: 0 0 8px 0 rgba(165, 165, 165, 0.08);
+		box-shadow: 0 4px 12px rgba(165, 165, 165, 0.2);
+		transform: translateY(-2px);
 	}
 
 	/* Responsive Design */
