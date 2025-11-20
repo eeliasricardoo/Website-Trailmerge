@@ -1,0 +1,228 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<div class="our-approach-wrapper">
+	<div class="our-approach-container parallax-container" id="our-approach-section">
+		<img
+			src="/images/new/home/our-approach/Frame 179.svg"
+			alt="Our Approach"
+			class="our-approach-image parallax-layer"
+			data-speed="-0.1"
+			loading="lazy"
+		/>
+		<img
+			src="/images/new/home/our-approach/Map.svg"
+			alt="Map"
+			class="map-image parallax-layer"
+			data-speed="1.2"
+			loading="lazy"
+		/>
+		<div class="our-approach-content parallax-layer" data-speed="0.1">
+			<h3 class="our-approach-title">Our Approach</h3>
+			<div class="our-approach-text">
+				<p>
+					Trailmerge is a design-first software development agency. We are much more interested in <strong
+						>understanding and solving real business problems</strong
+					> than in just moving pixels, building out workflows, and writing code (though when we do these
+					things, we do them with a special care for our craft).
+				</p>
+				<p>
+					Research and discovery aren't just checklist items for us, and Agile isn't just about
+					timelines in our process. We are all about{' '}
+					<strong>enabling your team's long-term success</strong>.
+				</p>
+			</div>
+			<a href="#" class="open-modal button our-approach-button">Start a Project</a>
+		</div>
+	</div>
+</div>
+
+<style>
+	.our-approach-wrapper {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		/* Ensure it takes up space in the flow */
+		min-height: 800px;
+	}
+
+	.our-approach-container {
+		position: relative;
+		width: 100vw;
+		max-width: 100vw;
+		padding: 0;
+		margin: 0;
+		display: block;
+		box-sizing: border-box;
+		min-height: 800px;
+	}
+
+	.our-approach-image {
+		width: 100vw;
+		max-width: 100vw;
+		height: auto;
+		object-fit: cover;
+		display: block;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.map-image {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 5%;
+		width: auto;
+		height: fit-content;
+		max-height: 80%;
+		max-width: 40%;
+		z-index: 11;
+		display: block;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.our-approach-content {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 45%;
+		z-index: 12;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		align-items: flex-start;
+		max-width: 50%;
+		height: fit-content;
+		padding-right: 20px;
+	}
+
+	.our-approach-title {
+		color: #fff;
+		text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 64px;
+		letter-spacing: 1.68px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.our-approach-text {
+		width: 100%;
+		color: #fff;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 32px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.our-approach-text p {
+		margin: 0 0 16px 0;
+		padding: 0;
+	}
+
+	.our-approach-text p:last-child {
+		margin-bottom: 0;
+	}
+
+	.our-approach-text strong {
+		font-weight: 700;
+	}
+
+	.our-approach-button {
+		margin-top: 8px;
+		border-radius: 4px;
+		background: #e0927d;
+		box-shadow: 0 0 4px 0 rgba(165, 165, 165, 0.04);
+		color: #44413d;
+		text-align: center;
+		border: none;
+		height: 56px;
+		padding: 12px 24px;
+		font-family: 'Young Serif', serif;
+		font-size: 20px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 24px;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: all 0.2s ease;
+	}
+
+	.our-approach-button:hover {
+		background: #d0826d;
+		box-shadow: 0 0 8px 0 rgba(165, 165, 165, 0.08);
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.our-approach-wrapper,
+		.our-approach-container {
+			min-height: auto;
+		}
+
+		.map-image {
+			left: 5%;
+		}
+
+		.our-approach-content {
+			left: 40%;
+		}
+
+		.our-approach-title {
+			font-size: 48px;
+			line-height: 56px;
+		}
+
+		.our-approach-text {
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.our-approach-content {
+			position: relative;
+			left: 0;
+			top: 0;
+			bottom: auto;
+			margin: 0;
+			max-width: 100%;
+			padding: 40px 20px;
+			background: #2e3a33; /* Fallback background since image might not cover */
+		}
+
+		.map-image {
+			position: relative;
+			top: 0;
+			left: 0;
+			margin: 0 auto;
+			max-width: 80%;
+			display: none; /* Hide map on mobile if it clutters */
+		}
+
+		.our-approach-image {
+			height: 300px; /* Limit height on mobile */
+		}
+	}
+</style>

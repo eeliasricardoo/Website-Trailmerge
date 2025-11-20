@@ -1,17 +1,11 @@
 ---
 import { useTranslations } from '../../i18n/utils';
-import AsideSectionNew from './AsideSectionNew.astro';
-import CompaniesSectionNew from './CompaniesSectionNew.astro';
-import RecentProjectsNew from './RecentProjectsNew.astro';
-import FooterNew from './FooterNew.astro';
 
 export interface Props {
 	lang?: string;
-	asideTitle?: string;
-	asideText?: string;
 }
 
-const { lang = 'en', asideTitle, asideText } = Astro.props;
+const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
@@ -75,87 +69,6 @@ const t = useTranslations(lang as 'en' | 'es');
 			<h1 class="hero-title">Elevate your<br />operations<br />software</h1>
 		</div>
 	</div>
-
-	<!-- Aside Section inside Hero -->
-	<div class="hero-aside-container">
-		<AsideSectionNew lang={lang} title={asideTitle} text={asideText} />
-	</div>
-
-	<!-- Companies Section inside Hero -->
-	<div class="hero-companies-container">
-		<CompaniesSectionNew lang={lang} />
-	</div>
-
-	<!-- Our Approach SVG -->
-	<div class="our-approach-container parallax-container">
-		<img
-			src="/images/new/home/our-approach/Frame 179.svg"
-			alt="Our Approach"
-			class="our-approach-image parallax-layer"
-			data-speed="-0.1"
-			loading="lazy"
-		/>
-		<img
-			src="/images/new/home/our-approach/Map.svg"
-			alt="Map"
-			class="map-image parallax-layer"
-			data-speed="1.2"
-			loading="lazy"
-		/>
-		<div class="our-approach-content parallax-layer" data-speed="0.1">
-			<h3 class="our-approach-title">Our Approach</h3>
-			<div class="our-approach-text">
-				<p>
-					Trailmerge is a design-first software development agency. We are much more interested in <strong
-						>understanding and solving real business problems</strong
-					> than in just moving pixels, building out workflows, and writing code (though when we do these
-					things, we do them with a special care for our craft).
-				</p>
-				<p>
-					Research and discovery aren't just checklist items for us, and Agile isn't just about
-					timelines in our process. We are all about{' '}
-					<strong>enabling your team's long-term success</strong>.
-				</p>
-			</div>
-			<a href="#" class="open-modal button our-approach-button">Start a Project</a>
-		</div>
-	</div>
-
-	<!-- Recent Projects Section inside Hero -->
-	<div class="hero-projects-container">
-		<RecentProjectsNew lang={lang} />
-	</div>
-
-	<!-- Footer inside Hero for correct positioning relative to absolute elements -->
-	<div class="hero-footer-container">
-		<FooterNew lang={lang} />
-	</div>
-
-	<!-- Vector Blob 2 -->
-	<div class="parallax-layer layer-blob-2" data-speed="0.1">
-		<div class="blob-2-inner">
-			<svg
-				width="1426"
-				height="1568"
-				viewBox="0 0 1159 814"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				class="blob-2-svg"
-			>
-				<g opacity="0.64">
-					<path
-						d="M774.117 485.799C599.482 484.618 572.09 592.119 296.39 390.882C193.224 363.743 57.1088 143.26 96.3825 55.6717C135.656 -31.9168 173.163 -30.4517 331.819 -117.407C490.476 -204.361 419.012 -178.407 524.973 -223.269C630.935 -268.13 631.969 -251.08 757.293 -240.489C882.616 -229.899 808.138 -224.314 1000.59 -193.262C1193.05 -162.21 1261.65 -146.956 1332.94 -27.4745C1404.23 92.0066 1391.53 147.416 1350.27 231.688C1309.01 315.961 1242 357.088 1088.25 436.949C934.504 516.811 948.752 486.98 774.117 485.799Z"
-						fill="var(--Secondary-Sand-100, #F1EFEC)"></path>
-					<path
-						d="M1110.31 315.491C1217.96 272.257 1347.13 183.304 1390.08 60.5816C1371.74 -168.866 1246.28 -126.475 1204.06 -124.294C1161.84 -122.112 1119.4 -69.3264 1028.3 -20.1462C937.2 29.034 911.423 5.88501 854.177 18.635C796.93 31.385 712.347 -67.7442 570.961 -69.9598C429.576 -72.1753 376.485 -21.8309 347.4 13.5368C318.315 48.9045 275.323 99.4072 276.94 147.197C278.556 194.987 310.277 180.7 403.188 241.862C496.1 303.023 514.681 255.55 593.492 269.295C672.303 283.039 679.249 332.054 781.198 347.864C883.147 363.674 1002.67 358.726 1110.31 315.491Z"
-						fill="var(--Secondary-Sand-100, #F1EFEC)"></path>
-					<path
-						d="M862.417 -41.5854C969.619 -10.165 974.328 -61.036 1017.93 -71.7637C1136.22 -110.335 1084.29 49.221 1052.83 114.883C1021.36 180.545 1001.82 192.062 921.965 206.404C842.111 220.747 782.181 175.042 698.624 117.02C615.067 58.9987 642.83 -21.6065 692.041 -69.259C741.252 -116.911 755.214 -73.0058 862.417 -41.5854Z"
-						fill="var(--Secondary-Sand-100, #F1EFEC)"></path>
-				</g>
-			</svg>
-		</div>
-	</div>
 </div>
 
 <script>
@@ -176,17 +89,16 @@ const t = useTranslations(lang as 'en' | 'es');
 	.hero-wrapper {
 		position: relative;
 		width: 100vw;
-		width: 100vw;
-		height: calc(350vh + 400px);
-		min-height: calc(350vh + 400px);
-		overflow: visible;
+		height: 100vh;
+		min-height: 800px;
+		overflow: hidden;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 0;
-		margin-bottom: -100vh;
+		margin-bottom: 0;
 		background: 
-			/* Pattern SVG overlay - círculos com espaçamento cx/cy = 2, r = 2, opacidade ~90% */
+			/* Pattern SVG overlay */
 			url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='2' fill='%23000' opacity='0.1'/%3E%3C/svg%3E"),
 			/* Gradiente Radial Secundário com opacidade 20% */
 				radial-gradient(
@@ -335,206 +247,11 @@ const t = useTranslations(lang as 'en' | 'es');
 		margin: 0;
 	}
 
-	.hero-subtitle {
-		font-family: 'Bitter', serif;
-		font-size: 32px;
-		font-weight: 400;
-		line-height: 1.4;
-		color: var(--grey-5);
-		margin: 0;
-		text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	}
-
-	.hero-cta-button {
-		background-color: var(--mint);
-		color: var(--grey-5);
-		border: none;
-		border-radius: 4px;
-		padding: 12px 24px;
-		font-family: 'Bitter', serif;
-		font-size: 18px;
-		font-weight: 700;
-		text-decoration: none;
-		box-shadow: 1px 1px 2px rgba(21, 26, 23, 0.5);
-		transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
-		margin-top: 8px;
-		display: inline-block;
-	}
-
-	.hero-cta-button:hover {
-		background-color: var(--green-500);
-		color: var(--grey-5);
-		box-shadow: 2px 2px 5px rgba(21, 26, 23, 0.2);
-		transform: translateY(-2px);
-	}
-
-	.hero-aside-container {
-		position: absolute;
-		z-index: 10;
-		width: 100%;
-		max-width: 1200px;
-		top: 816px;
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 0 20px;
-	}
-
-	.hero-companies-container {
-		position: absolute;
-		z-index: 10;
-		width: 100%;
-		max-width: 1200px;
-		top: 1052px;
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 0 20px;
-	}
-
-	.hero-projects-container {
-		position: absolute;
-		z-index: 10;
-		width: 100%;
-		max-width: 100vw;
-		top: 2100px;
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 0;
-	}
-
-	.hero-footer-container {
-		position: absolute;
-		z-index: 10;
-		width: 100%;
-		max-width: 100vw;
-		bottom: 0; /* Glued to the bottom of the page */
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 0;
-	}
-
-	.our-approach-container {
-		position: absolute;
-		z-index: 10;
-		width: 100vw;
-		max-width: 100vw;
-		top: 1150px;
-		left: 50%;
-		transform: translateX(-50%);
-		padding: 0;
-		margin: 0;
-		display: block;
-		box-sizing: border-box;
-	}
-
-	.our-approach-image {
-		width: 100vw;
-		max-width: 100vw;
-		height: auto;
-		object-fit: cover;
-		display: block;
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	.map-image {
-		position: absolute;
-		top: 304px;
-		left: 68px;
-		width: auto;
-		height: auto;
-		max-width: 100%;
-		z-index: 11;
-		display: block;
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	.our-approach-content {
-		position: absolute;
-		top: 304px;
-		left: 500px;
-		z-index: 12;
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
-		align-items: flex-start;
-		max-width: 776px;
-	}
-
-	.our-approach-title {
-		color: #fff;
-		text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-		font-family: 'Young Serif', serif;
-		font-size: 56px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 64px;
-		letter-spacing: 1.68px;
-		margin: 0;
-		padding: 0;
-	}
-
-	.our-approach-text {
-		width: 776px;
-		color: #fff;
-		font-family: 'DM Sans', sans-serif;
-		font-size: 24px;
-		font-style: normal;
-		font-weight: 700;
-		line-height: 32px;
-		margin: 0;
-		padding: 0;
-	}
-
-	.our-approach-text p {
-		margin: 0 0 16px 0;
-		padding: 0;
-	}
-
-	.our-approach-text p:last-child {
-		margin-bottom: 0;
-	}
-
-	.our-approach-text strong {
-		font-weight: 700;
-	}
-
-	.our-approach-button {
-		margin-top: 8px;
-		border-radius: 4px;
-		background: #e0927d;
-		box-shadow: 0 0 4px 0 rgba(165, 165, 165, 0.04);
-		color: #44413d;
-		text-align: center;
-		border: none;
-		height: 56px;
-		padding: 12px 24px;
-		font-family: 'Young Serif', serif;
-		font-size: 20px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 24px;
-		text-decoration: none;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		transition: all 0.2s ease;
-	}
-
-	.our-approach-button:hover {
-		background: #d0826d;
-		box-shadow: 0 0 8px 0 rgba(165, 165, 165, 0.08);
-	}
-
 	/* Responsive Design */
 	@media (max-width: 1024px) {
 		.hero-wrapper {
-			height: calc(350vh + 400px);
-			min-height: calc(350vh + 400px);
-			overflow: visible;
+			height: 100vh;
+			min-height: 800px;
 		}
 
 		.layer-blob {
@@ -570,53 +287,12 @@ const t = useTranslations(lang as 'en' | 'es');
 		.hero-title {
 			font-size: 48px;
 		}
-
-		.hero-subtitle {
-			font-size: 28px;
-		}
-
-		.our-approach-container {
-			top: 1200px;
-			padding: 0;
-			width: 100vw;
-			max-width: 100vw;
-		}
-
-		.map-image {
-			top: 304px;
-			left: 68px;
-		}
-
-		.our-approach-content {
-			left: 450px;
-		}
-
-		.our-approach-title {
-			font-size: 48px;
-			line-height: 56px;
-		}
-
-		.our-approach-text {
-			width: 600px;
-			font-size: 20px;
-			line-height: 28px;
-		}
-
-		.hero-projects-container {
-			top: 2150px;
-		}
-
-		.hero-footer-container {
-			top: auto;
-			bottom: 0;
-		}
 	}
 
 	@media (max-width: 768px) {
 		.hero-wrapper {
-			height: calc(450vh + 400px);
-			min-height: calc(450vh + 400px);
-			overflow: visible;
+			height: 100vh;
+			min-height: 700px;
 		}
 
 		.layer-blob {
@@ -653,11 +329,6 @@ const t = useTranslations(lang as 'en' | 'es');
 			padding: 0 16px;
 		}
 
-		.hero-aside-container {
-			padding: 0 16px;
-			top: 600px;
-		}
-
 		.hero-content {
 			gap: 20px;
 		}
@@ -666,44 +337,12 @@ const t = useTranslations(lang as 'en' | 'es');
 			font-size: 36px;
 			line-height: 1.3;
 		}
-
-		.hero-subtitle {
-			font-size: 22px;
-			line-height: 1.4;
-		}
-
-		.hero-cta-button {
-			padding: 10px 20px;
-			font-size: 16px;
-		}
-
-		.our-approach-container {
-			top: 1100px;
-			padding: 0;
-			width: 100vw;
-			max-width: 100vw;
-		}
-
-		.map-image {
-			top: 304px;
-			left: 68px;
-		}
-
-		.hero-projects-container {
-			top: 2050px;
-		}
-
-		.hero-footer-container {
-			top: auto;
-			bottom: 0;
-		}
 	}
 
 	@media (max-width: 480px) {
 		.hero-wrapper {
-			height: calc(500vh + 400px);
-			min-height: calc(500vh + 400px);
-			overflow: visible;
+			height: 100vh;
+			min-height: 600px;
 		}
 
 		.layer-blob {
@@ -739,82 +378,5 @@ const t = useTranslations(lang as 'en' | 'es');
 		.hero-title {
 			font-size: 28px;
 		}
-
-		.hero-subtitle {
-			font-size: 18px;
-		}
-
-		.hero-cta-button {
-			padding: 10px 18px;
-			font-size: 14px;
-			width: 100%;
-			max-width: 240px;
-		}
-
-		.our-approach-container {
-			top: 1000px;
-			padding: 0;
-			width: 100vw;
-			max-width: 100vw;
-		}
-
-		.map-image {
-			top: 304px;
-			left: 68px;
-		}
-
-		.our-approach-content {
-			left: 300px;
-		}
-
-		.our-approach-title {
-			font-size: 32px;
-			line-height: 40px;
-			letter-spacing: 0.96px;
-		}
-
-		.our-approach-text {
-			width: 400px;
-			font-size: 16px;
-			line-height: 24px;
-		}
-		.our-approach-text {
-			width: 400px;
-			font-size: 16px;
-			line-height: 24px;
-		}
-
-		.hero-projects-container {
-			top: 1950px;
-		}
-
-		.hero-footer-container {
-			top: auto;
-			bottom: 0;
-		}
-	}
-
-	.layer-blob-2 {
-		top: 1565px;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 0;
-		pointer-events: none;
-	}
-
-	.blob-2-inner {
-		width: 1425.411px;
-		height: 1567.006px;
-		transform: rotate(-119.094deg);
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.blob-2-svg {
-		width: 100%;
-		height: 100%;
-		overflow: visible;
 	}
 </style>
