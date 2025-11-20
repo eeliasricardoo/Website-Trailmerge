@@ -47,6 +47,7 @@ class ParallaxController {
 	private layers: any[];
 	private isVisible: boolean = false;
 	private isHero: boolean = false;
+	private hasRendered: boolean = false;
 
 	constructor(container: HTMLElement) {
 		this.container = container;
@@ -131,8 +132,9 @@ class ParallaxController {
 			if (Math.abs(layer.currentProgress - layer.targetProgress) < 0.001)
 				layer.currentProgress = layer.targetProgress;
 
-			// Only update DOM if values actually changed significantly
+			// Only update DOM if values actually changed significantly OR if we haven't rendered yet
 			if (
+				!this.hasRendered ||
 				Math.abs(layer.currentY - previousY) > 0.01 ||
 				Math.abs(layer.currentProgress - previousProgress) > 0.0001
 			) {
@@ -147,6 +149,7 @@ class ParallaxController {
 			}
 		});
 
+		this.hasRendered = true;
 		requestAnimationFrame(this.animate);
 	}
 }

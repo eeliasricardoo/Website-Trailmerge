@@ -1,5 +1,6 @@
 ---
 import { useTranslations } from '../../i18n/utils';
+import ButtonNew from './ButtonNew.astro';
 
 export interface Props {
 	lang?: string;
@@ -43,7 +44,7 @@ const t = useTranslations(lang as 'en' | 'es');
 					>
 				</p>
 			</div>
-			<a href="#" class="open-modal button our-approach-button">Start a Project</a>
+			<ButtonNew href="#" class="open-modal">Start a Project</ButtonNew>
 		</div>
 	</div>
 </div>
@@ -144,33 +145,8 @@ const t = useTranslations(lang as 'en' | 'es');
 		font-weight: 500;
 	}
 
-	.our-approach-button {
-		margin-top: 8px;
-		border-radius: 4px;
-		background: #e0927d;
-		box-shadow: 0 0 4px 0 rgba(165, 165, 165, 0.04);
-		color: #44413d;
-		text-align: center;
-		border: none;
-		height: 56px;
-		padding: 12px 24px;
-		font-family: 'Young Serif', serif;
-		font-size: 20px;
-		font-style: normal;
-		font-weight: 400;
-		line-height: 24px;
-		text-decoration: none;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		transition: all 0.2s ease;
-	}
-
-	.our-approach-button:hover {
-		background: #d0826d;
-		box-shadow: 0 4px 12px rgba(165, 165, 165, 0.2);
-		transform: translateY(-2px);
+	.w-500 {
+		font-weight: 500;
 	}
 
 	/* Responsive Design */

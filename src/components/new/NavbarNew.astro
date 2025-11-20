@@ -2,6 +2,7 @@
 import { useTranslations } from '../../i18n/utils';
 import { getLanguageUrls } from '../../utils/routeMapping';
 import TrailmergeLogo from '../../assets/images/Trailmerge-Wordmark-Sand.svg';
+import ButtonNew from './ButtonNew.astro';
 
 export interface Props {
 	lang?: string;
@@ -96,7 +97,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 				</div>
 			</div>
 			<div class="navbar-button-wrapper">
-				<a href="#" class="open-modal button navbar-button">{t('nav.startProject')}</a>
+				<ButtonNew href="#" variant="navbar" class="open-modal">{t('nav.startProject')}</ButtonNew>
 			</div>
 		</nav>
 		<button
@@ -377,28 +378,6 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 
 	.navbar-button-wrapper {
 		margin-left: 16px;
-	}
-
-	.navbar-button {
-		padding: 8px 16px;
-		font-size: 16px;
-		font-weight: 400;
-		font-family: 'DM Sans', sans-serif;
-		background-color: var(--grey-5);
-		color: var(--white);
-		border-radius: 4px;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		text-decoration: none;
-		transition: all 0.2s ease;
-	}
-
-	.navbar-button:hover {
-		background-color: var(--grey-4);
-		color: var(--white);
-		box-shadow: 2px 2px 5px rgba(21, 26, 23, 0.2);
 	}
 
 	/* Mobile menu styles */

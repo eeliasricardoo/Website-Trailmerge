@@ -28,7 +28,7 @@
     }
   },
   "footer": {
-    "about": "About",
+    "about": "About Us",
     "careers": "Careers",
     "privacy": "Privacy",
     "resources": "Resources",
@@ -36,9 +36,9 @@
     "cta": "Schedule a Consult",
     "copyright": "© {year} Trailmerge Ltd Co. All rights reserved.",
     "address": {
-      "line1": "3100 Interstate North Circle SE",
-      "line2": "Suite 200",
-      "line3": "Atlanta, GA 30339"
+      "line1": "3100 Interstate North Cir SE, Ste 200",
+      "line2": "Atlanta, GA 30339",
+      "line3": ""
     }
   },
   "common": {
