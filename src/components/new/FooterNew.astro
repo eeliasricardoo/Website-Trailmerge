@@ -1,0 +1,206 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import TrailmergeLogoSand from '../../assets/images/Trailmerge-Wordmark-Sand.svg';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+// Get current year for copyright
+const currentYear = new Date().getFullYear();
+
+const addressLines = [
+	t('footer.address.line1'),
+	t('footer.address.line2'),
+	t('footer.address.line3'),
+];
+---
+
+<footer class="footer-new">
+	<div class="footer-container">
+		<div class="footer-content">
+			<!-- Logo and Address -->
+			<div class="footer-brand">
+				<a href={lang === 'es' ? '/es/' : '/en/'} class="footer-logo-link">
+					<img src={TrailmergeLogoSand.src} alt="Trailmerge" class="footer-logo" />
+				</a>
+				<div class="footer-address">
+					{addressLines.map((line) => <p>{line}</p>)}
+				</div>
+			</div>
+
+			<!-- Links -->
+			<div class="footer-links">
+				<div class="link-column">
+					<h3 class="column-title">{t('footer.about')}</h3>
+					<a href={lang === 'es' ? '/es/services/' : '/en/services/'} class="footer-link"
+						>{t('nav.services')}</a
+					>
+					<a href={lang === 'es' ? '/es/contact/' : '/en/contact/'} class="footer-link"
+						>{t('nav.contact')}</a
+					>
+				</div>
+				<div class="link-column">
+					<h3 class="column-title">{t('footer.resources')}</h3>
+					<a href={lang === 'es' ? '/es/blog/' : '/en/blog/'} class="footer-link">{t('nav.blog')}</a
+					>
+					<a href={lang === 'es' ? '/es/privacy/' : '/en/privacy/'} class="footer-link"
+						>{t('footer.privacy')}</a
+					>
+				</div>
+			</div>
+
+			<!-- CTA -->
+			<div class="footer-cta">
+				<a href="#" class="open-modal start-project-btn">{t('nav.startProject')}</a>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer-new {
+		width: 100%;
+		padding: 0 20px 20px 20px;
+		position: relative;
+		z-index: 10;
+	}
+
+	.footer-container {
+		background-color: #43423e; /* Dark background from design */
+		border-radius: 12px;
+		padding: 60px 80px;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.footer-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+		gap: 40px;
+	}
+
+	.footer-brand {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		max-width: 300px;
+	}
+
+	.footer-logo {
+		height: 32px;
+		width: auto;
+	}
+
+	.footer-address {
+		color: var(--sand-300, #e2deda);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	.footer-address p {
+		margin: 0;
+	}
+
+	.footer-links {
+		display: flex;
+		gap: 80px;
+	}
+
+	.link-column {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.column-title {
+		color: var(--sand-500, #c2bfbc);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		font-weight: 700;
+		margin: 0;
+	}
+
+	.footer-link {
+		color: var(--sand-100, #f1efec);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.footer-link:hover {
+		color: var(--tangerine-500, #f5af59);
+	}
+
+	.footer-cta {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	.start-project-btn {
+		background-color: #d99578; /* Muted tangerine/clay color from design */
+		color: #2e3a33;
+		font-family: 'Young Serif', serif;
+		font-size: 18px;
+		padding: 12px 24px;
+		border-radius: 4px;
+		text-decoration: none;
+		transition: all 0.2s ease;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.start-project-btn:hover {
+		background-color: #e6a58a;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.footer-container {
+			padding: 48px 40px;
+		}
+
+		.footer-links {
+			gap: 40px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.footer-content {
+			flex-direction: column;
+			gap: 48px;
+		}
+
+		.footer-links {
+			width: 100%;
+			justify-content: space-between;
+		}
+
+		.footer-cta {
+			width: 100%;
+		}
+
+		.start-project-btn {
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.footer-container {
+			padding: 40px 24px;
+		}
+
+		.footer-links {
+			flex-direction: column;
+			gap: 32px;
+		}
+	}
+</style>
