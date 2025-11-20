@@ -146,10 +146,12 @@ const { title, text = t('aside.text'), showBannerTags = true } = Astro.props;
 
 <style>
 	.aside-new-wrapper {
-		margin-top: 0;
+		margin-top: -40px;
 		padding: 0;
 		display: flex;
 		overflow: visible;
+		position: relative;
+		z-index: 20;
 	}
 
 	.aside-new-container {
