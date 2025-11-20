@@ -30,11 +30,11 @@ const LAYER_CONFIGS = [
 	},
 	{
 		className: 'layer-forest',
-		transform: (y: number, p: number) => `translate(${-p * 100}px, ${y}px) scale(${1 + p * 0.3})`,
+		transform: (y: number, p: number) => `translate(${-p * 50}px, ${y}px) scale(${1 + p * 0.3})`,
 	},
 	{
 		className: 'layer-forest-right',
-		transform: (y: number, p: number) => `translate(${p * 100}px, ${y}px) scale(${1 + p * 0.3})`,
+		transform: (y: number, p: number) => `translate(${p * 50}px, ${y}px) scale(${1 + p * 0.3})`,
 	},
 	{
 		className: 'parallax-content',
