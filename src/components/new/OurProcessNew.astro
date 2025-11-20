@@ -11,34 +11,46 @@ const t = useTranslations(lang as 'en' | 'es');
 const processSteps = [
 	{
 		title: 'Consulting & Kickoff',
-		description: 'We listen to your vision for your operational growth and provide guidance for next steps in the journey.',
-		icon: 'compass'
+		description:
+			'We listen to your vision for your operational growth and provide guidance for next steps in the journey.',
+		image: '/images/new/services/Our Process/Compass.png',
+		alt: 'Compass icon',
 	},
 	{
 		title: 'Research & Discovery',
-		description: 'We audit your processes and/or existing systems to identify quick wins and opportunities for system-wide efficiency.',
-		icon: 'magnifying-glass'
+		description:
+			'We audit your processes and/or existing systems to identify quick wins and opportunities for system-wide efficiency.',
+		image: '/images/Illustration---Magnifying-Glass.png',
+		alt: 'Magnifying glass icon',
 	},
 	{
 		title: 'Project Scoping',
-		description: 'Based on our collaborative research and strategy, we define and measure the project to determine Agile-friendly milestones.',
-		icon: 'map'
+		description:
+			'Based on our collaborative research and strategy, we define and measure the project to determine Agile-friendly milestones.',
+		image: '/images/new/services/Our Process/Map.png',
+		alt: 'Map icon',
 	},
 	{
 		title: 'Implementation',
-		description: 'We get to work on designing and developing, using our team\'s unique blend of skills, best practices, and powerful technologies.',
-		icon: 'knife'
+		description:
+			"We get to work on designing and developing, using our team's unique blend of skills, best practices, and powerful technologies.",
+		image: '/images/new/services/Our Process/MultiTool.png',
+		alt: 'Multi-tool icon',
 	},
 	{
 		title: 'Team Integration',
-		description: 'We value proactive communication and close collaboration with your internal team. It\'s the best way to create the best software!',
-		icon: 'walkie-talkie'
+		description:
+			"We value proactive communication and close collaboration with your internal team. It's the best way to create the best software!",
+		image: '/images/new/services/Our Process/WalkieTalkies.png',
+		alt: 'Walkie talkies icon',
 	},
 	{
 		title: 'Delivery & Iteration',
-		description: 'We aim to deliver value continuously, so your company can start benefiting (and celebrating!) as we reach strategic milestones.',
-		icon: 'pan'
-	}
+		description:
+			'We aim to deliver value continuously, so your company can start benefiting (and celebrating!) as we reach strategic milestones.',
+		image: '/images/new/services/Our Process/Skillet.png',
+		alt: 'Skillet icon',
+	},
 ];
 ---
 
@@ -47,26 +59,26 @@ const processSteps = [
 		<div class="process-header">
 			<h2 class="section-title">Our Process</h2>
 			<p class="section-description">
-				Our methodology is based on <strong>design thinking and Agile</strong> principals, emphasizing rapid learning, deep understanding, and flexibility. We don't just create high-quality screens and workflows. We design and develop <strong>well-built, usable tools that truly solve the core problems</strong> your business is facing, because, otherwise, what's the point?
+				Our methodology is based on <strong>design thinking and Agile</strong> principals, emphasizing
+				rapid learning, deep understanding, and flexibility. We don't just create high-quality screens
+				and workflows. We design and develop <strong
+					>well-built, usable tools that truly solve the core problems</strong
+				> your business is facing, because, otherwise, what's the point?
 			</p>
 		</div>
 
 		<div class="process-grid">
-			{processSteps.map((step, index) => (
-				<div class="process-card">
-					<div class="icon-wrapper">
-						<!-- Placeholder for Icon -->
-						<div class="icon-placeholder">
-							<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<circle cx="60" cy="60" r="50" fill="#D9E8E3" opacity="0.5" />
-								<text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#2E3A33" font-size="12">{step.icon}</text>
-							</svg>
+			{
+				processSteps.map((step, index) => (
+					<div class="process-card">
+						<div class="icon-wrapper">
+							<img src={step.image} alt={step.alt} width="120" height="120" class="process-icon" />
 						</div>
+						<h3 class="process-title">{step.title}</h3>
+						<p class="process-description">{step.description}</p>
 					</div>
-					<h3 class="process-title">{step.title}</h3>
-					<p class="process-description">{step.description}</p>
-				</div>
-			))}
+				))
+			}
 		</div>
 	</div>
 </section>
@@ -87,7 +99,7 @@ const processSteps = [
 	.process-header {
 		max-width: 800px;
 		margin: 0 auto 80px auto;
-		text-align: left;
+		text-align: center;
 	}
 
 	.section-title {
@@ -122,6 +134,15 @@ const processSteps = [
 
 	.icon-wrapper {
 		margin-bottom: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.process-icon {
+		width: 120px;
+		height: 120px;
+		object-fit: contain;
 	}
 
 	.process-title {
