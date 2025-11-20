@@ -34,6 +34,12 @@ const projects = [
 ---
 
 <section class="recent-projects-wrapper" id="projects">
+	<img
+		src="/images/new/home/recent projects/background-lines.svg"
+		alt=""
+		class="background-lines"
+		loading="lazy"
+	/>
 	<div class="recent-projects-container">
 		<h2 class="section-title">Recent Projects</h2>
 		<div class="projects-grid">
@@ -55,12 +61,26 @@ const projects = [
 <style>
 	.recent-projects-wrapper {
 		width: 100%;
-		padding: 80px 20px;
+		padding: 160px 20px;
 		background-color: transparent;
 		display: flex;
 		justify-content: center;
 		position: relative;
-		z-index: 10; /* Ensure it sits above/below parallax layers correctly */
+		z-index: 10;
+		overflow: hidden;
+	}
+
+	.background-lines {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100%;
+		height: auto;
+		min-width: 1920px;
+		z-index: -1;
+		pointer-events: none;
+		opacity: 1;
 	}
 
 	.recent-projects-container {
