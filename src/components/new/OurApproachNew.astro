@@ -44,7 +44,9 @@ const t = useTranslations(lang as 'en' | 'es');
 					>
 				</p>
 			</div>
-			<ButtonNew href="#" class="open-modal">Start a Project</ButtonNew>
+			<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
+				>Start a Project</ButtonNew
+			>
 		</div>
 	</div>
 </div>

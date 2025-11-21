@@ -22,7 +22,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 <div class="navigation" role="banner">
 	<div class="navigation-container-full">
 		<a
-			href={lang === 'es' ? '/es/' : '/en/'}
+			href={lang === 'es' ? '/es/home-new/' : '/en/home-new/'}
 			id="nav-logo"
 			aria-label={t('nav.home')}
 			class="brand"
@@ -31,11 +31,15 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		</a>
 		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
-			<a href={`${lang === 'es' ? '/es/' : '/en/'}#projects`} id="nav-projects" class="nav-link"
-				>{t('nav.projects')}</a
+			<a
+				href={lang === 'es' ? '/es/home-new/#projects' : '/en/home-new/#projects'}
+				id="nav-projects"
+				class="nav-link">{t('nav.projects')}</a
 			>
-			<a href={`${lang === 'es' ? '/es/' : '/en/'}#services`} id="nav-services" class="nav-link"
-				>{t('nav.services')}</a
+			<a
+				href={lang === 'es' ? '/es/services-new/' : '/en/services-new/'}
+				id="nav-services"
+				class="nav-link">{t('nav.services')}</a
 			>
 			<a href={lang === 'es' ? '/es/about-new/' : '/en/about-new/'} id="nav-about" class="nav-link"
 				>{t('nav.about')}</a
@@ -43,7 +47,11 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 			<a href={lang === 'es' ? '/es/blog/' : '/en/blog/'} id="nav-blog" class="nav-link"
 				>{t('nav.blog')}</a
 			>
-			<a href="#" id="nav-contact" class="nav-link">{t('nav.contact')}</a>
+			<a
+				href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
+				id="nav-contact"
+				class="nav-link">{t('nav.contact')}</a
+			>
 			<div class="language-switcher">
 				<button
 					class="language-switcher-button"
@@ -97,7 +105,9 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 				</div>
 			</div>
 			<div class="navbar-button-wrapper">
-				<ButtonNew href="#" variant="navbar" class="open-modal">{t('nav.startProject')}</ButtonNew>
+				<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'} variant="navbar"
+					>{t('nav.startProject')}</ButtonNew
+				>
 			</div>
 		</nav>
 		<button
