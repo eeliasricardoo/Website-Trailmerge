@@ -1,6 +1,5 @@
 ---
 import { useTranslations } from '../../i18n/utils';
-import ButtonNew from './ButtonNew.astro';
 
 export interface Props {
 	lang?: string;
@@ -8,6 +7,14 @@ export interface Props {
 
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
+
+// Copper form URLs based on language
+const copperFormUrl =
+	lang === 'es'
+		? 'https://forms.copper.com/j/wYsDRF6aDG9YgnPCCJjiXJ?type=embed'
+		: 'https://forms.copper.com/j/5dNTzeqzanj9McnokQfpFq?type=embed';
+
+const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9McnokQfpFq';
 ---
 
 <section class="contact-wrapper">
@@ -30,37 +37,130 @@ const t = useTranslations(lang as 'en' | 'es');
 				about your project, your ideas, your dream. We'll be on our way to making it a reality.
 			</p>
 
-			<form class="contact-form">
-				<div class="form-group">
-					<label for="name">First & Last Name</label>
-					<input type="text" id="name" name="name" placeholder="" />
-				</div>
+			<div class="copper-form-container">
+				<iframe
+					src={copperFormUrl}
+					id={copperFormId}
+					title="Embedded Copper Forms"
+					width="100%"
+					height="700"></iframe>
+			</div>
 
-				<div class="form-group">
-					<label for="company">Company</label>
-					<input type="text" id="company" name="company" placeholder="" />
-				</div>
+			<script>
+				// Form functionality
+				document.addEventListener('DOMContentLoaded', function () {
+					const calendarUrl =
+						'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2E0Pl1V454vAAYQJxhS2H0Q4vxa_6-sgcUXQB4cBaCn_jtRYLNMGMp-ka5p-cuCkExM8X1fC19';
 
-				<div class="form-group">
-					<label for="email">Email Address</label>
-					<input type="email" id="email" name="email" placeholder="" />
-				</div>
+					// Flag to prevent multiple redirects
+					let hasRedirected = false;
 
-				<div class="form-group">
-					<label for="message">Message</label>
-					<textarea id="message" name="message" placeholder="Tell us about your project..." rows="4"
-					></textarea>
-				</div>
+					// Function to redirect to calendar (only once)
+					const redirectToCalendar = () => {
+						if (hasRedirected) return;
+						hasRedirected = true;
+						window.location.href = calendarUrl;
+					};
 
-				<div class="form-checkbox">
-					<input type="checkbox" id="newsletter" name="newsletter" />
-					<label for="newsletter"
-						>Please send me helpful content and updates about Trailmerge.</label
-					>
-				</div>
+					// Listen for form submission success from Copper Forms iframe
+					// Copper Forms sends postMessage when form is submitted successfully
+					window.addEventListener('message', function (event) {
+						if (hasRedirected) return;
 
-				<ButtonNew type="submit" variant="navbar" class="submit-btn">Send Message</ButtonNew>
-			</form>
+						// Check if message is from Copper Forms domain
+						if (event.origin.includes('copper.com') || event.origin.includes('forms.copper.com')) {
+							// Check for SPECIFIC form submission success messages from Copper Forms
+							if (
+								event.data &&
+								typeof event.data === 'object' &&
+								(event.data.type === 'form-submit' ||
+									event.data.type === 'copper-form-submit' ||
+									(event.data.status === 'success' && event.data.type) ||
+									event.data.message === 'form-submitted')
+							) {
+								console.log('Form submission detected via postMessage:', event.data);
+								redirectToCalendar();
+							}
+						}
+					});
+
+					// Fallback: Monitor iframe URL changes (more reliable than DOM inspection)
+					const iframe = document.querySelector(
+						'iframe[id^="wYsDRF6aDG9YgnPCCJjiXJ"], iframe[id^="5dNTzeqzanj9McnokQfpFq"]'
+					) as HTMLIFrameElement;
+
+					if (iframe) {
+						const originalUrl = iframe.src;
+						let checkInterval: ReturnType<typeof setInterval> | null = null;
+
+						// Listen for iframe load events (happens when form redirects after submission)
+						iframe.addEventListener('load', function () {
+							if (hasRedirected) return;
+
+							// Wait a bit to allow iframe to settle
+							setTimeout(() => {
+								if (hasRedirected) return;
+
+								try {
+									const currentUrl = iframe.contentWindow?.location.href || iframe.src;
+									// Check if URL changed to a non-embed URL (indicates form submission redirect)
+									if (
+										currentUrl &&
+										currentUrl !== originalUrl &&
+										!currentUrl.includes('type=embed')
+									) {
+										console.log('Form submission detected via URL change:', currentUrl);
+										redirectToCalendar();
+									}
+								} catch (e) {
+									// CORS error - can't access iframe URL, rely on postMessage
+								}
+							}, 1500);
+						});
+
+						// Periodic check as additional fallback (less aggressive)
+						const startChecking = () => {
+							if (checkInterval) clearInterval(checkInterval);
+
+							let checkCount = 0;
+							const maxChecks = 40; // Check for up to 20 seconds (500ms * 40)
+
+							checkInterval = setInterval(() => {
+								if (hasRedirected) {
+									if (checkInterval) clearInterval(checkInterval);
+									return;
+								}
+
+								checkCount++;
+
+								try {
+									const currentUrl = iframe.contentWindow?.location.href;
+									if (
+										currentUrl &&
+										currentUrl !== originalUrl &&
+										!currentUrl.includes('type=embed')
+									) {
+										console.log('Form submission detected via periodic check:', currentUrl);
+										if (checkInterval) clearInterval(checkInterval);
+										redirectToCalendar();
+										return;
+									}
+								} catch (e) {
+									// CORS error - expected, rely on other methods
+								}
+
+								// Stop checking after max attempts
+								if (checkCount >= maxChecks) {
+									if (checkInterval) clearInterval(checkInterval);
+								}
+							}, 500);
+						};
+
+						// Start checking immediately since the form is always visible
+						startChecking();
+					}
+				});
+			</script>
 		</div>
 	</div>
 </section>
@@ -122,91 +222,24 @@ const t = useTranslations(lang as 'en' | 'es');
 		margin: 0 0 24px 0;
 	}
 
-	.contact-form {
-		display: flex;
-		flex-direction: column;
-		gap: 24px;
+	.copper-form-container {
 		width: 100%;
-	}
-
-	.form-group {
+		overflow: visible !important;
 		display: flex;
-		flex-direction: column;
-		gap: 8px;
-	}
-
-	.form-group label {
-		color: #54504b;
-		font-family: 'DM Sans', sans-serif;
-		font-size: 16px;
-		font-weight: 400;
-	}
-
-	.form-group input,
-	.form-group textarea {
-		width: 100%;
-		display: flex;
-		padding: 8px 16px;
+		justify-content: center;
 		align-items: center;
-		gap: 8px;
-		align-self: stretch;
-		border-radius: 8px;
-		border: 1px solid var(--Greyscale-Grey-2, #a7acaa);
-		background: var(--Greyscale-Off-White, #f9f9f9);
-		/* Embossed Shallow */
-		box-shadow:
-			0 1px 2px 0 rgba(0, 0, 0, 0.25),
-			0 -1px 2px 0 rgba(255, 255, 255, 0.4),
-			0 -1px 2px 0 rgba(0, 0, 0, 0.25) inset,
-			0 1px 2px 0 rgba(255, 255, 255, 0.4) inset;
-		font-family: 'DM Sans', sans-serif;
-		font-size: 16px;
-		color: #54504b;
-		outline: none;
-		transition: border-color 0.2s;
+		min-height: 600px;
 	}
 
-	.form-group input {
-		height: 40px;
-	}
-
-	.form-group textarea {
-		height: auto;
-		min-height: 120px;
-	}
-
-	.form-group input:focus,
-	.form-group textarea:focus {
-		border-color: #54504b;
-	}
-
-	.form-checkbox {
-		display: flex;
-		align-items: flex-start;
-		gap: 12px;
-		margin-bottom: 8px;
-	}
-
-	.form-checkbox input[type='checkbox'] {
-		width: 20px;
-		height: 20px;
-		margin-top: 2px;
-		border-radius: 4px;
-		border: 1px solid #a8a6a1;
-		cursor: pointer;
-	}
-
-	.form-checkbox label {
-		color: #54504b;
-		font-family: 'DM Sans', sans-serif;
-		font-size: 16px;
-		line-height: 1.5;
-		cursor: pointer;
-	}
-
-	.submit-btn {
+	.copper-form-container iframe {
 		width: 100%;
-		margin-top: 8px;
+		border: none;
+		height: 700px;
+		max-height: 100%;
+		overflow: visible !important;
+		margin: auto;
+		display: block;
+		vertical-align: middle;
 	}
 
 	@media (max-width: 900px) {
