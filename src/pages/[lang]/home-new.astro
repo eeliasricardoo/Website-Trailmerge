@@ -2,10 +2,7 @@
 export const prerender = false;
 
 export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'es' } },
-	];
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
 import { ViewTransitions } from 'astro:transitions';
@@ -144,5 +141,6 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		width: 100%;
 		min-height: 100vh;
 		position: relative;
+		overflow: hidden;
 	}
 </style>
