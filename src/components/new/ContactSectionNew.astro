@@ -72,7 +72,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		display: flex;
 		justify-content: center;
 		position: relative;
-		overflow: hidden; /* Ensure blob doesn't cause scroll */
 	}
 
 	.contact-container {
@@ -233,6 +232,7 @@ const t = useTranslations(lang as 'en' | 'es');
 
 	.vector-blob {
 		position: absolute;
+		top: 400px;
 		width: 2670.921px;
 		height: 2476.5px;
 		transform: rotate(34.499deg);
