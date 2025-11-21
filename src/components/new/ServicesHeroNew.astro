@@ -9,12 +9,12 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<section class="services-hero-wrapper">
+<section class="services-hero-wrapper parallax-container">
 	<div class="services-hero-container">
-		<div class="hero-image-col">
+		<div class="hero-image-col parallax-layer" data-speed="0.8">
 			<img src="/images/new/services/Badges.svg" alt="Services Badges" class="hero-badges" />
 		</div>
-		<div class="hero-content-col">
+		<div class="hero-content-col parallax-layer" data-speed="0.4">
 			<h1 class="hero-title">Our Services</h1>
 			<p class="hero-text">
 				Trailmerge is a full-service process consulting and custom software development firm, here

@@ -105,6 +105,7 @@ class ParallaxController {
 			const rect = this.container.getBoundingClientRect();
 			const progress =
 				(window.innerHeight - rect.top) / (window.innerHeight + this.container.offsetHeight);
+
 			this.layers.forEach((layer) => {
 				const yOffset = (progress - 0.5) * 200 * layer.speed;
 				layer.targetY = -yOffset;
@@ -154,7 +155,7 @@ class ParallaxController {
 	}
 }
 
-function initParallax() {
+export function initParallax() {
 	// Manually control initialization to ensure Hero runs first and with the right container.
 	const heroSection = document.getElementById('hero-section');
 	if (heroSection) {
@@ -169,6 +170,10 @@ function initParallax() {
 	});
 }
 
+// Support for View Transitions
+document.addEventListener('astro:page-load', initParallax);
+
+// Fallback for initial load if View Transitions are not used or for first load
 if (document.readyState === 'loading') {
 	document.addEventListener('DOMContentLoaded', initParallax);
 } else {

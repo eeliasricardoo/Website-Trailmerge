@@ -54,9 +54,9 @@ const processSteps = [
 ];
 ---
 
-<section class="process-wrapper">
+<section class="process-wrapper parallax-container">
 	<div class="process-container">
-		<div class="process-header">
+		<div class="process-header parallax-layer" data-speed="0.2">
 			<h2 class="section-title">Our Process</h2>
 			<p class="section-description">
 				Our methodology is based on <strong>design thinking and Agile</strong> principals, emphasizing
@@ -70,7 +70,10 @@ const processSteps = [
 		<div class="process-grid">
 			{
 				processSteps.map((step, index) => (
-					<div class="process-card">
+					<div
+						class="process-card parallax-layer"
+						data-speed={(0.4 + (index % 3) * 0.1).toFixed(2)}
+					>
 						<div class="icon-wrapper">
 							<img src={step.image} alt={step.alt} width="120" height="120" class="process-icon" />
 						</div>
