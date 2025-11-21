@@ -1,0 +1,242 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import ButtonNew from './ButtonNew.astro';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<section class="contact-wrapper">
+	<img src="/images/new/contact/Vector Blob.svg" alt="" class="vector-blob" />
+	<div class="contact-container">
+		<!-- Left Column: Illustration -->
+		<div class="contact-image-col">
+			<img
+				src="/images/Illustration---Fire.svg"
+				alt="Campfire Illustration"
+				class="contact-image"
+			/>
+		</div>
+
+		<!-- Right Column: Form -->
+		<div class="contact-content-col">
+			<h1 class="contact-title">Contact Us</h1>
+			<p class="contact-description">
+				Our journey together starts with a simple first step. Send us a message to tell us a little
+				about your project, your ideas, your dream. We'll be on our way to making it a reality.
+			</p>
+
+			<form class="contact-form">
+				<div class="form-group">
+					<label for="name">First & Last Name</label>
+					<input type="text" id="name" name="name" placeholder="" />
+				</div>
+
+				<div class="form-group">
+					<label for="company">Company</label>
+					<input type="text" id="company" name="company" placeholder="" />
+				</div>
+
+				<div class="form-group">
+					<label for="email">Email Address</label>
+					<input type="email" id="email" name="email" placeholder="" />
+				</div>
+
+				<div class="form-group">
+					<label for="message">Message</label>
+					<textarea id="message" name="message" placeholder="Tell us about your project..." rows="4"
+					></textarea>
+				</div>
+
+				<div class="form-checkbox">
+					<input type="checkbox" id="newsletter" name="newsletter" />
+					<label for="newsletter"
+						>Please send me helpful content and updates about Trailmerge.</label
+					>
+				</div>
+
+				<ButtonNew type="submit" variant="navbar" class="submit-btn">Send Message</ButtonNew>
+			</form>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-wrapper {
+		width: 100%;
+		padding: 130px 20px 80px 20px;
+		display: flex;
+		justify-content: center;
+		position: relative;
+	}
+
+	.contact-container {
+		width: 100%;
+		max-width: 1200px;
+		display: flex;
+		gap: 80px;
+		align-items: flex-start;
+		position: relative;
+	}
+
+	.contact-image-col {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		padding-top: 40px;
+	}
+
+	.contact-image {
+		width: 100%;
+		max-width: 500px;
+		height: auto;
+	}
+
+	.contact-content-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.contact-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 64px;
+		font-weight: 400;
+		line-height: 1.1;
+		margin: 0;
+	}
+
+	.contact-description {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.5;
+		margin: 0 0 24px 0;
+	}
+
+	.contact-form {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		width: 100%;
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.form-group label {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+	}
+
+	.form-group input,
+	.form-group textarea {
+		width: 100%;
+		display: flex;
+		padding: 8px 16px;
+		align-items: center;
+		gap: 8px;
+		align-self: stretch;
+		border-radius: 8px;
+		border: 1px solid var(--Greyscale-Grey-2, #a7acaa);
+		background: var(--Greyscale-Off-White, #f9f9f9);
+		/* Embossed Shallow */
+		box-shadow:
+			0 1px 2px 0 rgba(0, 0, 0, 0.25),
+			0 -1px 2px 0 rgba(255, 255, 255, 0.4),
+			0 -1px 2px 0 rgba(0, 0, 0, 0.25) inset,
+			0 1px 2px 0 rgba(255, 255, 255, 0.4) inset;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		color: #54504b;
+		outline: none;
+		transition: border-color 0.2s;
+	}
+
+	.form-group input {
+		height: 40px;
+	}
+
+	.form-group textarea {
+		height: auto;
+		min-height: 120px;
+	}
+
+	.form-group input:focus,
+	.form-group textarea:focus {
+		border-color: #54504b;
+	}
+
+	.form-checkbox {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+		margin-bottom: 8px;
+	}
+
+	.form-checkbox input[type='checkbox'] {
+		width: 20px;
+		height: 20px;
+		margin-top: 2px;
+		border-radius: 4px;
+		border: 1px solid #a8a6a1;
+		cursor: pointer;
+	}
+
+	.form-checkbox label {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+		cursor: pointer;
+	}
+
+	.submit-btn {
+		width: 100%;
+		margin-top: 8px;
+	}
+
+	@media (max-width: 900px) {
+		.contact-container {
+			flex-direction: column;
+			gap: 40px;
+		}
+
+		.contact-image-col {
+			order: -1; /* Image on top */
+			width: 100%;
+			padding-top: 0;
+		}
+
+		.contact-image {
+			max-width: 300px;
+		}
+
+		.contact-title {
+			font-size: 48px;
+		}
+	}
+
+	.vector-blob {
+		position: absolute;
+		top: 100px;
+		width: 2670.921px;
+		height: 2476.5px;
+		transform: rotate(12.499deg) scaleX(-12);
+		flex-shrink: 0;
+		pointer-events: none;
+	}
+</style>
