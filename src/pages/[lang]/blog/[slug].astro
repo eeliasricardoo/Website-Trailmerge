@@ -2,14 +2,29 @@
 // SSR mode - fetch post dynamically
 export const prerender = false;
 
+import { getAllPosts } from '../../../data/blogPosts';
+import { getAllPostsEs } from '../../../data/blogPosts-es';
+
+export async function getStaticPaths() {
+	// Get all static posts for both languages
+	const enPosts = getAllPosts();
+	const esPosts = getAllPostsEs();
+	
+	// Return combinations of lang and slug from static posts
+	// StudioCMS posts will be handled dynamically in SSR mode
+	const paths = [
+		...enPosts.map((post) => ({ params: { lang: 'en', slug: post.slug } })),
+		...esPosts.map((post) => ({ params: { lang: 'es', slug: post.slug } })),
+	];
+	
+	return paths;
+}
+
 import Layout from '../../../layouts/Layout.astro';
 import Navbar from '../../../components/Navbar.astro';
 import Footer from '../../../components/Footer.astro';
 import ContactModal from '../../../components/ContactModal.astro';
-import { getAllPosts } from '../../../data/blogPosts';
-import { getAllPostsEs } from '../../../data/blogPosts-es';
 import { useTranslations } from '../../../i18n/utils';
-import { runSDK, SDKCoreJs } from 'studiocms:sdk';
 
 const { lang, slug } = Astro.params || { lang: 'en', slug: '' };
 const t = useTranslations(lang as 'en' | 'es');
@@ -21,6 +36,8 @@ let post = staticPosts.find((p) => p.slug === slug);
 // If not found in static posts, try StudioCMS
 if (!post) {
 	try {
+		// Dynamic import to handle case where studiocms:sdk is not available
+		const { runSDK, SDKCoreJs } = await import('studiocms:sdk');
 		const allPages = await runSDK(SDKCoreJs.GET.pages());
 		const studiocmsPage = allPages
 			.map(({ data }) => data)

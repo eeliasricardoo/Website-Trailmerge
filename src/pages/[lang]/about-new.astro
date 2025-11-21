@@ -17,11 +17,9 @@ import '../../styles/global.css';
 
 // Import new redesigned components
 import NavbarNew from '../../components/new/NavbarNew.astro';
-import HeroNew from '../../components/new/HeroNew.astro';
-import AsideSectionNew from '../../components/new/AsideSectionNew.astro';
-import CompaniesSectionNew from '../../components/new/CompaniesSectionNew.astro';
-import OurApproachNew from '../../components/new/OurApproachNew.astro';
-import RecentProjectsNew from '../../components/new/RecentProjectsNew.astro';
+import AboutHeroNew from '../../components/new/AboutHeroNew.astro';
+import OurValuesNew from '../../components/new/OurValuesNew.astro';
+import OurHistoryNew from '../../components/new/OurHistoryNew.astro';
 import FooterNew from '../../components/new/FooterNew.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
@@ -51,8 +49,8 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		<meta name="generator" content={Astro.generator} />
 
 		<SEOHead
-			title={t('homepage.seo.title')}
-			description={t('homepage.seo.description')}
+			title={t('about.seo.title')}
+			description={t('about.seo.description')}
 			canonicalURL={canonicalURL}
 			lang={lang}
 			alternateUrls={alternateUrls}
@@ -68,8 +66,8 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 
 		<SEOSchema
 			type="organization"
-			pageTitle={t('homepage.seo.title')}
-			pageDescription={t('homepage.seo.description')}
+			pageTitle={t('about.seo.title')}
+			pageDescription={t('about.seo.description')}
 		/>
 
 		<ViewTransitions />
@@ -77,15 +75,9 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 	<body>
 		<NavbarNew lang={lang} />
 		<main id="main-content">
-			<HeroNew lang={lang} />
-			<AsideSectionNew
-				lang={lang}
-				title="Take the design-first path to the top"
-				text="Trailmerge equips enterprise operations and technology teams with strategic digital transformation consulting, user experience and product expertise, and custom software development, to conquer costly inefficiencies and level up your team's excellence."
-			/>
-			<CompaniesSectionNew lang={lang} />
-			<OurApproachNew lang={lang} />
-			<RecentProjectsNew lang={lang} />
+			<AboutHeroNew lang={lang} />
+			<OurValuesNew lang={lang} />
+			<OurHistoryNew lang={lang} />
 			<FooterNew lang={lang} />
 		</main>
 	</body>
@@ -145,4 +137,45 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		min-height: 100vh;
 		position: relative;
 	}
+
+	/* Override global styles for navbar in about-new page to match home-new */
+	body .navigation {
+		background-color: transparent !important;
+	}
+
+	body .navigation.scrolled {
+		background-color: rgba(245, 246, 245, 0.6) !important;
+		backdrop-filter: blur(12px) !important;
+		-webkit-backdrop-filter: blur(12px) !important;
+		border-bottom: 1px solid rgba(46, 58, 51, 0.1) !important;
+	}
+
+	body .navigation .brand {
+		background: none !important;
+		border: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		box-shadow: none !important;
+	}
+
+	body .navigation .logo,
+	body .navigation .nav-logo {
+		background: none !important;
+		border: none !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		box-shadow: none !important;
+		outline: none !important;
+	}
+
+	/* Ensure grid-5 styles don't affect navbar logo */
+	body .navigation .grid-5 .logo,
+	body .grid-5 .navigation .logo {
+		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
+			brightness(95%) contrast(87%) !important;
+		opacity: 1 !important;
+		max-width: none !important;
+		height: 32px !important;
+	}
 </style>
+
