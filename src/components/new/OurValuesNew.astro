@@ -1,0 +1,282 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<div class="our-values-wrapper">
+	<div class="our-values-container parallax-container" id="our-values-section">
+		<div class="our-values-image-wrapper">
+			<img
+				src="/images/new/about/Resizing-Mountains.png"
+				alt="Our Values"
+				class="our-values-image parallax-layer"
+				data-speed="-0.1"
+				loading="lazy"
+			/>
+		</div>
+		<img
+			src="/images/new/about/Telescope.png"
+			alt="Telescope"
+			class="telescope-image parallax-layer"
+			data-speed="1.2"
+			loading="lazy"
+		/>
+		<div class="our-values-content parallax-layer" data-speed="0.1">
+			<h3 class="our-values-title">Our Values</h3>
+			<div class="our-values-text">
+				<p>
+					At Trailmerge, our vision is to promote abundance of life and opportunity.
+				</p>
+			</div>
+			<ul class="our-values-list">
+				<li>Opportunity for talented and passionate people.</li>
+				<li>Individual responsibility, shared successes.</li>
+				<li>Technology for people, not people for technology.</li>
+				<li>A culture of honor and freedom.</li>
+				<li>Our team members are human, not "resources".</li>
+				<li>All of us grow and all of us mentor.</li>
+				<li>Proactive and friendly communication.</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+	.our-values-wrapper {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		background: transparent;
+		/* Ensure it takes up space in the flow */
+		min-height: 800px;
+	}
+
+	.our-values-container {
+		position: relative;
+		width: 100vw;
+		max-width: 100vw;
+		padding: 0;
+		margin: 0;
+		display: block;
+		box-sizing: border-box;
+		min-height: 800px;
+		background: transparent;
+	}
+
+	.our-values-image-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		min-height: 800px;
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		overflow: hidden;
+		z-index: 0;
+		background: transparent;
+	}
+
+	.our-values-image {
+		width: 100vw;
+		height: 100%;
+		min-height: 800px;
+		object-fit: cover;
+		object-position: center center;
+		display: block;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.telescope-image {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 5%;
+		width: 400px;
+		height: 400px;
+		max-width: 400px;
+		max-height: 400px;
+		object-fit: contain;
+		z-index: 11;
+		display: block;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.our-values-content {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 45%;
+		z-index: 12;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		align-items: flex-start;
+		max-width: 50%;
+		height: fit-content;
+		padding-right: 20px;
+	}
+
+	.our-values-title {
+		color: #fff;
+		text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 64px;
+		letter-spacing: 1.68px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.our-values-text {
+		width: 100%;
+		color: #fff;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 32px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.our-values-text p {
+		margin: 0 0 16px 0;
+		padding: 0;
+	}
+
+	.our-values-text p:last-child {
+		margin-bottom: 0;
+	}
+
+	.our-values-text strong {
+		font-weight: 700;
+	}
+
+	.our-values-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		width: 100%;
+	}
+
+	.our-values-list li {
+		color: #fff;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 32px;
+		position: relative;
+		padding-left: 32px;
+	}
+
+	.our-values-list li::before {
+		content: '•';
+		position: absolute;
+		left: 0;
+		color: #fff;
+		font-size: 24px;
+		line-height: 32px;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.our-values-wrapper,
+		.our-values-container {
+			min-height: auto;
+		}
+
+		.telescope-image {
+			left: 5%;
+		}
+
+		.our-values-content {
+			left: 40%;
+		}
+
+		.our-values-title {
+			font-size: 48px;
+			line-height: 56px;
+		}
+
+		.our-values-text {
+			font-size: 20px;
+			line-height: 28px;
+		}
+
+		.our-values-list li {
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.our-values-content {
+			position: relative;
+			left: 0;
+			top: 0;
+			bottom: auto;
+			margin: 0;
+			max-width: 100%;
+			padding: 40px 20px;
+			background: #2e3a33; /* Fallback background since image might not cover */
+		}
+
+		.telescope-image {
+			position: relative;
+			top: 0;
+			left: 0;
+			margin: 0 auto;
+			max-width: 80%;
+			display: none; /* Hide telescope on mobile if it clutters */
+		}
+
+		.our-values-image {
+			height: 300px; /* Limit height on mobile */
+		}
+
+		.our-values-title {
+			font-size: 40px;
+			line-height: 48px;
+		}
+
+		.our-values-text {
+			font-size: 18px;
+			line-height: 26px;
+		}
+
+		.our-values-list li {
+			font-size: 18px;
+			line-height: 26px;
+		}
+	}
+
+	.parallax-layer {
+		will-change: transform;
+		/* Hardware acceleration hack if needed, though will-change is usually enough */
+		transform: translateZ(0);
+	}
+</style>
+
+<script>
+	import '../../scripts/parallax';
+</script>
