@@ -1,0 +1,284 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+	posts: any[];
+}
+
+const { lang = 'en', posts = [] } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+// Get featured posts (first 4 posts)
+const featuredPosts = posts.slice(0, 4);
+const mainPost = featuredPosts[0];
+const sidePosts = featuredPosts.slice(1, 4);
+---
+
+<!-- Featured Posts Section -->
+<section class="featured-posts-wrapper">
+	<div class="featured-posts-container">
+		<h2 class="section-title">Featured</h2>
+		<div class="featured-posts-grid">
+			{mainPost && (
+				<article class="featured-main-card">
+					<a href={`/${lang}/blog/${mainPost.slug}-new/`} class="featured-main-link">
+						<div class="featured-main-image-wrapper">
+							<img
+								src={mainPost.image}
+								alt={mainPost.imageAlt || mainPost.title}
+								class="featured-main-image"
+								loading="eager"
+							/>
+						</div>
+						<div class="featured-main-content">
+							<h3 class="featured-main-title">{mainPost.title}</h3>
+							<div class="featured-main-meta">
+								<span class="featured-main-date">{mainPost.date}</span>
+								{mainPost.author && (
+									<span class="featured-main-author"> • {mainPost.author.name}</span>
+								)}
+							</div>
+						</div>
+					</a>
+				</article>
+			)}
+			<div class="featured-side-posts">
+				{sidePosts.map((post) => (
+					<article class="featured-side-card">
+						<a href={`/${lang}/blog/${post.slug}-new/`} class="featured-side-link">
+							<div class="featured-side-image-wrapper">
+								<img
+									src={post.image}
+									alt={post.imageAlt || post.title}
+									class="featured-side-image"
+									loading="lazy"
+								/>
+							</div>
+							<div class="featured-side-content">
+								<h4 class="featured-side-title">{post.title}</h4>
+								<div class="featured-side-meta">
+									<span class="featured-side-date">{post.date}</span>
+									{post.author && (
+										<span class="featured-side-author"> • {post.author.name}</span>
+									)}
+								</div>
+							</div>
+						</a>
+					</article>
+				))}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.featured-posts-wrapper {
+		width: 100%;
+		padding: 80px 24px;
+		background: 
+			url('/images/new/home/dot-pattern.svg'),
+			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
+		background-size: 9.24px 9.24px, 100% 100%;
+		background-position: 0 0, center;
+		background-repeat: repeat, no-repeat;
+	}
+
+	.featured-posts-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.section-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-weight: 400;
+		line-height: 1.2;
+		margin: 0 0 64px 0;
+	}
+
+	.featured-posts-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 40px;
+		align-items: start;
+	}
+
+	.featured-main-card {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.featured-main-link {
+		text-decoration: none;
+		color: inherit;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		transition: transform 0.3s ease;
+	}
+
+	.featured-main-link:hover {
+		transform: translateY(-4px);
+	}
+
+	.featured-main-image-wrapper {
+		width: 100%;
+		aspect-ratio: 3/2;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	}
+
+	.featured-main-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.featured-main-content {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.featured-main-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 32px;
+		font-weight: 400;
+		line-height: 1.3;
+		margin: 0;
+	}
+
+	.featured-main-meta {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+	.featured-side-posts {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.featured-side-card {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.featured-side-link {
+		text-decoration: none;
+		color: inherit;
+		display: flex;
+		gap: 16px;
+		transition: transform 0.3s ease;
+	}
+
+	.featured-side-link:hover {
+		transform: translateY(-2px);
+	}
+
+	.featured-side-image-wrapper {
+		width: 200px;
+		min-width: 200px;
+		aspect-ratio: 3/2;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	.featured-side-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.featured-side-content {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		flex: 1;
+	}
+
+	.featured-side-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 1.3;
+		margin: 0;
+	}
+
+	.featured-side-meta {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+	@media (max-width: 1024px) {
+		.featured-posts-grid {
+			gap: 32px;
+		}
+
+		.featured-side-image-wrapper {
+			width: 150px;
+			min-width: 150px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.featured-posts-wrapper {
+			padding: 60px 24px;
+		}
+
+		.section-title {
+			font-size: 40px;
+			margin-bottom: 40px;
+		}
+
+		.featured-posts-grid {
+			grid-template-columns: 1fr;
+			gap: 40px;
+		}
+
+		.featured-side-image-wrapper {
+			width: 120px;
+			min-width: 120px;
+		}
+
+		.featured-side-title {
+			font-size: 18px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.featured-posts-wrapper {
+			padding: 48px 16px;
+		}
+
+		.section-title {
+			font-size: 36px;
+		}
+
+		.featured-side-posts {
+			gap: 20px;
+		}
+
+		.featured-side-link {
+			flex-direction: column;
+		}
+
+		.featured-side-image-wrapper {
+			width: 100%;
+			min-width: 100%;
+		}
+	}
+</style>
+
