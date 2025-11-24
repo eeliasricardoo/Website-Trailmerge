@@ -20,8 +20,8 @@ export async function getStaticPaths() {
 }
 
 import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/Navbar.astro';
-import Footer from '../../../components/Footer.astro';
+import NavbarNew from '../../../components/new/NavbarNew.astro';
+import FooterNew from '../../../components/new/FooterNew.astro';
 import ContactModal from '../../../components/ContactModal.astro';
 import { useTranslations } from '../../../i18n/utils';
 
@@ -162,7 +162,7 @@ const keywords =
 	keywords={keywords}
 	lang={lang}
 >
-	<Navbar lang={lang} />
+	<NavbarNew lang={lang} />
 
 	<main id="main-content">
 		<!-- Blog Post Detail Page -->
@@ -218,7 +218,7 @@ const keywords =
 		</article>
 	</main>
 
-	<Footer lang={lang} />
+	<FooterNew lang={lang} />
 
 	<ContactModal lang={lang} />
 </Layout>

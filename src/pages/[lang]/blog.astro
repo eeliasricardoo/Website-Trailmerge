@@ -6,8 +6,8 @@ export async function getStaticPaths() {
 }
 
 import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
+import NavbarNew from '../../components/new/NavbarNew.astro';
+import FooterNew from '../../components/new/FooterNew.astro';
 import ContactModal from '../../components/ContactModal.astro';
 import { getAllPosts } from '../../data/blogPosts';
 import { getAllPostsEs } from '../../data/blogPosts-es';
@@ -93,7 +93,7 @@ const breadcrumbs = [
 	breadcrumbs={breadcrumbs}
 	lang={lang}
 >
-	<Navbar lang={lang} />
+	<NavbarNew lang={lang} />
 
 	<main id="main-content">
 		<!-- Blog Posts Section -->
@@ -140,7 +140,7 @@ const breadcrumbs = [
 		</div>
 	</main>
 
-	<Footer lang={lang} />
+	<FooterNew lang={lang} />
 
 	<ContactModal lang={lang} />
 </Layout>
