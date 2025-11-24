@@ -40,7 +40,7 @@ if (!post) {
 		({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 		const allPages = await runSDK(SDKCoreJs.GET.pages());
 		const studiocmsPage = allPages
-			.map(({ data }) => data)
+			.map(({ data }) => data as any)
 			.find((page) => page.slug === slug && page.package === '@studiocms/blog');
 
 		if (studiocmsPage) {

@@ -30,7 +30,7 @@ try {
 	studiocmsPosts = allPages
 		.map(({ data }) => data)
 		.filter(({ package: pkg }) => pkg === '@studiocms/blog')
-		.map((page) => ({
+		.map((page: any) => ({
 			slug: page.slug,
 			title: page.title || '',
 			excerpt: page.excerpt || '',
