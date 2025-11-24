@@ -1,10 +1,6 @@
 ---
 export const prerender = false;
 
-export async function getStaticPaths() {
-	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
-}
-
 import { ViewTransitions } from 'astro:transitions';
 import SEOHead from '../../components/SEOHead.astro';
 import SEOSchema from '../../components/SEOSchema.astro';
@@ -14,12 +10,8 @@ import '../../styles/global.css';
 
 // Import new redesigned components
 import NavbarNew from '../../components/new/NavbarNew.astro';
-import HeroNew from '../../components/new/HeroNew.astro';
-import AsideSectionNew from '../../components/new/AsideSectionNew.astro';
-import CompaniesSectionNew from '../../components/new/CompaniesSectionNew.astro';
-import OurApproachNew from '../../components/new/OurApproachNew.astro';
-import RecentProjectsNew from '../../components/new/RecentProjectsNew.astro';
 import FooterNew from '../../components/new/FooterNew.astro';
+import ContactSectionNew from '../../components/new/ContactSectionNew.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -48,8 +40,8 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		<meta name="generator" content={Astro.generator} />
 
 		<SEOHead
-			title={t('homepage.seo.title')}
-			description={t('homepage.seo.description')}
+			title="Contact Us - Trailmerge"
+			description="Get in touch with Trailmerge to start your digital transformation journey."
 			canonicalURL={canonicalURL}
 			lang={lang}
 			alternateUrls={alternateUrls}
@@ -65,8 +57,8 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 
 		<SEOSchema
 			type="organization"
-			pageTitle={t('homepage.seo.title')}
-			pageDescription={t('homepage.seo.description')}
+			pageTitle="Contact Us - Trailmerge"
+			pageDescription="Contact Trailmerge"
 		/>
 
 		<ViewTransitions />
@@ -74,17 +66,12 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 	<body>
 		<NavbarNew lang={lang} />
 		<main id="main-content">
-			<HeroNew lang={lang} />
-			<AsideSectionNew
-				lang={lang}
-				title="Take the design-first path to the top"
-				text="Trailmerge equips enterprise operations and technology teams with strategic digital transformation consulting, user experience and product expertise, and custom software development, to conquer costly inefficiencies and level up your team's excellence."
-			/>
-			<CompaniesSectionNew lang={lang} />
-			<OurApproachNew lang={lang} />
-			<RecentProjectsNew lang={lang} />
+			<ContactSectionNew lang={lang} />
 			<FooterNew lang={lang} />
 		</main>
+		<script>
+			import '../../scripts/parallax';
+		</script>
 	</body>
 </html>
 
@@ -142,6 +129,5 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		min-height: 100vh;
 		position: relative;
 		overflow: hidden;
-		clip-path: inset(0 0 0 0);
 	}
 </style>

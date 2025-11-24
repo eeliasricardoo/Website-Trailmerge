@@ -2,10 +2,7 @@
 export const prerender = false;
 
 export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'es' } },
-	];
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
 import Layout from '../../layouts/Layout.astro';
@@ -27,6 +24,7 @@ const staticPosts = lang === 'en' ? getAllPosts() : getAllPostsEs();
 let studiocmsPosts: any[] = [];
 let runSDK, SDKCoreJs;
 try {
+	// Dynamic import to handle case where studiocms:sdk is not available
 	({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 	const allPages = await runSDK(SDKCoreJs.GET.pages());
 	studiocmsPosts = allPages

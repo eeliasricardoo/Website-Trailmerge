@@ -1,0 +1,275 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+// Copper form URLs based on language
+const copperFormUrl =
+	lang === 'es'
+		? 'https://forms.copper.com/j/wYsDRF6aDG9YgnPCCJjiXJ?type=embed'
+		: 'https://forms.copper.com/j/5dNTzeqzanj9McnokQfpFq?type=embed';
+
+const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9McnokQfpFq';
+---
+
+<section class="contact-wrapper">
+	<img src="/images/new/contact/Vector Blob.svg" alt="" class="vector-blob" />
+	<div class="contact-container">
+		<!-- Left Column: Illustration -->
+		<div class="contact-image-col">
+			<img
+				src="/images/Illustration---Fire.svg"
+				alt="Campfire Illustration"
+				class="contact-image"
+			/>
+		</div>
+
+		<!-- Right Column: Form -->
+		<div class="contact-content-col">
+			<h1 class="contact-title">Contact Us</h1>
+			<p class="contact-description">
+				Our journey together starts with a simple first step. Send us a message to tell us a little
+				about your project, your ideas, your dream. We'll be on our way to making it a reality.
+			</p>
+
+			<div class="copper-form-container">
+				<iframe
+					src={copperFormUrl}
+					id={copperFormId}
+					title="Embedded Copper Forms"
+					width="100%"
+					height="700"></iframe>
+			</div>
+
+			<script>
+				// Form functionality
+				document.addEventListener('DOMContentLoaded', function () {
+					const calendarUrl =
+						'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2E0Pl1V454vAAYQJxhS2H0Q4vxa_6-sgcUXQB4cBaCn_jtRYLNMGMp-ka5p-cuCkExM8X1fC19';
+
+					// Flag to prevent multiple redirects
+					let hasRedirected = false;
+
+					// Function to redirect to calendar (only once)
+					const redirectToCalendar = () => {
+						if (hasRedirected) return;
+						hasRedirected = true;
+						window.location.href = calendarUrl;
+					};
+
+					// Listen for form submission success from Copper Forms iframe
+					// Copper Forms sends postMessage when form is submitted successfully
+					window.addEventListener('message', function (event) {
+						if (hasRedirected) return;
+
+						// Check if message is from Copper Forms domain
+						if (event.origin.includes('copper.com') || event.origin.includes('forms.copper.com')) {
+							// Check for SPECIFIC form submission success messages from Copper Forms
+							if (
+								event.data &&
+								typeof event.data === 'object' &&
+								(event.data.type === 'form-submit' ||
+									event.data.type === 'copper-form-submit' ||
+									(event.data.status === 'success' && event.data.type) ||
+									event.data.message === 'form-submitted')
+							) {
+								console.log('Form submission detected via postMessage:', event.data);
+								redirectToCalendar();
+							}
+						}
+					});
+
+					// Fallback: Monitor iframe URL changes (more reliable than DOM inspection)
+					const iframe = document.querySelector(
+						'iframe[id^="wYsDRF6aDG9YgnPCCJjiXJ"], iframe[id^="5dNTzeqzanj9McnokQfpFq"]'
+					) as HTMLIFrameElement;
+
+					if (iframe) {
+						const originalUrl = iframe.src;
+						let checkInterval: ReturnType<typeof setInterval> | null = null;
+
+						// Listen for iframe load events (happens when form redirects after submission)
+						iframe.addEventListener('load', function () {
+							if (hasRedirected) return;
+
+							// Wait a bit to allow iframe to settle
+							setTimeout(() => {
+								if (hasRedirected) return;
+
+								try {
+									const currentUrl = iframe.contentWindow?.location.href || iframe.src;
+									// Check if URL changed to a non-embed URL (indicates form submission redirect)
+									if (
+										currentUrl &&
+										currentUrl !== originalUrl &&
+										!currentUrl.includes('type=embed')
+									) {
+										console.log('Form submission detected via URL change:', currentUrl);
+										redirectToCalendar();
+									}
+								} catch (e) {
+									// CORS error - can't access iframe URL, rely on postMessage
+								}
+							}, 1500);
+						});
+
+						// Periodic check as additional fallback (less aggressive)
+						const startChecking = () => {
+							if (checkInterval) clearInterval(checkInterval);
+
+							let checkCount = 0;
+							const maxChecks = 40; // Check for up to 20 seconds (500ms * 40)
+
+							checkInterval = setInterval(() => {
+								if (hasRedirected) {
+									if (checkInterval) clearInterval(checkInterval);
+									return;
+								}
+
+								checkCount++;
+
+								try {
+									const currentUrl = iframe.contentWindow?.location.href;
+									if (
+										currentUrl &&
+										currentUrl !== originalUrl &&
+										!currentUrl.includes('type=embed')
+									) {
+										console.log('Form submission detected via periodic check:', currentUrl);
+										if (checkInterval) clearInterval(checkInterval);
+										redirectToCalendar();
+										return;
+									}
+								} catch (e) {
+									// CORS error - expected, rely on other methods
+								}
+
+								// Stop checking after max attempts
+								if (checkCount >= maxChecks) {
+									if (checkInterval) clearInterval(checkInterval);
+								}
+							}, 500);
+						};
+
+						// Start checking immediately since the form is always visible
+						startChecking();
+					}
+				});
+			</script>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contact-wrapper {
+		width: 100%;
+		padding: 130px 20px 80px 20px;
+		display: flex;
+		justify-content: center;
+		position: relative;
+	}
+
+	.contact-container {
+		width: 100%;
+		max-width: 1200px;
+		display: flex;
+		gap: 80px;
+		align-items: flex-start;
+		position: relative;
+	}
+
+	.contact-image-col {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		padding-top: 40px;
+	}
+
+	.contact-image {
+		width: 100%;
+		max-width: 500px;
+		height: auto;
+	}
+
+	.contact-content-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.contact-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 64px;
+		font-weight: 400;
+		line-height: 1.1;
+		margin: 0;
+	}
+
+	.contact-description {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 20px;
+		font-weight: 500;
+		line-height: 1.5;
+		margin: 0 0 24px 0;
+	}
+
+	.copper-form-container {
+		width: 100%;
+		overflow: visible !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 600px;
+	}
+
+	.copper-form-container iframe {
+		width: 100%;
+		border: none;
+		height: 700px;
+		max-height: 100%;
+		overflow: visible !important;
+		margin: auto;
+		display: block;
+		vertical-align: middle;
+	}
+
+	@media (max-width: 900px) {
+		.contact-container {
+			flex-direction: column;
+			gap: 40px;
+		}
+
+		.contact-image-col {
+			order: -1; /* Image on top */
+			width: 100%;
+			padding-top: 0;
+		}
+
+		.contact-image {
+			max-width: 300px;
+		}
+
+		.contact-title {
+			font-size: 48px;
+		}
+	}
+
+	.vector-blob {
+		position: absolute;
+		top: 100px;
+		width: 2670.921px;
+		height: 2476.5px;
+		transform: rotate(12.499deg) scaleX(-12);
+		flex-shrink: 0;
+		pointer-events: none;
+	}
+</style>

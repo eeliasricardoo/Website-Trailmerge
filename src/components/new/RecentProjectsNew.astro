@@ -13,21 +13,21 @@ const projects = [
 		title: 'Industrial Touchscreen for Technicians',
 		description:
 			'Ground-up redesign of <strong>localized touchscreen app</strong> to better diagnose and resolve mechanical issues, for a <strong>Fortune 500 equipment manufacturer</strong>.',
-		image: '/images/new/home/recent projects /unsplash_sgYamIzhAhg.png',
+		image: '/images/new/home/recent projectS/unsplash_sgYamIzhAhg.png',
 		alt: 'Industrial Touchscreen',
 	},
 	{
 		title: 'Operations for Growing Enterprise',
 		description:
 			'Design & development support for a <strong>custom internal platform</strong> for a growing <strong>home and commercial services</strong> company with operations in 5 states.',
-		image: '/images/new/home/recent projects /unsplash_sgYamIzhAhg-1.png',
+		image: '/images/new/home/recent projectS/unsplash_sgYamIzhAhg-1.png',
 		alt: 'Operations Platform',
 	},
 	{
 		title: 'Accounting & Reporting Platform',
 		description:
 			'<strong>Strategy, design, and development</strong> for an accounting SaaS making <strong>financial reporting</strong> more accessible across multiple businesses.',
-		image: '/images/new/home/recent projects /unsplash_sgYamIzhAhg-2.png',
+		image: '/images/new/home/recent projectS/unsplash_sgYamIzhAhg-2.png',
 		alt: 'Accounting Platform',
 	},
 ];
@@ -35,7 +35,7 @@ const projects = [
 
 <section class="recent-projects-wrapper" id="projects">
 	<img
-		src="/images/new/home/recent projects/background-lines.svg"
+		src="/images/new/home/recent projectS/background-lines.svg"
 		alt=""
 		class="background-lines"
 		loading="lazy"
@@ -68,12 +68,12 @@ const projects = [
 		justify-content: center;
 		position: relative;
 		z-index: 10;
-		overflow: hidden;
+		/* overflow: hidden; Removed to allow background to extend */
 	}
 
 	.background-lines {
 		position: absolute;
-		top: -350px;
+		top: -960px;
 		left: 50%;
 		transform: translateX(-50%);
 		width: 190%;

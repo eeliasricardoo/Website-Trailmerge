@@ -22,7 +22,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 <div class="navigation" role="banner">
 	<div class="navigation-container-full">
 		<a
-			href={lang === 'es' ? '/es/' : '/en/'}
+			href={lang === 'es' ? '/es/home-new/' : '/en/home-new/'}
 			id="nav-logo"
 			aria-label={t('nav.home')}
 			class="brand"
@@ -31,19 +31,23 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		</a>
 		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
-			<a href={`${lang === 'es' ? '/es/' : '/en/'}#projects`} id="nav-projects" class="nav-link"
-				>{t('nav.projects')}</a
+
+			<a
+				href={lang === 'es' ? '/es/services-new/' : '/en/services-new/'}
+				id="nav-services"
+				class="nav-link">{t('nav.services')}</a
 			>
-			<a href={`${lang === 'es' ? '/es/' : '/en/'}#services`} id="nav-services" class="nav-link"
-				>{t('nav.services')}</a
-			>
-			<a href={lang === 'es' ? '/es/about/' : '/en/about/'} id="nav-about" class="nav-link"
+			<a href={lang === 'es' ? '/es/about-new/' : '/en/about-new/'} id="nav-about" class="nav-link"
 				>{t('nav.about')}</a
 			>
 			<a href={lang === 'es' ? '/es/blog-new/' : '/en/blog-new/'} id="nav-blog" class="nav-link"
 				>{t('nav.blog')}</a
 			>
-			<a href="#" id="nav-contact" class="nav-link">{t('nav.contact')}</a>
+			<a
+				href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
+				id="nav-contact"
+				class="nav-link">{t('nav.contact')}</a
+			>
 			<div class="language-switcher">
 				<button
 					class="language-switcher-button"
@@ -97,7 +101,9 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 				</div>
 			</div>
 			<div class="navbar-button-wrapper">
-				<ButtonNew href="#" variant="navbar" class="open-modal">{t('nav.startProject')}</ButtonNew>
+				<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'} variant="navbar"
+					>{t('nav.startProject')}</ButtonNew
+				>
 			</div>
 		</nav>
 		<button
@@ -114,59 +120,107 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 </div>
 
 <script>
-	import '../../scripts/mobileMenu';
+	// Combined Navbar Logic (Scroll, Mobile Menu, Language Switcher)
+	// Handles View Transitions properly using 'astro:page-load'
 
-	// Language dropdown toggle
-	const languageSwitcher = document.querySelector('.language-switcher');
-	const languageButton = document.getElementById('language-switcher-button');
+	let cleanup: (() => void) | null = null;
 
-	if (languageButton && languageSwitcher) {
-		languageButton.addEventListener('click', (e) => {
-			e.stopPropagation();
-			const isActive = languageSwitcher.classList.contains('active');
-			languageSwitcher.classList.toggle('active');
-			languageButton.setAttribute('aria-expanded', (!isActive).toString());
-		});
+	document.addEventListener('astro:page-load', () => {
+		// Cleanup previous listeners if they exist
+		if (cleanup) cleanup();
 
-		// Close dropdown when clicking outside
-		document.addEventListener('click', (e) => {
-			if (!languageSwitcher.contains(e.target as Node)) {
-				languageSwitcher.classList.remove('active');
-				languageButton.setAttribute('aria-expanded', 'false');
-			}
-		});
+		const cleanups: (() => void)[] = [];
 
-		// Close dropdown on escape key
-		document.addEventListener('keydown', (e) => {
-			if (e.key === 'Escape') {
-				languageSwitcher.classList.remove('active');
-				languageButton.setAttribute('aria-expanded', 'false');
-				languageButton.focus();
-			}
-		});
+		// --- Mobile Menu Logic ---
+		const menuButton = document.querySelector('.menu-button');
+		const navMenu = document.querySelector('.nav-menu-green');
 
-		// Save language preference when user clicks on language option
-		const languageOptions = document.querySelectorAll('.language-option');
-		languageOptions.forEach((option) => {
-			option.addEventListener('click', (e) => {
-				const href = (e.target as HTMLAnchorElement).href;
-				const lang = href.includes('/es') ? 'es' : 'en';
-				localStorage.setItem('preferred-language', lang);
+		if (menuButton && navMenu) {
+			const toggleMenu = () => {
+				const isCurrentlyExpanded = navMenu.classList.contains('active');
+				navMenu.classList.toggle('active');
+				menuButton.classList.toggle('active');
+				menuButton.setAttribute('aria-expanded', (!isCurrentlyExpanded).toString());
+			};
+			menuButton.addEventListener('click', toggleMenu);
+
+			// Close on Escape
+			const onDocKey = (e: KeyboardEvent) => {
+				if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+					navMenu.classList.remove('active');
+					menuButton.classList.remove('active');
+					menuButton.setAttribute('aria-expanded', 'false');
+					(menuButton as HTMLElement).focus();
+				}
+			};
+			document.addEventListener('keydown', onDocKey);
+			cleanups.push(() => document.removeEventListener('keydown', onDocKey));
+		}
+
+		// --- Language Switcher Logic ---
+		const languageSwitcher = document.querySelector('.language-switcher');
+		const languageButton = document.getElementById('language-switcher-button');
+
+		if (languageButton && languageSwitcher) {
+			const toggleLang = (e: Event) => {
+				e.stopPropagation();
+				const isActive = languageSwitcher.classList.contains('active');
+				languageSwitcher.classList.toggle('active');
+				languageButton.setAttribute('aria-expanded', (!isActive).toString());
+			};
+			languageButton.addEventListener('click', toggleLang);
+
+			const closeOnClickOutside = (e: Event) => {
+				if (!languageSwitcher.contains(e.target as Node)) {
+					languageSwitcher.classList.remove('active');
+					languageButton.setAttribute('aria-expanded', 'false');
+				}
+			};
+			document.addEventListener('click', closeOnClickOutside);
+			cleanups.push(() => document.removeEventListener('click', closeOnClickOutside));
+
+			const closeOnEscape = (e: KeyboardEvent) => {
+				if (e.key === 'Escape') {
+					languageSwitcher.classList.remove('active');
+					languageButton.setAttribute('aria-expanded', 'false');
+					languageButton.focus();
+				}
+			};
+			document.addEventListener('keydown', closeOnEscape);
+			cleanups.push(() => document.removeEventListener('keydown', closeOnEscape));
+
+			// Save preference
+			const languageOptions = document.querySelectorAll('.language-option');
+			languageOptions.forEach((option) => {
+				option.addEventListener('click', (e) => {
+					const href = (e.target as HTMLAnchorElement).href;
+					const lang = href.includes('/es') ? 'es' : 'en';
+					localStorage.setItem('preferred-language', lang);
+				});
 			});
-		});
-	}
+		}
 
-	// Navbar scroll effect
-	const navbar = document.querySelector('.navigation');
-	if (navbar) {
-		window.addEventListener('scroll', () => {
-			if (window.scrollY > 20) {
-				navbar.classList.add('scrolled');
-			} else {
-				navbar.classList.remove('scrolled');
-			}
-		});
-	}
+		// --- Navbar Scroll Effect ---
+		const navbar = document.querySelector('.navigation');
+		if (navbar) {
+			const onScroll = () => {
+				if (window.scrollY > 20) {
+					navbar.classList.add('scrolled');
+				} else {
+					navbar.classList.remove('scrolled');
+				}
+			};
+
+			window.addEventListener('scroll', onScroll);
+			onScroll(); // Initial check
+			cleanups.push(() => window.removeEventListener('scroll', onScroll));
+		}
+
+		// Define cleanup function for next run
+		cleanup = () => {
+			cleanups.forEach((fn) => fn());
+		};
+	});
 </script>
 
 <style>
