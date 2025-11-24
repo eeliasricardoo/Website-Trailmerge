@@ -9,14 +9,13 @@ export async function getStaticPaths() {
 	// Get all static posts for both languages
 	const enPosts = getAllPosts();
 	const esPosts = getAllPostsEs();
-	
+
 	// Return combinations of lang and slug from static posts
 	// StudioCMS posts will be handled dynamically in SSR mode
 	const paths = [
 		...enPosts.map((post) => ({ params: { lang: 'en', slug: post.slug } })),
 		...esPosts.map((post) => ({ params: { lang: 'es', slug: post.slug } })),
 	];
-	
 	return paths;
 }
 
@@ -33,11 +32,12 @@ const t = useTranslations(lang as 'en' | 'es');
 const staticPosts = lang === 'en' ? getAllPosts() : getAllPostsEs();
 let post = staticPosts.find((p) => p.slug === slug);
 
-// If not found in static posts, try StudioCMS
+// If not found in static posts, try StudioCMS - dynamic import to handle conditional availability
+let runSDK, SDKCoreJs;
 if (!post) {
 	try {
 		// Dynamic import to handle case where studiocms:sdk is not available
-		const { runSDK, SDKCoreJs } = await import('studiocms:sdk');
+		({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 		const allPages = await runSDK(SDKCoreJs.GET.pages());
 		const studiocmsPage = allPages
 			.map(({ data }) => data)

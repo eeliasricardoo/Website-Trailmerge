@@ -17,11 +17,13 @@ import '../../styles/global.css';
 
 // Import new redesigned components
 import NavbarNew from '../../components/new/NavbarNew.astro';
+import FeaturedPostsNew from '../../components/new/FeaturedPostsNew.astro';
+import AllPostsNew from '../../components/new/AllPostsNew.astro';
 import FooterNew from '../../components/new/FooterNew.astro';
-// Placeholder imports for new components we will create
-import ServicesHeroNew from '../../components/new/ServicesHeroNew.astro';
-import CapabilitiesNew from '../../components/new/CapabilitiesNew.astro';
-import OurProcessNew from '../../components/new/OurProcessNew.astro';
+
+// Import blog data
+import { getAllPosts } from '../../data/blogPosts';
+import { getAllPostsEs } from '../../data/blogPosts-es';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -39,6 +41,59 @@ const isStaging =
 	Astro.site?.hostname === 'staging.trailmerge.com' ||
 	Astro.url.hostname === 'staging.trailmerge.com';
 const htmlLang = lang === 'es' ? 'es' : 'en-US';
+
+// Get static posts (existing)
+const staticPosts = lang === 'en' ? getAllPosts() : getAllPostsEs();
+
+// Get StudioCMS blog posts - dynamic import to handle conditional availability
+let studiocmsPosts: any[] = [];
+let runSDK, SDKCoreJs;
+try {
+	({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
+	const allPages = await runSDK(SDKCoreJs.GET.pages());
+	studiocmsPosts = allPages
+		.map(({ data }) => data)
+		.filter(({ package: pkg }) => pkg === '@studiocms/blog')
+		.map((page) => ({
+			slug: page.slug,
+			title: page.title || '',
+			excerpt: page.excerpt || '',
+			date: page.publishedAt
+				? new Date(page.publishedAt)
+						.toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})
+						.toUpperCase()
+				: '',
+			publishedAt: page.publishedAt ? new Date(page.publishedAt) : new Date(0),
+			category: page.category || 'BLOG',
+			image: page.image || '',
+			imageAlt: page.imageAlt || page.title || '',
+			content: page.content || '',
+			author: {
+				name: page.author?.name || 'Trailmerge Team',
+				image: page.author?.image || '/images/default-author.png',
+				bio: page.author?.bio || '',
+			},
+			fromStudioCMS: true,
+		}));
+} catch (error) {
+	console.warn('StudioCMS posts not available:', error);
+}
+
+// Combine posts: StudioCMS posts first, then static posts
+// Sort all posts by date (most recent first)
+const blogPosts = [...studiocmsPosts, ...staticPosts].sort((a, b) => {
+	const dateA =
+		a.publishedAt ||
+		(a.date ? new Date(a.date.replace(/(\w+)\s+(\d+),\s+(\d+)/, '$2 $1 $3')) : new Date(0));
+	const dateB =
+		b.publishedAt ||
+		(b.date ? new Date(b.date.replace(/(\w+)\s+(\d+),\s+(\d+)/, '$2 $1 $3')) : new Date(0));
+	return dateB.getTime() - dateA.getTime(); // Most recent first
+});
 ---
 
 <!doctype html>
@@ -50,8 +105,8 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		<meta name="generator" content={Astro.generator} />
 
 		<SEOHead
-			title="Services - Trailmerge"
-			description="Trailmerge services: Consulting, Design, and Development."
+			title={t('blog.seo.title')}
+			description={t('blog.seo.description')}
 			canonicalURL={canonicalURL}
 			lang={lang}
 			alternateUrls={alternateUrls}
@@ -66,9 +121,9 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		/>
 
 		<SEOSchema
-			type="organization"
-			pageTitle="Services - Trailmerge"
-			pageDescription="Trailmerge services"
+			type="website"
+			pageTitle={t('blog.seo.title')}
+			pageDescription={t('blog.seo.description')}
 		/>
 
 		<ViewTransitions />
@@ -76,14 +131,10 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 	<body>
 		<NavbarNew lang={lang} />
 		<main id="main-content">
-			<ServicesHeroNew lang={lang} />
-			<CapabilitiesNew lang={lang} />
-			<OurProcessNew lang={lang} />
-			<FooterNew lang={lang} />
+			<FeaturedPostsNew lang={lang} posts={blogPosts} />
+			<AllPostsNew lang={lang} posts={blogPosts} />
 		</main>
-		<script>
-			import '../../scripts/parallax';
-		</script>
+		<FooterNew lang={lang} />
 	</body>
 </html>
 
@@ -97,20 +148,18 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 				rgba(255, 255, 255, 0) 0%,
 				rgba(46, 58, 51, 0.08) 100%
 			),
-			url('/images/new/home/dot-pattern.svg'), url('/images/new/services/Group 101.svg'),
+			url('/images/new/home/dot-pattern.svg'),
 			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
 		background-size:
 			100% 100%,
 			9.24px 9.24px,
-			100% auto,
 			100% 100%;
 		background-position:
 			center,
 			0 0,
-			center 40px,
 			center;
-		background-repeat: no-repeat, repeat, no-repeat, no-repeat;
-		background-attachment: fixed, fixed, scroll, fixed;
+		background-repeat: no-repeat, repeat, no-repeat;
+		background-attachment: fixed, fixed, fixed;
 	}
 
 	body {
@@ -124,20 +173,18 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 				rgba(255, 255, 255, 0) 0%,
 				rgba(46, 58, 51, 0.08) 100%
 			),
-			url('/images/new/home/dot-pattern.svg'), url('/images/new/services/Group 101.svg'),
+			url('/images/new/home/dot-pattern.svg'),
 			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
 		background-size:
 			100% 100%,
 			9.24px 9.24px,
-			100% auto,
 			100% 100%;
 		background-position:
 			center,
 			0 0,
-			center 40px,
 			center;
-		background-repeat: no-repeat, repeat, no-repeat, no-repeat;
-		background-attachment: fixed, fixed, scroll, fixed;
+		background-repeat: no-repeat, repeat, no-repeat;
+		background-attachment: fixed, fixed, fixed;
 	}
 
 	#main-content {
@@ -145,4 +192,18 @@ const htmlLang = lang === 'es' ? 'es' : 'en-US';
 		min-height: 100vh;
 		position: relative;
 	}
+
+	/* Specific styles for NavbarNew on blog-new page */
+	body .navigation {
+		background-color: rgba(245, 246, 245, 0.6);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+	}
+
+	body .navigation .logo {
+		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
+			brightness(95%) contrast(87%);
+	}
 </style>
+

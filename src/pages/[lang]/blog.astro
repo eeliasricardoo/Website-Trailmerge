@@ -2,10 +2,7 @@
 export const prerender = false;
 
 export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'es' } },
-	];
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
 import Layout from '../../layouts/Layout.astro';
@@ -16,18 +13,19 @@ import { getAllPosts } from '../../data/blogPosts';
 import { getAllPostsEs } from '../../data/blogPosts-es';
 import { useTranslations } from '../../i18n/utils';
 
-// SSR mode - no getStaticPaths needed
+// SSR mode - getStaticPaths required for dynamic routes even in SSR mode
 const { lang } = Astro.params || { lang: 'en' };
 const t = useTranslations(lang as 'en' | 'es');
 
 // Get static posts (existing)
 const staticPosts = lang === 'en' ? getAllPosts() : getAllPostsEs();
 
-// Get StudioCMS blog posts
+// Get StudioCMS blog posts - dynamic import to handle conditional availability
 let studiocmsPosts: any[] = [];
+let runSDK, SDKCoreJs;
 try {
 	// Dynamic import to handle case where studiocms:sdk is not available
-	const { runSDK, SDKCoreJs } = await import('studiocms:sdk');
+	({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 	const allPages = await runSDK(SDKCoreJs.GET.pages());
 	studiocmsPosts = allPages
 		.map(({ data }) => data)
