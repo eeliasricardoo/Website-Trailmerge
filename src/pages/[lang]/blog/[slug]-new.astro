@@ -9,27 +9,21 @@ export async function getStaticPaths() {
 	const enPosts = getAllPosts();
 	const esPosts = getAllPostsEs();
 
-	const paths = [];
-	enPosts.forEach(post => paths.push({ params: { lang: 'en', slug: post.slug } }));
-	esPosts.forEach(post => paths.push({ params: { lang: 'es', slug: post.slug } }));
+	const paths: { params: { lang: string; slug: string } }[] = [];
+	enPosts.forEach((post) => paths.push({ params: { lang: 'en', slug: post.slug } }));
+	esPosts.forEach((post) => paths.push({ params: { lang: 'es', slug: post.slug } }));
 
 	return paths;
 }
 
-import { ViewTransitions } from 'astro:transitions';
-import SEOHead from '../../../components/SEOHead.astro';
-import SEOSchema from '../../../components/SEOSchema.astro';
+import LayoutNew from '../../../layouts/LayoutNew.astro';
 import { useTranslations } from '../../../i18n/utils';
-import { getAlternateUrls } from '../../../utils/routeMapping';
-import '../../../styles/global.css';
 
 // Import new redesigned components
-import NavbarNew from '../../../components/new/NavbarNew.astro';
 import PostHeroNew from '../../../components/new/PostHeroNew.astro';
 import PostHeaderNew from '../../../components/new/PostHeaderNew.astro';
 import PostContentNew from '../../../components/new/PostContentNew.astro';
 import PostAuthorNew from '../../../components/new/PostAuthorNew.astro';
-import FooterNew from '../../../components/new/FooterNew.astro';
 
 const { lang, slug } = Astro.params || { lang: 'en', slug: '' };
 const t = useTranslations(lang as 'en' | 'es');
@@ -45,7 +39,7 @@ if (!post) {
 		({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 		const allPages = await runSDK(SDKCoreJs.GET.pages());
 		const studiocmsPage = allPages
-			.map(({ data }) => data)
+			.map(({ data }) => data as any)
 			.find((page) => page.slug === slug && page.package === '@studiocms/blog');
 
 		if (studiocmsPage) {
@@ -141,126 +135,27 @@ const articleData = {
 	},
 	url: articleUrl,
 };
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
-const alternateUrls = getAlternateUrls(Astro.url.pathname, Astro.site?.href || '');
-const isStaging =
-	Astro.site?.hostname === 'staging.trailmerge.com' ||
-	Astro.url.hostname === 'staging.trailmerge.com';
-const htmlLang = lang === 'es' ? 'es' : 'en-US';
-
-// Generate keywords from post title and category
-const keywords =
-	lang === 'en'
-		? `${post.category}, ${post.title}, UX design, B2B SaaS, product design, Trailmerge`
-		: `${post.category}, ${post.title}, diseño UX, B2B SaaS, diseño de producto, Trailmerge`;
 ---
 
-<!doctype html>
-<html lang={htmlLang}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
-
-		<SEOHead
-			title={`${post.title} – ${t('blog.postTitleSuffix')}`}
-			description={post.excerpt}
-			canonicalURL={canonicalURL}
-			lang={lang}
-			alternateUrls={alternateUrls}
-			isStaging={isStaging}
-		/>
-
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Young+Serif&family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap"
-			rel="stylesheet"
-		/>
-
-		<SEOSchema
-			type="article"
-			pageTitle={post.title}
-			pageDescription={post.excerpt}
-			articleData={articleData}
-		/>
-
-		<ViewTransitions />
-	</head>
-	<body>
-		<NavbarNew lang={lang} />
-		<main id="main-content">
-			<PostHeroNew image={post.image} imageAlt={post.imageAlt || post.title} />
-			<PostHeaderNew
-				title={post.title}
-				date={post.date}
-				author={post.author}
-				category={categoryDisplay}
-			/>
-			<PostContentNew content={post.content} />
-			<PostAuthorNew author={post.author} />
-		</main>
-		<FooterNew lang={lang} />
-	</body>
-</html>
+<LayoutNew
+	title={`${post.title} – ${t('blog.postTitleSuffix')}`}
+	description={post.excerpt}
+	lang={lang}
+	schemaType="article"
+	articleData={articleData}
+>
+	<PostHeroNew image={post.image} imageAlt={post.imageAlt || post.title} />
+	<PostHeaderNew
+		title={post.title}
+		date={post.date}
+		author={post.author}
+		category={categoryDisplay}
+	/>
+	<PostContentNew content={post.content} />
+	<PostAuthorNew author={post.author} />
+</LayoutNew>
 
 <style is:global>
-	html {
-		width: 100%;
-		min-height: 100vh;
-		background:
-			radial-gradient(
-				256.09% 112.04% at 96.63% 6.02%,
-				rgba(255, 255, 255, 0) 0%,
-				rgba(46, 58, 51, 0.08) 100%
-			),
-			url('/images/new/home/dot-pattern.svg'),
-			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
-		background-size:
-			100% 100%,
-			9.24px 9.24px,
-			100% 100%;
-		background-position:
-			center,
-			0 0,
-			center;
-		background-repeat: no-repeat, repeat, no-repeat;
-		background-attachment: fixed, fixed, fixed;
-	}
-
-	body {
-		width: 100vw;
-		min-height: 100vh;
-		overflow-x: hidden;
-		position: relative;
-		background:
-			radial-gradient(
-				256.09% 112.04% at 96.63% 6.02%,
-				rgba(255, 255, 255, 0) 0%,
-				rgba(46, 58, 51, 0.08) 100%
-			),
-			url('/images/new/home/dot-pattern.svg'),
-			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
-		background-size:
-			100% 100%,
-			9.24px 9.24px,
-			100% 100%;
-		background-position:
-			center,
-			0 0,
-			center;
-		background-repeat: no-repeat, repeat, no-repeat;
-		background-attachment: fixed, fixed, fixed;
-	}
-
-	#main-content {
-		width: 100%;
-		min-height: 100vh;
-		position: relative;
-	}
-
 	/* Specific styles for NavbarNew on post-new page */
 	body .navigation {
 		background-color: rgba(245, 246, 245, 0.6);
@@ -282,4 +177,3 @@ const keywords =
 		font-weight: 400 !important;
 	}
 </style>
-
