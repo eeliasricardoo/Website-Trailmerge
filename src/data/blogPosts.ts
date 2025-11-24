@@ -13,6 +13,7 @@ export interface BlogPost {
 		bio: string;
 	};
 	imageCredit?: string;
+	fromStudioCMS?: boolean;
 }
 
 export const blogPosts: BlogPost[] = [
