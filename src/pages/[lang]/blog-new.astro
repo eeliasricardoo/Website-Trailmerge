@@ -15,6 +15,7 @@ import AllPostsNew from '../../components/new/AllPostsNew.astro';
 // Import blog data
 import { getAllPosts } from '../../data/blogPosts';
 import { getAllPostsEs } from '../../data/blogPosts-es';
+import type { BlogPost } from '../../types/blog';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -27,50 +28,54 @@ if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
 
 const t = useTranslations(lang as 'en' | 'es');
 
-// Get static posts (existing)
-const staticPosts = lang === 'en' ? getAllPosts() : getAllPostsEs();
+// Get static posts (existing) - cast to BlogPost[] as they might slightly differ but are compatible
+const staticPosts: BlogPost[] = (lang === 'en'
+	? getAllPosts()
+	: getAllPostsEs()) as unknown as BlogPost[];
 
 // Get StudioCMS blog posts - dynamic import to handle conditional availability
-let studiocmsPosts: any[] = [];
+let studiocmsPosts: BlogPost[] = [];
 let runSDK, SDKCoreJs;
 try {
 	({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 	const allPages = await runSDK(SDKCoreJs.GET.pages());
 	studiocmsPosts = allPages
-		.map(({ data }) => data as any)
-		.filter(({ package: pkg }) => pkg === '@studiocms/blog')
-		.map((page) => ({
-			slug: page.slug,
-			title: page.title || '',
-			excerpt: page.excerpt || '',
-			date: page.publishedAt
-				? new Date(page.publishedAt)
-						.toLocaleDateString('en-US', {
-							year: 'numeric',
-							month: 'long',
-							day: 'numeric',
-						})
-						.toUpperCase()
-				: '',
-			publishedAt: page.publishedAt ? new Date(page.publishedAt) : new Date(0),
-			category: page.category || 'BLOG',
-			image: page.image || '',
-			imageAlt: page.imageAlt || page.title || '',
-			content: page.content || '',
-			author: {
-				name: page.author?.name || 'Trailmerge Team',
-				image: page.author?.image || '/images/default-author.png',
-				bio: page.author?.bio || '',
-			},
-			fromStudioCMS: true,
-		}));
+		.map(({ data }: { data: any }) => data)
+		.filter(({ package: pkg }: { package: string }) => pkg === '@studiocms/blog')
+		.map(
+			(page: any): BlogPost => ({
+				slug: page.slug,
+				title: page.title || '',
+				excerpt: page.excerpt || '',
+				date: page.publishedAt
+					? new Date(page.publishedAt)
+							.toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'long',
+								day: 'numeric',
+							})
+							.toUpperCase()
+					: '',
+				publishedAt: page.publishedAt ? new Date(page.publishedAt) : new Date(0),
+				category: page.category || 'BLOG',
+				image: page.image || '',
+				imageAlt: page.imageAlt || page.title || '',
+				content: page.content || '',
+				author: {
+					name: page.author?.name || 'Trailmerge Team',
+					image: page.author?.image || '/images/default-author.png',
+					bio: page.author?.bio || '',
+				},
+				fromStudioCMS: true,
+			})
+		);
 } catch (error) {
 	console.warn('StudioCMS posts not available:', error);
 }
 
 // Combine posts: StudioCMS posts first, then static posts
 // Sort all posts by date (most recent first)
-const blogPosts = [...studiocmsPosts, ...staticPosts].sort((a, b) => {
+const blogPosts: BlogPost[] = [...studiocmsPosts, ...staticPosts].sort((a, b) => {
 	const dateA =
 		a.publishedAt ||
 		(a.date ? new Date(a.date.replace(/(\w+)\s+(\d+),\s+(\d+)/, '$2 $1 $3')) : new Date(0));
@@ -86,22 +91,8 @@ const blogPosts = [...studiocmsPosts, ...staticPosts].sort((a, b) => {
 	description={t('blog.seo.description')}
 	lang={lang}
 	schemaType="website"
+	navTheme="solid-glass"
 >
 	<FeaturedPostsNew lang={lang} posts={blogPosts} />
 	<AllPostsNew lang={lang} posts={blogPosts} />
 </LayoutNew>
-
-<style is:global>
-	/* Specific styles for NavbarNew on blog-new page */
-	body .navigation {
-		background-color: rgba(245, 246, 245, 0.6);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
-	}
-
-	body .navigation .logo {
-		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
-			brightness(95%) contrast(87%);
-	}
-</style>

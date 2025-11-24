@@ -25,50 +25,13 @@ if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<LayoutNew title={t('about.seo.title')} description={t('about.seo.description')} lang={lang}>
+<LayoutNew
+	title={t('about.seo.title')}
+	description={t('about.seo.description')}
+	lang={lang}
+	navTheme="glass"
+>
 	<AboutHeroNew lang={lang} />
 	<OurValuesNew lang={lang} />
 	<OurHistoryNew lang={lang} />
 </LayoutNew>
-
-<style is:global>
-	/* Override global styles for navbar in about-new page to match home-new */
-	body .navigation {
-		background-color: transparent !important;
-	}
-
-	body .navigation.scrolled {
-		background-color: rgba(245, 246, 245, 0.6) !important;
-		backdrop-filter: blur(12px) !important;
-		-webkit-backdrop-filter: blur(12px) !important;
-		border-bottom: 1px solid rgba(46, 58, 51, 0.1) !important;
-	}
-
-	body .navigation .brand {
-		background: none !important;
-		border: none !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		box-shadow: none !important;
-	}
-
-	body .navigation .logo,
-	body .navigation .nav-logo {
-		background: none !important;
-		border: none !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		box-shadow: none !important;
-		outline: none !important;
-	}
-
-	/* Ensure grid-5 styles don't affect navbar logo */
-	body .navigation .grid-5 .logo,
-	body .grid-5 .navigation .logo {
-		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
-			brightness(95%) contrast(87%) !important;
-		opacity: 1 !important;
-		max-width: none !important;
-		height: 32px !important;
-	}
-</style>

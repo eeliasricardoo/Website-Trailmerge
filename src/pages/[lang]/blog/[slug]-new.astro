@@ -25,12 +25,16 @@ import PostHeaderNew from '../../../components/new/PostHeaderNew.astro';
 import PostContentNew from '../../../components/new/PostContentNew.astro';
 import PostAuthorNew from '../../../components/new/PostAuthorNew.astro';
 
+import type { BlogPost } from '../../../types/blog';
+
 const { lang, slug } = Astro.params || { lang: 'en', slug: '' };
 const t = useTranslations(lang as 'en' | 'es');
 
 // Get static posts
-const staticPosts = lang === 'en' ? getAllPosts() : getAllPostsEs();
-let post = staticPosts.find((p) => p.slug === slug);
+const staticPosts: BlogPost[] = (lang === 'en'
+	? getAllPosts()
+	: getAllPostsEs()) as unknown as BlogPost[];
+let post: BlogPost | undefined = staticPosts.find((p) => p.slug === slug);
 
 // If not found in static posts, try StudioCMS - dynamic import to handle conditional availability
 let runSDK, SDKCoreJs;
@@ -39,8 +43,8 @@ if (!post) {
 		({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 		const allPages = await runSDK(SDKCoreJs.GET.pages());
 		const studiocmsPage = allPages
-			.map(({ data }) => data as any)
-			.find((page) => page.slug === slug && page.package === '@studiocms/blog');
+			.map(({ data }: { data: any }) => data)
+			.find((page: any) => page.slug === slug && page.package === '@studiocms/blog');
 
 		if (studiocmsPage) {
 			post = {
@@ -56,6 +60,7 @@ if (!post) {
 							})
 							.toUpperCase()
 					: '',
+				publishedAt: studiocmsPage.publishedAt ? new Date(studiocmsPage.publishedAt) : new Date(0),
 				category: studiocmsPage.category || 'BLOG',
 				image: studiocmsPage.image || '',
 				imageAlt: studiocmsPage.imageAlt || studiocmsPage.title || '',
@@ -143,6 +148,7 @@ const articleData = {
 	lang={lang}
 	schemaType="article"
 	articleData={articleData}
+	navTheme="solid-glass"
 >
 	<PostHeroNew image={post.image} imageAlt={post.imageAlt || post.title} />
 	<PostHeaderNew
@@ -156,19 +162,6 @@ const articleData = {
 </LayoutNew>
 
 <style is:global>
-	/* Specific styles for NavbarNew on post-new page */
-	body .navigation {
-		background-color: rgba(245, 246, 245, 0.6);
-		backdrop-filter: blur(12px);
-		-webkit-backdrop-filter: blur(12px);
-		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
-	}
-
-	body .navigation .logo {
-		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
-			brightness(95%) contrast(87%);
-	}
-
 	/* Ensure post content titles use Young Serif */
 	.post-content-body h2,
 	.post-content-body h3,

@@ -42,9 +42,24 @@ const LAYER_CONFIGS = [
 	},
 ];
 
+interface LayerConfig {
+	className: string;
+	transform: (y: number, p: number) => string;
+}
+
+interface Layer {
+	element: HTMLElement;
+	speed: number;
+	config?: LayerConfig;
+	currentY: number;
+	targetY: number;
+	currentProgress: number;
+	targetProgress: number;
+}
+
 class ParallaxController {
 	private container: HTMLElement;
-	private layers: any[];
+	private layers: Layer[];
 	private isVisible: boolean = false;
 	private isHero: boolean = false;
 	private hasRendered: boolean = false;

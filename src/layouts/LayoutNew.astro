@@ -15,6 +15,7 @@ interface Props {
 	canonicalURL?: string;
 	schemaType?: 'organization' | 'article' | 'website';
 	articleData?: any; // Define more strictly if needed
+	navTheme?: 'default' | 'glass' | 'solid-glass';
 }
 
 const {
@@ -24,6 +25,7 @@ const {
 	canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
 	schemaType = 'organization',
 	articleData,
+	navTheme = 'default',
 } = Astro.props;
 
 const t = useTranslations(lang as 'en' | 'es');
@@ -72,7 +74,7 @@ const pageDescription = description || t('homepage.seo.description');
 		<ViewTransitions />
 	</head>
 	<body>
-		<NavbarNew lang={lang} />
+		<NavbarNew lang={lang} theme={navTheme} />
 		<main id="main-content">
 			<slot />
 			<FooterNew lang={lang} />
