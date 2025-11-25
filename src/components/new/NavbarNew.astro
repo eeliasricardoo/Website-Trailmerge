@@ -6,9 +6,10 @@ import ButtonNew from './ButtonNew.astro';
 
 export interface Props {
 	lang?: string;
+	theme?: 'default' | 'glass' | 'solid-glass';
 }
 
-const { lang = 'en' } = Astro.props;
+const { lang = 'en', theme = 'default' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 
 // Get current path for language switcher
@@ -19,7 +20,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 ---
 
 <!-- Navigation -->
-<div class="navigation" role="banner">
+<div class={`navigation theme-${theme}`} role="banner">
 	<div class="navigation-container-full">
 		<a
 			href={lang === 'es' ? '/es/home-new/' : '/en/home-new/'}
@@ -244,11 +245,39 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 			transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 	}
 
-	.navigation.scrolled {
+	/* Theme: Default (Transparent -> Solid Sand) */
+	.navigation.theme-default.scrolled {
 		background-color: #f8ebdb;
 		backdrop-filter: blur(16px);
 		-webkit-backdrop-filter: blur(16px);
 		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+	}
+
+	/* Theme: Glass (Transparent -> Glassmorphism) */
+	.navigation.theme-glass.scrolled {
+		background-color: rgba(245, 246, 245, 0.6);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+	}
+
+	/* Theme: Solid Glass (Always Glassmorphism) */
+	.navigation.theme-solid-glass {
+		background-color: rgba(245, 246, 245, 0.6);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+	}
+
+	/* Ensure logo color is correct for all themes */
+	.logo {
+		width: auto;
+		height: 32px;
+		display: block;
+		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
+			brightness(95%) contrast(87%);
+		border: none;
+		outline: none;
 	}
 
 	.navigation-container-full {
@@ -265,7 +294,8 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 	}
 
 	@media (min-width: 769px) {
-		.navigation.scrolled {
+		.navigation.scrolled,
+		.navigation.theme-solid-glass {
 			top: 12px;
 			left: 12px;
 			right: 12px;
@@ -275,7 +305,8 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 		}
 
-		.navigation.scrolled .navigation-container-full {
+		.navigation.scrolled .navigation-container-full,
+		.navigation.theme-solid-glass .navigation-container-full {
 			padding: 8px 24px;
 			height: 56px;
 		}
@@ -284,16 +315,6 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 	.brand {
 		display: flex;
 		align-items: center;
-	}
-
-	.logo {
-		width: auto;
-		height: 32px;
-		display: block;
-		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
-			brightness(95%) contrast(87%);
-		border: none;
-		outline: none;
 	}
 
 	.nav-menu-green {

@@ -2,25 +2,16 @@
 export const prerender = false;
 
 export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'es' } },
-	];
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
-import { ViewTransitions } from 'astro:transitions';
-import SEOHead from '../../components/SEOHead.astro';
-import SEOSchema from '../../components/SEOSchema.astro';
+import LayoutNew from '../../layouts/LayoutNew.astro';
 import { useTranslations } from '../../i18n/utils';
-import { getAlternateUrls } from '../../utils/routeMapping';
-import '../../styles/global.css';
 
 // Import new redesigned components
-import NavbarNew from '../../components/new/NavbarNew.astro';
 import AboutHeroNew from '../../components/new/AboutHeroNew.astro';
 import OurValuesNew from '../../components/new/OurValuesNew.astro';
 import OurHistoryNew from '../../components/new/OurHistoryNew.astro';
-import FooterNew from '../../components/new/FooterNew.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -32,150 +23,15 @@ if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
 }
 
 const t = useTranslations(lang as 'en' | 'es');
-const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
-const alternateUrls = getAlternateUrls(Astro.url.pathname, Astro.site?.href || '');
-const isStaging =
-	Astro.site?.hostname === 'staging.trailmerge.com' ||
-	Astro.url.hostname === 'staging.trailmerge.com';
-const htmlLang = lang === 'es' ? 'es' : 'en-US';
 ---
 
-<!doctype html>
-<html lang={htmlLang}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
-
-		<SEOHead
-			title={t('about.seo.title')}
-			description={t('about.seo.description')}
-			canonicalURL={canonicalURL}
-			lang={lang}
-			alternateUrls={alternateUrls}
-			isStaging={isStaging}
-		/>
-
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Young+Serif&family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap"
-			rel="stylesheet"
-		/>
-
-		<SEOSchema
-			type="organization"
-			pageTitle={t('about.seo.title')}
-			pageDescription={t('about.seo.description')}
-		/>
-
-		<ViewTransitions />
-	</head>
-	<body>
-		<NavbarNew lang={lang} />
-		<main id="main-content">
-			<AboutHeroNew lang={lang} />
-			<OurValuesNew lang={lang} />
-			<OurHistoryNew lang={lang} />
-			<FooterNew lang={lang} />
-		</main>
-	</body>
-</html>
-
-<style is:global>
-	html {
-		width: 100%;
-		min-height: 100vh;
-		background:
-			radial-gradient(
-				256.09% 112.04% at 96.63% 6.02%,
-				rgba(255, 255, 255, 0) 0%,
-				rgba(46, 58, 51, 0.08) 100%
-			),
-			url('/images/new/home/dot-pattern.svg'),
-			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
-		background-size:
-			100% 100%,
-			9.24px 9.24px,
-			100% 100%;
-		background-position:
-			center,
-			0 0,
-			center;
-		background-repeat: no-repeat, repeat, no-repeat;
-		background-attachment: fixed, fixed, fixed;
-	}
-
-	body {
-		width: 100vw;
-		min-height: 100vh;
-		overflow-x: hidden;
-		position: relative;
-		background:
-			radial-gradient(
-				256.09% 112.04% at 96.63% 6.02%,
-				rgba(255, 255, 255, 0) 0%,
-				rgba(46, 58, 51, 0.08) 100%
-			),
-			url('/images/new/home/dot-pattern.svg'),
-			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
-		background-size:
-			100% 100%,
-			9.24px 9.24px,
-			100% 100%;
-		background-position:
-			center,
-			0 0,
-			center;
-		background-repeat: no-repeat, repeat, no-repeat;
-		background-attachment: fixed, fixed, fixed;
-	}
-
-	#main-content {
-		width: 100%;
-		min-height: 100vh;
-		position: relative;
-	}
-
-	/* Override global styles for navbar in about-new page to match home-new */
-	body .navigation {
-		background-color: transparent !important;
-	}
-
-	body .navigation.scrolled {
-		background-color: rgba(245, 246, 245, 0.6) !important;
-		backdrop-filter: blur(12px) !important;
-		-webkit-backdrop-filter: blur(12px) !important;
-		border-bottom: 1px solid rgba(46, 58, 51, 0.1) !important;
-	}
-
-	body .navigation .brand {
-		background: none !important;
-		border: none !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		box-shadow: none !important;
-	}
-
-	body .navigation .logo,
-	body .navigation .nav-logo {
-		background: none !important;
-		border: none !important;
-		padding: 0 !important;
-		margin: 0 !important;
-		box-shadow: none !important;
-		outline: none !important;
-	}
-
-	/* Ensure grid-5 styles don't affect navbar logo */
-	body .navigation .grid-5 .logo,
-	body .grid-5 .navigation .logo {
-		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
-			brightness(95%) contrast(87%) !important;
-		opacity: 1 !important;
-		max-width: none !important;
-		height: 32px !important;
-	}
-</style>
-
+<LayoutNew
+	title={t('about.seo.title')}
+	description={t('about.seo.description')}
+	lang={lang}
+	navTheme="glass"
+>
+	<AboutHeroNew lang={lang} />
+	<OurValuesNew lang={lang} />
+	<OurHistoryNew lang={lang} />
+</LayoutNew>

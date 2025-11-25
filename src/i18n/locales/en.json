@@ -147,5 +147,134 @@
     },
     "lastUpdated": "Last Updated",
     "content": "Trailmerge Ltd Co. (\"we,\" \"our,\" or \"us\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.\n\nWe collect information that you provide directly to us, such as when you fill out a contact form, subscribe to our newsletter, or communicate with us. This may include your name, email address, company name, and any other information you choose to provide.\n\nWe use analytics services to understand how visitors interact with our website. We use ContentSquare, a user experience analytics platform, to help us improve our website's performance and user experience. This service may collect information about your device, browser, and how you interact with our site.\n\nWe use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.\n\nWe use the information we collect to provide, maintain, and improve our services, respond to your inquiries, send you marketing communications (with your consent), and comply with legal obligations.\n\nWe do not sell, trade, or rent your personal information to third parties. We may share your information with service providers who assist us in operating our website and conducting our business, subject to confidentiality agreements.\n\nWe implement appropriate technical and organizational measures to protect your personal information. However, no method of transmission over the Internet is 100% secure.\n\nYou have the right to access, correct, or delete your personal information. You may also opt-out of marketing communications at any time by contacting us or using the unsubscribe link in our emails.\n\n**GDPR Compliance (European Union)**\n\nIf you are a resident of the European Economic Area (EEA), you have certain data protection rights under the General Data Protection Regulation (GDPR). We are committed to respecting these rights, which include:\n\n• The right to access – You have the right to request copies of your personal data.\n• The right to rectification – You have the right to request that we correct any information you believe is inaccurate or complete information you believe is incomplete.\n• The right to erasure – You have the right to request that we erase your personal data, under certain conditions.\n• The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.\n• The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.\n• The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.\n\nWe process your personal data based on lawful grounds, including your consent, contractual necessity, legal obligations, and our legitimate business interests. To exercise any of these rights, please contact us at hello@trailmerge.com.\n\n**CCPA Compliance (California)**\n\nIf you are a California resident, the California Consumer Privacy Act (CCPA) provides you with specific rights regarding your personal information:\n\n• The right to know – You have the right to request that we disclose what personal information we collect, use, disclose, and sell.\n• The right to delete – You have the right to request that we delete your personal information, subject to certain exceptions.\n• The right to opt-out – You have the right to opt-out of the sale of your personal information. Note that we do not sell your personal information.\n• The right to non-discrimination – We will not discriminate against you for exercising any of your CCPA rights.\n\nTo exercise any of these rights, please contact us at hello@trailmerge.com or call us at our business address. We will verify your identity before processing your request and respond within 45 days.\n\nIf you have questions about this Privacy Policy, please contact us at Trailmerge Ltd Co., 3100 Interstate North Circle SE, Suite 200, Atlanta, GA 30339, or email us at hello@trailmerge.com."
+  },
+  "heroNew": {
+    "title": "Elevate your<br />operations<br />software"
+  },
+  "asideNew": {
+    "title": "Take the design-first path to the top"
+  },
+  "ourApproachNew": {
+    "title": "Our Approach",
+    "p1": {
+      "part1": "Trailmerge",
+      "part2": "is a",
+      "part3": "design-first software development agency.",
+      "part4": "We are much more interested in",
+      "part5": "understanding and solving real business problems",
+      "part6": "than in just moving pixels, building out workflows, and writing code (though when we do these things, we do them with a special care for our craft)."
+    },
+    "p2": {
+      "part1": "Research and discovery aren't just checklist items for us, and Agile isn't just about timelines in our process. We are all about",
+      "part2": "enabling your team's long-term success."
+    },
+    "cta": "Start a Project"
+  },
+  "recentProjectsNew": {
+    "title": "Recent Projects",
+    "project1": {
+      "title": "Industrial Touchscreen for Technicians",
+      "description": "Ground-up redesign of <strong>localized touchscreen app</strong> to better diagnose and resolve mechanical issues, for a <strong>Fortune 500 equipment manufacturer</strong>.",
+      "alt": "Industrial Touchscreen"
+    },
+    "project2": {
+      "title": "Operations for Growing Enterprise",
+      "description": "Design & development support for a <strong>custom internal platform</strong> for a growing <strong>home and commercial services</strong> company with operations in 5 states.",
+      "alt": "Operations Platform"
+    },
+    "project3": {
+      "title": "Accounting & Reporting Platform",
+      "description": "<strong>Strategy, design, and development</strong> for an accounting SaaS making <strong>financial reporting</strong> more accessible across multiple businesses.",
+      "alt": "Accounting Platform"
+    }
+  },
+  "servicesNew": {
+    "seo": {
+      "title": "Services - Trailmerge",
+      "description": "Trailmerge services: Consulting, Design, and Development."
+    },
+    "hero": {
+      "title": "Our Services",
+      "text": "Trailmerge is a full-service process consulting and custom software development firm, here for you from early discovery through delivery."
+    },
+    "capabilities": {
+      "title": "Capabilities",
+      "list": {
+        "item1": "Workflow & Interface Design",
+        "item2": "Iterative Prototyping",
+        "item3": "Digital Product Management",
+        "item4": "Integrations",
+        "item5": "Custom Software Development"
+      }
+    },
+    "process": {
+      "title": "Our Process",
+      "description": "Our methodology is based on <strong>design thinking and Agile</strong> principals, emphasizing rapid learning, deep understanding, and flexibility. We don't just create high-quality screens and workflows. We design and develop <strong>well-built, usable tools that truly solve the core problems</strong> your business is facing, because, otherwise, what's the point?",
+      "steps": {
+        "step1": {
+          "title": "Consulting & Kickoff",
+          "description": "We listen to your vision for your operational growth and provide guidance for next steps in the journey.",
+          "alt": "Compass icon"
+        },
+        "step2": {
+          "title": "Research & Discovery",
+          "description": "We audit your processes and/or existing systems to identify quick wins and opportunities for system-wide efficiency.",
+          "alt": "Magnifying glass icon"
+        },
+        "step3": {
+          "title": "Project Scoping",
+          "description": "Based on our collaborative research and strategy, we define and measure the project to determine Agile-friendly milestones.",
+          "alt": "Map icon"
+        },
+        "step4": {
+          "title": "Implementation",
+          "description": "We get to work on designing and developing, using our team's unique blend of skills, best practices, and powerful technologies.",
+          "alt": "Multi-tool icon"
+        },
+        "step5": {
+          "title": "Team Integration",
+          "description": "We value proactive communication and close collaboration with your internal team. It's the best way to create the best software!",
+          "alt": "Walkie talkies icon"
+        },
+        "step6": {
+          "title": "Delivery & Iteration",
+          "description": "We aim to deliver value continuously, so your company can start benefiting (and celebrating!) as we reach strategic milestones.",
+          "alt": "Skillet icon"
+        }
+      }
+    }
+  },
+  "contactNew": {
+    "seo": {
+      "title": "Contact Us - Trailmerge",
+      "description": "Get in touch with Trailmerge to start your digital transformation journey."
+    },
+    "title": "Contact Us",
+    "description": "Our journey together starts with a simple first step. Send us a message to tell us a little about your project, your ideas, your dream. We'll be on our way to making it a reality."
+  },
+  "aboutNew": {
+    "hero": {
+      "title": "About Trailmerge",
+      "text": "As your digital transformation, user experience, and custom software development team, Trailmerge improves your team's workflows so you can advance towards your goals."
+    },
+    "values": {
+      "title": "Our Values",
+      "text": "At Trailmerge, our vision is to promote abundance of life and opportunity.",
+      "list": {
+        "item1": "Opportunity for talented and passionate people.",
+        "item2": "Individual responsibility, shared successes.",
+        "item3": "Technology for people, not people for technology.",
+        "item4": "A culture of honor and freedom.",
+        "item5": "Our team members are human, not \"resources\".",
+        "item6": "All of us grow and all of us mentor.",
+        "item7": "Proactive and friendly communication."
+      }
+    },
+    "history": {
+      "title": "Our History",
+      "p1": "Trailmerge was founded in 2020 by Mark Tegtmeier, a user experience (UX) design leader in Atlanta, with experience in Fortune 500 enterprise software and innovative startup contexts.",
+      "p2": "The company initially launched as a UX design agency, and has since added software development capabilities to serve as a <strong>complete strategic partner</strong> for our clients, while retaining a <strong>problem solving, design-first ethos</strong>.",
+      "p3": "Trailmerge now helps companies of various sizes to create <strong>efficiencies in their operations and technology</strong> through in-depth consulting, user research, digital product management, design and software development."
+    }
   }
 }

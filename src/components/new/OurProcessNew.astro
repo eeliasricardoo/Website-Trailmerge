@@ -10,46 +10,40 @@ const t = useTranslations(lang as 'en' | 'es');
 
 const processSteps = [
 	{
-		title: 'Consulting & Kickoff',
-		description:
-			'We listen to your vision for your operational growth and provide guidance for next steps in the journey.',
+		title: t('servicesNew.process.steps.step1.title'),
+		description: t('servicesNew.process.steps.step1.description'),
 		image: '/images/new/services/Our Process/Compass.png',
-		alt: 'Compass icon',
+		alt: t('servicesNew.process.steps.step1.alt'),
 	},
 	{
-		title: 'Research & Discovery',
-		description:
-			'We audit your processes and/or existing systems to identify quick wins and opportunities for system-wide efficiency.',
+		title: t('servicesNew.process.steps.step2.title'),
+		description: t('servicesNew.process.steps.step2.description'),
 		image: '/images/Illustration---Magnifying-Glass.png',
-		alt: 'Magnifying glass icon',
+		alt: t('servicesNew.process.steps.step2.alt'),
 	},
 	{
-		title: 'Project Scoping',
-		description:
-			'Based on our collaborative research and strategy, we define and measure the project to determine Agile-friendly milestones.',
+		title: t('servicesNew.process.steps.step3.title'),
+		description: t('servicesNew.process.steps.step3.description'),
 		image: '/images/new/services/Our Process/Map.png',
-		alt: 'Map icon',
+		alt: t('servicesNew.process.steps.step3.alt'),
 	},
 	{
-		title: 'Implementation',
-		description:
-			"We get to work on designing and developing, using our team's unique blend of skills, best practices, and powerful technologies.",
+		title: t('servicesNew.process.steps.step4.title'),
+		description: t('servicesNew.process.steps.step4.description'),
 		image: '/images/new/services/Our Process/MultiTool.png',
-		alt: 'Multi-tool icon',
+		alt: t('servicesNew.process.steps.step4.alt'),
 	},
 	{
-		title: 'Team Integration',
-		description:
-			"We value proactive communication and close collaboration with your internal team. It's the best way to create the best software!",
+		title: t('servicesNew.process.steps.step5.title'),
+		description: t('servicesNew.process.steps.step5.description'),
 		image: '/images/new/services/Our Process/WalkieTalkies.png',
-		alt: 'Walkie talkies icon',
+		alt: t('servicesNew.process.steps.step5.alt'),
 	},
 	{
-		title: 'Delivery & Iteration',
-		description:
-			'We aim to deliver value continuously, so your company can start benefiting (and celebrating!) as we reach strategic milestones.',
+		title: t('servicesNew.process.steps.step6.title'),
+		description: t('servicesNew.process.steps.step6.description'),
 		image: '/images/new/services/Our Process/Skillet.png',
-		alt: 'Skillet icon',
+		alt: t('servicesNew.process.steps.step6.alt'),
 	},
 ];
 ---
@@ -57,14 +51,8 @@ const processSteps = [
 <section class="process-wrapper parallax-container">
 	<div class="process-container">
 		<div class="process-header parallax-layer" data-speed="0.2">
-			<h2 class="section-title">Our Process</h2>
-			<p class="section-description">
-				Our methodology is based on <strong>design thinking and Agile</strong> principals, emphasizing
-				rapid learning, deep understanding, and flexibility. We don't just create high-quality screens
-				and workflows. We design and develop <strong
-					>well-built, usable tools that truly solve the core problems</strong
-				> your business is facing, because, otherwise, what's the point?
-			</p>
+			<h2 class="section-title">{t('servicesNew.process.title')}</h2>
+			<p class="section-description" set:html={t('servicesNew.process.description')} />
 		</div>
 
 		<div class="process-grid">

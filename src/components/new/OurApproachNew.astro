@@ -27,25 +27,23 @@ const t = useTranslations(lang as 'en' | 'es');
 			loading="lazy"
 		/>
 		<div class="our-approach-content parallax-layer" data-speed="0.1">
-			<h3 class="our-approach-title">Our Approach</h3>
+			<h3 class="our-approach-title">{t('ourApproachNew.title')}</h3>
 			<div class="our-approach-text">
 				<p>
-					<span class="w-700">Trailmerge</span>
-					<span class="w-500">is a</span>
-					<span class="w-700">design-first software development agency.</span> We are much more interested
-					in <span class="w-700">understanding and solving real business problems</span> than in just
-					moving pixels, building out workflows, and writing code (though when we do these things, we
-					do them with a special care for our craft).
+					<span class="w-700">{t('ourApproachNew.p1.part1')}</span>
+					<span class="w-500">{t('ourApproachNew.p1.part2')}</span>
+					<span class="w-700">{t('ourApproachNew.p1.part3')}</span>
+					{t('ourApproachNew.p1.part4')}
+					<span class="w-700">{t('ourApproachNew.p1.part5')}</span>
+					{t('ourApproachNew.p1.part6')}
 				</p>
 				<p>
-					Research and discovery aren't just checklist items for us, and Agile isn't just about
-					timelines in our process. We are all about <span class="w-700"
-						>enabling your team's long-term success.</span
-					>
+					{t('ourApproachNew.p2.part1')}
+					<span class="w-700">{t('ourApproachNew.p2.part2')}</span>
 				</p>
 			</div>
 			<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
-				>Start a Project</ButtonNew
+				>{t('ourApproachNew.cta')}</ButtonNew
 			>
 		</div>
 	</div>
