@@ -138,10 +138,10 @@ const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9Mcn
 		// Fallback: Monitor iframe URL changes (more reliable than DOM inspection)
 		const iframe = document.querySelector(
 			'iframe[id^="wYsDRF6aDG9YgnPCCJjiXJ"], iframe[id^="5dNTzeqzanj9McnokQfpFq"]'
-		);
+		) as HTMLIFrameElement | null;
 		if (iframe) {
 			const originalUrl = iframe.src;
-			let checkInterval = null;
+			let checkInterval: number | undefined = undefined;
 
 			// Listen for iframe load events (happens when form redirects after submission)
 			iframe.addEventListener('load', function () {
@@ -172,7 +172,7 @@ const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9Mcn
 				let checkCount = 0;
 				const maxChecks = 40; // Check for up to 20 seconds (500ms * 40)
 
-				checkInterval = setInterval(() => {
+				checkInterval = window.setInterval(() => {
 					// Stop if modal closed or already redirected
 					if (!modalBackdrop.classList.contains('active') || hasRedirected) {
 						clearInterval(checkInterval);
@@ -211,7 +211,7 @@ const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9Mcn
 			const stopChecking = () => {
 				if (checkInterval) {
 					clearInterval(checkInterval);
-					checkInterval = null;
+					checkInterval = undefined;
 				}
 			};
 
