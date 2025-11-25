@@ -44,8 +44,9 @@ const { title, date, author, category } = Astro.props;
 <style>
 	.post-header-wrapper {
 		width: 100%;
-		padding: 0 24px 0;
+		padding: 40px 24px 24px;
 		background: transparent;
+		text-align: center;
 	}
 
 	.post-header-container {
@@ -56,11 +57,10 @@ const { title, date, author, category } = Astro.props;
 	.post-title {
 		color: #54504b;
 		font-family: 'Young Serif', serif;
-		font-size: 56px;
+		font-size: 48px;
 		font-weight: 400;
 		line-height: 1.2;
-		line-height: 1.2;
-		margin: 0 0 8px 0;
+		margin: 0 0 24px 0;
 		text-align: center;
 	}
 
@@ -102,7 +102,7 @@ const { title, date, author, category } = Astro.props;
 
 	@media (max-width: 768px) {
 		.post-header-wrapper {
-			padding: 60px 24px;
+			padding: 32px 24px;
 		}
 
 		.post-title {
@@ -116,7 +116,7 @@ const { title, date, author, category } = Astro.props;
 
 	@media (max-width: 480px) {
 		.post-header-wrapper {
-			padding: 48px 16px;
+			padding: 24px 16px;
 		}
 
 		.post-title {
