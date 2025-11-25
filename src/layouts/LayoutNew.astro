@@ -64,6 +64,10 @@ const pageDescription = description || t('homepage.seo.description');
 			rel="stylesheet"
 		/>
 
+		<!-- Preconnect to Copper Forms for faster loading -->
+		<link rel="preconnect" href="https://forms.copper.com" />
+		<link rel="dns-prefetch" href="https://forms.copper.com" />
+
 		<SEOSchema
 			type={schemaType}
 			pageTitle={pageTitle}
