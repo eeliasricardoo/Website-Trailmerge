@@ -17,35 +17,39 @@ const { title, date, author, category } = Astro.props;
 		<h1 class="post-title">{title}</h1>
 		<div class="post-meta">
 			<span class="post-date">{date}</span>
-			{author && (
-				<>
-					<span class="meta-divider"> • </span>
-					<span class="post-author">{author.name}</span>
-				</>
-			)}
+			{
+				author && (
+					<>
+						<span class="meta-divider"> • </span>
+						<span class="post-author">{author.name}</span>
+					</>
+				)
+			}
 		</div>
-		{category && (
-			<div class="post-categories">
-				{category.split(' • ').map((cat, index, array) => (
-					<span class="post-category">
-						{cat}
-						{index < array.length - 1 && <span class="category-separator"> • </span>}
-					</span>
-				))}
-			</div>
-		)}
+		{
+			category && (
+				<div class="post-categories">
+					{category.split(' • ').map((cat, index, array) => (
+						<span class="post-category">
+							{cat}
+							{index < array.length - 1 && <span class="category-separator"> • </span>}
+						</span>
+					))}
+				</div>
+			)
+		}
 	</div>
 </div>
 
 <style>
 	.post-header-wrapper {
 		width: 100%;
-		padding: 80px 24px;
+		padding: 0 24px 32px;
 		background: transparent;
 	}
 
 	.post-header-container {
-		max-width: 1200px;
+		max-width: 800px;
 		margin: 0 auto;
 	}
 
@@ -119,4 +123,3 @@ const { title, date, author, category } = Astro.props;
 		}
 	}
 </style>
-
