@@ -1,9 +1,11 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 
+import type { BlogPost } from '../../types/blog';
+
 export interface Props {
 	lang?: string;
-	posts: any[];
+	posts: BlogPost[];
 }
 
 const { lang = 'en', posts = [] } = Astro.props;
@@ -24,31 +26,31 @@ const allPosts = posts.slice(4);
 	<div class="all-posts-container">
 		<h2 class="section-title">All Posts</h2>
 		<div class="all-posts-list">
-			{allPosts.map((post) => (
-				<article class="post-item">
-					<a href={`/${lang}/blog/${post.slug}-new/`} class="post-link">
-						<div class="post-image-wrapper">
-							<img
-								src={post.image}
-								alt={post.imageAlt || post.title}
-								class="post-image"
-								loading="lazy"
-							/>
-						</div>
-						<div class="post-content">
-							<h3 class="post-title">{post.title}</h3>
-							<div class="post-meta">
-								<span class="post-date">{post.date}</span>
-								{post.author && (
-									<span class="post-author"> • {post.author.name}</span>
-								)}
+			{
+				allPosts.map((post) => (
+					<article class="post-item">
+						<a href={`/${lang}/blog/${post.slug}-new/`} class="post-link">
+							<div class="post-image-wrapper">
+								<img
+									src={post.image}
+									alt={post.imageAlt || post.title}
+									class="post-image"
+									loading="lazy"
+								/>
 							</div>
-							<p class="post-excerpt">{post.excerpt}</p>
-							<span class="post-read-more">Read More</span>
-						</div>
-					</a>
-				</article>
-			))}
+							<div class="post-content">
+								<h3 class="post-title">{post.title}</h3>
+								<div class="post-meta">
+									<span class="post-date">{post.date}</span>
+									{post.author && <span class="post-author"> • {post.author.name}</span>}
+								</div>
+								<p class="post-excerpt">{post.excerpt}</p>
+								<span class="post-read-more">Read More</span>
+							</div>
+						</a>
+					</article>
+				))
+			}
 		</div>
 	</div>
 </section>
@@ -84,7 +86,7 @@ const allPosts = posts.slice(4);
 	}
 
 	.section-title {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'Young Serif', serif;
 		font-size: 56px;
 		font-weight: 400;
@@ -138,7 +140,7 @@ const allPosts = posts.slice(4);
 	}
 
 	.post-title {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'Young Serif', serif;
 		font-size: 28px;
 		font-weight: 400;
@@ -147,7 +149,7 @@ const allPosts = posts.slice(4);
 	}
 
 	.post-meta {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
 		font-size: 16px;
 		font-weight: 400;
@@ -155,7 +157,7 @@ const allPosts = posts.slice(4);
 	}
 
 	.post-excerpt {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
 		font-size: 18px;
 		font-weight: 400;
@@ -164,7 +166,7 @@ const allPosts = posts.slice(4);
 	}
 
 	.post-read-more {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
 		font-size: 16px;
 		font-weight: 600;
@@ -226,4 +228,3 @@ const allPosts = posts.slice(4);
 		}
 	}
 </style>
-
