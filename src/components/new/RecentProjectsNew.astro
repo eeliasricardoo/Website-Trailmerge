@@ -10,25 +10,22 @@ const t = useTranslations(lang as 'en' | 'es');
 
 const projects = [
 	{
-		title: 'Industrial Touchscreen for Technicians',
-		description:
-			'Ground-up redesign of <strong>localized touchscreen app</strong> to better diagnose and resolve mechanical issues, for a <strong>Fortune 500 equipment manufacturer</strong>.',
+		title: t('recentProjectsNew.project1.title'),
+		description: t('recentProjectsNew.project1.description'),
 		image: '/images/new/home/recent projectS/unsplash_sgYamIzhAhg.png',
-		alt: 'Industrial Touchscreen',
+		alt: t('recentProjectsNew.project1.alt'),
 	},
 	{
-		title: 'Operations for Growing Enterprise',
-		description:
-			'Design & development support for a <strong>custom internal platform</strong> for a growing <strong>home and commercial services</strong> company with operations in 5 states.',
+		title: t('recentProjectsNew.project2.title'),
+		description: t('recentProjectsNew.project2.description'),
 		image: '/images/new/home/recent projectS/unsplash_sgYamIzhAhg-1.png',
-		alt: 'Operations Platform',
+		alt: t('recentProjectsNew.project2.alt'),
 	},
 	{
-		title: 'Accounting & Reporting Platform',
-		description:
-			'<strong>Strategy, design, and development</strong> for an accounting SaaS making <strong>financial reporting</strong> more accessible across multiple businesses.',
+		title: t('recentProjectsNew.project3.title'),
+		description: t('recentProjectsNew.project3.description'),
 		image: '/images/new/home/recent projectS/unsplash_sgYamIzhAhg-2.png',
-		alt: 'Accounting Platform',
+		alt: t('recentProjectsNew.project3.alt'),
 	},
 ];
 ---
@@ -41,7 +38,7 @@ const projects = [
 		loading="lazy"
 	/>
 	<div class="recent-projects-container">
-		<h2 class="section-title">Recent Projects</h2>
+		<h2 class="section-title">{t('recentProjectsNew.title')}</h2>
 		<div class="projects-grid">
 			{
 				projects.map((project) => (

@@ -9,17 +9,19 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 
 const capabilities = [
-	'Workflow & Interface Design',
-	'Iterative Prototyping',
-	'Digital Product Management',
-	'Integrations',
-	'Custom Software Development',
+	t('servicesNew.capabilities.list.item1'),
+	t('servicesNew.capabilities.list.item2'),
+	t('servicesNew.capabilities.list.item3'),
+	t('servicesNew.capabilities.list.item4'),
+	t('servicesNew.capabilities.list.item5'),
 ];
 ---
 
 <section class="capabilities-wrapper parallax-container">
 	<div class="capabilities-container">
-		<h2 class="section-title parallax-layer" data-speed="0.2">Capabilities</h2>
+		<h2 class="section-title parallax-layer" data-speed="0.2">
+			{t('servicesNew.capabilities.title')}
+		</h2>
 		<div class="capabilities-list">
 			<div class="capabilities-column parallax-layer" data-speed="0.4">
 				<ul>
