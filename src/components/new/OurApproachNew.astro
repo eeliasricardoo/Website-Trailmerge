@@ -42,7 +42,7 @@ const t = useTranslations(lang as 'en' | 'es');
 					<span class="w-700">{t('ourApproachNew.p2.part2')}</span>
 				</p>
 			</div>
-			<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
+			<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'} class="cta-button"
 				>{t('ourApproachNew.cta')}</ButtonNew
 			>
 		</div>
@@ -146,8 +146,13 @@ const t = useTranslations(lang as 'en' | 'es');
 		font-weight: 500;
 	}
 
-	.w-500 {
-		font-weight: 500;
+	.cta-button {
+		width: 194px;
+		height: 56px;
+		border-radius: 4px;
+		background: #e0927d;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+		padding: 0 !important; /* Override default padding to ensure centering works with fixed dimensions */
 	}
 
 	/* Responsive Design */
