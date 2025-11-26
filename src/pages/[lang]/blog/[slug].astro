@@ -126,7 +126,13 @@ function parseSpanishDate(dateString: string): Date {
 }
 
 // Prepare article data for JSON-LD schema
-const articleUrl = new URL(`/${lang}/blog/${post.slug}`, Astro.site).href;
+// Use safe URL creation for cross-platform compatibility (Windows/Mac)
+import { safeCreateURL } from '../../../utils/urlHelpers';
+const articleUrl = safeCreateURL(
+	`/${lang}/blog/${post.slug}`,
+	Astro.site,
+	Astro.url.origin || 'https://trailmerge.com'
+);
 const articleData = {
 	title: post.title,
 	description: post.excerpt,
