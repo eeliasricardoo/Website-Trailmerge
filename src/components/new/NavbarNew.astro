@@ -33,13 +33,13 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
 
+			<a href={lang === 'es' ? '/es/about-new/' : '/en/about-new/'} id="nav-about" class="nav-link"
+				>{t('nav.about')}</a
+			>
 			<a
 				href={lang === 'es' ? '/es/services-new/' : '/en/services-new/'}
 				id="nav-services"
 				class="nav-link">{t('nav.services')}</a
-			>
-			<a href={lang === 'es' ? '/es/about-new/' : '/en/about-new/'} id="nav-about" class="nav-link"
-				>{t('nav.about')}</a
 			>
 			<a href={lang === 'es' ? '/es/blog-new/' : '/en/blog-new/'} id="nav-blog" class="nav-link"
 				>{t('nav.blog')}</a
@@ -84,20 +84,20 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 							stroke-linecap="round"
 							stroke-linejoin="round"></path>
 					</svg>
-					<span class="current-language">{lang === 'en' ? 'English' : 'Español'}</span>
+					<span class="current-language">{lang === 'en' ? 'EN' : 'ES'}</span>
 				</button>
 				<div class="language-dropdown" id="language-dropdown" role="menu">
 					<a
 						href={enUrl}
 						class={`language-option ${lang === 'en' ? 'active' : ''}`}
 						role="menuitem"
-						aria-label="Switch to English">English</a
+						aria-label="Switch to English">EN</a
 					>
 					<a
 						href={esUrl}
 						class={`language-option ${lang === 'es' ? 'active' : ''}`}
 						role="menuitem"
-						aria-label="Cambiar a Español">Español</a
+						aria-label="Cambiar a Español">ES</a
 					>
 				</div>
 			</div>

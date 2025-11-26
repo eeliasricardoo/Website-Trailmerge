@@ -17,45 +17,50 @@ const { title, date, author, category } = Astro.props;
 		<h1 class="post-title">{title}</h1>
 		<div class="post-meta">
 			<span class="post-date">{date}</span>
-			{author && (
-				<>
-					<span class="meta-divider"> • </span>
-					<span class="post-author">{author.name}</span>
-				</>
-			)}
+			{
+				author && (
+					<>
+						<span class="meta-divider"> • </span>
+						<span class="post-author">{author.name}</span>
+					</>
+				)
+			}
 		</div>
-		{category && (
-			<div class="post-categories">
-				{category.split(' • ').map((cat, index, array) => (
-					<span class="post-category">
-						{cat}
-						{index < array.length - 1 && <span class="category-separator"> • </span>}
-					</span>
-				))}
-			</div>
-		)}
+		{
+			category && (
+				<div class="post-categories">
+					{category.split(' • ').map((cat, index, array) => (
+						<span class="post-category">
+							{cat}
+							{index < array.length - 1 && <span class="category-separator"> • </span>}
+						</span>
+					))}
+				</div>
+			)
+		}
 	</div>
 </div>
 
 <style>
 	.post-header-wrapper {
 		width: 100%;
-		padding: 80px 24px;
+		padding: 40px 24px 24px;
 		background: transparent;
+		text-align: center;
 	}
 
 	.post-header-container {
-		max-width: 1200px;
+		max-width: 800px;
 		margin: 0 auto;
 	}
 
 	.post-title {
 		color: #54504b;
 		font-family: 'Young Serif', serif;
-		font-size: 56px;
+		font-size: 48px;
 		font-weight: 400;
 		line-height: 1.2;
-		margin: 0 0 16px 0;
+		margin: 0 0 24px 0;
 		text-align: center;
 	}
 
@@ -97,7 +102,7 @@ const { title, date, author, category } = Astro.props;
 
 	@media (max-width: 768px) {
 		.post-header-wrapper {
-			padding: 60px 24px;
+			padding: 32px 24px;
 		}
 
 		.post-title {
@@ -111,7 +116,7 @@ const { title, date, author, category } = Astro.props;
 
 	@media (max-width: 480px) {
 		.post-header-wrapper {
-			padding: 48px 16px;
+			padding: 24px 16px;
 		}
 
 		.post-title {
@@ -119,4 +124,3 @@ const { title, date, author, category } = Astro.props;
 		}
 	}
 </style>
-

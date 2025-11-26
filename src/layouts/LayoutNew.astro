@@ -64,12 +64,30 @@ const pageDescription = description || t('homepage.seo.description');
 			rel="stylesheet"
 		/>
 
+		<!-- Preconnect to Copper Forms for faster loading -->
+		<link rel="preconnect" href="https://forms.copper.com" />
+		<link rel="dns-prefetch" href="https://forms.copper.com" />
+
 		<SEOSchema
 			type={schemaType}
 			pageTitle={pageTitle}
 			pageDescription={pageDescription}
 			articleData={articleData}
 		/>
+
+		<!-- Cookie Consent - Silktide (async loading) -->
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css"
+			media="print"
+			onload="this.media='all'"
+		/>
+		<script
+			is:inline
+			src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
+			async
+			data-cfasync="false"></script>
 
 		<ViewTransitions />
 	</head>
@@ -83,6 +101,16 @@ const pageDescription = description || t('homepage.seo.description');
 		<script>
 			// Initialize parallax if needed globally, or keep it per page if specific
 			import '../scripts/parallax';
+			import { initCookieConsent } from '../scripts/cookieConsent';
+
+			// Get language from HTML tag
+			const htmlLang = document.documentElement.lang;
+			const lang = htmlLang === 'es' || htmlLang === 'es-ES' ? 'es' : 'en';
+
+			// Initialize cookie consent on load
+			window.addEventListener('load', () => {
+				initCookieConsent(lang);
+			});
 		</script>
 	</body>
 </html>
@@ -138,9 +166,10 @@ const pageDescription = description || t('homepage.seo.description');
 
 	#main-content {
 		width: 100%;
-		min-height: 100vh;
 		position: relative;
-		/* overflow: hidden; - Removed to allow sticky elements if needed, check if this breaks anything */
+		overflow: hidden;
 		clip-path: inset(0 0 0 0);
+		display: flex;
+		flex-direction: column;
 	}
 </style>

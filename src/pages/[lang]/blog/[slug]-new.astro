@@ -148,7 +148,6 @@ const articleData = {
 	lang={lang}
 	schemaType="article"
 	articleData={articleData}
-	navTheme="solid-glass"
 >
 	<PostHeroNew image={post.image} imageAlt={post.imageAlt || post.title} />
 	<PostHeaderNew
@@ -168,5 +167,13 @@ const articleData = {
 	.post-content-body h4 {
 		font-family: 'Young Serif', serif !important;
 		font-weight: 400 !important;
+	}
+
+	/* Override global background for Blog Post page */
+	body,
+	html {
+		background: url('/images/new/blog/blog-post/Post.svg') no-repeat center top scroll !important;
+		background-size: 100% auto !important;
+		background-color: var(--off-white) !important; /* Fallback color */
 	}
 </style>

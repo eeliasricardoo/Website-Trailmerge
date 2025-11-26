@@ -1,9 +1,11 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 
+import type { BlogPost } from '../../types/blog';
+
 export interface Props {
 	lang?: string;
-	posts: any[];
+	posts: BlogPost[];
 }
 
 const { lang = 'en', posts = [] } = Astro.props;
@@ -20,53 +22,55 @@ const sidePosts = featuredPosts.slice(1, 4);
 	<div class="featured-posts-container">
 		<h2 class="section-title">Featured</h2>
 		<div class="featured-posts-grid">
-			{mainPost && (
-				<article class="featured-main-card">
-					<a href={`/${lang}/blog/${mainPost.slug}-new/`} class="featured-main-link">
-						<div class="featured-main-image-wrapper">
-							<img
-								src={mainPost.image}
-								alt={mainPost.imageAlt || mainPost.title}
-								class="featured-main-image"
-								loading="eager"
-							/>
-						</div>
-						<div class="featured-main-content">
-							<h3 class="featured-main-title">{mainPost.title}</h3>
-							<div class="featured-main-meta">
-								<span class="featured-main-date">{mainPost.date}</span>
-								{mainPost.author && (
-									<span class="featured-main-author"> • {mainPost.author.name}</span>
-								)}
-							</div>
-						</div>
-					</a>
-				</article>
-			)}
-			<div class="featured-side-posts">
-				{sidePosts.map((post) => (
-					<article class="featured-side-card">
-						<a href={`/${lang}/blog/${post.slug}-new/`} class="featured-side-link">
-							<div class="featured-side-image-wrapper">
+			{
+				mainPost && (
+					<article class="featured-main-card">
+						<a href={`/${lang}/blog/${mainPost.slug}-new/`} class="featured-main-link">
+							<div class="featured-main-image-wrapper">
 								<img
-									src={post.image}
-									alt={post.imageAlt || post.title}
-									class="featured-side-image"
-									loading="lazy"
+									src={mainPost.image}
+									alt={mainPost.imageAlt || mainPost.title}
+									class="featured-main-image"
+									loading="eager"
 								/>
 							</div>
-							<div class="featured-side-content">
-								<h4 class="featured-side-title">{post.title}</h4>
-								<div class="featured-side-meta">
-									<span class="featured-side-date">{post.date}</span>
-									{post.author && (
-										<span class="featured-side-author"> • {post.author.name}</span>
+							<div class="featured-main-content">
+								<h3 class="featured-main-title">{mainPost.title}</h3>
+								<div class="featured-main-meta">
+									<span class="featured-main-date">{mainPost.date}</span>
+									{mainPost.author && (
+										<span class="featured-main-author"> • {mainPost.author.name}</span>
 									)}
 								</div>
 							</div>
 						</a>
 					</article>
-				))}
+				)
+			}
+			<div class="featured-side-posts">
+				{
+					sidePosts.map((post) => (
+						<article class="featured-side-card">
+							<a href={`/${lang}/blog/${post.slug}-new/`} class="featured-side-link">
+								<div class="featured-side-image-wrapper">
+									<img
+										src={post.image}
+										alt={post.imageAlt || post.title}
+										class="featured-side-image"
+										loading="lazy"
+									/>
+								</div>
+								<div class="featured-side-content">
+									<h4 class="featured-side-title">{post.title}</h4>
+									<div class="featured-side-meta">
+										<span class="featured-side-date">{post.date}</span>
+										{post.author && <span class="featured-side-author"> • {post.author.name}</span>}
+									</div>
+								</div>
+							</a>
+						</article>
+					))
+				}
 			</div>
 		</div>
 	</div>
@@ -76,12 +80,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 	.featured-posts-wrapper {
 		width: 100%;
 		padding: 80px 24px;
-		background: 
-			url('/images/new/home/dot-pattern.svg'),
-			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
-		background-size: 9.24px 9.24px, 100% 100%;
-		background-position: 0 0, center;
-		background-repeat: repeat, no-repeat;
+		background-color: transparent;
 	}
 
 	.featured-posts-container {
@@ -90,7 +89,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.section-title {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'Young Serif', serif;
 		font-size: 56px;
 		font-weight: 400;
@@ -144,7 +143,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-main-title {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'Young Serif', serif;
 		font-size: 32px;
 		font-weight: 400;
@@ -153,7 +152,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-main-meta {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
 		font-size: 16px;
 		font-weight: 400;
@@ -206,7 +205,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-side-title {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'Young Serif', serif;
 		font-size: 20px;
 		font-weight: 400;
@@ -215,7 +214,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-side-meta {
-		color: #54504b;
+		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
 		font-size: 14px;
 		font-weight: 400;
@@ -281,4 +280,3 @@ const sidePosts = featuredPosts.slice(1, 4);
 		}
 	}
 </style>
-
