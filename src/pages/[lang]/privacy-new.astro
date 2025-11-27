@@ -37,7 +37,7 @@ const currentDate = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'es-
 			</div>
 
 			<div class="privacy-body">
-				<p>{t('privacy.content')}</p>
+				<div set:html={t('privacy.content')} />
 			</div>
 		</div>
 	</div>
