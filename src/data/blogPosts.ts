@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
 		author: {
 			name: 'Mark Tegtmeier',
 			image: '/images/Mark.png',
-			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
+			bio: 'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of five, and seeker of the heavenly city, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
 		},
 	},
 	{
