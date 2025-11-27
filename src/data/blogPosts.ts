@@ -25,7 +25,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'JULY 8, 2022',
 		category: 'DESIGN TEAMS',
 		excerpt:
-			"In today's market, designers are becoming increasingly valuable for startups and established companies alike. Yet, hiring and finding effective designers can be time-consuming and challenging.",
+			"In today's market, designers are becoming increasingly valuable for startups and established companies alike, and more companies are starting to recognize their benefit to reducing churn, driving adoption, and improving users' efficiency. A great design team can be the difference between a good product and a stellar product.",
 		imageAlt: 'Hiking backpack illustration',
 		content: `<p>In today's market, designers are becoming increasingly valuable for startups and established companies alike, and more companies are starting to recognize their benefit to reducing churn, driving adoption, and improving users' efficiency. A great design team can be the difference between a good product and a stellar product.</p>
 
@@ -68,7 +68,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'JUNE 9, 2021',
 		category: 'SAAS',
 		excerpt:
-			'In part one of this series, we discussed customer-centered data points that can help form product strategy. The next step is to mix in constraints.',
+			"In part one of this series, we discussed customer-centered data points that can help form product strategy. We explored how understanding your users' needs, pain points, and goals should be the foundation of any prioritization framework. But customer needs alone don't tell the whole story. The next step is to mix in constraints.",
 		imageAlt: 'Coffee cup illustration',
 		content: `<p>In part one of this series, we discussed customer-centered data points that can help form product strategy. We explored how understanding your users' needs, pain points, and goals should be the foundation of any prioritization framework. But customer needs alone don't tell the whole story.</p>
 
@@ -128,7 +128,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'MAY 21, 2021',
 		category: 'SAAS',
 		excerpt:
-			"If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money...",
+			"If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. Your vision board is probably overflowing with features that would revolutionize your industry, delight your users, and make your competitors weep. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money.",
 		imageAlt: 'Binoculars illustration',
 		content: `<p>If you're a startup founder or a product leader, chances are you don't have a hard time dreaming big. Your vision board is probably overflowing with features that would revolutionize your industry, delight your users, and make your competitors weep. But you keep running into the same two pesky constraints when building the dream product to rule your industry: time and money.</p>
 
@@ -193,7 +193,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'APRIL 21, 2021',
 		category: 'SAAS',
 		excerpt:
-			'Improve your questioning technique with these foundations for asking good questions when building your SaaS product.',
+			"As an instructor at General Assembly, one of the main things I wanted my cohort to take away from the 10-week UX design immersive was this: how to ask the right questions. Pixels are great and all – and, to be sure, they define the output of the work we do as product designers. But good questions are the foundation of good design.",
 		imageAlt: 'Compass illustration',
 		imageCredit: 'Blog Photo by Artem Maltsev on Unsplash',
 		content: `<p>As an instructor at General Assembly, one of the main things I wanted my cohort to take away from the 10-week UX design immersive was this: how to ask the right questions.</p>
@@ -303,7 +303,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'APRIL 7, 2021',
 		category: 'SAAS',
 		excerpt:
-			"You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product... but months later, you hit the initial shock of design debt.",
+			"Imagine with me for a second. You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product and you've heard no one wants to invest in your startup until you have something built, so you go straight to the developer or dev shop your friend recommended.",
 		imageAlt: 'Knot illustration',
 		content: `<p>Imagine with me for a second. You're a non-technical founder with an awesome B2B SaaS concept. You know you need to hire a developer to build your software product and you've heard no one wants to invest in your startup until you have something built, so you go straight to the developer or dev shop your friend recommended.</p>
 
@@ -359,7 +359,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'DECEMBER 22, 2020',
 		category: 'SAAS',
 		excerpt:
-			'How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for "minimum viable product." But what\'s the point of it?',
+			'How would you define an MVP? Yeah, I think most of us in the tech startup world know it stands for "minimum viable product." But what\'s the point of it? Well, I\'ve often seen this term used to mean "a hunk o\' software thrown together quickly to get something out the door so we can start making money off this bad boy!"',
 		imageAlt: 'Lantern illustration',
 		content: `<p>How would you define an MVP?</p>
 
@@ -430,7 +430,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'OCTOBER 30, 2020',
 		category: 'SAAS',
 		excerpt:
-			"Identifying an opportunity is a great place to start. And obviously, you've been motivated enough to carpe diem it up and create much-needed change in your industry. The only problem is you don't know where to begin.",
+			"B2B SaaS founders come in a variety of forms. Oftentimes, they're not the tech geniuses who geek out on the pros and cons of the latest Javascript libraries and frameworks. In many cases, they're not UX designers or product managers who decided to branch out to create a new product. They're folks (this might describe you) from non-technical backgrounds who have seen an opportunity to serve their industry.",
 		imageAlt: 'Hiking boots illustration',
 		content: `<p>B2B SaaS founders come in a variety of forms. Oftentimes, they're not the tech geniuses who geek out on the pros and cons of the latest Javascript libraries and frameworks. In many cases, they're not UX designers or product managers who decided to branch out to create a new product.</p>
 
@@ -499,7 +499,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'OCTOBER 29, 2020',
 		category: 'SAAS',
 		excerpt:
-			'A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup.',
+			'A startup is an organization in search of a sustainable business model. I heard that definition at an event in Colorado Springs a few years ago, and it sticks with me to this day as the clearest way to identify a startup. "Startup" is not a description of the age, size, popularity, or revenue of a company.',
 		imageAlt: 'Hand holding a map examining it',
 		content: `<p>A startup is an organization in search of a sustainable business model.</p>
 

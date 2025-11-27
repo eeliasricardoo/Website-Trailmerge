@@ -39,8 +39,8 @@ const allPosts = posts.slice(4);
 									{post.author && <span class="post-author"> • {post.author.name}</span>}
 								</div>
 								<p class="post-excerpt">
-									{post.excerpt.length > 150
-										? post.excerpt.substring(0, 150) + '...'
+									{post.excerpt.length > 280
+										? post.excerpt.substring(0, 280) + '...'
 										: post.excerpt}
 									<span class="post-read-more">Read More</span>
 								</p>
