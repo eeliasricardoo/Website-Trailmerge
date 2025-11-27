@@ -24,6 +24,8 @@ import NavbarNew from '../../../components/new/NavbarNew.astro';
 import FooterNew from '../../../components/new/FooterNew.astro';
 import ContactModal from '../../../components/ContactModal.astro';
 import { useTranslations } from '../../../i18n/utils';
+import { getBlogKeywords } from '../../../utils/keywordsHelper';
+import { safeCreateURL } from '../../../utils/urlHelpers';
 
 const { lang, slug } = Astro.params || { lang: 'en', slug: '' };
 const t = useTranslations(lang as 'en' | 'es');
@@ -127,7 +129,6 @@ function parseSpanishDate(dateString: string): Date {
 
 // Prepare article data for JSON-LD schema
 // Use safe URL creation for cross-platform compatibility (Windows/Mac)
-import { safeCreateURL } from '../../../utils/urlHelpers';
 const articleUrl = safeCreateURL(
 	`/${lang}/blog/${post.slug}`,
 	Astro.site,
@@ -153,10 +154,7 @@ const breadcrumbs = [
 ];
 
 // Generate keywords from post title and category
-const keywords =
-	lang === 'en'
-		? `${post.category}, ${post.title}, UX design, B2B SaaS, product design, Trailmerge`
-		: `${post.category}, ${post.title}, diseño UX, B2B SaaS, diseño de producto, Trailmerge`;
+const keywords = getBlogKeywords(lang, post.category, post.title);
 ---
 
 <Layout
