@@ -178,8 +178,25 @@ const articleData = {
 	/* Override global background for Blog Post page */
 	body,
 	html {
-		background: url('/images/new/blog/blog-post/Post.svg') no-repeat center top scroll !important;
+		background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top fixed !important;
 		background-size: 100% auto !important;
 		background-color: var(--off-white) !important; /* Fallback color */
+		min-height: 100% !important;
+	}
+
+	@media (max-width: 768px) {
+		body,
+		html {
+			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top fixed !important;
+			background-size: 100% auto !important;
+		}
+	}
+
+	@media (max-width: 480px) {
+		body,
+		html {
+			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top fixed !important;
+			background-size: 100% auto !important;
+		}
 	}
 </style>
