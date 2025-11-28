@@ -227,33 +227,59 @@ const { title, text = t('aside.text'), showBannerTags = true } = Astro.props;
 	}
 
 	@media (max-width: 768px) {
+		.aside-new-wrapper {
+			margin-top: -60px;
+			padding: 0 20px;
+		}
+
+		.aside-new-container {
+			max-width: 100%;
+		}
+
 		.aside-new-ribbon-right,
 		.aside-new-ribbon-left {
 			display: none;
 		}
 
-		.aside-new-title {
-			font-size: 32px;
-			margin-bottom: 16px;
+		.aside-new-center {
+			width: 100%;
+			padding: 40px 24px;
+			border-radius: 12px;
 		}
 
-		.aside-new-center {
-			padding: 32px 24px;
+		.aside-new-title {
+			font-size: 32px;
+			margin-bottom: 20px;
+			line-height: 1.2;
+		}
+
+		.aside-new-text {
+			font-size: 17px;
+			line-height: 1.6;
 		}
 	}
 
 	@media (max-width: 480px) {
-		.aside-new-title {
-			font-size: 28px;
-			margin-bottom: 12px;
+		.aside-new-wrapper {
+			margin-top: -60px;
+			padding: 0 20px;
 		}
 
 		.aside-new-center {
-			padding: 32px 24px;
+			width: 100%;
+			padding: 48px 24px 40px 24px;
+			border-radius: 16px;
+		}
+
+		.aside-new-title {
+			font-size: 32px;
+			margin-bottom: 20px;
+			line-height: 1.2;
 		}
 
 		.aside-new-text {
-			font-size: 16px;
+			font-size: 17px;
+			line-height: 1.7;
 		}
 	}
 </style>

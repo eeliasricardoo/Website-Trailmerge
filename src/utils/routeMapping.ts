@@ -3,6 +3,8 @@
  * Centralized route mapping between English and Spanish URLs
  */
 
+import { safeCreateURL } from './urlHelpers';
+
 export type Language = 'en' | 'es';
 
 export interface RouteMap {
@@ -85,8 +87,9 @@ export function getLanguageUrls(currentPath: string): RouteMap {
 export function getAlternateUrls(currentPath: string, siteUrl: string): AlternateUrls {
 	const languageUrls = getLanguageUrls(currentPath);
 
+	// Use safe URL creation for cross-platform compatibility
 	return {
-		en: new URL(languageUrls.en, siteUrl).href,
-		es: new URL(languageUrls.es, siteUrl).href,
+		en: safeCreateURL(languageUrls.en, siteUrl),
+		es: safeCreateURL(languageUrls.es, siteUrl),
 	};
 }

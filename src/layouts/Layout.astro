@@ -3,6 +3,7 @@ import { ViewTransitions } from 'astro:transitions';
 import SEOSchema from '../components/SEOSchema.astro';
 import SEOHead from '../components/SEOHead.astro';
 import { getAlternateUrls } from '../utils/routeMapping';
+import { safeCreateURL } from '../utils/urlHelpers';
 import '../styles/global.css';
 
 interface Props {
@@ -35,7 +36,7 @@ const {
 	title = 'UX Design Agency for B2B SaaS Startups – Trailmerge',
 	description = 'Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started.',
 	ogImage = 'https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png',
-	canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+	canonicalURL: providedCanonicalURL,
 	schemaType = 'organization',
 	articleData,
 	breadcrumbs,
@@ -43,9 +44,17 @@ const {
 	lang = 'en',
 } = Astro.props;
 
+// Get canonical URL with safe fallback (cross-platform compatible)
+const canonicalURL = providedCanonicalURL || safeCreateURL(
+	Astro.url.pathname,
+	Astro.site,
+	Astro.url.origin || 'https://trailmerge.com'
+);
+
 // Get alternate language URLs for hreflang
 const currentPath = Astro.url.pathname;
-const alternateUrls = getAlternateUrls(currentPath, Astro.site?.href || '');
+const siteHref = Astro.site?.href || (Astro.url.origin ? `${Astro.url.origin}/` : 'https://trailmerge.com/');
+const alternateUrls = getAlternateUrls(currentPath, siteHref);
 
 // Set HTML lang attribute
 const htmlLang = lang === 'es' ? 'es' : 'en-US';

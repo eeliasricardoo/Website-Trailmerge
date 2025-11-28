@@ -1,5 +1,7 @@
 ---
 // SEO Schema component for structured data (JSON-LD)
+import { safeCreateURL } from '../utils/urlHelpers';
+
 interface Props {
 	type?: 'organization' | 'article' | 'website';
 	articleData?: {
@@ -24,7 +26,12 @@ interface Props {
 
 const { type = 'organization', articleData, breadcrumbs, pageTitle, pageDescription } = Astro.props;
 
-const currentUrl = new URL(Astro.url.pathname, Astro.site).href;
+// Use safe URL creation for cross-platform compatibility (Windows/Mac)
+const currentUrl = safeCreateURL(
+	Astro.url.pathname,
+	Astro.site,
+	Astro.url.origin || 'https://trailmerge.com'
+);
 
 // Organization Schema (for all pages)
 const organizationSchema = {

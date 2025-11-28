@@ -230,7 +230,8 @@ const t = useTranslations(lang as 'en' | 'es');
 	}
 
 	.hero-title {
-		width: 804px;
+		width: 100%;
+		max-width: 804px;
 		color: #54504b;
 		text-align: center;
 		text-shadow:
@@ -273,67 +274,108 @@ const t = useTranslations(lang as 'en' | 'es');
 		.layer-forest {
 			width: 100%;
 			height: auto;
-			max-height: 314px;
+			max-height: 200px;
 		}
 
 		.layer-forest-right {
 			width: 100%;
 			height: auto;
-			max-height: 341px;
+			max-height: 200px;
+		}
+
+		.content-container {
+			top: 350px;
 		}
 
 		.hero-title {
+			width: 100%;
 			font-size: 48px;
+			line-height: 1.2;
+			letter-spacing: 1.44px;
 		}
 	}
 
 	@media (max-width: 768px) {
 		.hero-wrapper {
 			height: 100vh;
-			min-height: 700px;
+			min-height: 600px;
+		}
+
+		.landscape-group {
+			transform: translateY(-30px) scale(1.4);
 		}
 
 		.layer-blob {
-			width: 100%;
+			width: 140%;
 			height: auto;
-			max-height: 1000px;
+			max-height: 1100px;
+			right: -80px;
+			top: -40px;
 		}
 
 		.layer-clouds {
-			width: 100%;
+			width: 140%;
 			height: auto;
-			max-height: 200px;
+			max-height: 380px;
+			top: 60px;
 		}
 
 		.layer-mountains {
-			width: 100%;
+			width: 140%;
 			height: auto;
-			max-height: 250px;
+			max-height: 450px;
+			top: 100px;
 		}
 
 		.layer-forest {
-			width: 100%;
-			height: auto;
-			max-height: 250px;
+			width: 100% !important;
+			height: 120px !important;
+			max-height: 120px !important;
+			top: 250px;
+			left: -150px;
+		}
+
+		.layer-forest .parallax-image {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: contain !important;
 		}
 
 		.layer-forest-right {
-			width: 100%;
-			height: auto;
-			max-height: 250px;
+			width: 100% !important;
+			height: 120px !important;
+			max-height: 120px !important;
+			top: 240px;
+			right: -150px;
+		}
+
+		.layer-forest-right .parallax-image {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: contain !important;
+		}
+
+		.layer-bird {
+			width: 24px;
+			height: 12px;
+			margin-left: -12px;
+			top: 70px;
 		}
 
 		.content-container {
-			padding: 0 16px;
+			top: 220px;
+			padding: 0 20px;
 		}
 
 		.hero-content {
-			gap: 20px;
+			gap: 16px;
 		}
 
 		.hero-title {
-			font-size: 36px;
-			line-height: 1.3;
+			width: 100%;
+			font-size: 40px;
+			line-height: 1.2;
+			letter-spacing: 1px;
 		}
 	}
 
@@ -343,38 +385,81 @@ const t = useTranslations(lang as 'en' | 'es');
 			min-height: 600px;
 		}
 
+		.landscape-group {
+			transform: translateY(-20px) scale(1.5);
+		}
+
 		.layer-blob {
-			width: 100%;
+			width: 150%;
 			height: auto;
-			max-height: 800px;
+			max-height: 1000px;
+			right: -60px;
+			top: -20px;
 		}
 
 		.layer-clouds {
-			width: 100%;
+			width: 150%;
 			height: auto;
-			max-height: 150px;
+			max-height: 320px;
+			top: 50px;
 		}
 
 		.layer-mountains {
-			width: 100%;
+			width: 150%;
 			height: auto;
-			max-height: 200px;
+			max-height: 400px;
+			top: 80px;
 		}
 
 		.layer-forest {
-			width: 100%;
-			height: auto;
-			max-height: 200px;
+			width: 100% !important;
+			height: 110px !important;
+			max-height: 110px !important;
+			top: 230px;
+			left: -130px;
+		}
+
+		.layer-forest .parallax-image {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: contain !important;
 		}
 
 		.layer-forest-right {
-			width: 100%;
-			height: auto;
-			max-height: 200px;
+			width: 100% !important;
+			height: 110px !important;
+			max-height: 110px !important;
+			top: 220px;
+			right: -130px;
+		}
+
+		.layer-forest-right .parallax-image {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: contain !important;
+		}
+
+		.layer-bird {
+			width: 20px;
+			height: 10px;
+			margin-left: -10px;
+			top: 55px;
+		}
+
+		.content-container {
+			top: 200px;
+			padding: 0 20px;
+		}
+
+		.hero-content {
+			gap: 12px;
 		}
 
 		.hero-title {
-			font-size: 28px;
+			width: 100%;
+			font-size: 40px;
+			line-height: 1.2;
+			letter-spacing: 1px;
 		}
 	}
 	.parallax-layer {

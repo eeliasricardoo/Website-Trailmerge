@@ -177,6 +177,45 @@ const t = useTranslations(lang as 'en' | 'es');
 	}
 
 	@media (max-width: 768px) {
+		.our-approach-wrapper {
+			margin-top: 0;
+		}
+
+		.our-approach-wrapper,
+		.our-approach-container {
+			min-height: 600px;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.our-approach-image {
+			width: 100%;
+			height: 100%;
+			min-height: 600px;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+
+		.map-image {
+			position: relative;
+			top: auto;
+			left: auto;
+			transform: none;
+			width: 200px;
+			height: auto;
+			max-width: 50%;
+			max-height: 200px;
+			margin: 60px 0 16px 20px;
+			z-index: 11;
+			display: block;
+		}
+
 		.our-approach-content {
 			position: relative;
 			left: 0;
@@ -184,21 +223,84 @@ const t = useTranslations(lang as 'en' | 'es');
 			bottom: auto;
 			margin: 0;
 			max-width: 100%;
-			padding: 40px 20px;
-			background: #2e3a33; /* Fallback background since image might not cover */
+			padding: 0 20px 80px 20px;
+			background: transparent;
+			z-index: 12;
+		}
+
+		.our-approach-title {
+			font-size: 36px;
+			line-height: 1.2;
+			margin-bottom: 20px;
+		}
+
+		.our-approach-text {
+			font-size: 18px;
+			line-height: 1.6;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.our-approach-wrapper {
+			margin-top: 0;
+		}
+
+		.our-approach-wrapper,
+		.our-approach-container {
+			min-height: 550px;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.our-approach-image {
+			width: 100%;
+			height: 100%;
+			min-height: 550px;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
 		}
 
 		.map-image {
 			position: relative;
-			top: 0;
-			left: 0;
-			margin: 0 auto;
-			max-width: 80%;
-			display: none; /* Hide map on mobile if it clutters */
+			top: auto;
+			left: auto;
+			transform: none;
+			width: 180px;
+			height: auto;
+			max-width: 50%;
+			max-height: 180px;
+			margin: 50px 0 16px 20px;
+			z-index: 11;
+			display: block;
 		}
 
-		.our-approach-image {
-			height: 300px; /* Limit height on mobile */
+		.our-approach-content {
+			position: relative;
+			left: 0;
+			top: 0;
+			bottom: auto;
+			margin: 0;
+			max-width: 100%;
+			padding: 0 20px 80px 20px;
+			background: transparent;
+			z-index: 12;
+		}
+
+		.our-approach-title {
+			font-size: 32px;
+			line-height: 1.2;
+			margin-bottom: 16px;
+		}
+
+		.our-approach-text {
+			font-size: 17px;
+			line-height: 1.6;
 		}
 	}
 	.parallax-layer {
