@@ -6,6 +6,7 @@ import NavbarNew from '../components/new/NavbarNew.astro';
 import FooterNew from '../components/new/FooterNew.astro';
 import { useTranslations } from '../i18n/utils';
 import { getAlternateUrls } from '../utils/routeMapping';
+import { safeCreateURL } from '../utils/urlHelpers';
 import '../styles/global.css';
 
 interface Props {
@@ -22,14 +23,22 @@ const {
 	title,
 	description,
 	lang = 'en',
-	canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+	canonicalURL: providedCanonicalURL,
 	schemaType = 'organization',
 	articleData,
 	navTheme = 'default',
 } = Astro.props;
 
+// Use safe URL creation for cross-platform compatibility (Windows/Mac)
+const canonicalURL = providedCanonicalURL || safeCreateURL(
+	Astro.url.pathname,
+	Astro.site,
+	Astro.url.origin || 'https://trailmerge.com'
+);
+
 const t = useTranslations(lang as 'en' | 'es');
-const alternateUrls = getAlternateUrls(Astro.url.pathname, Astro.site?.href || '');
+const siteHref = Astro.site?.href || (Astro.url.origin ? `${Astro.url.origin}/` : 'https://trailmerge.com/');
+const alternateUrls = getAlternateUrls(Astro.url.pathname, siteHref);
 const isStaging =
 	Astro.site?.hostname === 'staging.trailmerge.com' ||
 	Astro.url.hostname === 'staging.trailmerge.com';

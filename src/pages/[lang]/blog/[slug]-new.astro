@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 
 import LayoutNew from '../../../layouts/LayoutNew.astro';
 import { useTranslations } from '../../../i18n/utils';
+import { safeCreateURL } from '../../../utils/urlHelpers';
 
 // Import new redesigned components
 import PostHeroNew from '../../../components/new/PostHeroNew.astro';
@@ -128,7 +129,12 @@ function parseSpanishDate(dateString: string): Date {
 const categoryDisplay = post.category || 'BLOG';
 
 // Prepare article data for JSON-LD schema
-const articleUrl = new URL(`/${lang}/blog/${post.slug}`, Astro.site).href;
+// Use safe URL creation for cross-platform compatibility (Windows/Mac)
+const articleUrl = safeCreateURL(
+	`/${lang}/blog/${post.slug}`,
+	Astro.site,
+	Astro.url.origin || 'https://trailmerge.com'
+);
 const articleData = {
 	title: post.title,
 	description: post.excerpt,
