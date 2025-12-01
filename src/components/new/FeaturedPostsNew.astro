@@ -73,8 +73,175 @@ const sidePosts = featuredPosts.slice(1, 4);
 				}
 			</div>
 		</div>
+		<!-- Mobile Slider -->
+		<div class="featured-slider-mobile">
+			<div class="slider-container">
+				<div class="slider-track" id="slider-track">
+					{featuredPosts.map((post, index) => (
+						<article class="slider-slide" data-slide-index={index}>
+							<a href={`/${lang}/blog/${post.slug}-new/`} class="slider-link">
+								<div class="slider-image-wrapper">
+									<img
+										src={post.image}
+										alt={post.imageAlt || post.title}
+										class="slider-image"
+										loading={index === 0 ? 'eager' : 'lazy'}
+									/>
+								</div>
+								<div class="slider-content">
+									<h3 class="slider-title">{post.title}</h3>
+									<div class="slider-meta">
+										<span class="slider-date">{post.date}</span>
+										{post.author && <span class="slider-author"> • {post.author.name}</span>}
+									</div>
+								</div>
+							</a>
+						</article>
+					))}
+				</div>
+			</div>
+			<div class="slider-bullets" id="slider-bullets">
+				{featuredPosts.map((_, index) => (
+					<button
+						class={`slider-bullet ${index === 0 ? 'active' : ''}`}
+						data-slide-index={index}
+						aria-label={`Go to slide ${index + 1}`}
+					></button>
+				))}
+			</div>
+		</div>
 	</div>
 </section>
+
+<script>
+	function initSlider() {
+		const slider = document.querySelector('.featured-slider-mobile');
+		if (!slider) return;
+
+		const track = slider.querySelector('.slider-track') as HTMLElement;
+		const slides = Array.from(slider.querySelectorAll('.slider-slide')) as HTMLElement[];
+		const bullets = Array.from(slider.querySelectorAll('.slider-bullet')) as HTMLButtonElement[];
+		const container = slider.querySelector('.slider-container') as HTMLElement;
+		
+		if (slides.length === 0 || !track || !container || bullets.length === 0) {
+			return;
+		}
+
+		let currentIndex = 0;
+		let containerWidth = 0;
+
+		const getContainerWidth = () => {
+			const rect = container.getBoundingClientRect();
+			return rect.width;
+		};
+
+		const updateSlider = () => {
+			containerWidth = getContainerWidth();
+			if (containerWidth === 0) {
+				requestAnimationFrame(updateSlider);
+				return;
+			}
+			
+			const translateX = -currentIndex * containerWidth;
+			track.style.transform = `translateX(${translateX}px)`;
+			
+			// Remove active class from all bullets first
+			bullets.forEach((bullet) => {
+				bullet.classList.remove('active');
+			});
+			
+			// Add active class only to the current bullet
+			if (bullets[currentIndex]) {
+				bullets[currentIndex].classList.add('active');
+			}
+		};
+
+		// Set up bullet click handlers
+		bullets.forEach((bullet, index) => {
+			bullet.addEventListener('click', (e) => {
+				e.preventDefault();
+				e.stopPropagation();
+				
+				const targetIndex = parseInt(bullet.getAttribute('data-slide-index') || '0', 10);
+				if (targetIndex >= 0 && targetIndex < slides.length) {
+					currentIndex = targetIndex;
+					updateSlider();
+				}
+			});
+		});
+
+		// Touch/swipe support
+		let startX = 0;
+		let isDragging = false;
+		let currentTranslate = 0;
+
+		const handleTouchStart = (e: TouchEvent) => {
+			startX = e.touches[0].clientX;
+			isDragging = true;
+			containerWidth = getContainerWidth();
+			currentTranslate = -currentIndex * containerWidth;
+			track.style.transition = 'none';
+		};
+
+		const handleTouchMove = (e: TouchEvent) => {
+			if (!isDragging) return;
+			const currentX = e.touches[0].clientX;
+			const diff = startX - currentX;
+			const newTranslate = currentTranslate - diff;
+			track.style.transform = `translateX(${newTranslate}px)`;
+		};
+
+		const handleTouchEnd = (e: TouchEvent) => {
+			if (!isDragging) return;
+			isDragging = false;
+			track.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+			
+			const endX = e.changedTouches[0].clientX;
+			const diff = startX - endX;
+			const threshold = 50;
+
+			if (Math.abs(diff) > threshold) {
+				if (diff > 0 && currentIndex < slides.length - 1) {
+					currentIndex++;
+				} else if (diff < 0 && currentIndex > 0) {
+					currentIndex--;
+				}
+			}
+			updateSlider();
+		};
+
+		track.addEventListener('touchstart', handleTouchStart, { passive: true });
+		track.addEventListener('touchmove', handleTouchMove, { passive: true });
+		track.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+		// Handle window resize
+		let resizeTimeout: ReturnType<typeof setTimeout>;
+		const handleResize = () => {
+			clearTimeout(resizeTimeout);
+			resizeTimeout = setTimeout(() => {
+				updateSlider();
+			}, 250);
+		};
+
+		window.addEventListener('resize', handleResize);
+
+		// Initialize slider - remove all active classes first, then set the correct one
+		bullets.forEach(bullet => bullet.classList.remove('active'));
+		currentIndex = 0;
+		setTimeout(() => {
+			updateSlider();
+		}, 100);
+	}
+
+	// Initialize on page load
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initSlider);
+	} else {
+		initSlider();
+	}
+
+	document.addEventListener('astro:page-load', initSlider);
+</script>
 
 <style>
 	.featured-posts-wrapper {
@@ -235,6 +402,113 @@ const sidePosts = featuredPosts.slice(1, 4);
 		}
 	}
 
+	/* Mobile Slider Styles */
+	.featured-slider-mobile {
+		display: none;
+		width: 100%;
+	}
+
+	.slider-container {
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.slider-track {
+		display: flex;
+		transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+		will-change: transform;
+	}
+
+	.slider-slide {
+		min-width: 100%;
+		width: 100%;
+		flex-shrink: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.slider-link {
+		text-decoration: none;
+		color: inherit;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		width: 100%;
+	}
+
+	.slider-image-wrapper {
+		width: 100%;
+		aspect-ratio: 16/9;
+		max-height: 240px;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		background-color: #f5f5f5;
+	}
+
+	.slider-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.slider-content {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		padding: 0;
+	}
+
+	.slider-title {
+		color: var(--brand-secondary-brown);
+		font-family: 'Young Serif', serif;
+		font-size: 24px;
+		font-weight: 400;
+		line-height: 1.3;
+		margin: 0;
+	}
+
+	.slider-meta {
+		color: var(--brand-secondary-brown);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 14px;
+		font-weight: 400;
+		line-height: 1.5;
+	}
+
+	.slider-bullets {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 8px;
+		margin-top: 24px;
+		padding: 0;
+	}
+
+	.slider-bullet {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		border: none;
+		background-color: rgba(84, 80, 75, 0.3);
+		cursor: pointer;
+		padding: 0;
+		transition: background-color 0.3s ease, transform 0.3s ease;
+		outline: none;
+	}
+
+	.slider-bullet:hover {
+		background-color: rgba(84, 80, 75, 0.5);
+		transform: scale(1.1);
+	}
+
+	.slider-bullet.active {
+		background-color: var(--brand-secondary-brown);
+		transform: scale(1.2);
+	}
+
 	@media (max-width: 768px) {
 		.featured-posts-wrapper {
 			padding: 72px 24px;
@@ -246,17 +520,11 @@ const sidePosts = featuredPosts.slice(1, 4);
 		}
 
 		.featured-posts-grid {
-			grid-template-columns: 1fr;
-			gap: 40px;
+			display: none;
 		}
 
-		.featured-side-image-wrapper {
-			width: 120px;
-			min-width: 120px;
-		}
-
-		.featured-side-title {
-			font-size: 18px;
+		.featured-slider-mobile {
+			display: block;
 		}
 	}
 
@@ -267,19 +535,19 @@ const sidePosts = featuredPosts.slice(1, 4);
 
 		.section-title {
 			font-size: 36px;
+			margin-bottom: 32px;
 		}
 
-		.featured-side-posts {
-			gap: 20px;
+		.slider-image-wrapper {
+			max-height: 200px;
 		}
 
-		.featured-side-link {
-			flex-direction: column;
+		.slider-title {
+			font-size: 20px;
 		}
 
-		.featured-side-image-wrapper {
-			width: 100%;
-			min-width: 100%;
+		.slider-meta {
+			font-size: 13px;
 		}
 	}
 </style>
