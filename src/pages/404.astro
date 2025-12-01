@@ -23,7 +23,7 @@ const es = ui.es['404'];
 </Layout>
 
 <script>
-	const lang = navigator.language || navigator.userLanguage;
+	const lang = navigator.language;
 	if (lang.startsWith('es')) {
 		const enContent = document.querySelector('.content.en') as HTMLElement;
 		const esContent = document.querySelector('.content.es') as HTMLElement;
