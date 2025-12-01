@@ -155,6 +155,8 @@ const articleData = {
 	schemaType="article"
 	articleData={articleData}
 >
+	<div class="blog-post-decoration"></div>
+	<div class="blog-post-blob"></div>
 	<PostHeroNew image={post.image} imageAlt={post.imageAlt || post.title} />
 	<PostHeaderNew
 		title={post.title}
@@ -163,7 +165,7 @@ const articleData = {
 		category={categoryDisplay}
 	/>
 	<PostContentNew content={post.content} />
-	<PostAuthorNew author={post.author} />
+	<PostAuthorNew author={post.author} lang={lang} />
 </LayoutNew>
 
 <style is:global>
@@ -198,5 +200,43 @@ const articleData = {
 			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top fixed !important;
 			background-size: 100% auto !important;
 		}
+	}
+</style>
+
+<style>
+	.blog-post-decoration {
+		position: absolute;
+		width: 3127.226px;
+		height: 3770.657px;
+		transform: rotate(-147.916deg);
+		opacity: 0.64;
+		background-color: var(--Secondary-Sand-100, #f1efec);
+		-webkit-mask-image: url('/images/new/blog/blog-post/Path.svg');
+		mask-image: url('/images/new/blog/blog-post/Path.svg');
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		pointer-events: none;
+		z-index: -1;
+		top: -1200px;
+		left: 50%;
+		margin-left: -1563.6px; /* Half of width */
+	}
+
+	.blog-post-blob {
+		position: absolute;
+		top: 500px;
+		left: -25%;
+		width: 200%;
+		height: 100%;
+		background-image: url('/images/new/blog/blog-post/Vector Blob.svg');
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: 100% 100%;
+		z-index: -2;
+		pointer-events: none;
 	}
 </style>
