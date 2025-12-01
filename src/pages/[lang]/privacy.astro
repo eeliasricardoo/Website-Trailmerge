@@ -3,33 +3,17 @@
 export const prerender = false;
 
 export async function getStaticPaths() {
-	return [
-		{ params: { lang: 'en' } },
-		{ params: { lang: 'es' } },
-	];
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
 import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import Footer from '../../components/Footer.astro';
-import ContactModal from '../../components/ContactModal.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const { lang } = Astro.params || { lang: 'en' };
 const t = useTranslations(lang as 'en' | 'es');
 
-// SEO keywords and breadcrumbs
+// SEO keywords
 const keywords = t('privacy.seo.keywords');
-const breadcrumbs =
-	lang === 'en'
-		? [
-				{ name: 'Home', url: 'https://trailmerge.com/en/' },
-				{ name: 'Privacy Policy', url: 'https://trailmerge.com/en/privacy/' },
-			]
-		: [
-				{ name: 'Inicio', url: 'https://trailmerge.com/es/' },
-				{ name: 'Política de Privacidad', url: 'https://trailmerge.com/es/privacidad/' },
-			];
 
 const currentDate = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'es-ES', {
 	year: 'numeric',
@@ -41,80 +25,105 @@ const currentDate = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'es-
 <Layout
 	title={t('privacy.seo.title')}
 	description={t('privacy.seo.description')}
-	keywords={keywords}
-	breadcrumbs={breadcrumbs}
 	lang={lang}
+	schemaType="article"
 >
-	<Navbar lang={lang} />
+	<div class="privacy-page-container">
+		<div class="privacy-content-wrapper">
+			<div class="privacy-header">
+				<h1>{t('privacy.title')}</h1>
+				<div class="spacer-l"></div>
+				<p class="last-updated">{t('privacy.lastUpdated')}: {currentDate}</p>
+			</div>
 
-	<main id="main-content">
-		<div class="body-block">
-			<div class="content-container">
-				<div class="privacy-page">
-					<div class="privacy-header">
-						<h1>{t('privacy.title')}</h1>
-						<div class="spacer-l"></div>
-						<p class="help-text">{t('privacy.lastUpdated')}: {currentDate}</p>
-						<div class="spacer-2xl"></div>
-					</div>
-
-					<div class="privacy-content">
-						<p>{t('privacy.content')}</p>
-					</div>
-				</div>
+			<div class="privacy-body">
+				<div set:html={t('privacy.content')} />
 			</div>
 		</div>
-	</main>
-
-	<Footer lang={lang} />
-
-	<ContactModal lang={lang} />
+	</div>
 </Layout>
 
 <style>
-	.privacy-page {
+	.privacy-page-container {
+		width: 100%;
+		min-height: 100vh;
+		padding: 120px 20px 80px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.privacy-content-wrapper {
 		max-width: 800px;
-		margin: 0 auto;
-		text-align: left;
+		width: 100%;
+		background: rgba(255, 255, 255, 0.5);
+		backdrop-filter: blur(10px);
+		border-radius: 24px;
+		padding: 48px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
 	}
 
 	.privacy-header {
-		margin-bottom: 0;
-		padding-top: 48px;
+		margin-bottom: 40px;
+		text-align: center;
 	}
 
-	.privacy-header h1 {
-		margin-bottom: 0;
+	h1 {
+		font-family: 'Young Serif', serif;
+		font-size: 48px;
+		line-height: 1.2;
+		color: #2e3a33;
+		margin-bottom: 16px;
 	}
 
-	.privacy-content {
-		margin-top: 0;
-	}
-
-	.privacy-content p {
-		margin: 0;
+	.last-updated {
+		font-family: 'DM Sans', sans-serif;
 		font-size: 16px;
+		color: #5c6b62;
+	}
+
+	.privacy-body {
+		font-family: 'DM Sans', sans-serif;
+		font-size: 18px;
 		line-height: 1.8;
-		color: var(--grey-5);
+		color: #2e3a33;
 		white-space: pre-line;
 	}
 
-	.privacy-content a {
-		color: var(--green-700);
+	.privacy-body :global(a) {
+		color: #2e3a33;
 		text-decoration: underline;
+		font-weight: 500;
+		transition: opacity 0.2s ease;
 	}
 
-	.privacy-content a:hover {
-		color: var(--green-900);
+	.privacy-body :global(a:hover) {
+		opacity: 0.7;
+	}
+
+	.privacy-body :global(h3) {
+		font-size: 18px;
+		font-weight: 700;
+		margin-top: 32px;
+		margin-bottom: 16px;
+		color: #2e3a33;
 	}
 
 	@media (max-width: 768px) {
-		.privacy-page {
-			padding: 0 20px;
+		.privacy-page-container {
+			padding-top: 100px;
+			padding-bottom: 40px;
 		}
 
-		.privacy-header {
-			padding-top: 32px;
+		.privacy-content-wrapper {
+			padding: 24px;
+		}
+
+		h1 {
+			font-size: 36px;
+		}
+
+		.privacy-body {
+			font-size: 16px;
 		}
 	}
 </style>

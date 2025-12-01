@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 import TrailmergeLogoSand from '../../assets/images/Trailmerge-Wordmark-Sand.svg';
-import ButtonNew from './ButtonNew.astro';
+import ButtonNew from '../shared/Button.astro';
 
 export interface Props {
 	lang?: string;
@@ -25,7 +25,7 @@ const addressLines = [
 		<div class="footer-content">
 			<!-- Logo and Address -->
 			<div class="footer-brand">
-				<a href={lang === 'es' ? '/es/home-new/' : '/en/home-new/'} class="footer-logo-link">
+				<a href={lang === 'es' ? '/es/' : '/en/'} class="footer-logo-link">
 					<img src={TrailmergeLogoSand.src} alt="Trailmerge" class="footer-logo" />
 				</a>
 				<div class="footer-address">
@@ -37,10 +37,10 @@ const addressLines = [
 			<div class="footer-links">
 				<div class="link-column">
 					<h3 class="column-title">{t('footer.about')}</h3>
-					<a href={lang === 'es' ? '/es/services-new/' : '/en/services-new/'} class="footer-link"
+					<a href={lang === 'es' ? '/es/services/' : '/en/services/'} class="footer-link"
 						>{t('nav.services')}</a
 					>
-					<a href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'} class="footer-link"
+					<a href={lang === 'es' ? '/es/contact/' : '/en/contact/'} class="footer-link"
 						>{t('nav.contact')}</a
 					>
 				</div>
@@ -48,7 +48,7 @@ const addressLines = [
 					<h3 class="column-title">{t('footer.resources')}</h3>
 					<a href={lang === 'es' ? '/es/blog/' : '/en/blog/'} class="footer-link">{t('nav.blog')}</a
 					>
-					<a href={lang === 'es' ? '/es/privacy-new/' : '/en/privacy-new/'} class="footer-link"
+					<a href={lang === 'es' ? '/es/privacy/' : '/en/privacy/'} class="footer-link"
 						>{t('footer.privacy')}</a
 					>
 				</div>
@@ -56,7 +56,7 @@ const addressLines = [
 
 			<!-- CTA -->
 			<div class="footer-cta">
-				<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
+				<ButtonNew href={lang === 'es' ? '/es/contact/' : '/en/contact/'}
 					>{t('nav.startProject')}</ButtonNew
 				>
 			</div>

@@ -1,6 +1,6 @@
 ---
 import { useTranslations } from '../../i18n/utils';
-import ButtonNew from './ButtonNew.astro';
+import ButtonNew from '../shared/Button.astro';
 
 export interface Props {
 	lang?: string;
@@ -42,7 +42,7 @@ const t = useTranslations(lang as 'en' | 'es');
 					<span class="w-700">{t('ourApproachNew.p2.part2')}</span>
 				</p>
 			</div>
-			<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
+			<ButtonNew href={lang === 'es' ? '/es/contact/' : '/en/contact/'}
 				>{t('ourApproachNew.cta')}</ButtonNew
 			>
 		</div>

@@ -1,11 +1,11 @@
 ---
 export const prerender = false;
 
-import LayoutNew from '../../layouts/LayoutNew.astro';
+import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils';
 
 // Import new redesigned components
-import ContactSectionNew from '../../components/new/ContactSectionNew.astro';
+import ContactSection from '../../components/contact/ContactSection.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -19,10 +19,6 @@ if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<LayoutNew
-	title={t('contactNew.seo.title')}
-	description={t('contactNew.seo.description')}
-	lang={lang}
->
-	<ContactSectionNew lang={lang} />
-</LayoutNew>
+<Layout title={t('contactNew.seo.title')} description={t('contactNew.seo.description')} lang={lang}>
+	<ContactSection lang={lang} />
+</Layout>

@@ -5,13 +5,13 @@ export async function getStaticPaths() {
 	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
-import LayoutNew from '../../layouts/LayoutNew.astro';
+import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils';
 
 // Import new redesigned components
-import ServicesHeroNew from '../../components/new/ServicesHeroNew.astro';
-import CapabilitiesNew from '../../components/new/CapabilitiesNew.astro';
-import OurProcessNew from '../../components/new/OurProcessNew.astro';
+import ServicesHero from '../../components/services/ServicesHero.astro';
+import Capabilities from '../../components/services/Capabilities.astro';
+import OurProcess from '../../components/services/OurProcess.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -25,15 +25,15 @@ if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<LayoutNew
+<Layout
 	title={t('servicesNew.seo.title')}
 	description={t('servicesNew.seo.description')}
 	lang={lang}
 >
-	<ServicesHeroNew lang={lang} />
-	<CapabilitiesNew lang={lang} />
-	<OurProcessNew lang={lang} />
-</LayoutNew>
+	<ServicesHero lang={lang} />
+	<Capabilities lang={lang} />
+	<OurProcess lang={lang} />
+</Layout>
 
 <style is:global>
 	/* Override global background for services page to include the extra SVG */
