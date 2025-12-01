@@ -6,7 +6,7 @@ export async function getStaticPaths() {
 	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
-import LayoutNew from '../../layouts/LayoutNew.astro';
+import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils';
 
 const { lang } = Astro.params || { lang: 'en' };
@@ -22,7 +22,7 @@ const currentDate = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'es-
 });
 ---
 
-<LayoutNew
+<Layout
 	title={t('privacy.seo.title')}
 	description={t('privacy.seo.description')}
 	lang={lang}
@@ -41,7 +41,7 @@ const currentDate = new Date().toLocaleDateString(lang === 'en' ? 'en-US' : 'es-
 			</div>
 		</div>
 	</div>
-</LayoutNew>
+</Layout>
 
 <style>
 	.privacy-page-container {

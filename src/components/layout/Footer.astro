@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 import TrailmergeLogoSand from '../../assets/images/Trailmerge-Wordmark-Sand.svg';
-import ButtonNew from './ButtonNew.astro';
+import Button from '../shared/Button.astro';
 
 export interface Props {
 	lang?: string;
@@ -56,9 +56,12 @@ const addressLines = [
 
 			<!-- CTA -->
 			<div class="footer-cta">
-				<ButtonNew href={lang === 'es' ? '/es/contact-new/' : '/en/contact-new/'}
-					>{t('nav.startProject')}</ButtonNew
-				>
+				<Button
+					text={t('nav.startProject')}
+					href={lang === 'es' ? '/es/contact/' : '/en/contact/'}
+					variant="primary"
+					className="footer-cta-button"
+				/>
 			</div>
 		</div>
 	</div>

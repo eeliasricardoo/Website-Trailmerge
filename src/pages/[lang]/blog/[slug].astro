@@ -16,15 +16,15 @@ export async function getStaticPaths() {
 	return paths;
 }
 
-import LayoutNew from '../../../layouts/LayoutNew.astro';
+import Layout from '../../../layouts/Layout.astro';
 import { useTranslations } from '../../../i18n/utils';
 import { safeCreateURL } from '../../../utils/urlHelpers';
 
 // Import new redesigned components
-import PostHeroNew from '../../../components/new/PostHeroNew.astro';
-import PostHeaderNew from '../../../components/new/PostHeaderNew.astro';
-import PostContentNew from '../../../components/new/PostContentNew.astro';
-import PostAuthorNew from '../../../components/new/PostAuthorNew.astro';
+import PostHero from '../../../components/blog/PostHero.astro';
+import PostHeader from '../../../components/blog/PostHeader.astro';
+import PostContent from '../../../components/blog/PostContent.astro';
+import PostAuthor from '../../../components/blog/PostAuthor.astro';
 
 import type { BlogPost } from '../../../types/blog';
 
@@ -148,7 +148,7 @@ const articleData = {
 };
 ---
 
-<LayoutNew
+<Layout
 	title={`${post.title} – ${t('blog.postTitleSuffix')}`}
 	description={post.excerpt}
 	lang={lang}
@@ -157,16 +157,25 @@ const articleData = {
 >
 	<div class="blog-post-decoration"></div>
 	<div class="blog-post-blob"></div>
-	<PostHeroNew image={post.image} imageAlt={post.imageAlt || post.title} />
-	<PostHeaderNew
-		title={post.title}
-		date={post.date}
-		author={post.author}
-		category={categoryDisplay}
-	/>
-	<PostContentNew content={post.content} />
-	<PostAuthorNew author={post.author} lang={lang} />
-</LayoutNew>
+	<main id="main-content">
+		<article>
+			<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
+
+			<div class="post-container">
+				<PostHeader
+					title={post.title}
+					date={post.date}
+					author={post.author}
+					category={categoryDisplay}
+				/>
+
+				<PostContent content={post.content} />
+
+				<PostAuthor author={post.author} lang={lang} />
+			</div>
+		</article>
+	</main>
+</Layout>
 
 <style is:global>
 	/* Ensure post content titles use Young Serif */

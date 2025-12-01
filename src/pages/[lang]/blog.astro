@@ -5,12 +5,12 @@ export async function getStaticPaths() {
 	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
-import LayoutNew from '../../layouts/LayoutNew.astro';
+import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils';
 
 // Import new redesigned components
-import FeaturedPostsNew from '../../components/new/FeaturedPostsNew.astro';
-import AllPostsNew from '../../components/new/AllPostsNew.astro';
+import FeaturedPosts from '../../components/blog/FeaturedPosts.astro';
+import AllPosts from '../../components/blog/AllPosts.astro';
 
 // Import blog data
 import { getAllPosts } from '../../data/blogPosts';
@@ -86,15 +86,15 @@ const blogPosts: BlogPost[] = [...studiocmsPosts, ...staticPosts].sort((a, b) =>
 });
 ---
 
-<LayoutNew
+<Layout
 	title={t('blog.seo.title')}
 	description={t('blog.seo.description')}
 	lang={lang}
 	schemaType="website"
 >
-	<FeaturedPostsNew lang={lang} posts={blogPosts} />
-	<AllPostsNew lang={lang} posts={blogPosts} />
-</LayoutNew>
+	<FeaturedPosts lang={lang} posts={blogPosts} />
+	<AllPosts lang={lang} posts={blogPosts} />
+</Layout>
 
 <style is:global>
 	/* Override global background for Blog page */

@@ -5,15 +5,15 @@ export async function getStaticPaths() {
 	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
-import LayoutNew from '../../layouts/LayoutNew.astro';
+import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils';
 
 // Import new redesigned components
-import HeroNew from '../../components/new/HeroNew.astro';
-import AsideSectionNew from '../../components/new/AsideSectionNew.astro';
-import CompaniesSectionNew from '../../components/new/CompaniesSectionNew.astro';
-import OurApproachNew from '../../components/new/OurApproachNew.astro';
-import RecentProjectsNew from '../../components/new/RecentProjectsNew.astro';
+import Hero from '../../components/home/Hero.astro';
+import AsideSection from '../../components/home/AsideSection.astro';
+import CompaniesSection from '../../components/home/CompaniesSection.astro';
+import OurApproach from '../../components/home/OurApproach.astro';
+import RecentProjects from '../../components/home/RecentProjects.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -27,10 +27,16 @@ if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<LayoutNew title={t('homepage.seo.title')} description={t('homepage.seo.description')} lang={lang}>
-	<HeroNew lang={lang} />
-	<AsideSectionNew lang={lang} title={t('asideNew.title')} text={t('aside.text')} />
-	<CompaniesSectionNew lang={lang} />
-	<OurApproachNew lang={lang} />
-	<RecentProjectsNew lang={lang} />
-</LayoutNew>
+<Layout title={t('homepage.seo.title')} description={t('homepage.seo.description')} lang={lang}>
+	<main id="main-content">
+		<Hero lang={lang} />
+
+		<AsideSection lang={lang} />
+
+		<CompaniesSection lang={lang} />
+
+		<OurApproach lang={lang} />
+
+		<RecentProjects lang={lang} />
+	</main>
+</Layout>

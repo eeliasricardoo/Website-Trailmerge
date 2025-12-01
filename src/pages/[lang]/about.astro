@@ -5,13 +5,13 @@ export async function getStaticPaths() {
 	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
-import LayoutNew from '../../layouts/LayoutNew.astro';
+import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils';
 
 // Import new redesigned components
-import AboutHeroNew from '../../components/new/AboutHeroNew.astro';
-import OurValuesNew from '../../components/new/OurValuesNew.astro';
-import OurHistoryNew from '../../components/new/OurHistoryNew.astro';
+import AboutHero from '../../components/about/AboutHero.astro';
+import OurValues from '../../components/about/OurValues.astro';
+import OurHistory from '../../components/about/OurHistory.astro';
 
 const { lang } = Astro.params || { lang: 'en' };
 
@@ -25,8 +25,12 @@ if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
 const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<LayoutNew title={t('about.seo.title')} description={t('about.seo.description')} lang={lang}>
-	<AboutHeroNew lang={lang} />
-	<OurValuesNew lang={lang} />
-	<OurHistoryNew lang={lang} />
-</LayoutNew>
+<Layout title={t('about.seo.title')} description={t('about.seo.description')} lang={lang}>
+	<main id="main-content">
+		<AboutHero lang={lang} />
+
+		<OurValues lang={lang} />
+
+		<OurHistory lang={lang} />
+	</main>
+</Layout>
