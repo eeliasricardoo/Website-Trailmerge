@@ -44,6 +44,7 @@ const LAYER_CONFIGS = [
 
 interface LayerConfig {
 	className: string;
+	// eslint-disable-next-line no-unused-vars
 	transform: (y: number, p: number) => string;
 }
 

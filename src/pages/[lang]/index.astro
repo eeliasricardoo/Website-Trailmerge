@@ -28,15 +28,13 @@ const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <Layout title={t('homepage.seo.title')} description={t('homepage.seo.description')} lang={lang}>
-	<main id="main-content">
-		<Hero lang={lang} />
+	<Hero lang={lang} />
 
-		<AsideSection lang={lang} title={t('asideNew.title')} text={t('aside.text')} />
+	<AsideSection lang={lang} title={t('asideNew.title')} text={t('aside.text')} />
 
-		<CompaniesSection lang={lang} />
+	<CompaniesSection lang={lang} />
 
-		<OurApproach lang={lang} />
+	<OurApproach lang={lang} />
 
-		<RecentProjects lang={lang} />
-	</main>
+	<RecentProjects lang={lang} />
 </Layout>

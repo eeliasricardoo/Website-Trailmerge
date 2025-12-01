@@ -77,37 +77,41 @@ const sidePosts = featuredPosts.slice(1, 4);
 		<div class="featured-slider-mobile">
 			<div class="slider-container">
 				<div class="slider-track" id="slider-track">
-					{featuredPosts.map((post, index) => (
-						<article class="slider-slide" data-slide-index={index}>
-							<a href={`/${lang}/blog/${post.slug}-new/`} class="slider-link">
-								<div class="slider-image-wrapper">
-									<img
-										src={post.image}
-										alt={post.imageAlt || post.title}
-										class="slider-image"
-										loading={index === 0 ? 'eager' : 'lazy'}
-									/>
-								</div>
-								<div class="slider-content">
-									<h3 class="slider-title">{post.title}</h3>
-									<div class="slider-meta">
-										<span class="slider-date">{post.date}</span>
-										{post.author && <span class="slider-author"> • {post.author.name}</span>}
+					{
+						featuredPosts.map((post, index) => (
+							<article class="slider-slide" data-slide-index={index}>
+								<a href={`/${lang}/blog/${post.slug}-new/`} class="slider-link">
+									<div class="slider-image-wrapper">
+										<img
+											src={post.image}
+											alt={post.imageAlt || post.title}
+											class="slider-image"
+											loading={index === 0 ? 'eager' : 'lazy'}
+										/>
 									</div>
-								</div>
-							</a>
-						</article>
-					))}
+									<div class="slider-content">
+										<h3 class="slider-title">{post.title}</h3>
+										<div class="slider-meta">
+											<span class="slider-date">{post.date}</span>
+											{post.author && <span class="slider-author"> • {post.author.name}</span>}
+										</div>
+									</div>
+								</a>
+							</article>
+						))
+					}
 				</div>
 			</div>
 			<div class="slider-bullets" id="slider-bullets">
-				{featuredPosts.map((_, index) => (
-					<button
-						class={`slider-bullet ${index === 0 ? 'active' : ''}`}
-						data-slide-index={index}
-						aria-label={`Go to slide ${index + 1}`}
-					></button>
-				))}
+				{
+					featuredPosts.map((_, index) => (
+						<button
+							class={`slider-bullet ${index === 0 ? 'active' : ''}`}
+							data-slide-index={index}
+							aria-label={`Go to slide ${index + 1}`}
+						/>
+					))
+				}
 			</div>
 		</div>
 	</div>
@@ -122,7 +126,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 		const slides = Array.from(slider.querySelectorAll('.slider-slide')) as HTMLElement[];
 		const bullets = Array.from(slider.querySelectorAll('.slider-bullet')) as HTMLButtonElement[];
 		const container = slider.querySelector('.slider-container') as HTMLElement;
-		
+
 		if (slides.length === 0 || !track || !container || bullets.length === 0) {
 			return;
 		}
@@ -141,15 +145,15 @@ const sidePosts = featuredPosts.slice(1, 4);
 				requestAnimationFrame(updateSlider);
 				return;
 			}
-			
+
 			const translateX = -currentIndex * containerWidth;
 			track.style.transform = `translateX(${translateX}px)`;
-			
+
 			// Remove active class from all bullets first
 			bullets.forEach((bullet) => {
 				bullet.classList.remove('active');
 			});
-			
+
 			// Add active class only to the current bullet
 			if (bullets[currentIndex]) {
 				bullets[currentIndex].classList.add('active');
@@ -161,7 +165,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 			bullet.addEventListener('click', (e) => {
 				e.preventDefault();
 				e.stopPropagation();
-				
+
 				const targetIndex = parseInt(bullet.getAttribute('data-slide-index') || '0', 10);
 				if (targetIndex >= 0 && targetIndex < slides.length) {
 					currentIndex = targetIndex;
@@ -195,7 +199,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 			if (!isDragging) return;
 			isDragging = false;
 			track.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-			
+
 			const endX = e.changedTouches[0].clientX;
 			const diff = startX - endX;
 			const threshold = 50;
@@ -226,7 +230,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 		window.addEventListener('resize', handleResize);
 
 		// Initialize slider - remove all active classes first, then set the correct one
-		bullets.forEach(bullet => bullet.classList.remove('active'));
+		bullets.forEach((bullet) => bullet.classList.remove('active'));
 		currentIndex = 0;
 		setTimeout(() => {
 			updateSlider();
@@ -495,7 +499,9 @@ const sidePosts = featuredPosts.slice(1, 4);
 		background-color: rgba(84, 80, 75, 0.3);
 		cursor: pointer;
 		padding: 0;
-		transition: background-color 0.3s ease, transform 0.3s ease;
+		transition:
+			background-color 0.3s ease,
+			transform 0.3s ease;
 		outline: none;
 	}
 
