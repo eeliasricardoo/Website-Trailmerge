@@ -43,7 +43,8 @@ const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9Mcn
 					title="Embedded Copper Forms"
 					width="100%"
 					height="700"
-					loading="eager"></iframe>
+					loading="eager"
+					fetchpriority="high"></iframe>
 			</div>
 
 			<script>
@@ -198,7 +199,8 @@ const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9Mcn
 	}
 
 	.contact-content-col {
-		flex: 1;
+		width: 640px;
+		flex: 0 0 640px;
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
@@ -254,6 +256,13 @@ const copperFormId = lang === 'es' ? 'wYsDRF6aDG9YgnPCCJjiXJ' : '5dNTzeqzanj9Mcn
 			order: -1; /* Image on top */
 			width: 100%;
 			padding-top: 0;
+			padding-left: 0;
+			justify-content: center;
+		}
+
+		.contact-content-col {
+			width: 100%;
+			flex: 1;
 		}
 
 		.contact-image {
