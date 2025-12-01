@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/shared/Button.astro';
+import { ui } from '../i18n/utils';
+
+const en = ui.en['404'];
+const es = ui.es['404'];
+---
+
+<Layout title="Page Not Found" description="404 Error" lang="en">
+	<div class="not-found-container">
+		<div class="content en">
+			<h1 class="title">{en.title}</h1>
+			<p class="description">{en.description}</p>
+			<Button href="/en/" text={en.cta} style="primary" />
+		</div>
+		<div class="content es" style="display: none;">
+			<h1 class="title">{es.title}</h1>
+			<p class="description">{es.description}</p>
+			<Button href="/es/" text={es.cta} style="primary" />
+		</div>
+	</div>
+</Layout>
+
+<script>
+	const lang = navigator.language || navigator.userLanguage;
+	if (lang.startsWith('es')) {
+		const enContent = document.querySelector('.content.en') as HTMLElement;
+		const esContent = document.querySelector('.content.es') as HTMLElement;
+		if (enContent) enContent.style.display = 'none';
+		if (esContent) esContent.style.display = 'flex';
+	}
+</script>
+
+<style>
+	.not-found-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 60vh;
+		text-align: center;
+		padding: 2rem;
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.title {
+		font-family: 'Young Serif', serif;
+		font-size: 3rem;
+		color: var(--Brand-SecondaryBrown, #54504b);
+		margin: 0;
+	}
+
+	.description {
+		font-family: 'DM Sans', sans-serif;
+		font-size: 1.25rem;
+		color: var(--Brand-SecondaryBrown, #54504b);
+		max-width: 600px;
+		margin: 0;
+	}
+</style>
