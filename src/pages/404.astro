@@ -12,12 +12,12 @@ const es = ui.es['404'];
 		<div class="content en">
 			<h1 class="title">{en.title}</h1>
 			<p class="description">{en.description}</p>
-			<Button href="/en/" text={en.cta} style="primary" />
+			<Button href="/en/" variant="primary">{en.cta}</Button>
 		</div>
 		<div class="content es" style="display: none;">
 			<h1 class="title">{es.title}</h1>
 			<p class="description">{es.description}</p>
-			<Button href="/es/" text={es.cta} style="primary" />
+			<Button href="/es/" variant="primary">{es.cta}</Button>
 		</div>
 	</div>
 </Layout>
@@ -38,7 +38,7 @@ const es = ui.es['404'];
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		min-height: 60vh;
+		min-height: 70vh;
 		text-align: center;
 		padding: 2rem;
 	}
