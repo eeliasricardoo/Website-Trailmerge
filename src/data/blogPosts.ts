@@ -193,7 +193,7 @@ export const blogPosts: BlogPost[] = [
 		date: 'APRIL 21, 2021',
 		category: 'SAAS',
 		excerpt:
-			"As an instructor at General Assembly, one of the main things I wanted my cohort to take away from the 10-week UX design immersive was this: how to ask the right questions. Pixels are great and all – and, to be sure, they define the output of the work we do as product designers. But good questions are the foundation of good design.",
+			'As an instructor at General Assembly, one of the main things I wanted my cohort to take away from the 10-week UX design immersive was this: how to ask the right questions. Pixels are great and all – and, to be sure, they define the output of the work we do as product designers. But good questions are the foundation of good design.',
 		imageAlt: 'Compass illustration',
 		imageCredit: 'Blog Photo by Artem Maltsev on Unsplash',
 		content: `<p>As an instructor at General Assembly, one of the main things I wanted my cohort to take away from the 10-week UX design immersive was this: how to ask the right questions.</p>

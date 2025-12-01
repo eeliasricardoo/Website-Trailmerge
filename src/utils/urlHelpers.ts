@@ -6,7 +6,7 @@
 /**
  * Safely create a URL from a pathname and base URL
  * Handles cases where base URL might be undefined or invalid
- * 
+ *
  * @param pathname - The pathname to create URL from
  * @param base - The base URL (can be URL object, string, or undefined)
  * @param fallbackOrigin - Optional fallback origin if base is not available
@@ -24,12 +24,12 @@ export function safeCreateURL(
 				return new URL(pathname, baseURL).href;
 			}
 		}
-		
+
 		// Fallback: use provided fallback origin
 		if (fallbackOrigin) {
 			return new URL(pathname, fallbackOrigin).href;
 		}
-		
+
 		// Last resort: return just the pathname
 		return pathname;
 	} catch (error) {
@@ -38,4 +38,3 @@ export function safeCreateURL(
 		return pathname;
 	}
 }
-

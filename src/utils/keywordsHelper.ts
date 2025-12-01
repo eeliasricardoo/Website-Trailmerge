@@ -8,4 +8,3 @@ export function getBlogKeywords(lang: string, category: string, title: string): 
 	}
 	return base + ', diseño UX, B2B SaaS, diseño de producto, Trailmerge';
 }
-
