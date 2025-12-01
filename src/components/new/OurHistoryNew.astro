@@ -29,9 +29,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		<div class="our-history-new-content">
 			<h2 class="our-history-new-title">{t('aboutNew.history.title')}</h2>
 			<div class="our-history-new-text">
-				<p>
-					{t('aboutNew.history.p1')}
-				</p>
+				<p set:html={t('aboutNew.history.p1')} />
 				<p set:html={t('aboutNew.history.p2')} />
 				<p set:html={t('aboutNew.history.p3')} />
 			</div>
@@ -107,8 +105,11 @@ const t = useTranslations(lang as 'en' | 'es');
 	.our-history-new-text {
 		color: #54504b;
 		font-family: 'DM Sans', sans-serif;
-		font-size: 18px;
-		line-height: 1.7;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 32px;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
 		margin: 0;
 	}
 
