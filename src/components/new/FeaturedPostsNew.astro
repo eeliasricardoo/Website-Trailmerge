@@ -523,6 +523,12 @@ const sidePosts = featuredPosts.slice(1, 4);
 		.featured-slider-mobile {
 			display: block;
 		}
+
+		.slider-image-wrapper {
+			aspect-ratio: unset;
+			height: 340px;
+			max-height: 340px;
+		}
 	}
 
 	@media (max-width: 480px) {
@@ -536,7 +542,9 @@ const sidePosts = featuredPosts.slice(1, 4);
 		}
 
 		.slider-image-wrapper {
-			max-height: 200px;
+			aspect-ratio: unset;
+			height: 300px;
+			max-height: 300px;
 		}
 
 		.slider-title {
