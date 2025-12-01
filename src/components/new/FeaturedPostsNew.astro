@@ -79,7 +79,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 <style>
 	.featured-posts-wrapper {
 		width: 100%;
-		padding: 80px 24px;
+		padding: 88px 24px 80px 24px;
 		background-color: transparent;
 	}
 
@@ -94,12 +94,12 @@ const sidePosts = featuredPosts.slice(1, 4);
 		font-size: 56px;
 		font-weight: 400;
 		line-height: 1.2;
-		margin: 0 0 64px 0;
+		margin: 0 0 24px 0;
 	}
 
 	.featured-posts-grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr 608px;
 		gap: 40px;
 		align-items: start;
 	}
@@ -234,7 +234,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 
 	@media (max-width: 768px) {
 		.featured-posts-wrapper {
-			padding: 60px 24px;
+			padding: 72px 24px;
 		}
 
 		.section-title {
