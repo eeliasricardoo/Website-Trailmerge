@@ -8,12 +8,20 @@ export interface Props {
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as 'en' | 'es');
 
-const capabilities = [
-	t('servicesNew.capabilities.list.item1'),
-	t('servicesNew.capabilities.list.item2'),
-	t('servicesNew.capabilities.list.item3'),
-	t('servicesNew.capabilities.list.item4'),
-	t('servicesNew.capabilities.list.item5'),
+const column1 = [
+	t('servicesNew.capabilities.column1.item1'),
+	t('servicesNew.capabilities.column1.item2'),
+	t('servicesNew.capabilities.column1.item3'),
+	t('servicesNew.capabilities.column1.item4'),
+	t('servicesNew.capabilities.column1.item5'),
+];
+
+const column2 = [
+	t('servicesNew.capabilities.column2.item1'),
+	t('servicesNew.capabilities.column2.item2'),
+	t('servicesNew.capabilities.column2.item3'),
+	t('servicesNew.capabilities.column2.item4'),
+	t('servicesNew.capabilities.column2.item5'),
 ];
 ---
 
@@ -25,12 +33,12 @@ const capabilities = [
 		<div class="capabilities-list">
 			<div class="capabilities-column parallax-layer" data-speed="0.4">
 				<ul>
-					{capabilities.map((item) => <li>{item}</li>)}
+					{column1.map((item) => <li>{item}</li>)}
 				</ul>
 			</div>
 			<div class="capabilities-column parallax-layer" data-speed="0.6">
 				<ul>
-					{capabilities.map((item) => <li>{item}</li>)}
+					{column2.map((item) => <li>{item}</li>)}
 				</ul>
 			</div>
 		</div>
