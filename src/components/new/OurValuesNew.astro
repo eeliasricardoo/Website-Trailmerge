@@ -67,7 +67,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		position: relative;
 		width: 100vw;
 		max-width: 100vw;
-		padding: 0;
+		padding: 40px 0 0 0;
 		margin: 0;
 		display: block;
 		box-sizing: border-box;
@@ -210,17 +210,34 @@ const t = useTranslations(lang as 'en' | 'es');
 
 	/* Responsive Design */
 	@media (max-width: 1024px) {
-		.our-values-wrapper,
+		.our-values-wrapper {
+			min-height: 800px;
+		}
+
 		.our-values-container {
-			min-height: auto;
+			min-height: 800px;
+			padding: 40px 0 0 0;
+		}
+
+		.our-values-image-wrapper {
+			min-height: 800px;
+		}
+
+		.our-values-image {
+			min-height: 800px;
 		}
 
 		.telescope-image {
 			left: 5%;
+			width: 300px;
+			height: 300px;
+			max-width: 300px;
+			max-height: 300px;
 		}
 
 		.our-values-content {
 			left: 40%;
+			max-width: 55%;
 		}
 
 		.our-values-title {
