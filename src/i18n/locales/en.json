@@ -199,7 +199,14 @@
     },
     "capabilities": {
       "title": "Capabilities",
-      "list": {
+      "column1": {
+        "item1": "Process Consulting",
+        "item2": "Field Research",
+        "item3": "User Interviews & Testing",
+        "item4": "Software Strategy",
+        "item5": "AI Innovation"
+      },
+      "column2": {
         "item1": "Workflow & Interface Design",
         "item2": "Iterative Prototyping",
         "item3": "Digital Product Management",
