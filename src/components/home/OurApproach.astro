@@ -1,0 +1,310 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import Button from '../shared/Button.astro';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<div class="our-approach-wrapper">
+	<div class="our-approach-container parallax-container" id="our-approach-section">
+		<img
+			src="/images/new/home/our-approach/Resizing Mountains.svg"
+			alt="Our Approach"
+			class="our-approach-image parallax-layer"
+			data-speed="-0.1"
+			loading="lazy"
+		/>
+		<img
+			src="/images/new/home/our-approach/Map.svg"
+			alt="Map"
+			class="map-image parallax-layer"
+			data-speed="1.2"
+			loading="lazy"
+		/>
+		<div class="our-approach-content parallax-layer" data-speed="0.1">
+			<h3 class="our-approach-title">{t('ourApproachNew.title')}</h3>
+			<div class="our-approach-text">
+				<p>
+					<span class="w-700">{t('ourApproachNew.p1.part1')}</span>
+					<span class="w-500">{t('ourApproachNew.p1.part2')}</span>
+					<span class="w-700">{t('ourApproachNew.p1.part3')}</span>
+					{t('ourApproachNew.p1.part4')}
+					<span class="w-700">{t('ourApproachNew.p1.part5')}</span>
+					{t('ourApproachNew.p1.part6')}
+				</p>
+				<p>
+					{t('ourApproachNew.p2.part1')}
+					<span class="w-700">{t('ourApproachNew.p2.part2')}</span>
+				</p>
+			</div>
+			<Button
+				text={t('ourApproach.cta')}
+				href={lang === 'en' ? '/en/about/' : '/es/about/'}
+				variant="secondary"
+				icon="arrow-right"
+			/>
+		</div>
+	</div>
+</div>
+
+<style>
+	.our-approach-wrapper {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		/* Ensure it takes up space in the flow */
+		min-height: 800px;
+		margin-top: 70px;
+		z-index: 20;
+	}
+
+	.our-approach-container {
+		position: relative;
+		width: 100vw;
+		max-width: 100vw;
+		padding: 0;
+		margin: 0;
+		display: block;
+		box-sizing: border-box;
+		min-height: 800px;
+	}
+
+	.our-approach-image {
+		width: 100vw;
+		max-width: 100vw;
+		height: auto;
+		object-fit: cover;
+		display: block;
+		box-sizing: border-box;
+	}
+
+	.map-image {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 5%;
+		width: auto;
+		height: fit-content;
+		max-height: 80%;
+		max-width: 40%;
+		z-index: 11;
+		display: block;
+		box-sizing: border-box;
+	}
+
+	.our-approach-content {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 45%;
+		z-index: 12;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		align-items: flex-start;
+		max-width: 50%;
+		height: fit-content;
+		padding-right: 20px;
+	}
+
+	.our-approach-title {
+		color: #fff;
+		text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 64px;
+		letter-spacing: 1.68px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.our-approach-text {
+		width: 100%;
+		color: #fff;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 32px;
+	}
+
+	.our-approach-text p {
+		margin: 0 0 16px 0;
+	}
+
+	.w-700 {
+		font-weight: 700;
+	}
+
+	.w-500 {
+		font-weight: 500;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.our-approach-wrapper,
+		.our-approach-container {
+			min-height: auto;
+		}
+
+		.map-image {
+			left: 5%;
+		}
+
+		.our-approach-content {
+			left: 40%;
+		}
+
+		.our-approach-title {
+			font-size: 48px;
+			line-height: 56px;
+		}
+
+		.our-approach-text {
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.our-approach-wrapper {
+			margin-top: 0;
+		}
+
+		.our-approach-wrapper,
+		.our-approach-container {
+			min-height: 600px;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.our-approach-image {
+			width: 100%;
+			height: 100%;
+			min-height: 600px;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+
+		.map-image {
+			position: relative;
+			top: auto;
+			left: auto;
+			transform: none;
+			width: 200px;
+			height: auto;
+			max-width: 50%;
+			max-height: 200px;
+			margin: 60px 0 16px 20px;
+			z-index: 11;
+			display: block;
+		}
+
+		.our-approach-content {
+			position: relative;
+			left: 0;
+			top: 0;
+			bottom: auto;
+			margin: 0;
+			max-width: 100%;
+			padding: 0 20px 80px 20px;
+			background: transparent;
+			z-index: 12;
+		}
+
+		.our-approach-title {
+			font-size: 36px;
+			line-height: 1.2;
+			margin-bottom: 20px;
+		}
+
+		.our-approach-text {
+			font-size: 18px;
+			line-height: 1.6;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.our-approach-wrapper {
+			margin-top: 0;
+		}
+
+		.our-approach-wrapper,
+		.our-approach-container {
+			min-height: 550px;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.our-approach-image {
+			width: 100%;
+			height: 100%;
+			min-height: 550px;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+
+		.map-image {
+			position: relative;
+			top: auto;
+			left: auto;
+			transform: none;
+			width: 180px;
+			height: auto;
+			max-width: 50%;
+			max-height: 180px;
+			margin: 50px 0 16px 20px;
+			z-index: 11;
+			display: block;
+		}
+
+		.our-approach-content {
+			position: relative;
+			left: 0;
+			top: 0;
+			bottom: auto;
+			margin: 0;
+			max-width: 100%;
+			padding: 0 20px 80px 20px;
+			background: transparent;
+			z-index: 12;
+		}
+
+		.our-approach-title {
+			font-size: 32px;
+			line-height: 1.2;
+			margin-bottom: 16px;
+		}
+
+		.our-approach-text {
+			font-size: 17px;
+			line-height: 1.6;
+		}
+	}
+	.parallax-layer {
+		will-change: transform;
+		/* Hardware acceleration hack if needed, though will-change is usually enough */
+		transform: translateZ(0);
+	}
+</style>

@@ -20,14 +20,14 @@ const translations: Record<Language, CookieConsentTranslations> = {
 		message: 'We use cookies to ensure you get the best experience on our website.',
 		dismiss: 'Accept',
 		link: 'Learn more',
-		href: '/en/privacy/',
+		href: '/en/privacy-new/',
 	},
 	es: {
 		message:
 			'Utilizamos cookies para garantizar que obtenga la mejor experiencia en nuestro sitio web.',
 		dismiss: 'Aceptar',
 		link: 'Más información',
-		href: '/es/privacy/',
+		href: '/es/privacy-new/',
 	},
 };
 

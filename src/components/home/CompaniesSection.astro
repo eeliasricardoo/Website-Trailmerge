@@ -1,0 +1,122 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<!-- Companies Section New -->
+<div class="companies-new-wrapper">
+	<div class="companies-new-grid">
+		<div class="company-item">
+			<img
+				src="/images/new/home/logos/Tourial Logo.svg"
+				loading="lazy"
+				alt="Tourial company logo"
+				class="company-logo"
+			/>
+		</div>
+		<div class="company-item">
+			<img
+				src="/images/new/home/logos/BeyondReach Logo.svg"
+				loading="lazy"
+				alt="BeyondReach company logo"
+				class="company-logo"
+			/>
+		</div>
+		<div class="company-item">
+			<img
+				src="/images/new/home/logos/CCR Logo.svg"
+				loading="lazy"
+				alt="CCR company logo"
+				class="company-logo"
+			/>
+		</div>
+		<div class="company-item">
+			<img
+				src="/images/new/home/logos/UserIQ Logo.svg"
+				loading="lazy"
+				alt="UserIQ company logo"
+				class="company-logo"
+			/>
+		</div>
+		<div class="company-item">
+			<img
+				src="/images/new/home/logos/CCR Logo-1.svg"
+				loading="lazy"
+				alt="CCR company logo"
+				class="company-logo"
+			/>
+		</div>
+	</div>
+</div>
+
+<style>
+	.companies-new-wrapper {
+		width: 100%;
+		padding: 0 40px;
+		margin-top: 44px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.companies-new-grid {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 4rem;
+		flex-wrap: wrap;
+		width: 100%;
+		max-width: 1200px;
+	}
+
+	.company-item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		background-color: transparent;
+	}
+
+	.company-logo {
+		max-width: 150px;
+		height: auto;
+		object-fit: contain;
+	}
+
+	@media (max-width: 768px) {
+		.companies-new-wrapper {
+			padding: 0 20px;
+		}
+
+		.companies-new-grid {
+			gap: 2.5rem;
+		}
+
+		.company-logo {
+			max-width: 120px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.companies-new-wrapper {
+			padding: 0 16px;
+		}
+
+		.companies-new-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 2rem 1.5rem;
+			max-width: 360px;
+		}
+
+		.company-logo {
+			max-width: 100px;
+		}
+	}
+</style>

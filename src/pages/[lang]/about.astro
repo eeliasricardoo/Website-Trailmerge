@@ -1,58 +1,36 @@
 ---
-// SSR mode - no prerender or getStaticPaths needed
 export const prerender = false;
 
+export async function getStaticPaths() {
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
+}
+
 import Layout from '../../layouts/Layout.astro';
-import Navbar from '../../components/Navbar.astro';
-import AboutHero from '../../components/AboutHero.astro';
-import JumboTextSection from '../../components/JumboTextSection.astro';
-import ValuesSection from '../../components/ValuesSection.astro';
-import Footer from '../../components/Footer.astro';
-import ContactModal from '../../components/ContactModal.astro';
 import { useTranslations } from '../../i18n/utils';
 
-const { lang } = Astro.params || { lang: 'en' };
-const t = useTranslations(lang as 'en' | 'es');
+// Import new redesigned components
+import AboutHero from '../../components/about/AboutHero.astro';
+import OurValues from '../../components/about/OurValues.astro';
+import OurHistory from '../../components/about/OurHistory.astro';
 
-// SEO keywords and breadcrumbs
-const keywords = t('about.seo.keywords');
-const breadcrumbs =
-	lang === 'en'
-		? [
-				{ name: 'Home', url: 'https://trailmerge.com/en/' },
-				{ name: 'About', url: 'https://trailmerge.com/en/about/' },
-			]
-		: [
-				{ name: 'Inicio', url: 'https://trailmerge.com/es/' },
-				{ name: 'Acerca', url: 'https://trailmerge.com/es/sobre-nosotros/' },
-			];
+const { lang } = Astro.params || { lang: 'en' };
+
+if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
+	return new Response(null, {
+		status: 404,
+		statusText: 'Not Found',
+	});
+}
+
+const t = useTranslations(lang as 'en' | 'es');
 ---
 
-<Layout
-	title={t('about.seo.title')}
-	description={t('about.seo.description')}
-	keywords={keywords}
-	breadcrumbs={breadcrumbs}
-	lang={lang}
->
-	<Navbar lang={lang} />
-
+<Layout title={t('about.seo.title')} description={t('about.seo.description')} lang={lang}>
 	<main id="main-content">
 		<AboutHero lang={lang} />
 
-		<JumboTextSection lang={lang} />
+		<OurValues lang={lang} />
 
-		<ValuesSection lang={lang} />
+		<OurHistory lang={lang} />
 	</main>
-
-	<Footer lang={lang} />
-
-	<ContactModal lang={lang} />
 </Layout>
-
-<style is:global>
-	/* Additional styles specific to the About page */
-	.about-page {
-		background-color: var(--sand);
-	}
-</style>

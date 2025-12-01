@@ -1,0 +1,26 @@
+---
+export const prerender = false;
+
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+// Import new redesigned components
+import ContactSection from '../../components/contact/ContactSection.astro';
+
+const { lang } = Astro.params || { lang: 'en' };
+
+if (lang && typeof lang === 'string' && !['en', 'es'].includes(lang)) {
+	return new Response(null, {
+		status: 404,
+		statusText: 'Not Found',
+	});
+}
+
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<Layout title={t('contactNew.seo.title')} description={t('contactNew.seo.description')} lang={lang}>
+	<main id="main-content">
+		<ContactSection lang={lang} />
+	</main>
+</Layout>

@@ -1,0 +1,83 @@
+---
+interface Props {
+	href?: string;
+	variant?: 'primary' | 'secondary' | 'navbar';
+	class?: string;
+	[key: string]: any;
+}
+
+const { href, variant = 'primary', class: className, ...rest } = Astro.props;
+
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag href={href} class:list={['button-new', `variant-${variant}`, className]} {...rest}>
+	<slot />
+</Tag>
+
+<style>
+	.button-new {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		text-decoration: none;
+		border: none;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		border-radius: 4px;
+	}
+
+	/* Primary Variant (Tangerine/Clay - Young Serif) */
+	.variant-primary {
+		background: #e0927d;
+		color: #2e3a33;
+		font-family: 'Young Serif', serif;
+		font-size: 18px;
+		font-weight: 400;
+		width: 194px;
+		height: 56px;
+		padding: 0;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+		border-radius: 4px;
+	}
+
+	.variant-primary:hover {
+		background-color: #e6a58a;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+
+	/* Secondary Variant (Grey - DM Sans) */
+	.variant-secondary {
+		background-color: var(--grey-5, #2e3a33);
+		color: var(--white, #ffffff);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 8px 16px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+	}
+
+	.variant-secondary:hover {
+		background-color: var(--grey-4, #43423e);
+		color: var(--white, #ffffff);
+		box-shadow: 2px 2px 5px rgba(21, 26, 23, 0.2);
+	}
+
+	/* Navbar Variant (Dark Green - Young Serif) */
+	.variant-navbar {
+		background-color: #2e3a33;
+		color: #ffffff;
+		font-family: 'Young Serif', serif;
+		font-size: 16px;
+		font-weight: 400;
+		padding: 8px 24px;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+	}
+
+	.variant-navbar:hover {
+		background-color: #506e5a;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	}
+</style>

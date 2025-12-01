@@ -1,0 +1,290 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	title?: string;
+	text?: string;
+	showBannerTags?: boolean;
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+const { title, text = t('aside.text'), showBannerTags = true } = Astro.props;
+---
+
+<!-- Aside Section New - Exclusive component for redesigned home -->
+<div class="aside-new-wrapper">
+	<div class="aside-new-container">
+		<div class="aside-new-center">
+			<div class="aside-new-content">
+				{title && <h2 class="aside-new-title">{title}</h2>}
+				<p class="aside-new-text">{text}</p>
+			</div>
+		</div>
+		{
+			showBannerTags && (
+				<>
+					<div class="aside-new-ribbon-right">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="121"
+							height="176"
+							viewBox="0 0 121 176"
+							fill="none"
+							class="banner-tag-right"
+						>
+							<g filter="url(#filter0_d_10616_1859)">
+								<path
+									d="M108.67 164H12C9.79086 164 8 162.209 8 160L8 8C8 5.79086 9.79086 4 12 4H108.67C111.836 4 113.747 7.50224 112.034 10.1642L65.9236 81.8358C65.0756 83.154 65.0756 84.846 65.9236 86.1642L112.034 157.836C113.747 160.498 111.836 164 108.67 164Z"
+									fill="#44413D"
+								/>
+								<path
+									d="M108.67 164H12C9.79086 164 8 162.209 8 160L8 8C8 5.79086 9.79086 4 12 4H108.67C111.836 4 113.747 7.50224 112.034 10.1642L65.9236 81.8358C65.0756 83.154 65.0756 84.846 65.9236 86.1642L112.034 157.836C113.747 160.498 111.836 164 108.67 164Z"
+									stroke="black"
+								/>
+							</g>
+							<defs>
+								<filter
+									id="filter0_d_10616_1859"
+									x="0"
+									y="0"
+									width="120.677"
+									height="176"
+									filterUnits="userSpaceOnUse"
+									color-interpolation-filters="sRGB"
+								>
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix
+										in="SourceAlpha"
+										type="matrix"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+										result="hardAlpha"
+									/>
+									<feOffset dy="4" />
+									<feGaussianBlur stdDeviation="4" />
+									<feComposite in2="hardAlpha" operator="out" />
+									<feColorMatrix
+										type="matrix"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+									/>
+									<feBlend
+										mode="normal"
+										in2="BackgroundImageFix"
+										result="effect1_dropShadow_10616_1859"
+									/>
+									<feBlend
+										mode="normal"
+										in="SourceGraphic"
+										in2="effect1_dropShadow_10616_1859"
+										result="shape"
+									/>
+								</filter>
+							</defs>
+						</svg>
+					</div>
+					<div class="aside-new-ribbon-left">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="121"
+							height="176"
+							viewBox="0 0 121 176"
+							fill="none"
+							class="banner-tag-left"
+						>
+							<g filter="url(#filter0_d_10616_1858)">
+								<path
+									d="M12.0065 4H108.677C110.886 4 112.677 5.79086 112.677 8V160C112.677 162.209 110.886 164 108.677 164H12.0065C8.84121 164 6.92996 160.498 8.64257 157.836L54.7531 86.1642C55.6012 84.846 55.6012 83.154 54.7531 81.8358L8.64257 10.1642C6.92996 7.50225 8.84121 4 12.0065 4Z"
+									fill="#44413D"
+								/>
+							</g>
+							<defs>
+								<filter
+									id="filter0_d_10616_1858"
+									x="0"
+									y="0"
+									width="120.677"
+									height="176"
+									filterUnits="userSpaceOnUse"
+									color-interpolation-filters="sRGB"
+								>
+									<feFlood flood-opacity="0" result="BackgroundImageFix" />
+									<feColorMatrix
+										in="SourceAlpha"
+										type="matrix"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+										result="hardAlpha"
+									/>
+									<feOffset dy="4" />
+									<feGaussianBlur stdDeviation="4" />
+									<feComposite in2="hardAlpha" operator="out" />
+									<feColorMatrix
+										type="matrix"
+										values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+									/>
+									<feBlend
+										mode="normal"
+										in2="BackgroundImageFix"
+										result="effect1_dropShadow_10616_1858"
+									/>
+									<feBlend
+										mode="normal"
+										in="SourceGraphic"
+										in2="effect1_dropShadow_10616_1858"
+										result="shape"
+									/>
+								</filter>
+							</defs>
+						</svg>
+					</div>
+				</>
+			)
+		}
+	</div>
+</div>
+
+<style>
+	.aside-new-wrapper {
+		margin-top: -200px;
+		padding: 0;
+		display: flex;
+		overflow: visible;
+		position: relative;
+		z-index: 20;
+	}
+
+	.aside-new-container {
+		max-width: 1200px;
+		position: relative;
+		margin: 0 auto;
+		width: 100%;
+		overflow: visible;
+	}
+
+	.aside-new-center {
+		display: flex;
+		width: 1186px;
+		padding: 24px;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		gap: 16px;
+		border-radius: 8px;
+		background: var(--Brand-SecondaryBrown, #54504b);
+		box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);
+	}
+
+	.aside-new-content {
+		width: 100%;
+		text-align: center;
+	}
+
+	.aside-new-title {
+		color: #f9f9f9;
+		text-align: center;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+		font-family: 'Young Serif', serif;
+		font-size: 40px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 48px;
+		letter-spacing: 1.2px;
+		margin: 0 0 16px 0;
+	}
+
+	.aside-new-text {
+		color: #e4dbcc;
+		text-align: center;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 32px;
+		margin: 0;
+	}
+
+	.aside-new-ribbon-right {
+		z-index: -1;
+		justify-content: flex-start;
+		align-items: center;
+		display: flex;
+		position: absolute;
+		inset: 2% -6% 0% auto;
+	}
+
+	.aside-new-ribbon-left {
+		z-index: -1;
+		align-items: center;
+		display: flex;
+		position: absolute;
+		inset: 2% auto 0% -6%;
+	}
+
+	.banner-tag-right,
+	.banner-tag-left {
+		width: 108px;
+		height: 160px;
+		flex-shrink: 0;
+		aspect-ratio: 27/40;
+		display: block;
+	}
+
+	@media (max-width: 768px) {
+		.aside-new-wrapper {
+			margin-top: -150px;
+			padding: 0 20px;
+		}
+
+		.aside-new-container {
+			max-width: 100%;
+		}
+
+		.aside-new-ribbon-right,
+		.aside-new-ribbon-left {
+			display: none;
+		}
+
+		.aside-new-center {
+			width: 100%;
+			padding: 40px 24px;
+			border-radius: 12px;
+		}
+
+		.aside-new-title {
+			font-size: 32px;
+			margin-bottom: 20px;
+			line-height: 1.2;
+		}
+
+		.aside-new-text {
+			font-size: 17px;
+			line-height: 1.6;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.aside-new-wrapper {
+			margin-top: -150px;
+			padding: 0 20px;
+		}
+
+		.aside-new-center {
+			width: 100%;
+			padding: 48px 24px 40px 24px;
+			border-radius: 16px;
+		}
+
+		.aside-new-title {
+			font-size: 32px;
+			margin-bottom: 20px;
+			line-height: 1.2;
+		}
+
+		.aside-new-text {
+			font-size: 17px;
+			line-height: 1.7;
+		}
+	}
+</style>

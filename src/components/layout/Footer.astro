@@ -1,0 +1,266 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import TrailmergeLogoSand from '../../assets/images/Trailmerge-Wordmark-Sand.svg';
+import Button from '../shared/Button.astro';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+// Get current year for copyright
+const currentYear = new Date().getFullYear();
+
+const addressLines = [
+	t('footer.address.line1'),
+	t('footer.address.line2'),
+	t('footer.address.line3'),
+].filter((line) => line && line.trim() !== '' && !line.startsWith('footer.address'));
+---
+
+<footer class="footer-new">
+	<div class="footer-container">
+		<div class="footer-content">
+			<!-- Logo and Address -->
+			<div class="footer-brand">
+				<a href={lang === 'es' ? '/es/' : '/en/'} class="footer-logo-link">
+					<img src={TrailmergeLogoSand.src} alt="Trailmerge" class="footer-logo" />
+				</a>
+				<div class="footer-address">
+					{addressLines.map((line) => <p>{line}</p>)}
+				</div>
+			</div>
+
+			<!-- Links -->
+			<div class="footer-links">
+				<div class="link-column">
+					<h3 class="column-title">{t('footer.about')}</h3>
+					<a href={lang === 'es' ? '/es/services/' : '/en/services/'} class="footer-link"
+						>{t('nav.services')}</a
+					>
+					<a href={lang === 'es' ? '/es/contact/' : '/en/contact/'} class="footer-link"
+						>{t('nav.contact')}</a
+					>
+				</div>
+				<div class="link-column">
+					<h3 class="column-title">{t('footer.resources')}</h3>
+					<a href={lang === 'es' ? '/es/blog/' : '/en/blog/'} class="footer-link">{t('nav.blog')}</a
+					>
+					<a href={lang === 'es' ? '/es/privacy/' : '/en/privacy/'} class="footer-link"
+						>{t('footer.privacy')}</a
+					>
+				</div>
+			</div>
+
+			<!-- CTA -->
+			<div class="footer-cta">
+				<Button
+					text={t('nav.startProject')}
+					href={lang === 'es' ? '/es/contact/' : '/en/contact/'}
+					variant="primary"
+					className="footer-cta-button"
+				/>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer-new {
+		width: 100%;
+		padding: 0 12px 0 12px;
+		position: relative;
+		z-index: 10;
+		margin-top: auto;
+		padding-top: 64px;
+	}
+
+	.footer-container {
+		background: #44413d;
+		border-radius: 16px 16px 0 0;
+		box-shadow: 0 -8px 16px 0 rgba(0, 0, 0, 0.25);
+		padding: 0 80px;
+		width: 100%;
+		height: 180px;
+		display: flex;
+		align-items: center;
+	}
+
+	.footer-content {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 40px;
+	}
+
+	.footer-brand {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		max-width: 300px;
+	}
+
+	.footer-logo {
+		height: 32px;
+		width: auto;
+	}
+
+	.footer-address {
+		color: var(--sand-300, #e2deda);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	.footer-address p {
+		margin: 0;
+	}
+
+	.footer-links {
+		display: flex;
+		gap: 80px;
+	}
+
+	.link-column {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.column-title {
+		color: var(--sand-100, #f1efec);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		font-weight: 700;
+		margin: 0;
+	}
+
+	.footer-link {
+		color: var(--sand-300, #e2deda);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 16px;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	.footer-link:hover {
+		color: var(--tangerine-500, #f5af59);
+	}
+
+	.footer-cta {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.footer-container {
+			height: auto;
+			min-height: auto;
+			padding: 48px 40px;
+			align-items: flex-start;
+		}
+
+		.footer-links {
+			gap: 40px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.footer-container {
+			height: auto;
+			min-height: auto;
+			padding: 48px 24px;
+			align-items: flex-start;
+		}
+
+		.footer-content {
+			flex-direction: column;
+			gap: 40px;
+			align-items: flex-start;
+		}
+
+		.footer-brand {
+			max-width: 100%;
+			width: 100%;
+		}
+
+		.footer-links {
+			width: 100%;
+			justify-content: space-between;
+		}
+
+		.footer-cta {
+			width: 100%;
+		}
+
+		.footer-cta :global(.button-new) {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.footer-container {
+			height: auto;
+			min-height: auto;
+			padding: 40px 20px;
+			align-items: flex-start;
+		}
+
+		.footer-content {
+			flex-direction: column;
+			gap: 32px;
+			align-items: flex-start;
+		}
+
+		.footer-brand {
+			max-width: 100%;
+			width: 100%;
+			gap: 16px;
+		}
+
+		.footer-logo {
+			height: 28px;
+		}
+
+		.footer-address {
+			font-size: 14px;
+		}
+
+		.footer-links {
+			flex-direction: row;
+			justify-content: space-between;
+			width: 100%;
+			gap: 40px;
+		}
+
+		.link-column {
+			flex: 1;
+			min-width: 0;
+		}
+
+		.column-title {
+			font-size: 14px;
+			margin-bottom: 8px;
+		}
+
+		.footer-link {
+			font-size: 14px;
+		}
+
+		.footer-cta {
+			width: 100%;
+		}
+
+		.footer-cta :global(.button-new) {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+		}
+	}
+</style>

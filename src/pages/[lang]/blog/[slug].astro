@@ -2,29 +2,50 @@
 // SSR mode - fetch post dynamically
 export const prerender = false;
 
-import Layout from '../../../layouts/Layout.astro';
-import Navbar from '../../../components/Navbar.astro';
-import Footer from '../../../components/Footer.astro';
-import ContactModal from '../../../components/ContactModal.astro';
 import { getAllPosts } from '../../../data/blogPosts';
 import { getAllPostsEs } from '../../../data/blogPosts-es';
+
+export async function getStaticPaths() {
+	const enPosts = getAllPosts();
+	const esPosts = getAllPostsEs();
+
+	const paths: { params: { lang: string; slug: string } }[] = [];
+	enPosts.forEach((post) => paths.push({ params: { lang: 'en', slug: post.slug } }));
+	esPosts.forEach((post) => paths.push({ params: { lang: 'es', slug: post.slug } }));
+
+	return paths;
+}
+
+import Layout from '../../../layouts/Layout.astro';
 import { useTranslations } from '../../../i18n/utils';
-import { runSDK, SDKCoreJs } from 'studiocms:sdk';
+import { safeCreateURL } from '../../../utils/urlHelpers';
+
+// Import new redesigned components
+import PostHero from '../../../components/blog/PostHero.astro';
+import PostHeader from '../../../components/blog/PostHeader.astro';
+import PostContent from '../../../components/blog/PostContent.astro';
+import PostAuthor from '../../../components/blog/PostAuthor.astro';
+
+import type { BlogPost } from '../../../types/blog';
 
 const { lang, slug } = Astro.params || { lang: 'en', slug: '' };
 const t = useTranslations(lang as 'en' | 'es');
 
 // Get static posts
-const staticPosts = lang === 'en' ? getAllPosts() : getAllPostsEs();
-let post = staticPosts.find((p) => p.slug === slug);
+const staticPosts: BlogPost[] = (lang === 'en'
+	? getAllPosts()
+	: getAllPostsEs()) as unknown as BlogPost[];
+let post: BlogPost | undefined = staticPosts.find((p) => p.slug === slug);
 
-// If not found in static posts, try StudioCMS
+// If not found in static posts, try StudioCMS - dynamic import to handle conditional availability
+let runSDK, SDKCoreJs;
 if (!post) {
 	try {
+		({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 		const allPages = await runSDK(SDKCoreJs.GET.pages());
 		const studiocmsPage = allPages
-			.map(({ data }) => data)
-			.find((page) => page.slug === slug && page.package === '@studiocms/blog');
+			.map(({ data }: { data: any }) => data)
+			.find((page: any) => page.slug === slug && page.package === '@studiocms/blog');
 
 		if (studiocmsPage) {
 			post = {
@@ -40,6 +61,7 @@ if (!post) {
 							})
 							.toUpperCase()
 					: '',
+				publishedAt: studiocmsPage.publishedAt ? new Date(studiocmsPage.publishedAt) : new Date(0),
 				category: studiocmsPage.category || 'BLOG',
 				image: studiocmsPage.image || '',
 				imageAlt: studiocmsPage.imageAlt || studiocmsPage.title || '',
@@ -58,10 +80,10 @@ if (!post) {
 }
 
 if (!post) {
-	return Astro.redirect(`/${lang}/blog`);
+	return Astro.redirect(`/${lang}/blog-new`);
 }
 
-// Helper function to parse Spanish date format (e.g., "8 DE JULIO, 2022")
+// Helper function to parse Spanish date format
 function parseSpanishDate(dateString: string): Date {
 	if (lang === 'en') {
 		return new Date(dateString);
@@ -82,7 +104,6 @@ function parseSpanishDate(dateString: string): Date {
 		DICIEMBRE: '12',
 	};
 
-	// Parse format like "8 DE JULIO, 2022" or "22 DE DICIEMBRE, 2020"
 	const match = dateString.match(/(\d+)\s+DE\s+([A-ZÁÉÍÓÚÑ]+),\s+(\d{4})/i);
 	if (match) {
 		const day = match[1].padStart(2, '0');
@@ -90,26 +111,30 @@ function parseSpanishDate(dateString: string): Date {
 		const month = monthMap[monthName] || '01';
 		const year = match[3];
 		const date = new Date(`${year}-${month}-${day}`);
-
-		// Validate the date
 		if (isNaN(date.getTime())) {
-			// If invalid, return current date as fallback
 			return new Date();
 		}
 		return date;
 	}
 
-	// Fallback: try to parse as regular date
 	const fallbackDate = new Date(dateString);
 	if (isNaN(fallbackDate.getTime())) {
-		// If still invalid, return current date
 		return new Date();
 	}
 	return fallbackDate;
 }
 
+// Format category for display (convert single category to multiple if needed)
+// For now, we'll use the category as-is, but format it properly
+const categoryDisplay = post.category || 'BLOG';
+
 // Prepare article data for JSON-LD schema
-const articleUrl = new URL(`/${lang}/blog/${post.slug}`, Astro.site).href;
+// Use safe URL creation for cross-platform compatibility (Windows/Mac)
+const articleUrl = safeCreateURL(
+	`/${lang}/blog/${post.slug}`,
+	Astro.site,
+	Astro.url.origin || 'https://trailmerge.com'
+);
 const articleData = {
 	title: post.title,
 	description: post.excerpt,
@@ -121,492 +146,106 @@ const articleData = {
 	},
 	url: articleUrl,
 };
-
-// Breadcrumbs for blog posts
-const breadcrumbs = [
-	{ name: t('blog.breadcrumbs.home'), url: `https://trailmerge.com/${lang}/` },
-	{ name: t('blog.breadcrumbs.blog'), url: `https://trailmerge.com/${lang}/blog/` },
-	{ name: post.title, url: articleUrl },
-];
-
-// Generate keywords from post title and category
-const keywords =
-	lang === 'en'
-		? `${post.category}, ${post.title}, UX design, B2B SaaS, product design, Trailmerge`
-		: `${post.category}, ${post.title}, diseño UX, B2B SaaS, diseño de producto, Trailmerge`;
 ---
 
 <Layout
 	title={`${post.title} – ${t('blog.postTitleSuffix')}`}
 	description={post.excerpt}
+	lang={lang}
 	schemaType="article"
 	articleData={articleData}
-	breadcrumbs={breadcrumbs}
-	keywords={keywords}
-	lang={lang}
 >
-	<Navbar lang={lang} />
-
+	<div class="blog-post-decoration"></div>
+	<div class="blog-post-blob"></div>
 	<main id="main-content">
-		<!-- Blog Post Detail Page -->
-		<article class="blog-detail-page">
-			<div class="blog-detail-content">
-				<!-- Hero Image -->
-				<div class="blog-detail-hero">
-					<img src={post.image} alt={post.imageAlt} class="blog-detail-image" />
-				</div>
+		<article>
+			<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
 
-				<!-- Post Content -->
-				<div class="blog-detail-wrapper">
-					<div class="blog-detail-header">
-						<h1 class="blog-detail-title">{post.title}</h1>
-						<div class="blog-post-meta">
-							<span class="blog-post-date">{post.date}</span>
-							<span class="blog-meta-divider"> | </span>
-							<span class="blog-post-category">{post.category}</span>
-						</div>
-					</div>
+			<div class="post-container">
+				<PostHeader
+					title={post.title}
+					date={post.date}
+					author={post.author}
+					category={categoryDisplay}
+				/>
 
-					<div class="spacer-2xl"></div>
+				<PostContent content={post.content} />
 
-					<!-- Blog Content -->
-					<div class="blog-detail-body" set:html={post.content} />
-
-					{
-						post.imageCredit && (
-							<>
-								<div class="spacer-xl" />
-								<p class="blog-image-credit">{post.imageCredit}</p>
-							</>
-						)
-					}
-
-					<div class="spacer-2xl"></div>
-
-					<!-- Author Bio -->
-					<div class="blog-author-section">
-						<div class="blog-author-divider"></div>
-						<div class="spacer-xl"></div>
-						<div class="blog-author-content">
-							<img src={post.author.image} alt={post.author.name} class="blog-author-image" />
-							<div class="blog-author-info">
-								<h2 class="blog-author-name">{post.author.name}</h2>
-								<div class="spacer-s"></div>
-								<p class="blog-author-bio">{post.author.bio}</p>
-							</div>
-						</div>
-					</div>
-				</div>
+				<PostAuthor author={post.author} lang={lang} />
 			</div>
 		</article>
 	</main>
-
-	<Footer lang={lang} />
-
-	<ContactModal lang={lang} />
 </Layout>
 
 <style is:global>
-	article.blog-detail-page .blog-detail-body h2 {
-		color: var(--grey-5) !important;
-		font-size: 28px !important;
-		font-weight: 600 !important;
-		line-height: 1.3 !important;
-		margin-top: 48px !important;
-		margin-bottom: 16px !important;
-		font-family: Bitter, serif !important;
-		text-align: left !important;
-	}
-
-	article.blog-detail-page .blog-detail-body h2:first-child {
-		margin-top: 0 !important;
-	}
-
-	/* Estilização de imagens e GIFs dentro do conteúdo */
-	article.blog-detail-page .blog-detail-body img {
-		max-width: 100% !important;
-		height: auto !important;
-		border-radius: 8px !important;
-		display: block !important;
-		margin: 0 auto !important;
-	}
-
-	article.blog-detail-page .blog-detail-body div[style*='text-align: center'] {
-		margin: 40px 0 !important;
-		text-align: center !important;
-	}
-
-	article.blog-detail-page .blog-detail-body div[style*='text-align: center'] img {
-		margin: 0 auto 12px auto !important;
-		border-radius: 8px !important;
-	}
-
-	article.blog-detail-page .blog-detail-body div[style*='text-align: center'] p {
-		color: var(--grey-3) !important;
-		font-size: 14px !important;
-		font-style: italic !important;
-		line-height: 1.5 !important;
-		margin: 8px 0 0 0 !important;
-		text-align: center !important;
-	}
-
-	/* Estilização de listas */
-	article.blog-detail-page .blog-detail-body ul {
-		margin: 24px 0 32px 0 !important;
-		padding-left: 24px !important;
-		list-style-type: disc !important;
-	}
-
-	article.blog-detail-page .blog-detail-body li {
-		color: var(--grey-4) !important;
-		font-size: 16px !important;
-		line-height: 1.8 !important;
-		margin-bottom: 12px !important;
-		font-family: Roboto, sans-serif !important;
-	}
-
-	article.blog-detail-page .blog-detail-body li:last-child {
-		margin-bottom: 0 !important;
-	}
-
-	/* Estilização de strong (negrito) */
-	article.blog-detail-page .blog-detail-body strong {
-		font-weight: 700 !important;
-		color: var(--grey-5) !important;
-	}
-
-	/* Estilização de em (itálico) */
-	article.blog-detail-page .blog-detail-body em {
-		font-style: italic !important;
-	}
-
-	/* Estilização de parágrafos */
-	article.blog-detail-page .blog-detail-body p {
-		margin-bottom: 24px !important;
-		color: var(--grey-4) !important;
-		font-size: 17px !important;
-		line-height: 1.75 !important;
-		font-family: Roboto, sans-serif !important;
+	/* Ensure post content titles use Young Serif */
+	.post-content-body h2,
+	.post-content-body h3,
+	.post-content-body h4 {
+		font-family: 'Young Serif', serif !important;
 		font-weight: 400 !important;
 	}
 
-	article.blog-detail-page .blog-detail-body p:last-child {
-		margin-bottom: 0 !important;
+	/* Override global background for Blog Post page */
+	body,
+	html {
+		background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top fixed !important;
+		background-size: 100% auto !important;
+		background-color: var(--off-white) !important; /* Fallback color */
+		min-height: 100% !important;
 	}
 
 	@media (max-width: 768px) {
-		article.blog-detail-page .blog-detail-body h2 {
-			font-size: 24px !important;
-			margin-top: 40px !important;
-			margin-bottom: 12px !important;
-		}
-
-		article.blog-detail-page .blog-detail-body p {
-			margin-bottom: 32px !important;
-			font-size: 16px !important;
-		}
-
-		article.blog-detail-page .blog-detail-body div[style*='text-align: center'] {
-			margin: 32px 0 !important;
-		}
-
-		article.blog-detail-page .blog-detail-body ul {
-			padding-left: 20px !important;
+		body,
+		html {
+			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top fixed !important;
+			background-size: 100% auto !important;
 		}
 	}
 
 	@media (max-width: 480px) {
-		article.blog-detail-page .blog-detail-body h2 {
-			font-size: 24px !important;
-			margin-top: 32px !important;
-			margin-bottom: 12px !important;
-		}
-
-		article.blog-detail-page .blog-detail-body p {
-			margin-bottom: 28px !important;
-			font-size: 15px !important;
-		}
-
-		article.blog-detail-page .blog-detail-body div[style*='text-align: center'] {
-			margin: 24px 0 !important;
-		}
-
-		article.blog-detail-page .blog-detail-body div[style*='text-align: center'] p {
-			font-size: 13px !important;
-		}
-
-		article.blog-detail-page .blog-detail-body ul {
-			margin: 20px 0 24px 0 !important;
-			padding-left: 20px !important;
-		}
-
-		article.blog-detail-page .blog-detail-body li {
-			font-size: 15px !important;
-			margin-bottom: 10px !important;
+		body,
+		html {
+			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top fixed !important;
+			background-size: 100% auto !important;
 		}
 	}
 </style>
 
 <style>
-	.blog-detail-page {
-		background-color: var(--off-white);
-		padding-top: 120px;
-		padding-bottom: 80px;
-		min-height: 100vh;
-		font-family: Roboto, sans-serif;
+	.blog-post-decoration {
+		position: absolute;
+		width: 3127.226px;
+		height: 3770.657px;
+		transform: rotate(-147.916deg);
+		opacity: 0.64;
+		background-color: var(--Secondary-Sand-100, #f1efec);
+		-webkit-mask-image: url('/images/new/blog/blog-post/Path.svg');
+		mask-image: url('/images/new/blog/blog-post/Path.svg');
+		-webkit-mask-size: 100% 100%;
+		mask-size: 100% 100%;
+		-webkit-mask-repeat: no-repeat;
+		mask-repeat: no-repeat;
+		-webkit-mask-position: center;
+		mask-position: center;
+		pointer-events: none;
+		z-index: -1;
+		top: -1200px;
+		left: 50%;
+		margin-left: -1563.6px; /* Half of width */
 	}
 
-	.blog-detail-content {
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 0 20px;
-	}
-
-	.blog-detail-hero {
-		width: 100%;
-		margin-bottom: 0;
-	}
-
-	.blog-detail-image {
-		width: 100%;
-		height: 480px;
-		display: block;
-		object-fit: cover;
-		border-radius: 0;
-	}
-
-	.blog-detail-wrapper {
-		background-color: transparent;
-		border-radius: 0;
-		padding: 32px 64px 56px 64px;
-		margin-top: 0;
-		position: relative;
-		z-index: 1;
-		max-width: 900px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.blog-detail-header {
-		text-align: center;
-	}
-
-	.blog-detail-header h1.blog-detail-title {
-		color: var(--grey-5);
-		font-size: 32px !important;
-		font-weight: 700 !important;
-		line-height: 1.2 !important;
-		margin: 0 0 16px !important;
-		font-family: Literata, sans-serif !important;
-	}
-
-	.blog-post-meta {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 8px;
-		font-size: 13px;
-		font-weight: 600;
-		letter-spacing: 0.5px;
-		color: var(--grey-3);
-		font-family: Roboto, sans-serif;
-		margin-top: 12px;
-		text-transform: uppercase;
-	}
-
-	.blog-post-date,
-	.blog-post-category {
-		color: var(--grey-3);
-	}
-
-	.blog-meta-divider {
-		color: var(--grey-3);
-	}
-
-	.blog-detail-body {
-		color: var(--grey-4);
-		font-size: 17px;
-		line-height: 1.75;
-		font-family: Roboto, sans-serif;
-		text-align: left;
-	}
-
-	.blog-detail-body p {
-		margin-bottom: 40px;
-		color: var(--grey-4);
-		font-size: 17px;
-		line-height: 1.75;
-		font-family: Roboto, sans-serif;
-		font-weight: 400;
-	}
-
-	.blog-detail-body p:last-child {
-		margin-bottom: 0;
-	}
-
-	.blog-image-credit {
-		color: var(--grey-3);
-		font-size: 14px;
-		font-style: italic;
-		margin: 0;
-		font-family: Roboto, sans-serif;
-		line-height: 1.6;
-	}
-
-	.blog-author-section {
-		margin-top: 64px;
-		padding-top: 0;
-	}
-
-	.blog-author-divider {
-		width: 100%;
-		height: 1px;
-		background-color: var(--grey-1);
-	}
-
-	.blog-author-content {
-		display: flex;
-		gap: 28px;
-		align-items: flex-start;
-		margin-top: 32px;
-	}
-
-	.blog-author-image {
-		width: 150px;
-		height: 150px;
-		border-radius: 50%;
-		object-fit: cover;
-		flex-shrink: 0;
-	}
-
-	.blog-author-info {
-		flex: 1;
-	}
-
-	.blog-author-name {
-		color: var(--grey-5);
-		font-size: 24px;
-		font-weight: 700;
-		line-height: 1.3;
-		margin: 0 0 8px 0;
-		font-family: Bitter, serif;
-	}
-
-	.blog-author-bio {
-		color: var(--grey-4);
-		font-size: 16px;
-		line-height: 1.8;
-		margin: 0;
-		font-family: Roboto, sans-serif;
-	}
-
-	/* Responsive Design */
-	@media (max-width: 1024px) {
-		.blog-detail-page {
-			padding-top: 100px;
-			padding-bottom: 60px;
-		}
-
-		.blog-detail-wrapper {
-			padding: 24px 48px 48px 48px;
-			margin-top: 0;
-		}
-
-		.blog-detail-header h1.blog-detail-title {
-			font-size: 30px !important;
-		}
-
-		.blog-detail-image {
-			height: 420px;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.blog-detail-page {
-			padding-top: 80px;
-			padding-bottom: 48px;
-		}
-
-		.blog-detail-content {
-			padding: 0 20px;
-		}
-
-		.blog-detail-wrapper {
-			padding: 24px 32px 40px 32px;
-			margin-top: 0;
-		}
-
-		.blog-detail-header h1.blog-detail-title {
-			font-size: 28px !important;
-			line-height: 1.3 !important;
-		}
-
-		.blog-detail-body {
-			font-size: 16px;
-		}
-
-		.blog-detail-image {
-			height: 320px;
-		}
-
-		.blog-detail-body p {
-			font-size: 16px;
-			margin-bottom: 32px;
-		}
-
-		.blog-author-content {
-			flex-direction: column;
-			align-items: center;
-			text-align: center;
-			gap: 20px;
-		}
-
-		.blog-author-image {
-			width: 130px;
-			height: 130px;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.blog-detail-page {
-			padding-top: 72px;
-			padding-bottom: 40px;
-		}
-
-		.blog-detail-content {
-			padding: 0 16px;
-		}
-
-		.blog-detail-wrapper {
-			padding: 20px 24px 32px 24px;
-			margin-top: 0;
-		}
-
-		.blog-detail-header h1.blog-detail-title {
-			font-size: 24px !important;
-			line-height: 1.3 !important;
-		}
-
-		.blog-detail-image {
-			height: 240px;
-		}
-
-		.blog-detail-body p {
-			font-size: 15px;
-			margin-bottom: 28px;
-		}
-
-		.blog-author-image {
-			width: 100px;
-			height: 100px;
-		}
-
-		.blog-author-name {
-			font-size: 20px;
-		}
-
-		.blog-author-bio {
-			font-size: 15px;
-		}
+	.blog-post-blob {
+		position: absolute;
+		top: 500px;
+		left: -25%;
+		width: 200%;
+		height: 100%;
+		background-image: url('/images/new/blog/blog-post/Vector Blob.svg');
+		background-repeat: no-repeat;
+		background-position: top center;
+		background-size: 100% 100%;
+		z-index: -2;
+		pointer-events: none;
 	}
 </style>

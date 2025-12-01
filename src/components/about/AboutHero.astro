@@ -1,0 +1,269 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<!-- About Trailmerge Section -->
+<div class="about-hero-new-wrapper parallax-container" id="about-hero-section">
+	<!-- Background header image positioned like Vector Blob in home -->
+	<div class="parallax-layer bg-header-wrapper" data-speed="0.1">
+		<img
+			src="/images/new/about/bg-header-about.png"
+			alt="Background decoration"
+			class="bg-header-about"
+			loading="eager"
+		/>
+	</div>
+	<div class="about-hero-new-container">
+		<div class="about-hero-new-content">
+			<h1 class="about-hero-new-title">
+				<span class="title-line-1">About</span>
+				<span class="title-line-2">Trailmerge</span>
+			</h1>
+			<p class="about-hero-new-text">
+				{t('aboutNew.hero.text')}
+			</p>
+		</div>
+		<div class="about-hero-new-illustration parallax-layer" data-speed="0.3">
+			<img
+				src="/images/new/about/Hiker.png"
+				alt="Hiker illustration"
+				class="hiker-illustration"
+				loading="eager"
+			/>
+		</div>
+	</div>
+</div>
+
+<style>
+	.about-hero-new-wrapper {
+		width: 100%;
+		padding: 120px 24px 80px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.parallax-layer {
+		will-change: transform;
+		transform: translateZ(0);
+	}
+
+	.bg-header-wrapper {
+		position: absolute;
+		z-index: 0;
+		right: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+	}
+
+	.bg-header-about {
+		position: absolute;
+		z-index: 0;
+		right: 0;
+		top: -30px;
+		width: auto;
+		height: auto;
+		min-width: 480px;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		object-position: top right;
+		box-sizing: border-box;
+		transform: scale(1.08);
+		transform-origin: top right;
+	}
+
+	.about-hero-new-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 64px;
+		align-items: center;
+		position: relative;
+		z-index: 1;
+	}
+
+	.about-hero-new-content {
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		position: relative;
+	}
+
+	.about-hero-new-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-weight: 400;
+		line-height: 1.2;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.title-line-1,
+	.title-line-2 {
+		display: block;
+	}
+
+	.about-hero-new-text {
+		color: #54504b;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 600; /* Semi Bold */
+		line-height: 32px;
+		margin: 0;
+	}
+
+	.about-hero-new-illustration {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+	}
+
+	.hiker-illustration {
+		width: 400px;
+		height: 400px;
+		max-width: 100%;
+		object-fit: contain;
+		display: block;
+	}
+
+	@media (max-width: 1024px) {
+		.about-hero-new-container {
+			gap: 48px;
+		}
+
+		.about-hero-new-title {
+			font-size: 48px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.about-hero-new-wrapper {
+			padding: 100px 20px 60px;
+		}
+
+		.bg-header-about {
+			min-width: 360px;
+			max-width: 90%;
+			max-height: 90%;
+			top: -30px;
+			transform: scale(1.08);
+			transform-origin: top right;
+		}
+
+		.about-hero-new-container {
+			grid-template-columns: 1.5fr 1fr;
+			gap: 24px;
+			max-width: 100%;
+			align-items: flex-start;
+		}
+
+		.about-hero-new-content {
+			display: flex;
+			flex-direction: column;
+			gap: 16px;
+			margin-top: 70px;
+			width: 100%;
+		}
+
+		.about-hero-new-title {
+			font-size: 40px;
+			line-height: 1.1;
+		}
+
+		.about-hero-new-text {
+			font-size: 18px;
+			line-height: 1.6;
+			font-weight: 400;
+			width: calc(100% + 40%);
+			max-width: calc(100% + 40%);
+		}
+
+		.about-hero-new-illustration {
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-start;
+			margin-top: -30px;
+		}
+
+		.hiker-illustration {
+			width: 120%;
+			height: auto;
+			max-width: none;
+			object-fit: contain;
+			transform: scale(1.35);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.about-hero-new-wrapper {
+			padding: 80px 20px 48px;
+		}
+
+		.bg-header-about {
+			min-width: 240px;
+			max-width: 78%;
+			max-height: 78%;
+			top: -30px;
+			transform: scale(1.08);
+			transform-origin: top right;
+		}
+
+		.about-hero-new-container {
+			grid-template-columns: 1.5fr 1fr;
+			gap: 16px;
+			align-items: flex-start;
+		}
+
+		.about-hero-new-content {
+			gap: 12px;
+			margin-top: 70px;
+			width: 100%;
+		}
+
+		.about-hero-new-title {
+			font-size: 36px;
+			line-height: 1.1;
+		}
+
+		.title-line-1 {
+			margin-bottom: 4px;
+		}
+
+		.about-hero-new-text {
+			font-size: 17px;
+			line-height: 1.6;
+			margin-top: 0;
+			width: calc(100% + 40%);
+			max-width: calc(100% + 40%);
+		}
+
+		.about-hero-new-illustration {
+			display: flex;
+			justify-content: flex-end;
+			align-items: flex-start;
+			margin-top: -30px;
+		}
+
+		.hiker-illustration {
+			width: 120%;
+			height: auto;
+			max-width: none;
+			object-fit: contain;
+			transform: scale(1.35);
+		}
+	}
+</style>

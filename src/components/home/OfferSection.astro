@@ -1,0 +1,181 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import DesignAuditImage from '../../assets/images/Design-Audit-Image.png';
+
+export interface Props {
+	title?: string;
+	buttonText?: string;
+	buttonUrl?: string;
+	image?: any;
+	imageWidth?: number;
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+const {
+	title = t('offer.title'),
+	buttonText = t('offer.buttonText'),
+	buttonUrl = 'https://forms.gle/ufj74gqNJSiabci79',
+	image = DesignAuditImage,
+	imageWidth = 248,
+} = Astro.props;
+---
+
+<!-- Design Audit Offer -->
+<div class="body-block offer-block">
+	<div class="content-container">
+		<div class="div-block-20">
+			<div class="image-text-wrapper">
+				<div class="side-content">
+					<h3><strong>{title}</strong></h3>
+					<div class="spacer-m"></div>
+					<a id="audit-button" href={buttonUrl} target="_blank" class="button dark-button"
+						>{buttonText}</a
+					>
+				</div>
+			</div>
+			<div class="div-block-21"></div>
+			<div class="div-block-22">
+				<img
+					src={image.src}
+					loading="lazy"
+					width={imageWidth}
+					alt="SaaS design audit illustration showing product evaluation checklist"
+					class="image-25"
+				/>
+			</div>
+		</div>
+	</div>
+</div>
+
+<style>
+	.offer-block {
+		background-color: var(--tangerine-100);
+		margin-top: 0;
+		padding: 56px 40px;
+	}
+
+	.div-block-20 {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 48px;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.image-text-wrapper {
+		flex: 1;
+		max-width: 600px;
+	}
+
+	.side-content {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.side-content h3 {
+		text-align: center;
+	}
+
+	.side-content .button {
+		display: inline-block;
+	}
+
+	.div-block-21 {
+		width: 160px;
+		flex-shrink: 0;
+	}
+
+	.div-block-22 {
+		position: relative;
+		top: -24px;
+		flex-shrink: 0;
+	}
+
+	.image-25 {
+		width: 320px;
+		max-width: 100%;
+		height: auto;
+		margin-top: -40px;
+		margin-bottom: -24px;
+		display: inline-block;
+	}
+
+	@media (max-width: 768px) {
+		.offer-block {
+			padding: 56px 20px 64px;
+		}
+
+		.div-block-20 {
+			flex-direction: column-reverse;
+			gap: 32px;
+		}
+
+		.image-text-wrapper {
+			max-width: 100%;
+			width: 100%;
+		}
+
+		.side-content {
+			text-align: center;
+			align-items: center;
+		}
+
+		.side-content h3 {
+			font-size: 24px !important;
+			line-height: 32px !important;
+			margin-bottom: 8px;
+		}
+
+		.offer-block .image-text-wrapper .side-content h3,
+		.offer-block .image-text-wrapper .side-content h3 strong {
+			font-size: 24px !important;
+			line-height: 32px !important;
+			text-align: center;
+		}
+
+		.div-block-21 {
+			display: none;
+		}
+
+		.div-block-22 {
+			margin-top: -32px;
+			top: 0;
+			width: 100%;
+			text-align: center;
+		}
+
+		.image-25 {
+			margin-top: 0;
+			margin-bottom: -40px;
+			position: static;
+			max-width: 280px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.offer-block {
+			padding: 48px 16px 56px;
+		}
+
+		.div-block-20 {
+			gap: 24px;
+		}
+
+		.offer-block .image-text-wrapper .side-content h3,
+		.offer-block .image-text-wrapper .side-content h3 strong {
+			font-size: 22px !important;
+			line-height: 30px !important;
+		}
+
+		.image-25 {
+			max-width: 240px;
+			margin-bottom: -32px;
+		}
+	}
+</style>

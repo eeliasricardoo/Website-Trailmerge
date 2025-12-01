@@ -1,0 +1,183 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+const column1 = [
+	t('servicesNew.capabilities.column1.item1'),
+	t('servicesNew.capabilities.column1.item2'),
+	t('servicesNew.capabilities.column1.item3'),
+	t('servicesNew.capabilities.column1.item4'),
+	t('servicesNew.capabilities.column1.item5'),
+];
+
+const column2 = [
+	t('servicesNew.capabilities.column2.item1'),
+	t('servicesNew.capabilities.column2.item2'),
+	t('servicesNew.capabilities.column2.item3'),
+	t('servicesNew.capabilities.column2.item4'),
+	t('servicesNew.capabilities.column2.item5'),
+];
+---
+
+<section class="capabilities-wrapper parallax-container">
+	<div class="capabilities-container">
+		<h2 class="section-title parallax-layer" data-speed="0.2">
+			{t('servicesNew.capabilities.title')}
+		</h2>
+		<div class="capabilities-list">
+			<div class="capabilities-column parallax-layer" data-speed="0.4">
+				<ul>
+					{column1.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+			<div class="capabilities-column parallax-layer" data-speed="0.6">
+				<ul>
+					{column2.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.capabilities-wrapper {
+		width: 100%;
+		padding: 64px 80px;
+		position: relative;
+		/* Background wave/shape can be added here later */
+	}
+
+	.capabilities-container {
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		text-align: left; /* Left align container content */
+		padding: 0 12px; /* Add padding to match navbar alignment */
+		box-sizing: border-box;
+	}
+
+	.section-title {
+		color: #54504b;
+		text-shadow:
+			0 -2px 4px rgba(0, 0, 0, 0.25),
+			0 2px 4px rgba(255, 255, 255, 0.4);
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 64px;
+		letter-spacing: 1.68px;
+		margin-bottom: 40px;
+	}
+
+	.capabilities-list {
+		display: flex;
+		justify-content: flex-start; /* Left align the list */
+		gap: 120px; /* Increase gap between columns */
+		text-align: left;
+	}
+
+	.capabilities-column {
+		display: flex;
+		padding: 0 16px;
+		align-items: flex-start;
+		gap: 16px;
+		flex: 1 0 0;
+	}
+
+	.capabilities-column ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		width: 100%;
+	}
+
+	.capabilities-column li {
+		color: #54504b;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 32px;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.capabilities-column li::before {
+		content: '';
+		display: block;
+		width: 8px;
+		height: 8px;
+		background-color: #e0927d; /* Orange/Salmon dot color */
+		border-radius: 50%;
+	}
+
+	@media (max-width: 768px) {
+		.capabilities-wrapper {
+			padding: 48px 20px;
+			width: 100%;
+		}
+
+		.capabilities-container {
+			max-width: 100%;
+			padding: 0 20px;
+			width: 100%;
+		}
+
+		.capabilities-list {
+			flex-direction: column;
+			gap: 32px;
+			align-items: flex-start;
+			width: 100%;
+		}
+
+		.capabilities-column {
+			width: 100%;
+			padding: 0;
+		}
+
+		.section-title {
+			font-size: 40px;
+			margin-bottom: 32px;
+			text-align: left;
+		}
+
+		.capabilities-column li {
+			font-size: 18px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.capabilities-wrapper {
+			padding: 40px 20px;
+		}
+
+		.capabilities-container {
+			padding: 0 20px;
+		}
+
+		.section-title {
+			font-size: 36px;
+			margin-bottom: 24px;
+		}
+
+		.capabilities-list {
+			gap: 24px;
+		}
+
+		.capabilities-column li {
+			font-size: 17px;
+		}
+	}
+</style>

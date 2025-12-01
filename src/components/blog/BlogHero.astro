@@ -1,0 +1,71 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<!-- Blog Hero Section -->
+<div class="blog-hero-new-wrapper">
+	<div class="blog-hero-new-container">
+		<h1 class="blog-hero-new-title">Blog</h1>
+	</div>
+</div>
+
+<style>
+	.blog-hero-new-wrapper {
+		width: 100%;
+		padding: 120px 24px 80px;
+		position: relative;
+		overflow: hidden;
+		background:
+			url('/images/new/home/dot-pattern.svg'),
+			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
+		background-size:
+			9.24px 9.24px,
+			100% 100%;
+		background-position:
+			0 0,
+			center;
+		background-repeat: repeat, no-repeat;
+	}
+
+	.blog-hero-new-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		text-align: left;
+	}
+
+	.blog-hero-new-title {
+		color: #54504b;
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-weight: 400;
+		line-height: 1.2;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.blog-hero-new-wrapper {
+			padding: 100px 24px 60px;
+		}
+
+		.blog-hero-new-title {
+			font-size: 40px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.blog-hero-new-wrapper {
+			padding: 80px 16px 48px;
+		}
+
+		.blog-hero-new-title {
+			font-size: 36px;
+		}
+	}
+</style>

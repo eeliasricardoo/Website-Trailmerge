@@ -1,59 +1,51 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import SEOSchema from '../components/SEOSchema.astro';
-import SEOHead from '../components/SEOHead.astro';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+import SEOHead from '../components/shared/SEOHead.astro';
+import SEOSchema from '../components/shared/SEOSchema.astro';
+import { useTranslations } from '../i18n/utils';
 import { getAlternateUrls } from '../utils/routeMapping';
+import { safeCreateURL } from '../utils/urlHelpers';
 import '../styles/global.css';
 
 interface Props {
 	title?: string;
 	description?: string;
-	ogImage?: string;
-	canonicalURL?: string;
-	schemaType?: 'organization' | 'article';
-	articleData?: {
-		title: string;
-		description: string;
-		image: string;
-		datePublished: string;
-		dateModified?: string;
-		author: {
-			name: string;
-			image?: string;
-		};
-		url: string;
-	};
-	breadcrumbs?: Array<{
-		name: string;
-		url: string;
-	}>;
-	keywords?: string;
 	lang?: string;
+	canonicalURL?: string;
+	schemaType?: 'organization' | 'article' | 'website';
+	articleData?: any; // Define more strictly if needed
+	navTheme?: 'default' | 'glass' | 'solid-glass';
 }
 
 const {
-	title = 'UX Design Agency for B2B SaaS Startups – Trailmerge',
-	description = 'Scalable SaaS UI/UX services including MVP design, product revamp, and design audits. Schedule a free consultation to get started.',
-	ogImage = 'https://uploads-ssl.webflow.com/5f1aca38cd9acd41a07b69f5/616d8bd8b574fcb50a5412be_Home%20Preview%20Image.png',
-	canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+	title,
+	description,
+	lang = 'en',
+	canonicalURL: providedCanonicalURL,
 	schemaType = 'organization',
 	articleData,
-	breadcrumbs,
-	keywords,
-	lang = 'en',
+	navTheme = 'default',
 } = Astro.props;
 
-// Get alternate language URLs for hreflang
-const currentPath = Astro.url.pathname;
-const alternateUrls = getAlternateUrls(currentPath, Astro.site?.href || '');
+// Use safe URL creation for cross-platform compatibility (Windows/Mac)
+const canonicalURL =
+	providedCanonicalURL ||
+	safeCreateURL(Astro.url.pathname, Astro.site, Astro.url.origin || 'https://trailmerge.com');
 
-// Set HTML lang attribute
-const htmlLang = lang === 'es' ? 'es' : 'en-US';
-
-// Detect if we're on staging
+const t = useTranslations(lang as 'en' | 'es');
+const siteHref =
+	Astro.site?.href || (Astro.url.origin ? `${Astro.url.origin}/` : 'https://trailmerge.com/');
+const alternateUrls = getAlternateUrls(Astro.url.pathname, siteHref);
 const isStaging =
 	Astro.site?.hostname === 'staging.trailmerge.com' ||
 	Astro.url.hostname === 'staging.trailmerge.com';
+const htmlLang = lang === 'es' ? 'es' : 'en-US';
+
+// Default SEO values if not provided
+const pageTitle = title || t('homepage.seo.title');
+const pageDescription = description || t('homepage.seo.description');
 ---
 
 <!doctype html>
@@ -64,57 +56,32 @@ const isStaging =
 		<link rel="icon" type="image/x-icon" href="/images/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 
-		<!-- SEO Meta Tags -->
 		<SEOHead
-			title={title}
-			description={description}
-			ogImage={ogImage}
+			title={pageTitle}
+			description={pageDescription}
 			canonicalURL={canonicalURL}
 			lang={lang}
-			keywords={keywords}
 			alternateUrls={alternateUrls}
 			isStaging={isStaging}
 		/>
 
-		<!-- Fonts - Optimized with async loading and font-display swap -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-		<!-- Preload critical font files for LCP optimization -->
 		<link
-			rel="preload"
-			href="https://fonts.gstatic.com/s/bitter/v32/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8fbeCL_EXFh2reU.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin
-		/>
-		<link
-			rel="preload"
-			href="https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"
-			as="font"
-			type="font/woff2"
-			crossorigin
-		/>
-
-		<!-- Load fonts asynchronously with print media hack -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Young+Serif&family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap"
 			rel="stylesheet"
-			media="print"
-			onload="this.media='all'"
 		/>
-		<noscript>
-			<link
-				href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,700;1,400&family=Roboto:wght@400;500;700&display=swap"
-				rel="stylesheet"
-			/>
-		</noscript>
 
-		<!-- Preconnect and DNS-prefetch for external resources -->
-		<link rel="preconnect" href="https://images.unsplash.com" />
-		<link rel="preconnect" href="https://uploads-ssl.webflow.com" />
-		<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-		<link rel="dns-prefetch" href="https://t.contentsquare.net" />
+		<!-- Preconnect to Copper Forms for faster loading -->
+		<link rel="preconnect" href="https://forms.copper.com" />
+		<link rel="dns-prefetch" href="https://forms.copper.com" />
+
+		<SEOSchema
+			type={schemaType}
+			pageTitle={pageTitle}
+			pageDescription={pageDescription}
+			articleData={articleData}
+		/>
 
 		<!-- Cookie Consent - Silktide (async loading) -->
 		<link
@@ -130,27 +97,18 @@ const isStaging =
 			async
 			data-cfasync="false"></script>
 
-		<!-- Analytics (async loading) -->
-		<script is:inline src="https://t.contentsquare.net/uxa/ecd5d357203b8.js" async></script>
-
-		<!-- Structured Data (JSON-LD) -->
-		<SEOSchema
-			type={schemaType}
-			articleData={articleData}
-			breadcrumbs={breadcrumbs}
-			pageTitle={title}
-			pageDescription={description}
-		/>
-
-		<!-- View Transitions for smooth page navigation -->
 		<ViewTransitions />
 	</head>
 	<body>
-		<a href="#main-content" class="skip-to-content">Skip to main content</a>
-		<slot />
+		<Navbar lang={lang} theme={navTheme} />
+		<main id="main-content">
+			<slot />
+			<Footer lang={lang} />
+		</main>
 
-		<!-- Cookie Consent Initialization -->
 		<script>
+			// Initialize parallax if needed globally, or keep it per page if specific
+			import '../scripts/parallax';
 			import { initCookieConsent } from '../scripts/cookieConsent';
 
 			// Get language from HTML tag
@@ -164,3 +122,62 @@ const isStaging =
 		</script>
 	</body>
 </html>
+
+<style is:global>
+	html {
+		width: 100%;
+		min-height: 100vh;
+		background:
+			radial-gradient(
+				256.09% 112.04% at 96.63% 6.02%,
+				rgba(255, 255, 255, 0) 0%,
+				rgba(46, 58, 51, 0.08) 100%
+			),
+			url('/images/new/home/dot-pattern.svg'),
+			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
+		background-size:
+			100% 100%,
+			9.24px 9.24px,
+			100% 100%;
+		background-position:
+			center,
+			0 0,
+			center;
+		background-repeat: no-repeat, repeat, no-repeat;
+		background-attachment: fixed, fixed, fixed;
+	}
+
+	body {
+		width: 100vw;
+		min-height: 100vh;
+		overflow-x: hidden;
+		position: relative;
+		background:
+			radial-gradient(
+				256.09% 112.04% at 96.63% 6.02%,
+				rgba(255, 255, 255, 0) 0%,
+				rgba(46, 58, 51, 0.08) 100%
+			),
+			url('/images/new/home/dot-pattern.svg'),
+			radial-gradient(283.15% 146.1% at 13.24% 9.21%, #faefe0 0%, #ccbba3 100%);
+		background-size:
+			100% 100%,
+			9.24px 9.24px,
+			100% 100%;
+		background-position:
+			center,
+			0 0,
+			center;
+		background-repeat: no-repeat, repeat, no-repeat;
+		background-attachment: fixed, fixed, fixed;
+	}
+
+	#main-content {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		clip-path: inset(0 0 0 0);
+		display: flex;
+		flex-direction: column;
+	}
+</style>

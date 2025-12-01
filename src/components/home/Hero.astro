@@ -1,0 +1,406 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<!-- Hero Section with Parallax Landscape -->
+<div class="hero-wrapper parallax-container" id="hero-section">
+	<!-- Landscape Group -->
+	<div class="landscape-group">
+		<div class="parallax-layer layer-blob" data-speed="0.1">
+			<img
+				src="/images/new/home/Vector Blob.svg"
+				alt="Vector Blob"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-clouds" data-speed="0.2">
+			<img
+				src="/images/new/home/landscape/Clouds.svg"
+				alt="Clouds"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-mountains" data-speed="0.3">
+			<img
+				src="/images/new/home/landscape/mountains.svg"
+				alt="Mountains"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-forest" data-speed="0.4">
+			<img
+				src="/images/new/home/landscape/forest-left.svg"
+				alt="Forest"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-forest-right" data-speed="0.4">
+			<img
+				src="/images/new/home/landscape/forest-right.svg"
+				alt="Forest Right"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+		<div class="parallax-layer layer-bird" data-speed="0.9">
+			<img
+				src="/images/new/home/landscape/Bird.svg"
+				alt="Bird"
+				class="parallax-image"
+				loading="eager"
+			/>
+		</div>
+	</div>
+
+	<!-- Content Overlay -->
+	<div class="content-container parallax-content" data-speed="0.4">
+		<div class="hero-content">
+			<h1 class="hero-title" set:html={t('heroNew.title')} />
+		</div>
+	</div>
+</div>
+
+<style>
+	:global(body) {
+		margin: 0;
+		padding: 0;
+	}
+
+	:global(html) {
+		margin: 0;
+		padding: 0;
+	}
+
+	.hero-wrapper {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+		min-height: 800px;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0;
+		margin-bottom: 0;
+		background: 
+			/* Pattern SVG overlay */
+			url("data:image/svg+xml,%3Csvg width='4' height='4' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='2' fill='%23000' opacity='0.1'/%3E%3C/svg%3E"),
+			/* Gradiente Radial Secundário com opacidade 20% */
+				radial-gradient(
+					252.76deg 116.83% at 50% 50%,
+					rgba(255, 255, 255, 0) 0%,
+					rgba(46, 58, 51, 0.2) 40%
+				),
+			/* Gradiente Radial Primário */
+				radial-gradient(256.09deg 112.84% at 96.63% 6.02%, #faefe0 0%, #ccbba3 100%);
+		background-size:
+			4px 4px,
+			100% 100%,
+			100% 100%;
+		background-position:
+			0 0,
+			center,
+			center;
+		background-repeat: repeat, no-repeat, no-repeat;
+		background-attachment: fixed, fixed, fixed;
+		background-blend-mode: normal;
+	}
+
+	.landscape-group {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		transform: translateY(-32px);
+	}
+
+	.parallax-layer {
+		position: absolute;
+		will-change: transform;
+		flex-shrink: 0;
+		box-sizing: border-box;
+		transform: translateZ(0);
+	}
+
+	.parallax-image {
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
+		display: block;
+	}
+
+	.layer-blob {
+		z-index: 0;
+		width: 1463.516px;
+		height: 1312.615px;
+		right: -150px;
+		top: -230px;
+		transform: rotate(1.867deg);
+	}
+
+	.layer-clouds {
+		z-index: 0;
+		width: 2193.518px;
+		height: 233.416px;
+		left: 50%;
+		top: 68px;
+		transform: translateX(-50%);
+	}
+
+	.layer-mountains {
+		z-index: 1;
+		width: 3353.65px;
+		height: 295.435px;
+		left: 50%;
+		top: 156px;
+		transform: translateX(-50%);
+	}
+
+	.layer-forest {
+		z-index: 3;
+		width: 660px;
+		height: 314px;
+		top: 451px;
+		left: -200px;
+	}
+
+	.layer-forest-right {
+		z-index: 3;
+		width: 661px;
+		height: 341px;
+		top: 423px;
+		right: -200px;
+	}
+
+	.layer-bird {
+		z-index: 4;
+		width: 36px;
+		height: 18px;
+		left: 50%;
+		margin-left: -18px;
+		top: 114px;
+		transform: rotate(1.21deg);
+	}
+
+	.content-container {
+		position: absolute;
+		z-index: 10;
+		width: 100%;
+		max-width: 1200px;
+		top: 394px;
+		left: 50%;
+		padding: 0 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.parallax-content {
+		transform: translateX(-50%);
+		will-change: transform;
+	}
+
+	.hero-content {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 24px;
+		max-width: 800px;
+	}
+
+	.hero-title {
+		width: 100%;
+		max-width: 804px;
+		color: var(--Brand-SecondaryBrown, #54504b);
+		text-align: center;
+		text-shadow:
+			0 -2px 4px rgba(0, 0, 0, 0.25),
+			0 2px 4px rgba(255, 255, 255, 0.4);
+		font-family: 'Young Serif', serif;
+		font-size: clamp(40px, 8vw, 88px);
+		font-style: normal;
+		font-weight: 400;
+		line-height: 1.1;
+		letter-spacing: 2.64px;
+		margin: 0;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.hero-wrapper {
+			min-height: 800px;
+		}
+
+		.layer-blob,
+		.layer-clouds,
+		.layer-mountains {
+			width: 100%;
+			height: auto;
+		}
+
+		.layer-blob {
+			max-height: 1312.615px;
+		}
+		.layer-clouds {
+			max-height: 233.416px;
+		}
+		.layer-mountains {
+			max-height: 295.435px;
+		}
+
+		.layer-forest,
+		.layer-forest-right {
+			width: 100%;
+			height: auto;
+			max-height: 200px;
+		}
+
+		.content-container {
+			top: 350px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero-wrapper {
+			min-height: 600px;
+		}
+
+		.landscape-group {
+			transform: translateY(-30px) scale(1.4);
+		}
+
+		.layer-blob {
+			width: 140%;
+			max-height: 1100px;
+			right: -80px;
+			top: -40px;
+		}
+
+		.layer-clouds {
+			width: 140%;
+			max-height: 380px;
+			top: 60px;
+		}
+
+		.layer-mountains {
+			width: 140%;
+			max-height: 450px;
+			top: 100px;
+		}
+
+		.layer-forest {
+			width: 100% !important;
+			height: 80px !important;
+			max-height: 80px !important;
+			top: 175px;
+			left: -100px;
+		}
+
+		.layer-forest .parallax-image {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: contain !important;
+		}
+
+		.layer-forest-right {
+			width: 100% !important;
+			height: 80px !important;
+			max-height: 80px !important;
+			top: 175px;
+			right: -100px;
+		}
+
+		.layer-forest .parallax-image,
+		.layer-forest-right .parallax-image {
+			width: 100% !important;
+			height: 100% !important;
+			object-fit: contain !important;
+		}
+
+		.layer-bird {
+			width: 24px;
+			height: 12px;
+			margin-left: -12px;
+			top: 70px;
+		}
+
+		.content-container {
+			top: 320px;
+			padding: 0 20px;
+		}
+
+		.hero-content {
+			gap: 16px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.landscape-group {
+			transform: translateY(-20px) scale(1.5);
+		}
+
+		.layer-blob {
+			width: 150%;
+			max-height: 1000px;
+			right: -60px;
+			top: -20px;
+		}
+
+		.layer-clouds {
+			width: 150%;
+			max-height: 320px;
+			top: 50px;
+		}
+
+		.layer-mountains {
+			width: 150%;
+			max-height: 400px;
+			top: 80px;
+		}
+
+		.layer-forest {
+			width: 100% !important;
+			height: 70px !important;
+			max-height: 70px !important;
+			top: 145px;
+			left: -80px;
+		}
+
+		.layer-forest-right {
+			width: 100% !important;
+			height: 70px !important;
+			max-height: 70px !important;
+			top: 145px;
+			right: -80px;
+		}
+
+		.layer-bird {
+			width: 20px;
+			height: 10px;
+			margin-left: -10px;
+			top: 55px;
+		}
+
+		.content-container {
+			top: 300px;
+			padding: 0 20px;
+		}
+
+		.hero-content {
+			gap: 12px;
+		}
+	}
+</style>

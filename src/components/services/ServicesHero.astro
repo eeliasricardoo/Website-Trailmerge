@@ -1,0 +1,150 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<section class="services-hero-wrapper parallax-container">
+	<div class="services-hero-container">
+		<div class="hero-image-col parallax-layer" data-speed="0.8">
+			<img src="/images/new/services/Badges.svg" alt="Services Badges" class="hero-badges" />
+		</div>
+		<div class="hero-content-col parallax-layer" data-speed="0.4">
+			<h1 class="hero-title">{t('servicesNew.hero.title')}</h1>
+			<p class="hero-text">
+				{t('servicesNew.hero.text')}
+			</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.services-hero-wrapper {
+		width: 100%;
+		padding: 130px 12px 80px 12px; /* Adjusted side padding to match navbar */
+		display: flex;
+		justify-content: center;
+	}
+
+	.services-hero-container {
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start; /* Align content to the start */
+		gap: 60px;
+	}
+
+	.hero-image-col {
+		flex: 0 0 auto; /* Don't force it to take half width */
+		display: flex;
+		justify-content: flex-start; /* Align image to the left */
+	}
+
+	.hero-content-col {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 24px;
+		text-align: left;
+	}
+
+	.hero-title {
+		color: #54504b;
+		text-shadow:
+			0 -2px 4px rgba(0, 0, 0, 0.25),
+			0 2px 4px rgba(255, 255, 255, 0.4);
+		font-family: 'Young Serif', serif;
+		font-size: 72px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 80px;
+		margin: 0;
+	}
+
+	.hero-text {
+		color: #54504b;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: 32px;
+		max-width: 500px;
+		margin: 0;
+	}
+
+	.hero-badges {
+		max-width: 100%;
+		height: auto;
+	}
+
+	@media (max-width: 768px) {
+		.services-hero-wrapper {
+			padding: 100px 20px 60px;
+		}
+
+		.services-hero-container {
+			flex-direction: column;
+			text-align: left;
+			gap: 32px;
+			align-items: flex-start;
+		}
+
+		.hero-image-col {
+			justify-content: flex-start;
+			width: 100%;
+		}
+
+		.hero-badges {
+			max-width: 70%;
+			height: auto;
+		}
+
+		.hero-content-col {
+			align-items: flex-start;
+			text-align: left;
+			width: 100%;
+		}
+
+		.hero-title {
+			font-size: 40px;
+			line-height: 1.2;
+		}
+
+		.hero-text {
+			font-size: 18px;
+			line-height: 1.6;
+			max-width: 100%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.services-hero-wrapper {
+			padding: 80px 20px 48px;
+		}
+
+		.services-hero-container {
+			gap: 24px;
+		}
+
+		.hero-badges {
+			max-width: 58%;
+			height: auto;
+		}
+
+		.hero-title {
+			font-size: 36px;
+			line-height: 1.2;
+		}
+
+		.hero-text {
+			font-size: 17px;
+			line-height: 1.6;
+		}
+	}
+</style>

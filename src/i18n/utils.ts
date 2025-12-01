@@ -22,12 +22,16 @@ export function getLangFromUrl(url: URL) {
 export function useTranslations(lang: keyof typeof ui) {
 	return function t(key: string): string {
 		const keys = key.split('.');
-		let value: any = ui[lang];
+		let value: unknown = ui[lang];
 
 		for (const k of keys) {
-			value = value?.[k];
+			if (typeof value === 'object' && value !== null && k in value) {
+				value = (value as Record<string, unknown>)[k];
+			} else {
+				return key;
+			}
 		}
 
-		return value || key;
+		return typeof value === 'string' ? value : key;
 	};
 }

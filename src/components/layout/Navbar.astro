@@ -1,0 +1,661 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import { getLanguageUrls } from '../../utils/routeMapping';
+import TrailmergeLogo from '../../assets/images/Trailmerge-Wordmark-Sand.svg';
+import Button from '../shared/Button.astro';
+
+export interface Props {
+	lang?: string;
+	theme?: 'default' | 'glass' | 'solid-glass';
+}
+
+const { lang = 'en', theme = 'default' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+
+// Get current path for language switcher
+const currentPath = Astro.url.pathname;
+
+// Get language-specific URLs using centralized utility
+const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
+---
+
+<!-- Navigation -->
+<div class={`navigation theme-${theme}`} role="banner">
+	<div class="navigation-container-full">
+		<a
+			href={lang === 'es' ? '/es/' : '/en/'}
+			id="nav-logo"
+			aria-label={t('nav.home')}
+			class="brand"
+		>
+			<img src={TrailmergeLogo.src} alt="Trailmerge Logo" class="logo nav-logo" />
+		</a>
+		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
+			<div class="mock-menu-background"></div>
+
+			<a href={lang === 'es' ? '/es/about/' : '/en/about/'} id="nav-about" class="nav-link"
+				>{t('nav.about')}</a
+			>
+			<a href={lang === 'es' ? '/es/services/' : '/en/services/'} id="nav-services" class="nav-link"
+				>{t('nav.services')}</a
+			>
+			<a href={lang === 'es' ? '/es/blog/' : '/en/blog/'} id="nav-blog" class="nav-link"
+				>{t('nav.blog')}</a
+			>
+			<Button
+				text={t('nav.cta')}
+				href={lang === 'en' ? '/en/contact/' : '/es/contact/'}
+				variant="primary"
+				className="nav-cta-button"
+			/>
+			<div class="language-switcher">
+				<button
+					class="language-switcher-button"
+					aria-label="Select language"
+					aria-expanded="false"
+					aria-haspopup="true"
+					id="language-switcher-button"
+				>
+					<svg
+						class="globe-icon"
+						width="16"
+						height="16"
+						viewBox="0 0 16 16"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M8 14C11.3137 14 14 11.3137 14 8C14 4.68629 11.3137 2 8 2C4.68629 2 2 4.68629 2 8C2 11.3137 4.68629 14 8 14Z"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"></path>
+						<path
+							d="M2 8H14"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"></path>
+						<path
+							d="M8 2C9.66667 4.33333 10.6667 6.33333 11 8C10.6667 9.66667 9.66667 11.6667 8 14C6.33333 11.6667 5.33333 9.66667 5 8C5.33333 6.33333 6.33333 4.33333 8 2Z"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"></path>
+					</svg>
+					<span class="current-language">{lang === 'en' ? 'EN' : 'ES'}</span>
+				</button>
+				<div class="language-dropdown" id="language-dropdown" role="menu">
+					<a
+						href={enUrl}
+						class={`language-option ${lang === 'en' ? 'active' : ''}`}
+						role="menuitem"
+						aria-label="Switch to English">English</a
+					>
+					<a
+						href={esUrl}
+						class={`language-option ${lang === 'es' ? 'active' : ''}`}
+						role="menuitem"
+						aria-label="Cambiar a Español">Español</a
+					>
+				</div>
+			</div>
+			<div class="navbar-button-wrapper">
+				<Button
+					text={t('nav.startProject')}
+					href={lang === 'es' ? '/es/contact/' : '/en/contact/'}
+					variant="navbar"
+				/>
+			</div>
+		</nav>
+		<button
+			class="menu-button"
+			aria-label="Toggle mobile menu"
+			aria-expanded="false"
+			aria-controls="nav-menu"
+		>
+			<div class="icon icon-1"></div>
+			<div class="icon icon-2"></div>
+			<div class="icon icon-3"></div>
+		</button>
+	</div>
+</div>
+
+<script>
+	// Combined Navbar Logic (Scroll, Mobile Menu, Language Switcher)
+	// Handles View Transitions properly using 'astro:page-load'
+
+	let cleanup: (() => void) | null = null;
+
+	document.addEventListener('astro:page-load', () => {
+		// Cleanup previous listeners if they exist
+		if (cleanup) cleanup();
+
+		const cleanups: (() => void)[] = [];
+
+		// --- Mobile Menu Logic ---
+		const menuButton = document.querySelector('.menu-button');
+		const navMenu = document.querySelector('.nav-menu-green');
+
+		if (menuButton && navMenu) {
+			const toggleMenu = () => {
+				const isCurrentlyExpanded = navMenu.classList.contains('active');
+				navMenu.classList.toggle('active');
+				menuButton.classList.toggle('active');
+				menuButton.setAttribute('aria-expanded', (!isCurrentlyExpanded).toString());
+			};
+			menuButton.addEventListener('click', toggleMenu);
+
+			// Close on Escape
+			const onDocKey = (e: KeyboardEvent) => {
+				if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+					navMenu.classList.remove('active');
+					menuButton.classList.remove('active');
+					menuButton.setAttribute('aria-expanded', 'false');
+					(menuButton as HTMLElement).focus();
+				}
+			};
+			document.addEventListener('keydown', onDocKey);
+			cleanups.push(() => document.removeEventListener('keydown', onDocKey));
+		}
+
+		// --- Language Switcher Logic ---
+		const languageSwitcher = document.querySelector('.language-switcher');
+		const languageButton = document.getElementById('language-switcher-button');
+
+		if (languageButton && languageSwitcher) {
+			const toggleLang = (e: Event) => {
+				e.stopPropagation();
+				const isActive = languageSwitcher.classList.contains('active');
+				languageSwitcher.classList.toggle('active');
+				languageButton.setAttribute('aria-expanded', (!isActive).toString());
+			};
+			languageButton.addEventListener('click', toggleLang);
+
+			const closeOnClickOutside = (e: Event) => {
+				if (!languageSwitcher.contains(e.target as Node)) {
+					languageSwitcher.classList.remove('active');
+					languageButton.setAttribute('aria-expanded', 'false');
+				}
+			};
+			document.addEventListener('click', closeOnClickOutside);
+			cleanups.push(() => document.removeEventListener('click', closeOnClickOutside));
+
+			const closeOnEscape = (e: KeyboardEvent) => {
+				if (e.key === 'Escape') {
+					languageSwitcher.classList.remove('active');
+					languageButton.setAttribute('aria-expanded', 'false');
+					languageButton.focus();
+				}
+			};
+			document.addEventListener('keydown', closeOnEscape);
+			cleanups.push(() => document.removeEventListener('keydown', closeOnEscape));
+
+			// Save preference
+			const languageOptions = document.querySelectorAll('.language-option');
+			languageOptions.forEach((option) => {
+				option.addEventListener('click', (e) => {
+					const href = (e.target as HTMLAnchorElement).href;
+					const lang = href.includes('/es') ? 'es' : 'en';
+					localStorage.setItem('preferred-language', lang);
+				});
+			});
+		}
+
+		// --- Navbar Scroll Effect ---
+		const navbar = document.querySelector('.navigation');
+		if (navbar) {
+			const onScroll = () => {
+				if (window.scrollY > 20) {
+					navbar.classList.add('scrolled');
+				} else {
+					navbar.classList.remove('scrolled');
+				}
+			};
+
+			window.addEventListener('scroll', onScroll);
+			onScroll(); // Initial check
+			cleanups.push(() => window.removeEventListener('scroll', onScroll));
+		}
+
+		// Define cleanup function for next run
+		cleanup = () => {
+			cleanups.forEach((fn) => fn());
+		};
+	});
+</script>
+
+<style>
+	/* Navigation Styles */
+	.navigation {
+		background-color: transparent;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		width: 100%;
+		transition:
+			background-color 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			backdrop-filter 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			border 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			top 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			width 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			border-radius 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+	}
+
+	/* Theme: Default (Transparent -> Solid Sand) */
+	.navigation.theme-default.scrolled {
+		background-color: #f8ebdb;
+		backdrop-filter: blur(16px);
+		-webkit-backdrop-filter: blur(16px);
+		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+	}
+
+	/* Theme: Glass (Transparent -> Glassmorphism) */
+	.navigation.theme-glass.scrolled {
+		background-color: rgba(245, 246, 245, 0.6);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+	}
+
+	/* Theme: Solid Glass (Always Glassmorphism) */
+	.navigation.theme-solid-glass {
+		background-color: rgba(245, 246, 245, 0.6);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+	}
+
+	/* Ensure logo color is correct for all themes */
+	.logo {
+		width: auto;
+		height: 32px;
+		display: block;
+		filter: brightness(0) saturate(100%) invert(18%) sepia(8%) saturate(267%) hue-rotate(100deg)
+			brightness(95%) contrast(87%);
+		border: none;
+		outline: none;
+	}
+
+	.navigation-container-full {
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		height: 64px;
+		min-height: auto;
+		padding: 24px;
+		display: flex;
+		transition:
+			padding 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+			height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+	}
+
+	@media (min-width: 769px) {
+		.navigation.scrolled,
+		.navigation.theme-solid-glass {
+			top: 12px;
+			left: 12px;
+			right: 12px;
+			width: auto;
+			border-radius: 8px;
+			border: 1px solid rgba(255, 255, 255, 0.5);
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+		}
+
+		.navigation.scrolled .navigation-container-full,
+		.navigation.theme-solid-glass .navigation-container-full {
+			padding: 8px 24px;
+			height: 56px;
+		}
+	}
+
+	.brand {
+		display: flex;
+		align-items: center;
+	}
+
+	.nav-menu-green {
+		color: var(--oregano);
+		align-items: center;
+		width: auto;
+		height: auto;
+		display: flex;
+		position: static;
+		gap: 24px;
+		font-family: 'DM Sans', sans-serif;
+	}
+
+	.nav-link {
+		color: #2e3a33;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 24px;
+		transition: color 0.2s ease;
+		text-decoration: none;
+	}
+
+	.nav-link:hover {
+		color: #506e5a;
+	}
+
+	/* Language Switcher */
+	.language-switcher {
+		position: relative;
+		display: flex;
+		align-items: center;
+		font-family: 'DM Sans', sans-serif;
+	}
+
+	.language-switcher-button {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		background: none;
+		border: none;
+		color: #2e3a33;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 24px;
+		cursor: pointer;
+		padding: 4px 8px;
+		border-radius: 4px;
+		transition: all 0.2s ease;
+	}
+
+	.language-switcher-button:hover {
+		background-color: transparent;
+		color: #506e5a;
+	}
+
+	.language-switcher-button:focus {
+		outline: none;
+	}
+
+	.globe-icon {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+	}
+
+	.current-language {
+		color: inherit;
+		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 24px;
+		transition: color 0.2s ease;
+	}
+
+	.language-dropdown {
+		position: absolute;
+		top: calc(100% + 8px);
+		right: 0;
+		background-color: var(--white);
+		border-radius: 12px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+		min-width: 110px;
+		padding: 4px 0;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateY(-8px);
+		transition: all 0.2s ease;
+		z-index: 1001;
+	}
+
+	.language-switcher.active .language-dropdown {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	.language-option {
+		display: block;
+		padding: 4px 16px;
+		color: #2e3a33;
+		text-shadow:
+			0 -1px 2px rgba(0, 0, 0, 0.25),
+			0 1px 2px rgba(255, 255, 255, 0.4);
+		font-family: 'DM Sans', sans-serif;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 700;
+		line-height: 24px;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.language-option:hover {
+		background-color: var(--green-100);
+		color: var(--grey-5);
+	}
+
+	.language-option.active {
+		font-weight: 700;
+		color: var(--grey-5);
+	}
+
+	.navbar-button-wrapper {
+		margin-left: 16px;
+	}
+
+	/* Mobile menu styles */
+	.menu-button {
+		display: none;
+		flex-direction: column;
+		justify-content: space-between;
+		cursor: pointer;
+		padding: 0;
+		width: 32px;
+		height: 24px;
+		z-index: 1001;
+		background: none;
+		border: none;
+		outline: none;
+		position: relative;
+	}
+
+	.menu-button:focus {
+		outline: none;
+	}
+
+	.menu-button:focus-visible {
+		outline: 2px solid rgba(46, 58, 51, 0.3);
+		outline-offset: 2px;
+	}
+
+	.menu-button .icon {
+		width: 100%;
+		height: 3px;
+		background-color: var(--grey-5);
+		border-radius: 2px;
+		transition: all 0.3s ease;
+		transform-origin: center;
+		position: absolute;
+		left: 0;
+	}
+
+	.menu-button .icon-1 {
+		top: 0;
+	}
+
+	.menu-button .icon-2 {
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.menu-button .icon-3 {
+		bottom: 0;
+	}
+
+	.menu-button.active .icon-1 {
+		top: 50%;
+		transform: translateY(-50%) rotate(45deg);
+	}
+
+	.menu-button.active .icon-2 {
+		opacity: 0;
+		transform: translateY(-50%) translateX(-20px);
+	}
+
+	.menu-button.active .icon-3 {
+		bottom: auto;
+		top: 50%;
+		transform: translateY(-50%) rotate(-45deg);
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.navigation-container-full {
+			padding: 16px 20px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.navigation-container-full {
+			padding: 16px 20px;
+			height: 56px;
+		}
+
+		.logo {
+			height: 24px;
+		}
+
+		.menu-button {
+			display: flex;
+		}
+
+		.nav-menu-green {
+			position: fixed;
+			top: 56px;
+			left: 0;
+			right: 0;
+			background-color: var(--white); /* This needs to be considered for glassmorphism */
+			flex-direction: column;
+			align-items: stretch;
+			padding: 24px 16px;
+			gap: 16px;
+			transform: translateY(-100%);
+			transition: transform 0.3s ease;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+			visibility: hidden;
+			z-index: 999;
+		}
+
+		/* When mobile menu is open, it should be solid, but glassmorphism when scrolled and closed */
+		.navigation.scrolled .nav-menu-green {
+			background-color: var(--white); /* Keep solid color when menu is open */
+		}
+
+		.nav-menu-green.active {
+			transform: translateY(0);
+			visibility: visible;
+		}
+
+		.nav-link {
+			padding: 12px 8px;
+			border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+			font-size: 16px;
+			color: var(--grey-5);
+		}
+
+		.navbar-button-wrapper {
+			margin-left: 0;
+			width: 100%;
+			margin-top: 8px;
+		}
+
+		.navbar-button {
+			width: 100%;
+			text-align: center;
+			padding: 12px 16px;
+			font-size: 16px;
+		}
+
+		.language-switcher {
+			width: 100%;
+		}
+
+		.language-switcher-button {
+			width: 100%;
+			justify-content: flex-start;
+			padding: 12px 8px;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		.language-dropdown {
+			position: static;
+			opacity: 1;
+			visibility: visible;
+			transform: none;
+			box-shadow: none;
+			background-color: transparent;
+			padding: 0;
+			margin-top: 0;
+			min-width: auto;
+			display: none;
+		}
+
+		.language-switcher.active .language-dropdown {
+			display: block;
+		}
+
+		.language-option {
+			padding: 12px 8px;
+			color: var(--grey-5);
+			border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+		}
+
+		.language-option:hover {
+			background-color: rgba(46, 58, 51, 0.1);
+			color: var(--green-700);
+		}
+
+		.language-option.active {
+			color: var(--green-700);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.navigation-container-full {
+			padding: 12px 16px;
+			height: 48px;
+		}
+
+		.logo {
+			height: 20px;
+		}
+
+		.nav-menu-green {
+			top: 48px;
+			padding: 20px 16px;
+		}
+
+		.menu-button {
+			width: 28px;
+			height: 20px;
+		}
+
+		.menu-button.active .icon-1 {
+			top: 50%;
+			transform: translateY(-50%) rotate(45deg);
+		}
+
+		.menu-button.active .icon-3 {
+			bottom: auto;
+			top: 50%;
+			transform: translateY(-50%) rotate(-45deg);
+		}
+	}
+</style>

@@ -1,0 +1,419 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<div class="our-values-wrapper">
+	<div class="our-values-container parallax-container" id="our-values-section">
+		<div class="our-values-image-wrapper">
+			<img
+				src="/images/new/about/Resizing-Mountains.png"
+				alt="Our Values"
+				class="our-values-image parallax-layer"
+				data-speed="-0.1"
+				loading="lazy"
+			/>
+		</div>
+		<img
+			src="/images/new/about/Telescope.png"
+			alt="Telescope"
+			class="telescope-image parallax-layer"
+			data-speed="1.2"
+			loading="lazy"
+		/>
+		<div class="our-values-content parallax-layer" data-speed="0.1">
+			<img
+				src="/images/new/about/Telescope.png"
+				alt="Telescope"
+				class="telescope-image-mobile"
+				loading="lazy"
+			/>
+			<h3 class="our-values-title">{t('aboutNew.values.title')}</h3>
+			<div class="our-values-text">
+				<p>
+					{t('aboutNew.values.text')}
+				</p>
+			</div>
+			<ul class="our-values-list">
+				<li>{t('aboutNew.values.list.item1')}</li>
+				<li>{t('aboutNew.values.list.item2')}</li>
+				<li>{t('aboutNew.values.list.item3')}</li>
+				<li>{t('aboutNew.values.list.item4')}</li>
+				<li>{t('aboutNew.values.list.item5')}</li>
+				<li>{t('aboutNew.values.list.item6')}</li>
+				<li>{t('aboutNew.values.list.item7')}</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<style>
+	.our-values-wrapper {
+		width: 100%;
+		position: relative;
+		overflow: hidden;
+		background: transparent;
+		/* Ensure it takes up space in the flow */
+		min-height: 800px;
+	}
+
+	.our-values-container {
+		position: relative;
+		width: 100vw;
+		max-width: 100vw;
+		padding: 40px 0 0 0;
+		margin: 0;
+		display: block;
+		box-sizing: border-box;
+		min-height: 800px;
+		background: transparent;
+	}
+
+	.our-values-image-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		min-height: 800px;
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		overflow: hidden;
+		z-index: 0;
+		background: transparent;
+	}
+
+	.our-values-image {
+		width: 100vw;
+		height: 100%;
+		min-height: 800px;
+		object-fit: cover;
+		object-position: center center;
+		display: block;
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.telescope-image {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 5%;
+		width: 400px;
+		height: 400px;
+		max-width: 400px;
+		max-height: 400px;
+		object-fit: contain;
+		z-index: 11;
+		display: block;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	.telescope-image-mobile {
+		display: none;
+	}
+
+	.our-values-content {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto 0;
+		left: 45%;
+		z-index: 12;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		align-items: flex-start;
+		max-width: 50%;
+		height: fit-content;
+		padding-right: 20px;
+	}
+
+	.our-values-title {
+		color: #fff;
+		text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+		font-family: 'Young Serif', serif;
+		font-size: 56px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 64px;
+		letter-spacing: 1.68px;
+		margin: 0 0 40px 0;
+		padding: 0;
+	}
+
+	.our-values-text {
+		width: 100%;
+		color: #fff;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 32px;
+		margin: 0 0 24px 0;
+		padding: 0;
+	}
+
+	.our-values-text p {
+		margin: 0 0 16px 0;
+		padding: 0;
+	}
+
+	.our-values-text p:last-child {
+		margin-bottom: 0;
+	}
+
+	.our-values-text strong {
+		font-weight: 700;
+	}
+
+	.our-values-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		width: 100%;
+	}
+
+	.our-values-list li {
+		color: #fff;
+		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 32px;
+		position: relative;
+		padding-left: 48px;
+	}
+
+	.our-values-list li::before {
+		content: '•';
+		position: absolute;
+		left: 0;
+		top: -14px;
+		color: #e0927d;
+		font-size: 56px;
+		line-height: 56px;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.our-values-wrapper {
+			min-height: 800px;
+		}
+
+		.our-values-container {
+			min-height: 800px;
+			padding: 40px 0 0 0;
+		}
+
+		.our-values-image-wrapper {
+			min-height: 800px;
+		}
+
+		.our-values-image {
+			min-height: 800px;
+		}
+
+		.telescope-image {
+			left: 5%;
+			width: 300px;
+			height: 300px;
+			max-width: 300px;
+			max-height: 300px;
+		}
+
+		.our-values-content {
+			left: 40%;
+			max-width: 55%;
+		}
+
+		.our-values-title {
+			font-size: 48px;
+			line-height: 56px;
+		}
+
+		.our-values-text {
+			font-size: 20px;
+			line-height: 28px;
+		}
+
+		.our-values-list li {
+			font-size: 20px;
+			line-height: 28px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.our-values-wrapper,
+		.our-values-container {
+			min-height: 600px;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.our-values-image-wrapper {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+
+		.our-values-image {
+			width: 100%;
+			height: 100%;
+			min-height: 600px;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		.telescope-image {
+			display: none;
+		}
+
+		.telescope-image-mobile {
+			position: relative;
+			top: auto;
+			left: auto;
+			transform: none;
+			width: 200px;
+			height: auto;
+			max-width: 50%;
+			max-height: 200px;
+			margin: 60px 0 16px 20px;
+			display: block;
+			z-index: 11;
+		}
+
+		.our-values-content {
+			position: relative;
+			left: 0;
+			top: 0;
+			bottom: auto;
+			margin: 0;
+			max-width: 100%;
+			padding: 0 20px 80px 20px;
+			background: transparent;
+			z-index: 12;
+		}
+
+		.our-values-title {
+			font-size: 36px;
+			line-height: 1.2;
+			margin-bottom: 20px;
+		}
+
+		.our-values-text {
+			font-size: 18px;
+			line-height: 1.6;
+		}
+
+		.our-values-list li {
+			font-size: 18px;
+			line-height: 1.6;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.our-values-wrapper,
+		.our-values-container {
+			min-height: 550px;
+			height: auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.our-values-image-wrapper {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			z-index: 1;
+		}
+
+		.our-values-image {
+			width: 100%;
+			height: 100%;
+			min-height: 550px;
+			object-fit: cover;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+
+		.telescope-image {
+			display: none;
+		}
+
+		.telescope-image-mobile {
+			position: relative;
+			top: auto;
+			left: auto;
+			transform: none;
+			width: 180px;
+			height: auto;
+			max-width: 50%;
+			max-height: 180px;
+			margin: 50px 0 16px 20px;
+			display: block;
+			z-index: 11;
+		}
+
+		.our-values-content {
+			position: relative;
+			left: 0;
+			top: 0;
+			bottom: auto;
+			margin: 0;
+			max-width: 100%;
+			padding: 0 20px 80px 20px;
+			background: transparent;
+			z-index: 12;
+		}
+
+		.our-values-title {
+			font-size: 32px;
+			line-height: 1.2;
+			margin-bottom: 16px;
+		}
+
+		.our-values-text {
+			font-size: 17px;
+			line-height: 1.6;
+		}
+
+		.our-values-list li {
+			font-size: 17px;
+			line-height: 1.6;
+		}
+	}
+
+	.parallax-layer {
+		will-change: transform;
+		/* Hardware acceleration hack if needed, though will-change is usually enough */
+		transform: translateZ(0);
+	}
+</style>

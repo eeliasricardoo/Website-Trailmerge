@@ -1,0 +1,105 @@
+---
+import { useTranslations } from '../../i18n/utils';
+
+export interface Props {
+	lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang as 'en' | 'es');
+---
+
+<div class="body-block">
+	<div class="content-container">
+		<div class="jumbo-text-wrapper">
+			<p class="jumbo-text">
+				{t('about.vision.paragraph1')}
+				<br /><br />
+				{t('about.vision.paragraph2')}
+				<br /><br />
+				{t('about.vision.paragraph3')}<br />
+			</p>
+		</div>
+	</div>
+</div>
+
+<style>
+	.body-block {
+		padding: 80px 0;
+	}
+
+	.content-container {
+		padding: 0 20px;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.jumbo-text-wrapper {
+		margin-bottom: 0;
+		text-align: left;
+		width: 100%;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.jumbo-text {
+		font-family: Bitter, serif;
+		font-size: 28px;
+		font-weight: 400;
+		line-height: 40px;
+		color: var(--grey-5);
+		margin: 0;
+		text-align: left;
+	}
+
+	@media (max-width: 1024px) {
+		.body-block {
+			padding: 60px 0;
+		}
+
+		.jumbo-text {
+			font-size: 24px;
+			line-height: 36px;
+		}
+
+		.jumbo-text-wrapper {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.body-block {
+			padding: 48px 0;
+		}
+
+		.content-container {
+			padding: 0 16px;
+		}
+
+		.jumbo-text {
+			font-size: 20px;
+			line-height: 32px;
+		}
+
+		.jumbo-text-wrapper {
+			width: 100%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.body-block {
+			padding: 40px 0;
+		}
+
+		.jumbo-text {
+			text-align: left;
+			font-size: 20px;
+			line-height: 28px;
+		}
+
+		.jumbo-text-wrapper {
+			width: 100%;
+		}
+	}
+</style>
