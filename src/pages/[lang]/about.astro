@@ -26,7 +26,11 @@ const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <Layout title={t('about.seo.title')} description={t('about.seo.description')} lang={lang}>
-	<AboutHero lang={lang} />
-	<OurValues lang={lang} />
-	<OurHistory lang={lang} />
+	<main id="main-content">
+		<AboutHero lang={lang} />
+
+		<OurValues lang={lang} />
+
+		<OurHistory lang={lang} />
+	</main>
 </Layout>

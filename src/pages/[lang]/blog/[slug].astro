@@ -80,7 +80,7 @@ if (!post) {
 }
 
 if (!post) {
-	return Astro.redirect(`/${lang}/blog`);
+	return Astro.redirect(`/${lang}/blog-new`);
 }
 
 // Helper function to parse Spanish date format
@@ -157,10 +157,24 @@ const articleData = {
 >
 	<div class="blog-post-decoration"></div>
 	<div class="blog-post-blob"></div>
-	<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
-	<PostHeader title={post.title} date={post.date} author={post.author} category={categoryDisplay} />
-	<PostContent content={post.content} />
-	<PostAuthor author={post.author} lang={lang} />
+	<main id="main-content">
+		<article>
+			<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
+
+			<div class="post-container">
+				<PostHeader
+					title={post.title}
+					date={post.date}
+					author={post.author}
+					category={categoryDisplay}
+				/>
+
+				<PostContent content={post.content} />
+
+				<PostAuthor author={post.author} lang={lang} />
+			</div>
+		</article>
+	</main>
 </Layout>
 
 <style is:global>

@@ -30,9 +30,13 @@ const t = useTranslations(lang as 'en' | 'es');
 	description={t('servicesNew.seo.description')}
 	lang={lang}
 >
-	<ServicesHero lang={lang} />
-	<Capabilities lang={lang} />
-	<OurProcess lang={lang} />
+	<main id="main-content">
+		<ServicesHero lang={lang} />
+
+		<Capabilities lang={lang} />
+
+		<OurProcess lang={lang} />
+	</main>
 </Layout>
 
 <style is:global>
