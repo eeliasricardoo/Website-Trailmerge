@@ -23,7 +23,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 <div class={`navigation theme-${theme}`} role="banner">
 	<div class="navigation-container-full">
 		<a
-			href={lang === 'es' ? '/es/home-new/' : '/en/home-new/'}
+			href={lang === 'es' ? '/es/' : '/en/'}
 			id="nav-logo"
 			aria-label={t('nav.home')}
 			class="brand"
@@ -33,15 +33,13 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		<nav class="nav-menu-green" role="navigation" aria-label="Main navigation">
 			<div class="mock-menu-background"></div>
 
-			<a href={lang === 'es' ? '/es/about-new/' : '/en/about-new/'} id="nav-about" class="nav-link"
+			<a href={lang === 'es' ? '/es/about/' : '/en/about/'} id="nav-about" class="nav-link"
 				>{t('nav.about')}</a
 			>
-			<a
-				href={lang === 'es' ? '/es/services-new/' : '/en/services-new/'}
-				id="nav-services"
-				class="nav-link">{t('nav.services')}</a
+			<a href={lang === 'es' ? '/es/services/' : '/en/services/'} id="nav-services" class="nav-link"
+				>{t('nav.services')}</a
 			>
-			<a href={lang === 'es' ? '/es/blog-new/' : '/en/blog-new/'} id="nav-blog" class="nav-link"
+			<a href={lang === 'es' ? '/es/blog/' : '/en/blog/'} id="nav-blog" class="nav-link"
 				>{t('nav.blog')}</a
 			>
 			<Button

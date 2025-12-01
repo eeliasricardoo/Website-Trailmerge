@@ -283,5 +283,10 @@
       "p2": "The company initially launched as a UX design agency, and has since added software development capabilities to serve as <strong>a complete strategic partner</strong> for our clients, while retaining a <strong>problem solving, design-first ethos.</strong>",
       "p3": "Trailmerge now helps companies of various sizes to create <strong>efficiencies in their operations and technology</strong> through in-depth consulting, user research, digital product management, design and software development."
     }
+  },
+  "404": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "cta": "Go Home"
   }
 }

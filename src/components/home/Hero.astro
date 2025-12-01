@@ -130,6 +130,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		will-change: transform;
 		flex-shrink: 0;
 		box-sizing: border-box;
+		transform: translateZ(0);
 	}
 
 	.parallax-image {
@@ -146,9 +147,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		height: 1312.615px;
 		right: -150px;
 		top: -230px;
-		flex-shrink: 0;
 		transform: rotate(1.867deg);
-		box-sizing: border-box;
 	}
 
 	.layer-clouds {
@@ -157,9 +156,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		height: 233.416px;
 		left: 50%;
 		top: 68px;
-		flex-shrink: 0;
 		transform: translateX(-50%);
-		box-sizing: border-box;
 	}
 
 	.layer-mountains {
@@ -168,9 +165,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		height: 295.435px;
 		left: 50%;
 		top: 156px;
-		flex-shrink: 0;
 		transform: translateX(-50%);
-		box-sizing: border-box;
 	}
 
 	.layer-forest {
@@ -179,7 +174,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		height: 314px;
 		top: 451px;
 		left: -200px;
-		flex-shrink: 0;
 	}
 
 	.layer-forest-right {
@@ -188,7 +182,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		height: 341px;
 		top: 423px;
 		right: -200px;
-		flex-shrink: 0;
 	}
 
 	.layer-bird {
@@ -198,7 +191,6 @@ const t = useTranslations(lang as 'en' | 'es');
 		left: 50%;
 		margin-left: -18px;
 		top: 114px;
-		flex-shrink: 0;
 		transform: rotate(1.21deg);
 	}
 
@@ -238,10 +230,10 @@ const t = useTranslations(lang as 'en' | 'es');
 			0 -2px 4px rgba(0, 0, 0, 0.25),
 			0 2px 4px rgba(255, 255, 255, 0.4);
 		font-family: 'Young Serif', serif;
-		font-size: 88px;
+		font-size: clamp(40px, 8vw, 88px);
 		font-style: normal;
 		font-weight: 400;
-		line-height: 96px;
+		line-height: 1.1;
 		letter-spacing: 2.64px;
 		margin: 0;
 	}
@@ -249,34 +241,27 @@ const t = useTranslations(lang as 'en' | 'es');
 	/* Responsive Design */
 	@media (max-width: 1024px) {
 		.hero-wrapper {
-			height: 100vh;
 			min-height: 800px;
 		}
 
-		.layer-blob {
-			width: 100%;
-			height: auto;
-			max-height: 1312.615px;
-		}
-
-		.layer-clouds {
-			width: 100%;
-			height: auto;
-			max-height: 233.416px;
-		}
-
+		.layer-blob,
+		.layer-clouds,
 		.layer-mountains {
 			width: 100%;
 			height: auto;
+		}
+
+		.layer-blob {
+			max-height: 1312.615px;
+		}
+		.layer-clouds {
+			max-height: 233.416px;
+		}
+		.layer-mountains {
 			max-height: 295.435px;
 		}
 
-		.layer-forest {
-			width: 100%;
-			height: auto;
-			max-height: 200px;
-		}
-
+		.layer-forest,
 		.layer-forest-right {
 			width: 100%;
 			height: auto;
@@ -286,18 +271,10 @@ const t = useTranslations(lang as 'en' | 'es');
 		.content-container {
 			top: 350px;
 		}
-
-		.hero-title {
-			width: 100%;
-			font-size: 48px;
-			line-height: 1.2;
-			letter-spacing: 1.44px;
-		}
 	}
 
 	@media (max-width: 768px) {
 		.hero-wrapper {
-			height: 100vh;
 			min-height: 600px;
 		}
 
@@ -307,7 +284,6 @@ const t = useTranslations(lang as 'en' | 'es');
 
 		.layer-blob {
 			width: 140%;
-			height: auto;
 			max-height: 1100px;
 			right: -80px;
 			top: -40px;
@@ -315,14 +291,12 @@ const t = useTranslations(lang as 'en' | 'es');
 
 		.layer-clouds {
 			width: 140%;
-			height: auto;
 			max-height: 380px;
 			top: 60px;
 		}
 
 		.layer-mountains {
 			width: 140%;
-			height: auto;
 			max-height: 450px;
 			top: 100px;
 		}
@@ -349,6 +323,7 @@ const t = useTranslations(lang as 'en' | 'es');
 			right: -100px;
 		}
 
+		.layer-forest .parallax-image,
 		.layer-forest-right .parallax-image {
 			width: 100% !important;
 			height: 100% !important;
@@ -370,28 +345,15 @@ const t = useTranslations(lang as 'en' | 'es');
 		.hero-content {
 			gap: 16px;
 		}
-
-		.hero-title {
-			width: 100%;
-			font-size: 40px;
-			line-height: 1.2;
-			letter-spacing: 1px;
-		}
 	}
 
 	@media (max-width: 480px) {
-		.hero-wrapper {
-			height: 100vh;
-			min-height: 600px;
-		}
-
 		.landscape-group {
 			transform: translateY(-20px) scale(1.5);
 		}
 
 		.layer-blob {
 			width: 150%;
-			height: auto;
 			max-height: 1000px;
 			right: -60px;
 			top: -20px;
@@ -399,14 +361,12 @@ const t = useTranslations(lang as 'en' | 'es');
 
 		.layer-clouds {
 			width: 150%;
-			height: auto;
 			max-height: 320px;
 			top: 50px;
 		}
 
 		.layer-mountains {
 			width: 150%;
-			height: auto;
 			max-height: 400px;
 			top: 80px;
 		}
@@ -419,24 +379,12 @@ const t = useTranslations(lang as 'en' | 'es');
 			left: -80px;
 		}
 
-		.layer-forest .parallax-image {
-			width: 100% !important;
-			height: 100% !important;
-			object-fit: contain !important;
-		}
-
 		.layer-forest-right {
 			width: 100% !important;
 			height: 70px !important;
 			max-height: 70px !important;
 			top: 145px;
 			right: -80px;
-		}
-
-		.layer-forest-right .parallax-image {
-			width: 100% !important;
-			height: 100% !important;
-			object-fit: contain !important;
 		}
 
 		.layer-bird {
@@ -454,16 +402,5 @@ const t = useTranslations(lang as 'en' | 'es');
 		.hero-content {
 			gap: 12px;
 		}
-
-		.hero-title {
-			width: 100%;
-			font-size: 40px;
-			line-height: 1.2;
-			letter-spacing: 1px;
-		}
-	}
-	.parallax-layer {
-		will-change: transform;
-		transform: translateZ(0);
 	}
 </style>
