@@ -1,6 +1,6 @@
-import type { MiddlewareHandler } from 'astro';
+import { defineMiddleware } from 'astro/middleware';
 
-export const onRequest: MiddlewareHandler = async (context, next) => {
+export const onRequest = defineMiddleware(async (context, next) => {
 	const { url } = context;
 
 	// Skip middleware for StudioCMS routes
@@ -19,4 +19,4 @@ export const onRequest: MiddlewareHandler = async (context, next) => {
 	// Let all other routes pass through normally
 	// The index.astro page will handle the root redirect
 	return next();
-};
+});
