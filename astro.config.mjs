@@ -30,6 +30,7 @@ export default defineConfig({
 			dbStartPage: false, // Setup complete - disabled as instructed
 			dashboardConfig: {
 				dashboardEnabled: false,
+				inject404Route: false,
 				// Remove dashboardRouteOverride to use StudioCMS default route (/dashboard)
 				// This route won't conflict with i18n [lang] pattern
 			},
