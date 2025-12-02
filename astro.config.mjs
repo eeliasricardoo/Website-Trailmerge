@@ -11,7 +11,7 @@ import studioCMSBlog from '@studiocms/blog';
 export default defineConfig({
 	site: 'https://trailmerge.com',
 	base: '/',
-	output: 'static',
+	output: 'server',
 	adapter: node({ mode: 'standalone' }),
 	compressHTML: true,
 	trailingSlash: 'ignore',
