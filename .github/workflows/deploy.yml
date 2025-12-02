@@ -35,10 +35,13 @@ jobs:
         run: gcloud auth configure-docker
 
       - name: Build and Push Container
+        env:
+          CMS_KEY: ${{ secrets.CMS_ENCRYPTION_KEY }}
+          DB_TOKEN: ${{ secrets.ASTRO_DB_APP_TOKEN }}
         run: |
           # Create secret files
-          echo "${{ secrets.CMS_ENCRYPTION_KEY }}" > cms_key.txt
-          echo "${{ secrets.ASTRO_DB_APP_TOKEN }}" > db_token.txt
+          echo "$CMS_KEY" > cms_key.txt
+          echo "$DB_TOKEN" > db_token.txt
 
           export IMAGE_NAME=gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
           docker build \
