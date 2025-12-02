@@ -25,10 +25,10 @@ const es = ui.es['404'];
 <script>
 	const lang = navigator.language;
 	if (lang.startsWith('es')) {
-		const enContent = document.querySelector('.content.en') as HTMLElement;
-		const esContent = document.querySelector('.content.es') as HTMLElement;
-		if (enContent) enContent.style.display = 'none';
-		if (esContent) esContent.style.display = 'flex';
+		const enContent = document.querySelector('.content.en');
+		const esContent = document.querySelector('.content.es');
+		if (enContent instanceof HTMLElement) enContent.style.display = 'none';
+		if (esContent instanceof HTMLElement) esContent.style.display = 'flex';
 	}
 </script>
 

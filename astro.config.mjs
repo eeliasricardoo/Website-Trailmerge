@@ -28,6 +28,7 @@ export default defineConfig({
 		// StudioCMS must be before sitemap to ensure routes are injected before i18n processes them
 		studioCMS({
 			dbStartPage: false, // Setup complete - disabled as instructed
+			inject404Route: false, // Explicitly disable 404 injection at top level
 			dashboardConfig: {
 				dashboardEnabled: false,
 				inject404Route: false,
