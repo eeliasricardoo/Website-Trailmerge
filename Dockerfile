@@ -5,15 +5,17 @@ COPY . .
 
 RUN npm install
 
-ARG CMS_ENCRYPTION_KEY
 ARG ASTRO_DB_REMOTE_URL
-ARG ASTRO_DB_APP_TOKEN
 ARG PUBLIC_HCAPTCHA_SITE_KEY
 
-# Secrets are available during build via ARG, but not persisted in the image ENV.
+# Secrets are available during build via --mount=type=secret, avoiding persistence in image layers.
 # Runtime secrets will be provided by Cloud Run.
 
-RUN npm run build
+RUN --mount=type=secret,id=CMS_ENCRYPTION_KEY \
+    --mount=type=secret,id=ASTRO_DB_APP_TOKEN \
+    CMS_ENCRYPTION_KEY="$(cat /run/secrets/CMS_ENCRYPTION_KEY)" \
+    ASTRO_DB_APP_TOKEN="$(cat /run/secrets/ASTRO_DB_APP_TOKEN)" \
+    npm run build
 
 ENV HOST=0.0.0.0
 ENV PORT=4321
