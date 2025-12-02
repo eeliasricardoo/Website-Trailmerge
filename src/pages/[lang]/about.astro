@@ -1,6 +1,4 @@
 ---
-export const prerender = false;
-
 export async function getStaticPaths() {
 	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }

@@ -1,6 +1,5 @@
 ---
 // SSR mode - getStaticPaths required for dynamic routes even in SSR mode
-export const prerender = false;
 
 export async function getStaticPaths() {
 	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];

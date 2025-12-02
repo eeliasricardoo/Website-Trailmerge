@@ -94,7 +94,7 @@ jobs:
           # Verificar que el directorio dist existe
           echo ""
           echo "📁 Verificando directorio dist..."
-          if [ ! -d "dist" ]; then
+          if [ ! -d "dist/client" ]; then
             echo "❌ Error: El directorio dist/ no existe"
             echo "Contenido del directorio actual:"
             ls -la
@@ -136,14 +136,14 @@ jobs:
           echo "🤖 Configurando robots.txt..."
           if [ "$ENVIRONMENT" = "staging" ]; then
             if [ -f "public/robots-staging.txt" ]; then
-              cp public/robots-staging.txt dist/robots.txt
+              cp public/robots-staging.txt dist/client/robots.txt
               echo "✅ robots.txt de staging copiado"
             else
               echo "⚠️  robots-staging.txt no encontrado, usando el default"
             fi
           else
             if [ -f "public/robots.txt" ]; then
-              cp public/robots.txt dist/robots.txt
+              cp public/robots.txt dist/client/robots.txt
               echo "✅ robots.txt de production copiado"
             fi
           fi
@@ -151,7 +151,7 @@ jobs:
           # Subir archivos
           echo ""
           echo "📤 Subiendo archivos..."
-          if ! gsutil -m rsync -r -d dist/ gs://$BUCKET; then
+          if ! gsutil -m rsync -r -d dist/client/ gs://$BUCKET; then
             echo ""
             echo "❌ Error al subir archivos"
             echo "Verifica los permisos del service account en el bucket"

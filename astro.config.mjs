@@ -11,7 +11,7 @@ import studioCMSBlog from '@studiocms/blog';
 export default defineConfig({
 	site: 'https://trailmerge.com',
 	base: '/',
-	output: 'server',
+	output: 'static',
 	adapter: node({ mode: 'standalone' }),
 	compressHTML: true,
 	trailingSlash: 'ignore',
@@ -29,7 +29,7 @@ export default defineConfig({
 		studioCMS({
 			dbStartPage: false, // Setup complete - disabled as instructed
 			dashboardConfig: {
-				dashboardEnabled: true,
+				dashboardEnabled: false,
 				// Remove dashboardRouteOverride to use StudioCMS default route (/dashboard)
 				// This route won't conflict with i18n [lang] pattern
 			},

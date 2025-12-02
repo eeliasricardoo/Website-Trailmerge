@@ -1,5 +1,9 @@
 ---
 // SSR mode - Redirect page for Spanish "privacidad" route
-const { lang } = Astro.params || { lang: 'es' };
+export function getStaticPaths() {
+	return [{ params: { lang: 'es' } }];
+}
+
+const { lang } = Astro.params;
 return Astro.redirect(`/${lang}/privacy`, 301);
 ---

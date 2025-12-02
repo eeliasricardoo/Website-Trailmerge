@@ -1,11 +1,13 @@
 ---
-export const prerender = false;
-
 import Layout from '../../layouts/Layout.astro';
 import { useTranslations } from '../../i18n/utils';
 
 // Import new redesigned components
 import ContactSection from '../../components/contact/ContactSection.astro';
+
+export async function getStaticPaths() {
+	return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
+}
 
 const { lang } = Astro.params || { lang: 'en' };
 
