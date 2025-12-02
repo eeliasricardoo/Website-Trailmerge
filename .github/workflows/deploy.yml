@@ -1,69 +1,191 @@
-name: Deploy to Cloud Run
+name: Deploy to Google Cloud Storage
 
 on:
   push:
     branches:
-      - main
-      - staging
-  workflow_dispatch:
-
-env:
-  SERVICE_NAME: trailmerge-website
-  REGION: us-central1
+      - main      # Production
+      - staging   # Staging
+  workflow_dispatch: # Permite ejecutar manualmente desde GitHub
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - production
+          - staging
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-
+    
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Google Auth
-        id: auth
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        env:
+          CMS_ENCRYPTION_KEY: ${{ secrets.CMS_ENCRYPTION_KEY }}
+        run: npm run build
+
+      - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: '${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}'
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-      - name: Set up Cloud SDK
+      - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: Authorize Docker push
-        run: gcloud auth configure-docker
-
-      - name: Build and Push Container
+      - name: Deploy to GCS
         env:
-          CMS_KEY: ${{ secrets.CMS_ENCRYPTION_KEY }}
-          DB_TOKEN: ${{ secrets.ASTRO_DB_APP_TOKEN }}
+          MANUAL_ENV: ${{ github.event.inputs.environment }}
+          BRANCH: ${{ github.ref_name }}
         run: |
-          # Create secret files
-          echo "$CMS_KEY" > cms_key.txt
-          echo "$DB_TOKEN" > db_token.txt
-
-          export IMAGE_NAME=gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
-          docker build \
-            --secret id=CMS_ENCRYPTION_KEY,src=cms_key.txt \
-            --secret id=ASTRO_DB_APP_TOKEN,src=db_token.txt \
-            --build-arg ASTRO_DB_REMOTE_URL="${{ secrets.ASTRO_DB_REMOTE_URL }}" \
-            --build-arg PUBLIC_HCAPTCHA_SITE_KEY="${{ secrets.PUBLIC_HCAPTCHA_SITE_KEY }}" \
-            -t $IMAGE_NAME .
-          docker push $IMAGE_NAME
-
-          # Clean up secret files
-          rm cms_key.txt db_token.txt
-
-      - name: Deploy to Cloud Run
-        uses: google-github-actions/deploy-cloudrun@v2
-        with:
-          service: ${{ env.SERVICE_NAME }}
-          region: ${{ env.REGION }}
-          image: gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
-          env_vars: |
-            CMS_ENCRYPTION_KEY=${{ secrets.CMS_ENCRYPTION_KEY }}
-            ASTRO_DB_REMOTE_URL=${{ secrets.ASTRO_DB_REMOTE_URL }}
-            ASTRO_DB_APP_TOKEN=${{ secrets.ASTRO_DB_APP_TOKEN }}
-            PUBLIC_HCAPTCHA_SITE_KEY=${{ secrets.PUBLIC_HCAPTCHA_SITE_KEY }}
-          flags: '--allow-unauthenticated'
+          # Determinar el entorno basado en la rama o input manual
+          if [ "$MANUAL_ENV" = "auto" ] || [ -z "$MANUAL_ENV" ]; then
+            # Auto-detect basado en la rama
+            if [ "$BRANCH" = "staging" ]; then
+              ENVIRONMENT="staging"
+            elif [ "$BRANCH" = "main" ]; then
+              ENVIRONMENT="production"
+            else
+              echo "❌ Error: No se puede determinar el entorno para la rama $BRANCH"
+              echo "Usa workflow_dispatch con un entorno específico"
+              exit 1
+            fi
+          else
+            ENVIRONMENT="$MANUAL_ENV"
+          fi
+          
+          if [ "$ENVIRONMENT" = "staging" ]; then
+            BUCKET="staging.trailmerge.com"
+            MAKE_PUBLIC=true  # Público para que el equipo pueda acceder
+          else
+            BUCKET="trailmerge.com"
+            MAKE_PUBLIC=true  # Público para servir el sitio a través del Load Balancer
+          fi
+          
+          echo "🚀 Deploying to $BUCKET ($ENVIRONMENT) from branch $BRANCH"
+          echo "📋 Debug info:"
+          echo "  - Branch: $BRANCH"
+          echo "  - Environment: $ENVIRONMENT"
+          echo "  - Bucket: $BUCKET"
+          echo "  - Make Public: $MAKE_PUBLIC"
+          
+          # Verificar autenticación
+          echo ""
+          echo "🔐 Verificando autenticación..."
+          gcloud auth list || {
+            echo "❌ Error: No hay autenticación activa"
+            exit 1
+          }
+          
+          # Verificar que el directorio dist existe
+          echo ""
+          echo "📁 Verificando directorio dist..."
+          if [ ! -d "dist" ]; then
+            echo "❌ Error: El directorio dist/ no existe"
+            echo "Contenido del directorio actual:"
+            ls -la
+            exit 1
+          fi
+          echo "✅ Directorio dist/ existe"
+          echo "Archivos en dist/:"
+          ls -la dist/ | head -10
+          
+          # Verificar que gsutil está disponible
+          echo ""
+          echo "🔧 Verificando gsutil..."
+          if ! command -v gsutil &> /dev/null; then
+            echo "❌ Error: gsutil no está disponible"
+            exit 1
+          fi
+          echo "✅ gsutil versión: $(gsutil version)"
+          
+          # Verificar permisos del bucket
+          echo ""
+          echo "📋 Verificando acceso al bucket..."
+          if ! gsutil ls gs://$BUCKET 2>&1; then
+            echo ""
+            echo "❌ Error: No se puede acceder al bucket gs://$BUCKET"
+            echo ""
+            echo "Verifica:"
+            echo "  1. Que el bucket existe: gsutil ls gs://$BUCKET"
+            echo "  2. Que el service account tenga permisos Storage Admin o Storage Object Admin"
+            echo "  3. Que el service account esté correctamente configurado en GitHub Secrets"
+            echo ""
+            echo "Service account actual:"
+            gcloud config get-value account 2>&1 || echo "No se pudo obtener el service account"
+            exit 1
+          fi
+          echo "✅ Acceso al bucket verificado"
+          
+          # Copiar robots.txt correcto según el entorno
+          echo ""
+          echo "🤖 Configurando robots.txt..."
+          if [ "$ENVIRONMENT" = "staging" ]; then
+            if [ -f "public/robots-staging.txt" ]; then
+              cp public/robots-staging.txt dist/robots.txt
+              echo "✅ robots.txt de staging copiado"
+            else
+              echo "⚠️  robots-staging.txt no encontrado, usando el default"
+            fi
+          else
+            if [ -f "public/robots.txt" ]; then
+              cp public/robots.txt dist/robots.txt
+              echo "✅ robots.txt de production copiado"
+            fi
+          fi
+          
+          # Subir archivos
+          echo ""
+          echo "📤 Subiendo archivos..."
+          if ! gsutil -m rsync -r -d dist/ gs://$BUCKET; then
+            echo ""
+            echo "❌ Error al subir archivos"
+            echo "Verifica los permisos del service account en el bucket"
+            exit 1
+          fi
+          echo "✅ Archivos subidos exitosamente"
+          
+          # Configurar página principal
+          echo ""
+          echo "⚙️  Configurando página principal..."
+          if ! gsutil web set -m index.html gs://$BUCKET; then
+            echo ""
+            echo "❌ Error al configurar página principal"
+            exit 1
+          fi
+          echo "✅ Página principal configurada"
+          
+          # Configurar permisos públicos solo para production
+          if [ "$MAKE_PUBLIC" = "true" ]; then
+            echo ""
+            echo "🌐 Configurando permisos públicos..."
+            if ! gsutil iam ch allUsers:objectViewer gs://$BUCKET 2>&1; then
+              echo "⚠️  Note: No se pudieron configurar permisos públicos (puede tener public access prevention habilitado)"
+            else
+              echo "✅ Permisos públicos configurados"
+            fi
+          else
+            echo ""
+            if [ "$ENVIRONMENT" = "staging" ]; then
+              echo "🔒 Staging bucket permanece privado (Load Balancer tiene acceso)"
+            else
+              echo "🔒 Production bucket permanece privado"
+            fi
+          fi
+          
+          echo ""
+          echo "✅ Despliegue completado exitosamente!"
