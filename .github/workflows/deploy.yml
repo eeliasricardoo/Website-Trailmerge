@@ -39,6 +39,9 @@ jobs:
           export IMAGE_NAME=gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
           docker build \
             --build-arg CMS_ENCRYPTION_KEY="${{ secrets.CMS_ENCRYPTION_KEY }}" \
+            --build-arg ASTRO_DB_REMOTE_URL="${{ secrets.ASTRO_DB_REMOTE_URL }}" \
+            --build-arg ASTRO_DB_APP_TOKEN="${{ secrets.ASTRO_DB_APP_TOKEN }}" \
+            --build-arg PUBLIC_HCAPTCHA_SITE_KEY="${{ secrets.PUBLIC_HCAPTCHA_SITE_KEY }}" \
             -t $IMAGE_NAME .
           docker push $IMAGE_NAME
 
@@ -50,4 +53,7 @@ jobs:
           image: gcr.io/${{ steps.auth.outputs.project_id }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
           env_vars: |
             CMS_ENCRYPTION_KEY=${{ secrets.CMS_ENCRYPTION_KEY }}
+            ASTRO_DB_REMOTE_URL=${{ secrets.ASTRO_DB_REMOTE_URL }}
+            ASTRO_DB_APP_TOKEN=${{ secrets.ASTRO_DB_APP_TOKEN }}
+            PUBLIC_HCAPTCHA_SITE_KEY=${{ secrets.PUBLIC_HCAPTCHA_SITE_KEY }}
           flags: '--allow-unauthenticated'
