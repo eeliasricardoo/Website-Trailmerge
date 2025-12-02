@@ -35,6 +35,8 @@ jobs:
         run: npm ci
 
       - name: Build site
+        env:
+          CMS_ENCRYPTION_KEY: ${{ secrets.CMS_ENCRYPTION_KEY }}
         run: npm run build
 
       - name: Authenticate to Google Cloud
