@@ -1,8 +1,8 @@
-FROM node:20-alpine AS base
+FROM node:20-slim AS base
 WORKDIR /app
 
-# Install dependencies for Sharp compatibility
-RUN apk add --no-cache python3 make g++ vips-dev
+# Install dependencies for native modules (Sharp, SQLite)
+RUN apt-get update && apt-get install -y python3 make g++ && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
 COPY package*.json ./
@@ -25,11 +25,8 @@ ENV ASTRO_DB_REMOTE_URL=$ASTRO_DB_REMOTE_URL
 RUN npm run build
 
 # Production stage
-FROM node:20-alpine AS runtime
+FROM node:20-slim AS runtime
 WORKDIR /app
-
-# Install runtime dependencies for Sharp
-RUN apk add --no-cache vips-dev
 
 # Copy built application and dependencies
 COPY --from=base /app/dist ./dist
