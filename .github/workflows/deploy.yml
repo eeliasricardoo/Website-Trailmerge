@@ -18,7 +18,7 @@ on:
           - staging
 
 env:
-  PROJECT_ID: trailmerge
+  PROJECT_ID: galvanic-idiom-477417-j6
   REGION: us-central1
   ARTIFACT_REGISTRY_LOCATION: us-central1
   ARTIFACT_REGISTRY_REPO: trailmerge-website
@@ -42,13 +42,6 @@ jobs:
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
-
-      - name: 🔍 SHOW SERVICE ACCOUNT EMAIL (Send this to Boss)
-        run: |
-          echo "================================================================"
-          echo "THE SERVICE ACCOUNT EMAIL IS:"
-          gcloud auth list --filter=status:ACTIVE --format="value(account)"
-          echo "================================================================"
 
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev
