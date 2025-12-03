@@ -1,11 +1,11 @@
-name: Deploy to Google Cloud Storage
+name: Deploy to Cloud Run
 
 on:
   push:
     branches:
       - main      # Production
       - staging   # Staging
-  workflow_dispatch: # Permite ejecutar manualmente desde GitHub
+  workflow_dispatch:
     inputs:
       environment:
         description: 'Environment to deploy to'
@@ -17,51 +17,48 @@ on:
           - production
           - staging
 
+env:
+  PROJECT_ID: trailmerge
+  REGION: us-central1
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      id-token: 'write'
     
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build site
-        env:
-          CMS_ENCRYPTION_KEY: ${{ secrets.CMS_ENCRYPTION_KEY }}
-        run: npm run build
-
       - name: Authenticate to Google Cloud
+        id: auth
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-      - name: Setup Google Cloud SDK
+      - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: Deploy to GCS
+      - name: Configure Docker for GCR
+        run: gcloud auth configure-docker
+
+
+
+      - name: Determine environment and service name
+        id: env
         env:
           MANUAL_ENV: ${{ github.event.inputs.environment }}
           BRANCH: ${{ github.ref_name }}
         run: |
-          # Determinar el entorno basado en la rama o input manual
           if [ "$MANUAL_ENV" = "auto" ] || [ -z "$MANUAL_ENV" ]; then
-            # Auto-detect basado en la rama
             if [ "$BRANCH" = "staging" ]; then
               ENVIRONMENT="staging"
             elif [ "$BRANCH" = "main" ]; then
               ENVIRONMENT="production"
             else
-              echo "❌ Error: No se puede determinar el entorno para la rama $BRANCH"
-              echo "Usa workflow_dispatch con un entorno específico"
+              echo "❌ Error: Cannot determine environment for branch $BRANCH"
               exit 1
             fi
           else
@@ -69,123 +66,61 @@ jobs:
           fi
           
           if [ "$ENVIRONMENT" = "staging" ]; then
-            BUCKET="staging.trailmerge.com"
-            MAKE_PUBLIC=true  # Público para que el equipo pueda acceder
+            SERVICE_NAME="trailmerge-website-staging"
           else
-            BUCKET="trailmerge.com"
-            MAKE_PUBLIC=true  # Público para servir el sitio a través del Load Balancer
+            SERVICE_NAME="trailmerge-website"
           fi
           
-          echo "🚀 Deploying to $BUCKET ($ENVIRONMENT) from branch $BRANCH"
-          echo "📋 Debug info:"
-          echo "  - Branch: $BRANCH"
-          echo "  - Environment: $ENVIRONMENT"
-          echo "  - Bucket: $BUCKET"
-          echo "  - Make Public: $MAKE_PUBLIC"
+          echo "environment=$ENVIRONMENT" >> $GITHUB_OUTPUT
+          echo "service_name=$SERVICE_NAME" >> $GITHUB_OUTPUT
+          echo "🚀 Deploying to $ENVIRONMENT environment as $SERVICE_NAME"
+
+      - name: Build and Push Docker image
+        env:
+          IMAGE_NAME: gcr.io/${{ env.PROJECT_ID }}/${{ steps.env.outputs.service_name }}:${{ github.sha }}
+        run: |
+          echo "🔨 Building Docker image: $IMAGE_NAME"
           
-          # Verificar autenticación
-          echo ""
-          echo "🔐 Verificando autenticación..."
-          gcloud auth list || {
-            echo "❌ Error: No hay autenticación activa"
-            exit 1
-          }
+          docker build \
+            --build-arg CMS_ENCRYPTION_KEY="${{ secrets.CMS_ENCRYPTION_KEY }}" \
+            --build-arg ASTRO_DB_APP_TOKEN="${{ secrets.ASTRO_DB_APP_TOKEN }}" \
+            -t $IMAGE_NAME \
+            .
           
-          # Verificar que el directorio dist existe
-          echo ""
-          echo "📁 Verificando directorio dist..."
-          if [ ! -d "dist/client" ]; then
-            echo "❌ Error: El directorio dist/ no existe"
-            echo "Contenido del directorio actual:"
-            ls -la
-            exit 1
-          fi
-          echo "✅ Directorio dist/ existe"
-          echo "Archivos en dist/:"
-          ls -la dist/ | head -10
+          echo "📤 Pushing Docker image to GCR..."
+          docker push $IMAGE_NAME
           
-          # Verificar que gsutil está disponible
-          echo ""
-          echo "🔧 Verificando gsutil..."
-          if ! command -v gsutil &> /dev/null; then
-            echo "❌ Error: gsutil no está disponible"
-            exit 1
-          fi
-          echo "✅ gsutil versión: $(gsutil version)"
+          echo "✅ Image pushed successfully"
+
+      - name: Deploy to Cloud Run
+        env:
+          SERVICE_NAME: ${{ steps.env.outputs.service_name }}
+          IMAGE_NAME: gcr.io/${{ env.PROJECT_ID }}/${{ steps.env.outputs.service_name }}:${{ github.sha }}
+          ENVIRONMENT: ${{ steps.env.outputs.environment }}
+        run: |
+          echo "🚀 Deploying $SERVICE_NAME to Cloud Run..."
           
-          # Verificar permisos del bucket
-          echo ""
-          echo "📋 Verificando acceso al bucket..."
-          if ! gsutil ls gs://$BUCKET 2>&1; then
-            echo ""
-            echo "❌ Error: No se puede acceder al bucket gs://$BUCKET"
-            echo ""
-            echo "Verifica:"
-            echo "  1. Que el bucket existe: gsutil ls gs://$BUCKET"
-            echo "  2. Que el service account tenga permisos Storage Admin o Storage Object Admin"
-            echo "  3. Que el service account esté correctamente configurado en GitHub Secrets"
-            echo ""
-            echo "Service account actual:"
-            gcloud config get-value account 2>&1 || echo "No se pudo obtener el service account"
-            exit 1
-          fi
-          echo "✅ Acceso al bucket verificado"
+          gcloud run deploy $SERVICE_NAME \
+            --image $IMAGE_NAME \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --allow-unauthenticated \
+            --set-env-vars "CMS_ENCRYPTION_KEY=${{ secrets.CMS_ENCRYPTION_KEY }}" \
+            --set-env-vars "ASTRO_DB_APP_TOKEN=${{ secrets.ASTRO_DB_APP_TOKEN }}" \
+            --memory 512Mi \
+            --cpu 1 \
+            --timeout 300 \
+            --max-instances 10 \
+            --min-instances 0 \
+            --port 8080
           
-          # Copiar robots.txt correcto según el entorno
-          echo ""
-          echo "🤖 Configurando robots.txt..."
-          if [ "$ENVIRONMENT" = "staging" ]; then
-            if [ -f "public/robots-staging.txt" ]; then
-              cp public/robots-staging.txt dist/client/robots.txt
-              echo "✅ robots.txt de staging copiado"
-            else
-              echo "⚠️  robots-staging.txt no encontrado, usando el default"
-            fi
-          else
-            if [ -f "public/robots.txt" ]; then
-              cp public/robots.txt dist/client/robots.txt
-              echo "✅ robots.txt de production copiado"
-            fi
-          fi
-          
-          # Subir archivos
-          echo ""
-          echo "📤 Subiendo archivos..."
-          if ! gsutil -m rsync -r -d dist/client/ gs://$BUCKET; then
-            echo ""
-            echo "❌ Error al subir archivos"
-            echo "Verifica los permisos del service account en el bucket"
-            exit 1
-          fi
-          echo "✅ Archivos subidos exitosamente"
-          
-          # Configurar página principal
-          echo ""
-          echo "⚙️  Configurando página principal..."
-          if ! gsutil web set -m index.html gs://$BUCKET; then
-            echo ""
-            echo "❌ Error al configurar página principal"
-            exit 1
-          fi
-          echo "✅ Página principal configurada"
-          
-          # Configurar permisos públicos solo para production
-          if [ "$MAKE_PUBLIC" = "true" ]; then
-            echo ""
-            echo "🌐 Configurando permisos públicos..."
-            if ! gsutil iam ch allUsers:objectViewer gs://$BUCKET 2>&1; then
-              echo "⚠️  Note: No se pudieron configurar permisos públicos (puede tener public access prevention habilitado)"
-            else
-              echo "✅ Permisos públicos configurados"
-            fi
-          else
-            echo ""
-            if [ "$ENVIRONMENT" = "staging" ]; then
-              echo "🔒 Staging bucket permanece privado (Load Balancer tiene acceso)"
-            else
-              echo "🔒 Production bucket permanece privado"
-            fi
-          fi
+          SERVICE_URL=$(gcloud run services describe $SERVICE_NAME \
+            --platform managed \
+            --region ${{ env.REGION }} \
+            --format 'value(status.url)')
           
           echo ""
-          echo "✅ Despliegue completado exitosamente!"
+          echo "✅ Deployment completed successfully!"
+          echo "🌐 Service URL: $SERVICE_URL"
+          echo "📋 Environment: $ENVIRONMENT"
+          echo "🏷️  Image: $IMAGE_NAME"
