@@ -14,10 +14,12 @@ COPY . .
 # Build arguments for secrets
 ARG CMS_ENCRYPTION_KEY
 ARG ASTRO_DB_APP_TOKEN
+ARG ASTRO_DB_REMOTE_URL
 
 # Set as environment variables for build
 ENV CMS_ENCRYPTION_KEY=$CMS_ENCRYPTION_KEY
 ENV ASTRO_DB_APP_TOKEN=$ASTRO_DB_APP_TOKEN
+ENV ASTRO_DB_REMOTE_URL=$ASTRO_DB_REMOTE_URL
 
 # Build the application
 RUN npm run build

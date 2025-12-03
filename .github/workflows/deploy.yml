@@ -92,6 +92,7 @@ jobs:
           docker build \
             --build-arg CMS_ENCRYPTION_KEY="${{ secrets.CMS_ENCRYPTION_KEY }}" \
             --build-arg ASTRO_DB_APP_TOKEN="${{ secrets.ASTRO_DB_APP_TOKEN }}" \
+            --build-arg ASTRO_DB_REMOTE_URL="${{ secrets.ASTRO_DB_REMOTE_URL }}" \
             -t $IMAGE_NAME \
             .
           
@@ -115,6 +116,7 @@ jobs:
             --allow-unauthenticated \
             --set-env-vars "CMS_ENCRYPTION_KEY=${{ secrets.CMS_ENCRYPTION_KEY }}" \
             --set-env-vars "ASTRO_DB_APP_TOKEN=${{ secrets.ASTRO_DB_APP_TOKEN }}" \
+            --set-env-vars "ASTRO_DB_REMOTE_URL=${{ secrets.ASTRO_DB_REMOTE_URL }}" \
             --memory 512Mi \
             --cpu 1 \
             --timeout 300 \
