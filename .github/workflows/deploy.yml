@@ -52,7 +52,9 @@ jobs:
           gcloud artifacts repositories create ${{ env.ARTIFACT_REGISTRY_REPO }} \
             --repository-format=docker \
             --location=${{ env.ARTIFACT_REGISTRY_LOCATION }} \
-            --description="Trailmerge website Docker images" || echo "Repository already exists"
+            --description="Trailmerge website Docker images" || echo "Repository might already exist or permission denied"
+
+
 
 
 
