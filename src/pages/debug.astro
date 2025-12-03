@@ -1,0 +1,28 @@
+---
+export const prerender = false;
+
+const envVars = {
+	CMS_ENCRYPTION_KEY: process.env.CMS_ENCRYPTION_KEY
+		? 'Set (Length: ' + process.env.CMS_ENCRYPTION_KEY.length + ')'
+		: 'MISSING',
+	ASTRO_DB_APP_TOKEN: process.env.ASTRO_DB_APP_TOKEN
+		? 'Set (Length: ' + process.env.ASTRO_DB_APP_TOKEN.length + ')'
+		: 'MISSING',
+	ASTRO_DB_REMOTE_URL: process.env.ASTRO_DB_REMOTE_URL || 'MISSING',
+	NODE_ENV: process.env.NODE_ENV,
+	PORT: process.env.PORT,
+	HOST: process.env.HOST,
+};
+---
+
+<html>
+	<head>
+		<title>Debug Info</title>
+	</head>
+	<body style="font-family: monospace; padding: 2rem;">
+		<h1>Debug Information</h1>
+		<pre>{JSON.stringify(envVars, null, 2)}</pre>
+		<hr />
+		<p>Time: {new Date().toISOString()}</p>
+	</body>
+</html>
