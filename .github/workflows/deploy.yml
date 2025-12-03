@@ -33,6 +33,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Authenticate to Google Cloud
         id: auth
@@ -46,13 +48,22 @@ jobs:
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker ${{ env.ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev
 
-      - name: Create Artifact Registry repository if needed
-        continue-on-error: true
+      - name: Check if Artifact Registry repository exists
+        id: check-repo
+        run: |
+          if gcloud artifacts repositories describe ${{ env.ARTIFACT_REGISTRY_REPO }} --location=${{ env.ARTIFACT_REGISTRY_LOCATION }} > /dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Artifact Registry repository
+        if: steps.check-repo.outputs.exists == 'false'
         run: |
           gcloud artifacts repositories create ${{ env.ARTIFACT_REGISTRY_REPO }} \
             --repository-format=docker \
             --location=${{ env.ARTIFACT_REGISTRY_LOCATION }} \
-            --description="Trailmerge website Docker images" || echo "Repository might already exist or permission denied"
+            --description="Trailmerge website Docker images"
 
 
 
