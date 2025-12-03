@@ -1,6 +1,9 @@
 FROM node:20-alpine AS base
 WORKDIR /app
 
+# Install dependencies for Sharp compatibility
+RUN apk add --no-cache python3 make g++ vips-dev
+
 # Install dependencies
 COPY package*.json ./
 RUN npm ci
@@ -22,6 +25,9 @@ RUN npm run build
 # Production stage
 FROM node:20-alpine AS runtime
 WORKDIR /app
+
+# Install runtime dependencies for Sharp
+RUN apk add --no-cache vips-dev
 
 # Copy built application and dependencies
 COPY --from=base /app/dist ./dist
