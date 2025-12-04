@@ -528,11 +528,12 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 			top: 56px;
 			left: 0;
 			right: 0;
-			background-color: var(--white); /* This needs to be considered for glassmorphism */
+			background-color: #f8ebdb; /* Match navbar sand color */
 			flex-direction: column;
 			align-items: stretch;
 			padding: 24px 16px;
 			gap: 16px;
+			height: calc(100vh - 56px);
 			transform: translateY(-100%);
 			/* transition: transform 0.3s ease; Removed to prevent resize bug */
 			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -542,7 +543,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 
 		/* When mobile menu is open, it should be solid, but glassmorphism when scrolled and closed */
 		.navigation.scrolled .nav-menu-green {
-			background-color: var(--white); /* Keep solid color when menu is open */
+			background-color: #f8ebdb; /* Keep solid sand color when menu is open */
 		}
 
 		.nav-menu-green.active {
@@ -573,45 +574,60 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 
 		.language-switcher {
 			width: 100%;
+			flex-direction: row;
+			align-items: center;
+			justify-content: flex-start;
+			gap: 16px;
+			padding: 12px 8px;
+			border-bottom: 1px solid rgba(46, 58, 51, 0.1);
 		}
 
 		.language-switcher-button {
-			width: 100%;
-			justify-content: flex-start;
-			padding: 12px 8px;
-			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			width: auto;
+			padding: 0;
+			border: none;
+			pointer-events: none;
+		}
+
+		.language-switcher-button .current-language {
+			display: none;
 		}
 
 		.language-dropdown {
+			display: flex;
 			position: static;
+			flex-direction: row;
+			gap: 24px;
 			opacity: 1;
 			visibility: visible;
 			transform: none;
 			box-shadow: none;
 			background-color: transparent;
 			padding: 0;
-			margin-top: 0;
+			margin: 0;
 			min-width: auto;
-			display: none;
 		}
 
 		.language-switcher.active .language-dropdown {
-			display: block;
+			display: flex;
 		}
 
 		.language-option {
-			padding: 12px 8px;
+			padding: 0;
+			border: none;
+			font-size: 16px;
 			color: var(--grey-5);
-			border-bottom: 1px solid rgba(46, 58, 51, 0.1);
+			transition: none;
 		}
 
 		.language-option:hover {
-			background-color: rgba(46, 58, 51, 0.1);
-			color: var(--green-700);
+			background-color: transparent;
+			color: #506e5a;
 		}
 
 		.language-option.active {
-			color: var(--green-700);
+			color: #506e5a;
+			font-weight: 700;
 		}
 	}
 
@@ -622,7 +638,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		}
 
 		.logo {
-			height: 20px;
+			height: 32px;
 		}
 
 		.nav-menu-green {
@@ -631,8 +647,8 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		}
 
 		.menu-button {
-			width: 28px;
-			height: 20px;
+			width: 24px;
+			height: 18px;
 		}
 
 		.menu-button.active .icon-1 {
