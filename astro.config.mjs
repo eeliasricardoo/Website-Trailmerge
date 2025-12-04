@@ -8,12 +8,7 @@ import studioCMSMd from '@studiocms/md';
 import studioCMSBlog from '@studiocms/blog';
 
 // https://astro.build/config
-console.log('[Config] Astro starting up...');
-console.log('[Config] Env check:', {
-	CMS_KEY: !!process.env.CMS_ENCRYPTION_KEY,
-	DB_TOKEN: !!process.env.ASTRO_DB_APP_TOKEN,
-	DB_URL: !!process.env.ASTRO_DB_REMOTE_URL
-});
+// https://astro.build/config
 
 export default defineConfig({
 	site: 'https://trailmerge.com',
