@@ -131,12 +131,14 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		// --- Mobile Menu Logic ---
 		const menuButton = document.querySelector('.menu-button');
 		const navMenu = document.querySelector('.nav-menu-green');
+		const navbar = document.querySelector('.navigation'); // Existing navbar variable
 
-		if (menuButton && navMenu) {
+		if (menuButton && navMenu && navbar) {
 			const toggleMenu = () => {
 				const isCurrentlyExpanded = navMenu.classList.contains('active');
 				navMenu.classList.toggle('active');
 				menuButton.classList.toggle('active');
+				navbar.classList.toggle('menu-open');
 				menuButton.setAttribute('aria-expanded', (!isCurrentlyExpanded).toString());
 			};
 			menuButton.addEventListener('click', toggleMenu);
@@ -146,6 +148,7 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 				if (e.key === 'Escape' && navMenu.classList.contains('active')) {
 					navMenu.classList.remove('active');
 					menuButton.classList.remove('active');
+					navbar.classList.remove('menu-open');
 					menuButton.setAttribute('aria-expanded', 'false');
 					(menuButton as HTMLElement).focus();
 				}
@@ -198,7 +201,6 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		}
 
 		// --- Navbar Scroll Effect ---
-		const navbar = document.querySelector('.navigation');
 		if (navbar) {
 			const onScroll = () => {
 				if (window.scrollY > 20) {
@@ -231,6 +233,10 @@ const { en: enUrl, es: esUrl } = getLanguageUrls(currentPath);
 		z-index: 1000;
 		width: 100%;
 		transition: none;
+	}
+
+	.navigation.menu-open {
+		background-color: #f8ebdb;
 	}
 
 	/* Theme: Default (Transparent -> Solid Sand) */
