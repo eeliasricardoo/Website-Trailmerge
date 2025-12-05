@@ -11,6 +11,13 @@ const t = useTranslations(lang as 'en' | 'es');
 
 <!-- Our History Section -->
 <div class="our-history-new-wrapper">
+	<img src="/images/new/about/Vector Blob.svg" alt="" class="blob-decoration" loading="lazy" />
+	<img
+		src="/images/new/about/vectorGreen.svg"
+		alt=""
+		class="green-blob-decoration"
+		loading="lazy"
+	/>
 	<div class="our-history-new-container">
 		<div class="our-history-new-image">
 			<img
@@ -40,8 +47,31 @@ const t = useTranslations(lang as 'en' | 'es');
 		display: flex;
 		justify-content: center;
 		position: relative;
-		z-index: 10;
-		overflow: hidden;
+		z-index: 1;
+	}
+
+	.green-blob-decoration {
+		position: absolute;
+		width: 1200px;
+		height: 2200px;
+		transform: rotate(-195deg);
+		opacity: 0.7;
+		top: -150px;
+		left: 150px;
+		z-index: 1;
+		pointer-events: none;
+	}
+
+	.blob-decoration {
+		position: absolute;
+		width: 2250px;
+		height: 2900px;
+		transform: rotate(-137.85deg);
+		opacity: 0.64;
+		top: -800px;
+		left: -650px;
+		z-index: 1;
+		pointer-events: none;
 	}
 
 	.our-history-new-container {
@@ -51,6 +81,8 @@ const t = useTranslations(lang as 'en' | 'es');
 		grid-template-columns: 1fr 1fr;
 		gap: 64px;
 		align-items: center;
+		position: relative;
+		z-index: 2;
 	}
 
 	.our-history-new-image {
@@ -146,6 +178,13 @@ const t = useTranslations(lang as 'en' | 'es');
 			width: 100%;
 			height: auto;
 			max-width: 400px;
+		}
+
+		.blob-decoration {
+			width: 3000px;
+			height: 3800px;
+			top: -800px;
+			left: -800px;
 		}
 	}
 
