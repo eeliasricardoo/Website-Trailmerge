@@ -154,8 +154,24 @@ const articleData = {
 	schemaType="article"
 	articleData={articleData}
 >
-	<div class="blog-post-decoration"></div>
-	<div class="blog-post-blob"></div>
+	<img
+		src="/images/new/blog/blog-post/Vector Blob.svg"
+		alt=""
+		class="blog-bg-decoration"
+		loading="eager"
+	/>
+	<img
+		src="/images/new/blog/blog-post/Vector Blob-2.svg"
+		alt=""
+		class="blog-blob-decoration-2"
+		loading="eager"
+	/>
+	<img
+		src="/images/new/blog/blog-post/Vector Blob-1.svg"
+		alt=""
+		class="blog-blob-decoration-3"
+		loading="eager"
+	/>
 	<article>
 		<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
 
@@ -185,39 +201,37 @@ const articleData = {
 </style>
 
 <style>
-	.blog-post-decoration {
+	.blog-bg-decoration {
 		position: absolute;
-		width: 3127.226px;
-		height: 3770.657px;
-		transform: rotate(-147.916deg);
-		opacity: 0.64;
-		background-color: var(--Secondary-Sand-100, #f1efec);
-		-webkit-mask-image: url('/images/new/blog/blog-post/Path.svg');
-		mask-image: url('/images/new/blog/blog-post/Path.svg');
-		-webkit-mask-size: 100% 100%;
-		mask-size: 100% 100%;
-		-webkit-mask-repeat: no-repeat;
-		mask-repeat: no-repeat;
-		-webkit-mask-position: center;
-		mask-position: center;
-		pointer-events: none;
-		z-index: -1;
-		top: -1200px;
-		left: 50%;
-		margin-left: -1563.6px; /* Half of width */
-	}
-
-	.blog-post-blob {
-		position: absolute;
-		top: 500px;
-		left: -25%;
-		width: 200%;
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: 100%;
-		background-image: url('/images/new/blog/blog-post/Vector Blob.svg');
-		background-repeat: no-repeat;
-		background-position: top center;
-		background-size: 100% 100%;
+		object-fit: cover;
 		z-index: -2;
 		pointer-events: none;
+		opacity: 0.6;
+	}
+
+	.blog-blob-decoration-2 {
+		position: absolute;
+		top: 195px;
+		left: 0;
+		width: auto;
+		height: auto;
+		z-index: -1;
+		pointer-events: none;
+		opacity: 1;
+	}
+
+	.blog-blob-decoration-3 {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: auto;
+		height: auto;
+		z-index: -1;
+		pointer-events: none;
+		opacity: 1;
 	}
 </style>
