@@ -32,3 +32,11 @@ const t = useTranslations(lang as 'en' | 'es');
 		<OurHistory lang={lang} />
 	</main>
 </Layout>
+
+<style is:global>
+	/* Override global background for About page to remove parallax effect */
+	body,
+	html {
+		background-attachment: scroll !important;
+	}
+</style>
