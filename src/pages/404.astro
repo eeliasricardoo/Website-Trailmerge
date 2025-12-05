@@ -1,96 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/shared/Button.astro';
+import { ui } from '../i18n/utils';
 
-// Default to English for the generic 404 page
-const lang = 'en';
+const en = ui.en['404'];
+const es = ui.es['404'];
 ---
 
-<Layout
-	title="Page Not Found | Trailmerge"
-	description="The page you are looking for does not exist."
-	lang={lang}
->
-	<section class="error-container">
-		<div class="content">
-			<h1>404</h1>
-			<h2>Page Not Found</h2>
-			<p>Sorry, the page you are looking for doesn't exist or has been moved.</p>
-			<div class="actions">
-				<a href="/en/" class="btn primary">Go Home</a>
-				<a href="/es/" class="btn secondary">Ir al Inicio (Español)</a>
-			</div>
+<Layout title="Page Not Found" description="404 Error" lang="en">
+	<div class="not-found-container">
+		<div class="content en">
+			<h1 class="title">{en.title}</h1>
+			<p class="description">{en.description}</p>
+			<Button href="/en/" variant="primary">{en.cta}</Button>
 		</div>
-	</section>
+		<div class="content es" style="display: none;">
+			<h1 class="title">{es.title}</h1>
+			<p class="description">{es.description}</p>
+			<Button href="/es/" variant="primary">{es.cta}</Button>
+		</div>
+	</div>
 </Layout>
 
+<script>
+	const lang = navigator.language;
+	if (lang.startsWith('es')) {
+		const enContent = document.querySelector('.content.en');
+		const esContent = document.querySelector('.content.es');
+		if (enContent instanceof HTMLElement) enContent.style.display = 'none';
+		if (esContent instanceof HTMLElement) esContent.style.display = 'flex';
+	}
+</script>
+
 <style>
-	.error-container {
-		min-height: 70vh;
+	.not-found-container {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		min-height: 70vh;
 		text-align: center;
-		padding: 0 20px;
-		margin-top: 80px; /* Account for navbar */
+		padding: 2rem;
 	}
 
 	.content {
-		max-width: 600px;
-	}
-
-	h1 {
-		font-family: 'Young Serif', serif;
-		font-size: 120px;
-		color: #54504b;
-		margin: 0;
-		line-height: 1;
-	}
-
-	h2 {
-		font-family: 'Young Serif', serif;
-		font-size: 48px;
-		color: #54504b;
-		margin: 20px 0;
-	}
-
-	p {
-		font-family: 'DM Sans', sans-serif;
-		font-size: 18px;
-		color: #54504b;
-		margin-bottom: 40px;
-	}
-
-	.actions {
 		display: flex;
-		gap: 20px;
-		justify-content: center;
-		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
 	}
 
-	.btn {
-		padding: 12px 24px;
-		border-radius: 8px;
-		text-decoration: none;
+	.title {
+		font-family: 'Young Serif', serif;
+		font-size: 3rem;
+		color: var(--Brand-SecondaryBrown, #54504b);
+		margin: 0;
+	}
+
+	.description {
 		font-family: 'DM Sans', sans-serif;
-		font-weight: 500;
-		transition: all 0.3s ease;
-	}
-
-	.btn.primary {
-		background-color: #54504b;
-		color: #fff;
-	}
-
-	.btn.primary:hover {
-		background-color: #3d3a36;
-	}
-
-	.btn.secondary {
-		border: 1px solid #54504b;
-		color: #54504b;
-	}
-
-	.btn.secondary:hover {
-		background-color: #f5f5f5;
+		font-size: 1.25rem;
+		color: var(--Brand-SecondaryBrown, #54504b);
+		max-width: 600px;
+		margin: 0;
 	}
 </style>

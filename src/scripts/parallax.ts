@@ -29,12 +29,26 @@ const LAYER_CONFIGS = [
 			`rotate(1.21deg) translate(${-p * 60}px, ${y + p * 40}px) scale(${1 + p * 0.5})`,
 	},
 	{
-		className: 'layer-forest',
-		transform: (y: number, p: number) => `translate(${-p * 50}px, ${y}px) scale(${1 + p * 0.3})`,
+		className: 'layer-forest-left',
+		transform: (y: number, p: number) => {
+			const width = window.innerWidth;
+			let move = 50;
+			if (width < 768) move = 10;
+			else if (width < 1370) move = 25;
+
+			return `translate(${-p * move}px, ${y}px) scale(${1 + p * 0.3})`;
+		},
 	},
 	{
 		className: 'layer-forest-right',
-		transform: (y: number, p: number) => `translate(${p * 50}px, ${y}px) scale(${1 + p * 0.3})`,
+		transform: (y: number, p: number) => {
+			const width = window.innerWidth;
+			let move = 50;
+			if (width < 768) move = 10;
+			else if (width < 1370) move = 25;
+
+			return `translate(${p * move}px, ${y}px) scale(${1 + p * 0.3})`;
+		},
 	},
 	{
 		className: 'parallax-content',
