@@ -199,7 +199,14 @@
     },
     "capabilities": {
       "title": "Capacidades",
-      "list": {
+      "column1": {
+        "item1": "Consultoría de Procesos",
+        "item2": "Investigación de Campo",
+        "item3": "Entrevistas y Pruebas de Usuarios",
+        "item4": "Estrategia de Software",
+        "item5": "Innovación en IA"
+      },
+      "column2": {
         "item1": "Diseño de Flujos de Trabajo e Interfaces",
         "item2": "Prototipado Iterativo",
         "item3": "Gestión de Productos Digitales",
