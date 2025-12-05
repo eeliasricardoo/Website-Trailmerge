@@ -115,6 +115,8 @@
       "home": "Inicio",
       "blog": "Blog"
     },
+    "featured": "Destacados",
+    "allPosts": "Todos los artículos",
     "seo": {
       "keywords": "blog de transformación digital, artículos de desarrollo de software empresarial, consejos de diseño de producto, estrategia MVP, mejores prácticas de diseño, líderes de operaciones y tecnología, artículos de UX empresarial"
     }
