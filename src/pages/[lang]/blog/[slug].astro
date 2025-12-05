@@ -156,24 +156,22 @@ const articleData = {
 >
 	<div class="blog-post-decoration"></div>
 	<div class="blog-post-blob"></div>
-	<main id="main-content">
-		<article>
-			<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
+	<article>
+		<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
 
-			<div class="post-container">
-				<PostHeader
-					title={post.title}
-					date={post.date}
-					author={post.author}
-					category={categoryDisplay}
-				/>
+		<div class="post-container">
+			<PostHeader
+				title={post.title}
+				date={post.date}
+				author={post.author}
+				category={categoryDisplay}
+			/>
 
-				<PostContent content={post.content} />
+			<PostContent content={post.content} />
 
-				<PostAuthor author={post.author} lang={lang} />
-			</div>
-		</article>
-	</main>
+			<PostAuthor author={post.author} lang={lang} />
+		</div>
+	</article>
 </Layout>
 
 <style is:global>
@@ -183,31 +181,6 @@ const articleData = {
 	.post-content-body h4 {
 		font-family: 'Young Serif', serif !important;
 		font-weight: 400 !important;
-	}
-
-	/* Override global background for Blog Post page */
-	body,
-	html {
-		background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top scroll !important;
-		background-size: 100% auto !important;
-		background-color: var(--off-white) !important; /* Fallback color */
-		min-height: 100% !important;
-	}
-
-	@media (max-width: 768px) {
-		body,
-		html {
-			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top scroll !important;
-			background-size: 100% auto !important;
-		}
-	}
-
-	@media (max-width: 480px) {
-		body,
-		html {
-			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top scroll !important;
-			background-size: 100% auto !important;
-		}
 	}
 </style>
 

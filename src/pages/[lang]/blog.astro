@@ -133,14 +133,3 @@ const blogPosts: BlogPost[] = [...studiocmsPosts, ...staticPosts].sort((a, b) =>
 	<FeaturedPosts lang={lang} posts={blogPosts} />
 	<AllPosts lang={lang} posts={blogPosts} />
 </Layout>
-
-<style is:global>
-	/* Override global background for Blog page */
-	body,
-	html {
-		background: url('/images/new/blog/Blog.svg') repeat-y center top scroll !important;
-		background-size: 100% auto !important;
-		background-color: var(--off-white) !important; /* Fallback color */
-		min-height: 100% !important;
-	}
-</style>

@@ -24,19 +24,9 @@ const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <Layout title={t('about.seo.title')} description={t('about.seo.description')} lang={lang}>
-	<main id="main-content">
-		<AboutHero lang={lang} />
+	<AboutHero lang={lang} />
 
-		<OurValues lang={lang} />
+	<OurValues lang={lang} />
 
-		<OurHistory lang={lang} />
-	</main>
+	<OurHistory lang={lang} />
 </Layout>
-
-<style is:global>
-	/* Override global background for About page to remove parallax effect */
-	body,
-	html {
-		background-attachment: scroll !important;
-	}
-</style>
