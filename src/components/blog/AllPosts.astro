@@ -38,12 +38,10 @@ const allPosts = posts.slice(4);
 									<span class="post-date">{post.date}</span>
 									{post.author && <span class="post-author"> • {post.author.name}</span>}
 								</div>
-								<p class="post-excerpt">
-									{post.excerpt.length > 280
-										? post.excerpt.substring(0, 280) + '...'
-										: post.excerpt}
-									<span class="post-read-more">Read More</span>
-								</p>
+								<div class="post-excerpt-wrapper">
+									<p class="post-excerpt">{post.excerpt}</p>
+									<span class="post-read-more">{t('common.readMore')}</span>
+								</div>
 							</div>
 						</a>
 					</article>
@@ -141,6 +139,11 @@ const allPosts = posts.slice(4);
 		line-height: 1.5;
 	}
 
+	.post-excerpt-wrapper {
+		position: relative;
+		min-height: calc(18px * 1.6 * 3); /* Ensure 3 lines fixed vertical space */
+	}
+
 	.post-excerpt {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
@@ -148,6 +151,12 @@ const allPosts = posts.slice(4);
 		font-weight: 400;
 		line-height: 1.6;
 		margin: 0;
+		width: calc(100% - 90px); /* Reserve space for the Read More button */
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		/* autoprefixer: ignore next */
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 
 	.post-read-more {
@@ -156,7 +165,12 @@ const allPosts = posts.slice(4);
 		font-size: 16px;
 		font-weight: 600;
 		text-decoration: underline;
-		margin-left: 8px;
+		position: absolute;
+		bottom: 1px;
+		right: 0;
+		/* Ensure it fits nicely next to the text */
+		width: 85px;
+		text-align: right;
 	}
 
 	@media (max-width: 1024px) {
