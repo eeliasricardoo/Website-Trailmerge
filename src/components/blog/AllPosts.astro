@@ -157,7 +157,7 @@ const allPosts = posts.slice(4);
 	/* Global style for the injected Read More span */
 	:global(.post-read-more-inline) {
 		color: var(--brand-secondary-brown);
-		font-weight: 600;
+		font-weight: 700;
 		text-decoration: underline;
 		margin-left: 4px;
 		cursor: pointer;
@@ -226,14 +226,15 @@ const allPosts = posts.slice(4);
 			const p = el as HTMLElement;
 			const fullText = p.getAttribute('data-full-text') || '';
 			const readMoreLabel = p.getAttribute('data-read-more') || 'Read More';
+			const suffix = '... <span class="post-read-more-inline">' + readMoreLabel + '</span>';
 
-			// Reset to full text to measure
-			p.innerHTML = fullText;
+			// Try full text with suffix first
+			p.innerHTML = fullText + suffix;
 
 			const lineHeight = parseFloat(window.getComputedStyle(p).lineHeight);
 			const maxHeight = lineHeight * 3;
 
-			// If it already fits, do nothing
+			// If it fits with suffix, leave it as is
 			if (p.scrollHeight <= maxHeight + 1) {
 				// +1 buffering
 				return;
@@ -247,8 +248,7 @@ const allPosts = posts.slice(4);
 			while (low <= high) {
 				const mid = Math.floor((low + high) / 2);
 				const sliced = fullText.slice(0, mid);
-				p.innerHTML =
-					sliced + '... <span class="post-read-more-inline">' + readMoreLabel + '</span>';
+				p.innerHTML = sliced + suffix;
 
 				if (p.scrollHeight > maxHeight + 1) {
 					high = mid - 1;
@@ -259,11 +259,7 @@ const allPosts = posts.slice(4);
 			}
 
 			// Apply best fit
-			p.innerHTML =
-				fullText.slice(0, best) +
-				'... <span class="post-read-more-inline">' +
-				readMoreLabel +
-				'</span>';
+			p.innerHTML = fullText.slice(0, best) + suffix;
 		});
 	}
 
@@ -271,7 +267,7 @@ const allPosts = posts.slice(4);
 	truncateText();
 
 	// Run on resize
-	let resizeTimer;
+	let resizeTimer: any;
 	window.addEventListener('resize', () => {
 		clearTimeout(resizeTimer);
 		resizeTimer = setTimeout(truncateText, 250);
