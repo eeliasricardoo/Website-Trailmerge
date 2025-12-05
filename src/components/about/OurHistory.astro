@@ -18,6 +18,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		class="green-blob-decoration"
 		loading="lazy"
 	/>
+	<img src="/images/new/about/paths.svg" alt="" class="paths-decoration" loading="lazy" />
 	<div class="our-history-new-container">
 		<div class="our-history-new-image">
 			<img
@@ -72,6 +73,18 @@ const t = useTranslations(lang as 'en' | 'es');
 		left: -650px;
 		z-index: 1;
 		pointer-events: none;
+	}
+
+	.paths-decoration {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		pointer-events: none;
+		object-fit: contain;
+		opacity: 0.8;
 	}
 
 	.our-history-new-container {
@@ -181,10 +194,16 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.blob-decoration {
+			display: block;
 			width: 3000px;
 			height: 3800px;
 			top: -800px;
 			left: -800px;
+		}
+
+		.green-blob-decoration,
+		.paths-decoration {
+			display: none;
 		}
 	}
 
