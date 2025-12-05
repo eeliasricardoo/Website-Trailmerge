@@ -38,10 +38,13 @@ const allPosts = posts.slice(4);
 									<span class="post-date">{post.date}</span>
 									{post.author && <span class="post-author"> • {post.author.name}</span>}
 								</div>
-								<div class="post-excerpt-wrapper">
-									<p class="post-excerpt">{post.excerpt}</p>
-									<span class="post-read-more">{t('common.readMore')}</span>
-								</div>
+								<p
+									class="post-excerpt"
+									data-full-text={post.excerpt}
+									data-read-more={t('common.readMore')}
+								>
+									{post.excerpt}
+								</p>
 							</div>
 						</a>
 					</article>
@@ -139,11 +142,6 @@ const allPosts = posts.slice(4);
 		line-height: 1.5;
 	}
 
-	.post-excerpt-wrapper {
-		position: relative;
-		min-height: calc(18px * 1.6 * 3); /* Ensure 3 lines fixed vertical space */
-	}
-
 	.post-excerpt {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
@@ -151,26 +149,18 @@ const allPosts = posts.slice(4);
 		font-weight: 400;
 		line-height: 1.6;
 		margin: 0;
-		width: calc(100% - 90px); /* Reserve space for the Read More button */
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		/* autoprefixer: ignore next */
-		-webkit-box-orient: vertical;
+		/* Max height for 3 lines as initial bounds */
+		max-height: calc(18px * 1.6 * 3); /* Fallback */
 		overflow: hidden;
 	}
 
-	.post-read-more {
+	/* Global style for the injected Read More span */
+	:global(.post-read-more-inline) {
 		color: var(--brand-secondary-brown);
-		font-family: 'DM Sans', sans-serif;
-		font-size: 16px;
 		font-weight: 600;
 		text-decoration: underline;
-		position: absolute;
-		bottom: 1px;
-		right: 0;
-		/* Ensure it fits nicely next to the text */
-		width: 85px;
-		text-align: right;
+		margin-left: 4px;
+		cursor: pointer;
 	}
 
 	@media (max-width: 1024px) {
@@ -227,3 +217,66 @@ const allPosts = posts.slice(4);
 		}
 	}
 </style>
+
+<script>
+	function truncateText() {
+		const excerpts = document.querySelectorAll('.post-excerpt');
+
+		excerpts.forEach((el) => {
+			const p = el as HTMLElement;
+			const fullText = p.getAttribute('data-full-text') || '';
+			const readMoreLabel = p.getAttribute('data-read-more') || 'Read More';
+
+			// Reset to full text to measure
+			p.innerHTML = fullText;
+
+			const lineHeight = parseFloat(window.getComputedStyle(p).lineHeight);
+			const maxHeight = lineHeight * 3;
+
+			// If it already fits, do nothing
+			if (p.scrollHeight <= maxHeight + 1) {
+				// +1 buffering
+				return;
+			}
+
+			// Binary search for the optimal length
+			let low = 0;
+			let high = fullText.length;
+			let best = 0;
+
+			while (low <= high) {
+				const mid = Math.floor((low + high) / 2);
+				const sliced = fullText.slice(0, mid);
+				p.innerHTML =
+					sliced + '... <span class="post-read-more-inline">' + readMoreLabel + '</span>';
+
+				if (p.scrollHeight > maxHeight + 1) {
+					high = mid - 1;
+				} else {
+					best = mid;
+					low = mid + 1;
+				}
+			}
+
+			// Apply best fit
+			p.innerHTML =
+				fullText.slice(0, best) +
+				'... <span class="post-read-more-inline">' +
+				readMoreLabel +
+				'</span>';
+		});
+	}
+
+	// Run on initial load
+	truncateText();
+
+	// Run on resize
+	let resizeTimer;
+	window.addEventListener('resize', () => {
+		clearTimeout(resizeTimer);
+		resizeTimer = setTimeout(truncateText, 250);
+	});
+
+	// Support Astro View Transitions if enabled
+	document.addEventListener('astro:page-load', truncateText);
+</script>
