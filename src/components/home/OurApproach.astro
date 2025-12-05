@@ -11,22 +11,15 @@ const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <div class="our-approach-wrapper">
-	<div class="our-approach-container parallax-container" id="our-approach-section">
+	<div class="our-approach-container" id="our-approach-section">
 		<img
 			src="/images/new/home/our-approach/Resizing Mountains.svg"
 			alt="Our Approach"
-			class="our-approach-image parallax-layer"
-			data-speed="-0.1"
+			class="our-approach-image"
 			loading="lazy"
 		/>
-		<img
-			src="/images/new/home/our-approach/Map.svg"
-			alt="Map"
-			class="map-image parallax-layer"
-			data-speed="1.2"
-			loading="lazy"
-		/>
-		<div class="our-approach-content parallax-layer" data-speed="0.1">
+		<img src="/images/new/home/our-approach/Map.svg" alt="Map" class="map-image" loading="lazy" />
+		<div class="our-approach-content">
 			<h3 class="our-approach-title">{t('ourApproachNew.title')}</h3>
 			<div class="our-approach-text">
 				<p>
@@ -42,12 +35,9 @@ const t = useTranslations(lang as 'en' | 'es');
 					<span class="w-700">{t('ourApproachNew.p2.part2')}</span>
 				</p>
 			</div>
-			<Button
-				text={t('ourApproach.cta')}
-				href={lang === 'en' ? '/en/about/' : '/es/about/'}
-				variant="secondary"
-				icon="arrow-right"
-			/>
+			<Button href={lang === 'en' ? '/en/about/' : '/es/about/'} variant="primary">
+				{t('ourApproachNew.cta')}
+			</Button>
 		</div>
 	</div>
 </div>
@@ -210,7 +200,7 @@ const t = useTranslations(lang as 'en' | 'es');
 			height: auto;
 			max-width: 50%;
 			max-height: 200px;
-			margin: 60px 0 16px 20px;
+			margin: 100px 0 16px 20px;
 			z-index: 11;
 			display: block;
 		}
@@ -274,7 +264,7 @@ const t = useTranslations(lang as 'en' | 'es');
 			height: auto;
 			max-width: 50%;
 			max-height: 180px;
-			margin: 50px 0 16px 20px;
+			margin: 90px 0 16px 20px;
 			z-index: 11;
 			display: block;
 		}
