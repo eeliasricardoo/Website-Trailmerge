@@ -303,6 +303,11 @@ const t = useTranslations(lang as 'en' | 'es');
 			top: 366px;
 		}
 	}
+	@media (max-width: 1024px) {
+		.content-container {
+			top: 360px;
+		}
+	}
 	@media (max-width: 768px) {
 		.hero-wrapper {
 			min-height: 700px; /* Increased min-height */
@@ -355,7 +360,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.content-container {
-			top: 300px;
+			top: 360px;
 			padding: 0 20px;
 		}
 
@@ -364,7 +369,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 	}
 
-	@media (max-width: 480px) {
+	@media (max-width: 526px) {
 		.hero-wrapper {
 			min-height: 460px;
 			height: 620px;
@@ -382,35 +387,87 @@ const t = useTranslations(lang as 'en' | 'es');
 
 		.layer-clouds {
 			width: 150%;
-			top: -120px;
+			top: -100px;
 		}
 
 		.layer-mountains {
 			width: 150%;
-			top: -110px;
+			top: -90px;
 		}
 
 		.layer-forest-left {
 			width: 300px !important;
-			top: 110px;
+			top: 150px;
 			left: -150px;
 		}
 
 		.layer-forest-right {
 			width: 300px !important;
-			top: 95px;
-			right: -160px;
+			top: 130px;
+			right: -170px;
 		}
 
 		.layer-bird {
 			width: 24px;
 			height: 12px;
 			margin-left: -12px;
-			top: 70px;
+			top: -30px;
 		}
 
 		.content-container {
-			top: 200px;
+			top: 210px;
+		}
+	}
+
+	@media (max-width: 422px) {
+		.landscape-group {
+			display: block;
+			transform: translateY(0) scale(1);
+		}
+
+		.hero-wrapper {
+			height: 580px;
+			min-height: 400px;
+		}
+
+		.layer-blob {
+			width: 170%;
+			right: -35%;
+			top: -140px;
+		}
+
+		.layer-clouds {
+			width: 170%;
+			top: -80px;
+		}
+
+		.layer-mountains {
+			width: 170%;
+			top: -70px;
+		}
+
+		.layer-forest-left {
+			width: 240px !important;
+			top: 160px;
+			left: -130px;
+		}
+
+		.layer-forest-right {
+			width: 240px !important;
+			top: 140px;
+			right: -150px;
+		}
+
+		.layer-bird {
+			width: 20px;
+			height: 10px;
+			margin-left: -10px;
+			top: -10px;
+		}
+
+		.content-container {
+			top: 240px;
+			transform: translateX(-50%);
 		}
 	}
 </style>
