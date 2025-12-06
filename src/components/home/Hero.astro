@@ -173,7 +173,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		width: 661px;
 		height: 341px;
 		top: 396px;
-		left: -200px;
+		left: -180px;
 		transition: left 0.8s ease-out;
 	}
 
@@ -182,7 +182,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		width: 661px;
 		height: 341px;
 		top: 396px;
-		right: -200px;
+		right: -180px;
 		transition: right 0.8s ease-out;
 	}
 
@@ -251,98 +251,148 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 	}
 
-	@media (max-width: 1024px) {
+	@media (max-width: 1140px) {
 		.hero-wrapper {
 			min-height: 800px;
 		}
 
-		.layer-blob,
-		.layer-clouds,
-		.layer-mountains {
+		.layer-blob {
 			width: 100%;
 			height: auto;
 		}
 
 		.layer-blob {
 			max-height: 1312.615px;
+			top: 10px;
 		}
 		.layer-clouds {
 			max-height: 233.416px;
+			top: 68px;
 		}
 		.layer-mountains {
 			max-height: 295.435px;
 		}
 
-		.layer-forest-left,
+		.layer-forest-left {
+			width: 600px; /* Increased slightly */
+			height: auto;
+			max-height: none;
+		}
 		.layer-forest-right {
-			width: 500px;
+			width: 600px; /* Increased slightly */
 			height: auto;
 			max-height: none;
 		}
 
 		.layer-forest-left {
-			left: -200px;
+			left: -350px;
 		}
 
 		.layer-forest-right {
-			right: -200px;
+			right: -350px;
+			top: 350px;
 		}
 
 		.content-container {
-			top: 350px;
+			top: 366px;
+		}
+	}
+	@media (max-width: 768px) {
+		.hero-wrapper {
+			min-height: 700px; /* Increased min-height */
+		}
+
+		.landscape-group {
+			transform: translateY(-30px) scale(1.2); /* Reduced scale */
+		}
+
+		.layer-blob {
+			width: 120%;
+			max-height: none;
+			right: -10%;
+			top: -150px; /* Moved up */
+		}
+
+		.layer-clouds {
+			width: 120%;
+			max-height: none;
+			top: 0px; /* Moved up */
+		}
+
+		.layer-mountains {
+			width: 120%;
+			max-height: none;
+			top: 26px; /* Moved up 48px from 80px */
+		}
+
+		.layer-forest-left {
+			width: 400px !important;
+			height: auto !important;
+			max-height: none !important;
+			top: 250px; /* Moved up */
+			left: -140px;
+		}
+
+		.layer-forest-right {
+			width: 400px !important;
+			height: auto !important;
+			max-height: none !important;
+			top: 220px; /* Moved up */
+			right: -160px;
+		}
+
+		.layer-bird {
+			width: 28px;
+			height: 14px;
+			margin-left: -14px;
+			top: 50px; /* Moved up */
+		}
+
+		.content-container {
+			top: 300px;
+			padding: 0 20px;
+		}
+
+		.hero-content {
+			gap: 16px;
 		}
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 480px) {
 		.hero-wrapper {
 			min-height: 600px;
 		}
 
 		.landscape-group {
-			transform: translateY(-30px) scale(1.4);
+			transform: translateY(0) scale(1.1);
 		}
 
 		.layer-blob {
-			width: 140%;
-			max-height: 1100px;
-			right: -80px;
-			top: -40px;
+			width: 150%;
+			right: -25%;
+			top: -50px;
 		}
 
 		.layer-clouds {
-			width: 140%;
-			max-height: 380px;
-			top: 60px;
+			width: 150%;
+			top: 40px;
 		}
 
 		.layer-mountains {
-			width: 140%;
-			max-height: 450px;
+			width: 150%;
 			top: 100px;
 		}
 
 		.layer-forest-left {
-			width: 120% !important;
-			height: auto !important;
-			max-height: 250px !important;
-			top: 170px;
-			left: -40px;
+			width: 300px !important;
+			top: 250px;
+			left: -50px;
 		}
 
 		.layer-forest-right {
-			width: 120% !important;
-			height: auto !important;
-			max-height: 250px !important;
-			top: 170px;
-			right: -40px;
-		}
-
-		.layer-forest-left .parallax-image,
-		.layer-forest-right .parallax-image {
-			width: 100% !important;
-			height: 100% !important;
-			object-fit: cover !important;
-			object-position: bottom center !important;
+			width: 300px !important;
+			top: 250px;
+			right: -50px;
 		}
 
 		.layer-bird {
@@ -353,69 +403,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.content-container {
-			top: 320px;
-			padding: 0 20px;
-		}
-
-		.hero-content {
-			gap: 16px;
-		}
-	}
-
-	@media (max-width: 480px) {
-		.landscape-group {
-			transform: translateY(-20px) scale(1.5);
-		}
-
-		.layer-blob {
-			width: 150%;
-			max-height: 1000px;
-			right: -60px;
-			top: -20px;
-		}
-
-		.layer-clouds {
-			width: 150%;
-			max-height: 320px;
-			top: 50px;
-		}
-
-		.layer-mountains {
-			width: 150%;
-			max-height: 400px;
-			top: 80px;
-		}
-
-		.layer-forest-left {
-			width: 120% !important;
-			height: auto !important;
-			max-height: 150px !important;
-			top: 140px;
-			left: -30px;
-		}
-
-		.layer-forest-right {
-			width: 120% !important;
-			height: auto !important;
-			max-height: 150px !important;
-			top: 140px;
-			right: -30px;
-		}
-
-		.layer-bird {
-			width: 20px;
-			height: 10px;
-			margin-left: -10px;
-			top: 55px;
-		}
-
-		.content-container {
-			top: 300px;
-			padding: 0 20px;
-		}
-
-		.hero-content {
-			gap: 12px;
+			top: 250px;
 		}
 	}
 </style>

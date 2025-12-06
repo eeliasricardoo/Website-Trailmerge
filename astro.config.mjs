@@ -4,8 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import db from '@astrojs/db';
 import node from '@astrojs/node';
 import studioCMS from 'studiocms';
-import studioCMSMd from '@studiocms/md';
-import studioCMSBlog from '@studiocms/blog';
 
 // https://astro.build/config
 // https://astro.build/config
@@ -28,14 +26,7 @@ export default defineConfig({
 	integrations: [
 		db(),
 		// StudioCMS must be before sitemap to ensure routes are injected before i18n processes them
-		studioCMS({
-			dbStartPage: false, // Setup complete - disabled as instructed
-			verbose: true, // Enable verbose to see what routes are being created
-			plugins: [
-				studioCMSMd(),
-				studioCMSBlog(),
-			],
-		}),
+		studioCMS(),
 		sitemap({
 			changefreq: 'weekly',
 			priority: 0.7,
