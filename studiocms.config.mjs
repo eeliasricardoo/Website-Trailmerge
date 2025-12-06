@@ -11,5 +11,9 @@ export default defineStudioCMSConfig({
     ],
     dashboardConfig: {
         inject404Route: false,
+        AuthConfig: {
+            enabled: true,
+            allowUserRegistration: false,
+        },
     },
 });
