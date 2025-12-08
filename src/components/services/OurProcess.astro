@@ -108,6 +108,7 @@ const processSteps = [
 		color: #54504b;
 		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
 		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: 32px;
@@ -162,10 +163,19 @@ const processSteps = [
 		text-align: center;
 		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
 		font-family: 'DM Sans', sans-serif;
+		font-size: 24px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: 32px;
 		margin: 0;
+	}
+
+	@media (max-width: 1024px) {
+		.section-description,
+		.process-description {
+			font-size: 18px;
+			line-height: 1.6;
+		}
 	}
 
 	@media (max-width: 900px) {
@@ -185,6 +195,12 @@ const processSteps = [
 
 		.section-title {
 			font-size: 40px;
+		}
+
+		.section-description,
+		.process-description {
+			font-size: 16px;
+			line-height: 1.6;
 		}
 	}
 </style>
