@@ -43,7 +43,7 @@ const t = useTranslations(lang as 'en' | 'es');
 	.our-history-new-wrapper {
 		width: 100%;
 		padding: 0 20px 124px 20px;
-		margin-top: 66px;
+		margin-top: 0px;
 		background-color: transparent;
 		display: flex;
 		justify-content: center;
@@ -172,11 +172,11 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.our-history-new-image {
-			order: 2;
+			order: 1;
 		}
 
 		.our-history-new-content {
-			order: 1;
+			order: 2;
 		}
 
 		.our-history-new-title {
@@ -189,8 +189,13 @@ const t = useTranslations(lang as 'en' | 'es');
 
 		.history-image {
 			width: 100%;
-			height: auto;
-			max-width: 400px;
+			height: 454px; /* Fixed height as requested */
+			max-width: none; /* Reset max-width to allow full width */
+			object-fit: cover;
+			opacity: 1;
+			border-radius: 8px;``
+			transform: rotate(0deg); /* Angle 0 deg */
+			object-position: top center;
 		}
 
 		.blob-decoration {
@@ -211,9 +216,20 @@ const t = useTranslations(lang as 'en' | 'es');
 		.our-history-new-wrapper {
 			padding: 48px 20px;
 		}
-
 		.our-history-new-title {
 			font-size: 36px;
 		}
 	}
+
+		.history-image {
+			width: 100%;
+			height: 254px; /* Fixed height as requested */
+			max-width: none; /* Reset max-width to allow full width */
+			object-fit: cover;
+			opacity: 1;
+			border-radius: 8px;``
+			transform: rotate(0deg); /* Angle 0 deg */
+			object-position: top center;
+		}
+
 </style>

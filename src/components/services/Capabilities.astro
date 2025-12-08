@@ -25,18 +25,18 @@ const column2 = [
 ];
 ---
 
-<section class="capabilities-wrapper parallax-container">
+<section class="capabilities-wrapper">
 	<div class="capabilities-container">
-		<h2 class="section-title parallax-layer" data-speed="0.2">
+		<h2 class="section-title">
 			{t('servicesNew.capabilities.title')}
 		</h2>
 		<div class="capabilities-list">
-			<div class="capabilities-column parallax-layer" data-speed="0.4">
+			<div class="capabilities-column">
 				<ul>
 					{column1.map((item) => <li>{item}</li>)}
 				</ul>
 			</div>
-			<div class="capabilities-column parallax-layer" data-speed="0.6">
+			<div class="capabilities-column">
 				<ul>
 					{column2.map((item) => <li>{item}</li>)}
 				</ul>
@@ -106,7 +106,6 @@ const column2 = [
 		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
 		font-family: 'DM Sans', sans-serif;
 		font-size: 24px;
-		font-style: normal;
 		font-weight: 700;
 		line-height: 32px;
 		display: flex;
@@ -125,7 +124,7 @@ const column2 = [
 
 	@media (max-width: 768px) {
 		.capabilities-wrapper {
-			padding: 48px 20px;
+			padding: 24px 20px;
 			width: 100%;
 		}
 
@@ -154,13 +153,12 @@ const column2 = [
 		}
 
 		.capabilities-column li {
-			font-size: 18px;
 		}
 	}
 
 	@media (max-width: 480px) {
 		.capabilities-wrapper {
-			padding: 40px 20px;
+			padding: 24px 20px;
 		}
 
 		.capabilities-container {
@@ -177,7 +175,6 @@ const column2 = [
 		}
 
 		.capabilities-column li {
-			font-size: 17px;
 		}
 	}
 </style>

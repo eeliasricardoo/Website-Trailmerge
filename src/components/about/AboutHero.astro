@@ -187,16 +187,16 @@ const t = useTranslations(lang as 'en' | 'es');
 		.about-hero-new-text {
 			font-size: 18px;
 			line-height: 1.6;
-			font-weight: 400;
-			width: calc(100% + 40%);
-			max-width: calc(100% + 40%);
+			/* width: calc(100% + 40%); Removed to prevent overlap */
+			/* max-width: calc(100% + 40%); Removed to prevent overlap */
+			width: 100%;
 		}
 
 		.about-hero-new-illustration {
 			display: flex;
 			justify-content: flex-end;
 			align-items: flex-start;
-			margin-top: -30px;
+			margin-top: -60px;
 		}
 
 		.hiker-illustration {
@@ -247,15 +247,16 @@ const t = useTranslations(lang as 'en' | 'es');
 			font-size: 17px;
 			line-height: 1.6;
 			margin-top: 0;
-			width: calc(100% + 40%);
-			max-width: calc(100% + 40%);
+			/* width: calc(100% + 40%); Removed to prevent overlap */
+			/* max-width: calc(100% + 40%); Removed to prevent overlap */
+			width: 160%;
 		}
 
 		.about-hero-new-illustration {
 			display: flex;
 			justify-content: flex-end;
 			align-items: flex-start;
-			margin-top: -30px;
+			margin-top: -50px;
 		}
 
 		.hiker-illustration {

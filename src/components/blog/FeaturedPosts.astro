@@ -272,7 +272,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 
 	.featured-posts-grid {
 		display: grid;
-		grid-template-columns: 1fr 608px;
+		grid-template-columns: 640px 1fr;
 		gap: 40px;
 		align-items: start;
 	}
@@ -296,11 +296,13 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-main-image-wrapper {
-		width: 100%;
-		aspect-ratio: 3/2;
+		width: 640px;
+		height: 480px;
 		border-radius: 8px;
 		overflow: hidden;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		opacity: 1;
+		transform: rotate(0deg);
 	}
 
 	.featured-main-image {
@@ -327,9 +329,11 @@ const sidePosts = featuredPosts.slice(1, 4);
 	.featured-main-meta {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
-		font-size: 16px;
+		font-size: 20px;
+		font-style: normal;
 		font-weight: 400;
-		line-height: 1.5;
+		line-height: 28px;
+		letter-spacing: 0;
 	}
 
 	.featured-side-posts {
@@ -356,12 +360,14 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-side-image-wrapper {
-		width: 200px;
-		min-width: 200px;
-		aspect-ratio: 3/2;
+		width: 276px;
+		min-width: 276px;
+		height: 176px;
 		border-radius: 8px;
 		overflow: hidden;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		opacity: 1;
+		transform: rotate(0deg);
 	}
 
 	.featured-side-image {
@@ -392,9 +398,11 @@ const sidePosts = featuredPosts.slice(1, 4);
 	.featured-side-meta {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
-		font-size: 14px;
+		font-size: 20px;
+		font-style: normal;
 		font-weight: 400;
-		line-height: 1.5;
+		line-height: 28px;
+		letter-spacing: 0;
 	}
 
 	@media (max-width: 1024px) {
@@ -479,9 +487,11 @@ const sidePosts = featuredPosts.slice(1, 4);
 	.slider-meta {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
-		font-size: 14px;
+		font-size: 20px;
+		font-style: normal;
 		font-weight: 400;
-		line-height: 1.5;
+		line-height: 28px;
+		letter-spacing: 0;
 	}
 
 	.slider-bullets {
