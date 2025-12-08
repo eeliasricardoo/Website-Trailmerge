@@ -252,8 +252,6 @@ const sidePosts = featuredPosts.slice(1, 4);
 		width: 100%;
 		padding: 88px 24px 72px 24px;
 		background-color: transparent;
-		position: relative;
-		z-index: 1;
 	}
 
 	.featured-posts-container {
@@ -272,7 +270,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 
 	.featured-posts-grid {
 		display: grid;
-		grid-template-columns: 640px 1fr;
+		grid-template-columns: 1fr 608px;
 		gap: 40px;
 		align-items: start;
 	}
@@ -296,13 +294,11 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-main-image-wrapper {
-		width: 640px;
-		height: 480px;
+		width: 100%;
+		aspect-ratio: 3/2;
 		border-radius: 8px;
 		overflow: hidden;
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-		opacity: 1;
-		transform: rotate(0deg);
 	}
 
 	.featured-main-image {
@@ -329,17 +325,15 @@ const sidePosts = featuredPosts.slice(1, 4);
 	.featured-main-meta {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
-		font-size: 20px;
-		font-style: normal;
+		font-size: 16px;
 		font-weight: 400;
-		line-height: 28px;
-		letter-spacing: 0;
+		line-height: 1.5;
 	}
 
 	.featured-side-posts {
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 24px;
 	}
 
 	.featured-side-card {
@@ -360,14 +354,12 @@ const sidePosts = featuredPosts.slice(1, 4);
 	}
 
 	.featured-side-image-wrapper {
-		width: 276px;
-		min-width: 276px;
-		height: 176px;
+		width: 200px;
+		min-width: 200px;
+		aspect-ratio: 3/2;
 		border-radius: 8px;
 		overflow: hidden;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-		opacity: 1;
-		transform: rotate(0deg);
 	}
 
 	.featured-side-image {
@@ -398,11 +390,9 @@ const sidePosts = featuredPosts.slice(1, 4);
 	.featured-side-meta {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
-		font-size: 20px;
-		font-style: normal;
+		font-size: 14px;
 		font-weight: 400;
-		line-height: 28px;
-		letter-spacing: 0;
+		line-height: 1.5;
 	}
 
 	@media (max-width: 1024px) {
@@ -487,11 +477,9 @@ const sidePosts = featuredPosts.slice(1, 4);
 	.slider-meta {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
-		font-size: 20px;
-		font-style: normal;
+		font-size: 14px;
 		font-weight: 400;
-		line-height: 28px;
-		letter-spacing: 0;
+		line-height: 1.5;
 	}
 
 	.slider-bullets {
@@ -569,7 +557,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 		}
 
 		.slider-title {
-			font-size: 24px;
+			font-size: 20px;
 		}
 
 		.slider-meta {
