@@ -13,11 +13,7 @@ const t = useTranslations(lang as 'en' | 'es');
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
 
-const addressLines = [
-	t('footer.address.line1'),
-	t('footer.address.line2'),
-	t('footer.address.line3'),
-].filter((line) => line && line.trim() !== '' && !line.startsWith('footer.address'));
+const addressLines = [t('footer.address.line1'), t('footer.address.line2')];
 ---
 
 <footer class="footer-new">
@@ -29,7 +25,16 @@ const addressLines = [
 					<img src={TrailmergeLogoSand.src} alt="Trailmerge" class="footer-logo" />
 				</a>
 				<div class="footer-address">
-					{addressLines.map((line) => <p>{line}</p>)}
+					<p>
+						{
+							addressLines.map((line, index) => (
+								<>
+									{line}
+									{index < addressLines.length - 1 && <br />}
+								</>
+							))
+						}
+					</p>
 				</div>
 			</div>
 
@@ -93,7 +98,7 @@ const addressLines = [
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: flex-start;
 		gap: 40px;
 	}
 
@@ -101,7 +106,7 @@ const addressLines = [
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
-		max-width: 300px;
+		max-width: 400px;
 	}
 
 	.footer-logo {
