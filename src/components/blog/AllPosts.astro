@@ -140,7 +140,9 @@ const allPosts = posts.slice(4);
 	}
 
 	.post-excerpt-wrapper {
-		position: relative;
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
 		min-height: calc(18px * 1.6 * 3); /* Ensure 3 lines fixed vertical space */
 	}
 
@@ -151,12 +153,14 @@ const allPosts = posts.slice(4);
 		font-weight: 400;
 		line-height: 1.6;
 		margin: 0;
-		width: calc(100% - 90px); /* Reserve space for the Read More button */
+		flex: 1;
 		display: -webkit-box;
 		-webkit-line-clamp: 3;
 		/* autoprefixer: ignore next */
 		-webkit-box-orient: vertical;
 		overflow: hidden;
+		text-overflow: ellipsis;
+		max-height: calc(18px * 1.6 * 3); /* Force maximum height of 3 lines */
 	}
 
 	.post-read-more {
@@ -165,12 +169,11 @@ const allPosts = posts.slice(4);
 		font-size: 16px;
 		font-weight: 600;
 		text-decoration: underline;
-		position: absolute;
-		bottom: 1px;
-		right: 0;
-		/* Ensure it fits nicely next to the text */
-		width: 85px;
-		text-align: right;
+		white-space: nowrap;
+		flex-shrink: 0;
+		align-self: flex-end;
+		line-height: 1.6;
+		padding-bottom: 2px;
 	}
 
 	@media (max-width: 1024px) {
@@ -210,10 +213,11 @@ const allPosts = posts.slice(4);
 
 		.post-excerpt {
 			font-size: 16px;
-			/* Adjust calculation for mobile font size if needed, 
-			   but keeping it simple based on desktop for now or updating specifically */
-			min-height: calc(16px * 1.6 * 3);
 			max-height: calc(16px * 1.6 * 3);
+		}
+
+		.post-excerpt-wrapper {
+			min-height: calc(16px * 1.6 * 3);
 		}
 	}
 

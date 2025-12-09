@@ -2,29 +2,29 @@
   "nav": {
     "about": "Sobre Nosotros",
     "blog": "Blog",
-    "contact": "Contacto",
+    "contact": "Contáctanos",
     "home": "Inicio de Trailmerge",
     "projects": "Proyectos",
     "services": "Servicios",
-    "startProject": "Iniciar un Proyecto"
+    "startProject": "Comienza un proyecto"
   },
   "hero": {
     "title": "Eleva tu software empresarial",
-    "subtitle": "Toma el camino del diseño personalizado para la excelencia operativa",
-    "cta": "Agenda una consulta"
+    "subtitle": "Alcanza la excelencia operativa con un enfoque centrado en diseño",
+    "cta": "Agenda tu consulta gratuita"
   },
   "services": {
     "ignite": {
-      "title": "Enciende tu transformación digital",
-      "description": "Trabajaremos contigo para crear una estrategia de transformación digital robusta y visión a largo plazo para tus operaciones y software."
+      "title": "Impulsa tu transformación digital",
+      "description": "Trabajaremos contigo para crear una estrategia de transformación digital robusta y una visión a largo plazo para tus operaciones y software."
     },
     "evaluate": {
-      "title": "Aprende de tu equipo y clientes",
-      "description": "Nuestro equipo de especialistas en diseño y transformación digital realizará investigación y descubrimiento para revelar y priorizar áreas para mejorar."
+      "title": "Aprende de tu equipo y tus clientes",
+      "description": "Nuestro equipo de especialistas en diseño y transformación digital realizará investigación y descubrimiento para revelar y priorizar áreas de mejora."
     },
     "scale": {
-      "title": "Empieza la ascensión",
-      "description": "Nuestro equipo colaborará el tuyo en estrecha colaboración para llevar a tu equipo y sus herramientas de software al siguiente nivel."
+      "title": "Comienza la escalada",
+      "description": "Nuestro equipo trabajará junto al tuyo en estrecha colaboración para llevar a tu equipo y sus herramientas de software al siguiente nivel."
     }
   },
   "footer": {
@@ -33,12 +33,12 @@
     "privacy": "Privacidad",
     "resources": "Recursos",
     "blog": "Blog",
-    "cta": "Solicita una consulta",
+    "cta": "Agenda tu consulta gratuita",
     "copyright": "© {year} Trailmerge Ltd Co. Todos los derechos reservados.",
     "address": {
-      "line1": "3100 Interstate North Circle SE",
-      "line2": "Suite 200",
-      "line3": "Atlanta, GA 30339"
+      "line1": "3100 Interstate North Circle SE, Suite 200",
+      "line2": "Atlanta, GA 30339",
+      "line3": ""
     }
   },
   "common": {
@@ -46,20 +46,20 @@
     "error": "Ocurrió un error",
     "submit": "Enviar",
     "close": "Cerrar",
-    "readMore": "Leer más"
+    "readMore": "Continuar leyendo"
   },
   "about": {
     "title": "Sobre Trailmerge",
-    "subtitle": "Como tu equipo de transformación digital, experiencia de usuario y desarrollo de software personalizado, Trailmerge mejora los flujos de trabajo de tu equipo para que avancen hacia sus objetivos.",
+    "subtitle": "Como tu equipo de transformación digital, experiencia de usuario y desarrollo de software personalizado, Trailmerge mejora los flujos de trabajo de tu equipo para que alcancen sus objetivos.",
     "seo": {
       "title": "Sobre Trailmerge – Transformación digital y desarrollo de software personalizado con impulso de UX",
-      "description": "Trailmerge es una agencia de transformación digital orientada al diseño, con especialidación en estrategia de procesos y desarrollo de software personalizado para empresas en crecimiento.",
+      "description": "Trailmerge es una agencia de transformación digital orientada al diseño, especializada en estrategia de procesos y desarrollo de software personalizado para empresas en crecimiento.",
       "keywords": "sobre Trailmerge, equipo de diseño UX, agencia de transformación digital, desarrollo de software personalizado, equipo de desarrollo de software Atlanta"
     },
     "vision": {
       "paragraph1": "En Trailmerge, nuestra visión es promover la abundancia de vida y oportunidad.",
-      "paragraph2": "Esto define cómo trabajamos con nuestro equipo y clientes – la mentoría y el desarrollo son fundamentales para nosotros.",
-      "paragraph3": "Así aliamos a nuestros clientes – avanzamos juntos a los equipos internos para apoyar sus sueños de impacto y su crecimiento."
+      "paragraph2": "Esto define cómo trabajamos con nuestro equipo y clientes – la mentoría y el desarrollo son parte esencial de quienes somos.",
+      "paragraph3": "Así es como nos asociamos con nuestros clientes – acompañamos a los equipos internos para apoyar sus sueños de impacto y su crecimiento."
     },
     "values": {
       "title": "Nuestros Valores",
@@ -73,50 +73,50 @@
     }
   },
   "contact": {
-    "title": "Agenda tu consulta",
-    "description": "El viaje comienza con un simple primer paso. Envíanos un mensaje – cuéntanos sobre tu proyecto, tus ideas, tu visión – y trabajaremos juntos para hacerla realidad.",
+    "title": "Agenda tu consulta gratuita",
+    "description": "Nuestro camino juntos comienza con un simple paso. Envíanos un mensaje – cuéntanos sobre tu proyecto, tus ideas, tu visión – y trabajaremos juntos para hacerla realidad.",
     "form": {
       "nameLabel": "Nombre",
-      "namePlaceholder": "Nombre y apellido",
+      "namePlaceholder": "Tu nombre completo",
       "emailLabel": "Correo electrónico",
-      "emailPlaceholder": "hola@tusitio.com",
+      "emailPlaceholder": "tucorreo@ejemplo.com",
       "emailHelp": "Nunca compartiremos tu correo con nadie más.",
       "messageLabel": "Mensaje",
       "messagePlaceholder": "Cuéntanos sobre tu proyecto...",
-      "optinLabel": "Quiero recibir actualizaciones y contenido útil de Trailmerge.",
+      "optinLabel": "Sí, quiero recibir actualizaciones y contenido útil de Trailmerge.",
       "honeypotLabel": "Solo marca esto si eres un bot.",
       "submitButton": "Enviar",
       "submitWait": "Por favor espera...",
       "closeButton": "Cerrar formulario de contacto"
     },
     "messages": {
-      "success": "¡Excelente primer paso! Hemos recibido tu mensaje y te contactaremos pronto.",
-      "error": "Hmm... Algo salió mal al enviar el formulario. ¡Intenta nuevamente!"
+      "success": "¡Excelente primer paso! Hemos recibido tu mensaje y nos pondremos en contacto pronto.",
+      "error": "Hmm... Algo salió mal al enviar el formulario. ¡Inténtalo de nuevo!"
     }
   },
   "aside": {
-    "text": "Trailmerge potencia equipos de operaciones y tecnología empresariales con consultoría estratégica sobre transformación digital, experiencia en UX y producto y desarrollo de software personalizado, para conquistar ineficiencias costosas y elevar la excelencia de tu equipo."
+    "text": "Trailmerge potencia equipos de operaciones y tecnología empresariales con consultoría estratégica sobre transformación digital, experiencia en UX y producto, y desarrollo de software personalizado, para eliminar ineficiencias costosas y elevar la excelencia de tu equipo."
   },
   "offer": {
-    "title": "¿Cómo se compara el software de tu equipo a los estándares de la industria?",
-    "buttonText": "Solicita una auditoría de usabilidad"
+    "title": "¿Cómo está el software de tu equipo?",
+    "buttonText": "Obtén una auditoría de usabilidad"
   },
   "companies": {
     "title": "Empresas que hemos servido",
-    "description": "Hemos tenido el honor de trabajar con equipos increíbles desde startups en etapa temprana hasta equipos empresariales multinacionales, empoderando a sus equipos para alcanzar el éxito y prosperar en su día a día."
+    "description": "Hemos tenido el honor de trabajar con equipos increíbles, desde startups B2B SaaS en etapa inicial hasta grandes equipos empresariales multinacionales, empoderando a las personas para alcanzar el éxito y prosperar en su día a día."
   },
   "blog": {
     "title": "Blog de Trailmerge – Consejos de transformación digital y desarrollo de software empresarial",
     "description": "Artículos útiles para líderes de operaciones y tecnología sobre mejores prácticas de transformación digital y desarrollo de software.",
-    "seePost": "Ver artículo",
-    "readMore": "Leer más",
+    "seePost": "Leer artículo",
+    "readMore": "Continuar leyendo",
     "postTitleSuffix": "Blog de Trailmerge",
     "breadcrumbs": {
       "home": "Inicio",
       "blog": "Blog"
     },
     "featured": "Destacados",
-    "allPosts": "Todos los artículos",
+    "allPosts": "Todos los posts",
     "seo": {
       "keywords": "blog de transformación digital, artículos de desarrollo de software empresarial, consejos de diseño de producto, estrategia MVP, mejores prácticas de diseño, líderes de operaciones y tecnología, artículos de UX empresarial"
     }
@@ -154,23 +154,23 @@
     "title": "Eleva tu<br />software<br />operativo"
   },
   "asideNew": {
-    "title": "Toma el camino del diseño para llegar a la cima"
+    "title": "Alcanza la cima con un enfoque centrado en diseño"
   },
   "ourApproachNew": {
     "title": "Nuestro Enfoque",
     "p1": {
       "part1": "Trailmerge",
-      "part2": "es una",
-      "part3": "agencia de desarrollo de software enfocada en el diseño.",
-      "part4": "Estamos mucho más interesados en",
+      "part2": "es",
+      "part3": "una agencia de desarrollo de software centrada en diseño.",
+      "part4": "Nos interesa más",
       "part5": "entender y resolver problemas de negocio reales",
-      "part6": "que en solo mover píxeles, construir flujos de trabajo y escribir código (aunque cuando hacemos estas cosas, las hacemos con un cuidado especial por nuestro oficio)."
+      "part6": "que simplemente mover píxeles, construir flujos de trabajo y escribir código (aunque cuando hacemos estas cosas, las hacemos con un cuidado especial por nuestro oficio)."
     },
     "p2": {
-      "part1": "La investigación y el descubrimiento no son solo ítems de una lista para nosotros, y Agile no es solo sobre cronogramas en nuestro proceso. Nos enfocamos en",
+      "part1": "La investigación y el descubrimiento no son solo tareas de una lista para nosotros, y Agile no es solo sobre cronogramas en nuestro proceso. Nos enfocamos en",
       "part2": "habilitar el éxito a largo plazo de tu equipo."
     },
-    "cta": "Iniciar un Proyecto"
+    "cta": "Comienza un proyecto"
   },
   "recentProjectsNew": {
     "title": "Proyectos Recientes",
@@ -222,17 +222,17 @@
       "steps": {
         "step1": {
           "title": "Consultoría e Inicio",
-          "description": "Escuchamos tu visión para tu crecimiento operativo y brindamos orientación para los siguientes pasos en el viaje.",
+          "description": "Escuchamos tu visión para tu crecimiento operativo y brindamos orientación para los siguientes pasos en el camino.",
           "alt": "Icono de brújula"
         },
         "step2": {
           "title": "Investigación y Descubrimiento",
-          "description": "Auditamos tus procesos y/o sistemas existentes para identificar victorias rápidas y oportunidades para la eficiencia en todo el sistema.",
+          "description": "Auditamos tus procesos y/o sistemas existentes para identificar ganancias rápidas y oportunidades para mejorar la eficiencia en todo el sistema.",
           "alt": "Icono de lupa"
         },
         "step3": {
           "title": "Alcance del Proyecto",
-          "description": "Basado en nuestra investigación y estrategia colaborativa, definimos y medimos el proyecto para determinar hitos amigables con Agile.",
+          "description": "Basados en nuestra investigación y estrategia colaborativa, definimos y medimos el proyecto para determinar hitos compatibles con metodología Agile.",
           "alt": "Icono de mapa"
         },
         "step4": {
@@ -247,7 +247,7 @@
         },
         "step6": {
           "title": "Entrega e Iteración",
-          "description": "Aspiramos a entregar valor continuamente, para que tu empresa pueda comenzar a beneficiarse (¡y celebrar!) a medida que alcanzamos hitos estratégicos.",
+          "description": "Buscamos entregar valor continuamente, para que tu empresa pueda comenzar a obtener resultados (¡y celebrar!) a medida que alcanzamos hitos estratégicos.",
           "alt": "Icono de sartén"
         }
       }
@@ -259,12 +259,12 @@
       "description": "Ponte en contacto con Trailmerge para comenzar tu viaje de transformación digital."
     },
     "title": "Contáctanos",
-    "description": "Nuestro viaje juntos comienza con un simple primer paso. Envíanos un mensaje para contarnos un poco sobre tu proyecto, tus ideas, tu sueño. Estaremos en camino de hacerlo realidad."
+    "description": "Nuestro camino juntos comienza con un simple paso. Envíanos un mensaje para contarnos un poco sobre tu proyecto, tus ideas, tu sueño. Estaremos en camino de hacerlo realidad."
   },
   "aboutNew": {
     "hero": {
       "title": "Sobre Trailmerge",
-      "text": "Como tu equipo de transformación digital, experiencia de usuario y desarrollo de software personalizado, Trailmerge mejora los flujos de trabajo de tu equipo para que avancen hacia sus objetivos."
+      "text": "Como tu equipo de transformación digital, experiencia de usuario y desarrollo de software personalizado, Trailmerge mejora los flujos de trabajo de tu equipo para que alcancen sus objetivos."
     },
     "values": {
       "title": "Nuestros Valores",
@@ -281,8 +281,8 @@
     },
     "history": {
       "title": "Nuestra Historia",
-      "p1": "Trailmerge fue fundada en 2020 por Mark Tegtmeier, un líder en diseño de experiencia de usuario (UX) en Atlanta, con experiencia en software empresarial Fortune 500 y contextos de startups innovadoras.",
-      "p2": "La compañía se lanzó inicialmente como una agencia de diseño UX, y desde entonces ha agregado capacidades de desarrollo de software para servir como un <strong>socio estratégico completo</strong> para nuestros clientes, manteniendo un <strong>ethos de resolución de problemas y diseño primero</strong>.",
+      "p1": "<strong>Trailmerge</strong> fue fundada en 2020 por Mark Tegtmeier, un líder en diseño de experiencia de usuario (UX) en Atlanta, con experiencia en software empresarial Fortune 500 y startups innovadoras.",
+      "p2": "La compañía se lanzó inicialmente como una agencia de diseño UX, y desde entonces ha agregado capacidades de desarrollo de software para servir como <strong>un socio estratégico completo</strong> para nuestros clientes, manteniendo un <strong>ethos de resolución de problemas y diseño primero</strong>.",
       "p3": "Trailmerge ahora ayuda a empresas de varios tamaños a crear <strong>eficiencias en sus operaciones y tecnología</strong> a través de consultoría profunda, investigación de usuarios, gestión de productos digitales, diseño y desarrollo de software."
     }
   },
