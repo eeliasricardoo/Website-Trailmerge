@@ -71,29 +71,34 @@ if (!post) {
 			console.log(`[Blog] Full Page keys:`, Object.keys(pageData));
 
 			const contentHtml = pageData.content ? await marked.parse(pageData.content) : '';
+			// specific safe date parsing
+			const publishedDateObj = pageData.publishedAt ? new Date(pageData.publishedAt) : new Date();
+			const isValidDate = !isNaN(publishedDateObj.getTime());
+			const displayDate = isValidDate
+				? publishedDateObj
+						.toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})
+						.toUpperCase()
+				: '';
+
 			post = {
-				slug: studiocmsPage.slug,
-				title: studiocmsPage.title || '',
-				excerpt: studiocmsPage.excerpt || '',
-				date: studiocmsPage.publishedAt
-					? new Date(studiocmsPage.publishedAt)
-							.toLocaleDateString('en-US', {
-								year: 'numeric',
-								month: 'long',
-								day: 'numeric',
-							})
-							.toUpperCase()
-					: '',
-				publishedAt: studiocmsPage.publishedAt ? new Date(studiocmsPage.publishedAt) : new Date(0),
-				category: studiocmsPage.category || 'BLOG',
-				image: studiocmsPage.image || '',
-				imageAlt: studiocmsPage.imageAlt || studiocmsPage.title || '',
+				slug: pageData.slug,
+				title: pageData.title || '',
+				excerpt: pageData.excerpt || pageData.description || '',
+				date: displayDate,
+				publishedAt: isValidDate ? publishedDateObj : new Date(0),
+				category: pageData.category || 'BLOG',
+				image: pageData.image || pageData.heroImage || '',
+				imageAlt: pageData.imageAlt || pageData.title || '',
 				content: contentHtml,
 				author: {
-					name: studiocmsPage.author?.name || 'Mark Tegtmeier',
-					image: studiocmsPage.author?.image || '/images/Mark.png',
+					name: pageData.author?.name || 'Mark Tegtmeier',
+					image: pageData.author?.image || '/images/Mark.png',
 					bio:
-						studiocmsPage.author?.bio ||
+						pageData.author?.bio ||
 						'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
 				},
 				fromStudioCMS: true,
