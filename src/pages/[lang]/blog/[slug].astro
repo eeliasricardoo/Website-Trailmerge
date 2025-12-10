@@ -85,20 +85,36 @@ if (!post) {
 				: '';
 
 			post = {
-				slug: pageData.slug,
-				title: pageData.title || '',
-				excerpt: pageData.excerpt || pageData.description || '',
+				slug: pageData.slug || studiocmsPage.slug,
+				title: pageData.title || studiocmsPage.title || '',
+				excerpt:
+					pageData.excerpt ||
+					pageData.description ||
+					studiocmsPage.excerpt ||
+					studiocmsPage.description ||
+					'',
 				date: displayDate,
 				publishedAt: isValidDate ? publishedDateObj : new Date(0),
-				category: pageData.category || 'BLOG',
-				image: pageData.image || pageData.heroImage || '',
-				imageAlt: pageData.imageAlt || pageData.title || '',
+				category: pageData.category || studiocmsPage.category || 'BLOG',
+				image:
+					pageData.image ||
+					pageData.heroImage ||
+					studiocmsPage.image ||
+					studiocmsPage.heroImage ||
+					'',
+				imageAlt:
+					pageData.imageAlt ||
+					pageData.title ||
+					studiocmsPage.imageAlt ||
+					studiocmsPage.title ||
+					'',
 				content: contentHtml,
 				author: {
-					name: pageData.author?.name || 'Mark Tegtmeier',
-					image: pageData.author?.image || '/images/Mark.png',
+					name: pageData.author?.name || studiocmsPage.author?.name || 'Mark Tegtmeier',
+					image: pageData.author?.image || studiocmsPage.author?.image || '/images/Mark.png',
 					bio:
 						pageData.author?.bio ||
+						studiocmsPage.author?.bio ||
 						'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
 				},
 				fromStudioCMS: true,
@@ -107,6 +123,116 @@ if (!post) {
 	} catch (error) {
 		console.warn('StudioCMS post not available:', error);
 	}
+}
+
+// Fallback: If content is still missing but we found a page, try to fetch from DB directly
+if (post && !post.content && post.fromStudioCMS) {
+	const slugToQuery = post.slug;
+	// Fallback mechanism moved deeper to use direct client
+	try {
+		// Proceed directly to client usage
+
+		// db.run returns result metadata, db.select / db.all returns rows.
+		// Astro DB uses Drizzle behind the scenes or libSQL.
+		// standard astro:db 'db' object has .select().from()... but without schema we can't use that easily.
+		// Let's use internal libSQL client if exposed or just raw SQL?
+		// Wait, astro:db documents say: db.run is for executing, but for selecting??
+		// Checking current docs: db.select() requires table object.
+		// Is there a raw query method?
+		// 'db.all' doesn't exist on the main export usually.
+		// Actually, let's try to grab 'db' from the SDK if possible? No.
+
+		// Let's use `libsql` directly as we did in the debug script, but using the credentials from environment.
+		// Since we are in SSR, process.env should be populated if configured.
+		// However, astro:db integrates with the local db in dev.
+		// The safest way without schema is actually to assume we can import the table!
+		// It worked there.
+		const { createClient } = await import('@libsql/client');
+
+		const dbUrl = import.meta.env.ASTRO_DB_REMOTE_URL || process.env.ASTRO_DB_REMOTE_URL;
+		const dbToken = import.meta.env.ASTRO_DB_APP_TOKEN || process.env.ASTRO_DB_APP_TOKEN;
+
+		console.log(`[Blog] DB Config: URL present? ${!!dbUrl}, Token present? ${!!dbToken}`);
+		console.log('FALLBACK_V2_EXECUTING - Verifying new code path');
+
+		if (!slugToQuery) {
+			console.error('[Blog] No slug to query for fallback');
+			post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+				<strong>Debug Error:</strong> Slug is empty in 'post' object.<br/>
+				<strong>Astro Params:</strong> ${JSON.stringify(Astro.params)}<br/>
+				<strong>Post Object:</strong> <pre>${JSON.stringify(post, null, 2)}</pre>
+			</div>`;
+			// Don't throw check, just let it render the error content
+		} else {
+			if (dbUrl && dbToken) {
+				const client = createClient({
+					url: dbUrl,
+					authToken: dbToken,
+				});
+
+				// The error "near OR, "None": syntax error" suggests issue with arg binding in the complex IN clause or similar.
+				// Let's simpler: Find the page ID first.
+
+				const pageResult = await client.execute({
+					sql: 'SELECT id FROM StudioCMSPageData WHERE slug = ? LIMIT 1',
+					args: [slugToQuery],
+				});
+
+				let pageId = null;
+				if (pageResult.rows.length > 0) {
+					pageId = pageResult.rows[0].id;
+				} else {
+					// Try with slash prefix if not found
+					const pageResultSlash = await client.execute({
+						sql: 'SELECT id FROM StudioCMSPageData WHERE slug = ? LIMIT 1',
+						args: ['/' + slugToQuery],
+					});
+					if (pageResultSlash.rows.length > 0) {
+						pageId = pageResultSlash.rows[0].id;
+					}
+				}
+
+				if (pageId) {
+					console.log(`[Blog] Found Page ID via fallback: ${pageId}`);
+					const contentResult = await client.execute({
+						sql: 'SELECT content FROM StudioCMSPageContent WHERE contentId = ? LIMIT 1',
+						args: [pageId],
+					});
+
+					if (contentResult.rows.length > 0 && contentResult.rows[0].content) {
+						console.log('[Blog] Content found via direct DB query');
+						const rawContent = contentResult.rows[0].content as string;
+						post.content = await marked.parse(rawContent);
+					} else {
+						console.log('[Blog] Content NOT found via direct DB query for pageId');
+						post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+												<strong>Debug Error:</strong> Content row missing for Page ID ${pageId}.
+										</div>`;
+					}
+				} else {
+					console.log('[Blog] Page not found in DB via fallback (checked slug and /slug)');
+					post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+										<strong>Debug Error:</strong> Page Data not found in DB for slug: ${slugToQuery}
+								</div>`;
+				}
+			} else {
+				console.warn('[Blog] Missing DB credentials for fallback fetch');
+				post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+                <strong>Debug Error:</strong> Missing DB Credentials.<br/>
+                DB URL: ${!!dbUrl}<br/>
+                DB Token: ${!!dbToken}
+            </div>`;
+			}
+		}
+	} catch (dbError) {
+		console.error('[Blog] DB Fallback failed:', dbError);
+		post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+            <strong>Debug Exception:</strong> ${dbError instanceof Error ? dbError.message : String(dbError)}
+        </div>`;
+	}
+} else if (post && post.fromStudioCMS && !post.content) {
+	// Case where post exists but logic flow didn't catch it
+	post.content = '<em>Content is missing and fallback check condition was not met.</em>';
 }
 
 if (!post) {
