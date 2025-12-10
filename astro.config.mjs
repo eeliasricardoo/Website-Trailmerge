@@ -101,6 +101,10 @@ export default defineConfig({
 				protocol: 'https',
 				hostname: 'uploads-ssl.webflow.com',
 			},
+			{
+				protocol: 'https',
+				hostname: 'www.uxdesigninstitute.com',
+			},
 		],
 	},
 	prefetch: {
