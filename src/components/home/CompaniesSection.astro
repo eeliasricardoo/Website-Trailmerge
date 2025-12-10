@@ -14,25 +14,17 @@ const t = useTranslations(lang as 'en' | 'es');
 	<div class="companies-new-grid">
 		<div class="company-item">
 			<img
+				src="/images/new/home/logos/Logo.svg"
+				loading="lazy"
+				alt="Company logo"
+				class="company-logo"
+			/>
+		</div>
+		<div class="company-item">
+			<img
 				src="/images/new/home/logos/Tourial Logo.svg"
 				loading="lazy"
 				alt="Tourial company logo"
-				class="company-logo"
-			/>
-		</div>
-		<div class="company-item">
-			<img
-				src="/images/new/home/logos/BeyondReach Logo.svg"
-				loading="lazy"
-				alt="BeyondReach company logo"
-				class="company-logo"
-			/>
-		</div>
-		<div class="company-item">
-			<img
-				src="/images/new/home/logos/CCR Logo.svg"
-				loading="lazy"
-				alt="CCR company logo"
 				class="company-logo"
 			/>
 		</div>
@@ -46,9 +38,9 @@ const t = useTranslations(lang as 'en' | 'es');
 		</div>
 		<div class="company-item">
 			<img
-				src="/images/new/home/logos/zeewise.png"
+				src="/images/new/home/logos/Vector.svg"
 				loading="lazy"
-				alt="Zeewise company logo"
+				alt="Company logo"
 				class="company-logo"
 			/>
 		</div>
@@ -59,7 +51,7 @@ const t = useTranslations(lang as 'en' | 'es');
 	.companies-new-wrapper {
 		width: 100%;
 		padding: 0 40px;
-		margin-top: 44px;
+		margin-top: 100px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -92,6 +84,8 @@ const t = useTranslations(lang as 'en' | 'es');
 	@media (max-width: 768px) {
 		.companies-new-wrapper {
 			padding: 0 20px;
+			margin-top: 80px;
+			margin-bottom: 40px;
 		}
 
 		.companies-new-grid {
