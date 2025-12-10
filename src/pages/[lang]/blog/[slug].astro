@@ -12,9 +12,13 @@ export async function getStaticPaths() {
 	enPosts.forEach((post) => paths.push({ params: { lang: 'en', slug: post.slug } }));
 	esPosts.forEach((post) => paths.push({ params: { lang: 'es', slug: post.slug } }));
 
+	// Fetch dynamic posts from StudioCMS - OPTIONAL/SKIPPED since we are in SSR mode
+	// and dynamic import here causes build issues.
+
 	return paths;
 }
 
+import { marked } from 'marked';
 import Layout from '../../../layouts/Layout.astro';
 import { useTranslations } from '../../../i18n/utils';
 import { safeCreateURL } from '../../../utils/urlHelpers';
@@ -28,7 +32,7 @@ import PostAuthor from '../../../components/blog/PostAuthor.astro';
 import type { BlogPost } from '../../../types/blog';
 
 const { lang, slug } = Astro.params || { lang: 'en', slug: '' };
-const t = useTranslations(lang as 'en' | 'es');
+const translator = useTranslations(lang as 'en' | 'es');
 
 // Get static posts
 const staticPosts: BlogPost[] = (lang === 'en'
@@ -40,35 +44,78 @@ let post: BlogPost | undefined = staticPosts.find((p) => p.slug === slug);
 let runSDK, SDKCoreJs;
 if (!post) {
 	try {
+		console.log(`[Blog] Searching SDK for slug: ${slug}`);
 		({ runSDK, SDKCoreJs } = await import('studiocms:sdk'));
 		const allPages = await runSDK(SDKCoreJs.GET.pages());
 		const studiocmsPage = allPages
 			.map(({ data }: { data: any }) => data)
 			.find((page: any) => page.slug === slug && page.package === '@studiocms/blog');
 
+		console.log(`[Blog] Found page:`, studiocmsPage ? 'YES' : 'NO');
+
 		if (studiocmsPage) {
+			console.log(`[Blog] Page Title:`, studiocmsPage.title);
+
+			// Fetch full page details to ensure we get the content
+			let pageData = studiocmsPage;
+			try {
+				const fullPageData = await runSDK(SDKCoreJs.GET.page.byId(studiocmsPage.id));
+				if (fullPageData) {
+					pageData = fullPageData;
+				}
+			} catch (sdkError) {
+				console.warn('[Blog] XML/SDK Fetch failed:', sdkError);
+				// Fallback to basic data is already set
+			}
+
+			console.log(`[Blog] Full Page keys:`, Object.keys(pageData));
+
+			const contentHtml = pageData.content ? await marked.parse(pageData.content) : '';
+			// specific safe date parsing
+			const publishedDateObj = pageData.publishedAt ? new Date(pageData.publishedAt) : new Date();
+			const isValidDate = !isNaN(publishedDateObj.getTime());
+			const displayDate = isValidDate
+				? publishedDateObj
+						.toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})
+						.toUpperCase()
+				: '';
+
 			post = {
-				slug: studiocmsPage.slug,
-				title: studiocmsPage.title || '',
-				excerpt: studiocmsPage.excerpt || '',
-				date: studiocmsPage.publishedAt
-					? new Date(studiocmsPage.publishedAt)
-							.toLocaleDateString('en-US', {
-								year: 'numeric',
-								month: 'long',
-								day: 'numeric',
-							})
-							.toUpperCase()
-					: '',
-				publishedAt: studiocmsPage.publishedAt ? new Date(studiocmsPage.publishedAt) : new Date(0),
-				category: studiocmsPage.category || 'BLOG',
-				image: studiocmsPage.image || '',
-				imageAlt: studiocmsPage.imageAlt || studiocmsPage.title || '',
-				content: studiocmsPage.content || '',
+				slug: pageData.slug || studiocmsPage.slug,
+				title: pageData.title || studiocmsPage.title || '',
+				excerpt:
+					pageData.excerpt ||
+					pageData.description ||
+					studiocmsPage.excerpt ||
+					studiocmsPage.description ||
+					'',
+				date: displayDate,
+				publishedAt: isValidDate ? publishedDateObj : new Date(0),
+				category: pageData.category || studiocmsPage.category || 'BLOG',
+				image:
+					pageData.image ||
+					pageData.heroImage ||
+					studiocmsPage.image ||
+					studiocmsPage.heroImage ||
+					'',
+				imageAlt:
+					pageData.imageAlt ||
+					pageData.title ||
+					studiocmsPage.imageAlt ||
+					studiocmsPage.title ||
+					'',
+				content: contentHtml,
 				author: {
-					name: studiocmsPage.author?.name || 'Trailmerge Team',
-					image: studiocmsPage.author?.image || '/images/default-author.png',
-					bio: studiocmsPage.author?.bio || '',
+					name: pageData.author?.name || studiocmsPage.author?.name || 'Mark Tegtmeier',
+					image: pageData.author?.image || studiocmsPage.author?.image || '/images/Mark.png',
+					bio:
+						pageData.author?.bio ||
+						studiocmsPage.author?.bio ||
+						'Founder Mark Tegtmeier brings years of design experience to Trailmerge. He has worked with early stage startups, design and software agencies, government, and enterprise, driving them further in their product vision. A husband of one, father of four, and urban homesteader, Mark loves developing tech talent and coming alongside founders with ambitious visions for their products and companies.',
 				},
 				fromStudioCMS: true,
 			};
@@ -78,8 +125,118 @@ if (!post) {
 	}
 }
 
+// Fallback: If content is still missing but we found a page, try to fetch from DB directly
+if (post && !post.content && post.fromStudioCMS) {
+	const slugToQuery = post.slug;
+	// Fallback mechanism moved deeper to use direct client
+	try {
+		// Proceed directly to client usage
+
+		// db.run returns result metadata, db.select / db.all returns rows.
+		// Astro DB uses Drizzle behind the scenes or libSQL.
+		// standard astro:db 'db' object has .select().from()... but without schema we can't use that easily.
+		// Let's use internal libSQL client if exposed or just raw SQL?
+		// Wait, astro:db documents say: db.run is for executing, but for selecting??
+		// Checking current docs: db.select() requires table object.
+		// Is there a raw query method?
+		// 'db.all' doesn't exist on the main export usually.
+		// Actually, let's try to grab 'db' from the SDK if possible? No.
+
+		// Let's use `libsql` directly as we did in the debug script, but using the credentials from environment.
+		// Since we are in SSR, process.env should be populated if configured.
+		// However, astro:db integrates with the local db in dev.
+		// The safest way without schema is actually to assume we can import the table!
+		// It worked there.
+		const { createClient } = await import('@libsql/client');
+
+		const dbUrl = import.meta.env.ASTRO_DB_REMOTE_URL || process.env.ASTRO_DB_REMOTE_URL;
+		const dbToken = import.meta.env.ASTRO_DB_APP_TOKEN || process.env.ASTRO_DB_APP_TOKEN;
+
+		console.log(`[Blog] DB Config: URL present? ${!!dbUrl}, Token present? ${!!dbToken}`);
+		console.log('FALLBACK_V2_EXECUTING - Verifying new code path');
+
+		if (!slugToQuery) {
+			console.error('[Blog] No slug to query for fallback');
+			post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+				<strong>Debug Error:</strong> Slug is empty in 'post' object.<br/>
+				<strong>Astro Params:</strong> ${JSON.stringify(Astro.params)}<br/>
+				<strong>Post Object:</strong> <pre>${JSON.stringify(post, null, 2)}</pre>
+			</div>`;
+			// Don't throw check, just let it render the error content
+		} else {
+			if (dbUrl && dbToken) {
+				const client = createClient({
+					url: dbUrl,
+					authToken: dbToken,
+				});
+
+				// The error "near OR, "None": syntax error" suggests issue with arg binding in the complex IN clause or similar.
+				// Let's simpler: Find the page ID first.
+
+				const pageResult = await client.execute({
+					sql: 'SELECT id FROM StudioCMSPageData WHERE slug = ? LIMIT 1',
+					args: [slugToQuery],
+				});
+
+				let pageId = null;
+				if (pageResult.rows.length > 0) {
+					pageId = pageResult.rows[0].id;
+				} else {
+					// Try with slash prefix if not found
+					const pageResultSlash = await client.execute({
+						sql: 'SELECT id FROM StudioCMSPageData WHERE slug = ? LIMIT 1',
+						args: ['/' + slugToQuery],
+					});
+					if (pageResultSlash.rows.length > 0) {
+						pageId = pageResultSlash.rows[0].id;
+					}
+				}
+
+				if (pageId) {
+					console.log(`[Blog] Found Page ID via fallback: ${pageId}`);
+					const contentResult = await client.execute({
+						sql: 'SELECT content FROM StudioCMSPageContent WHERE contentId = ? LIMIT 1',
+						args: [pageId],
+					});
+
+					if (contentResult.rows.length > 0 && contentResult.rows[0].content) {
+						console.log('[Blog] Content found via direct DB query');
+						const rawContent = contentResult.rows[0].content as string;
+						post.content = await marked.parse(rawContent);
+					} else {
+						console.log('[Blog] Content NOT found via direct DB query for pageId');
+						post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+												<strong>Debug Error:</strong> Content row missing for Page ID ${pageId}.
+										</div>`;
+					}
+				} else {
+					console.log('[Blog] Page not found in DB via fallback (checked slug and /slug)');
+					post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+										<strong>Debug Error:</strong> Page Data not found in DB for slug: ${slugToQuery}
+								</div>`;
+				}
+			} else {
+				console.warn('[Blog] Missing DB credentials for fallback fetch');
+				post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+                <strong>Debug Error:</strong> Missing DB Credentials.<br/>
+                DB URL: ${!!dbUrl}<br/>
+                DB Token: ${!!dbToken}
+            </div>`;
+			}
+		}
+	} catch (dbError) {
+		console.error('[Blog] DB Fallback failed:', dbError);
+		post.content = `<div style="background: #ffebee; padding: 20px; border: 1px solid #c62828;">
+            <strong>Debug Exception:</strong> ${dbError instanceof Error ? dbError.message : String(dbError)}
+        </div>`;
+	}
+} else if (post && post.fromStudioCMS && !post.content) {
+	// Case where post exists but logic flow didn't catch it
+	post.content = '<em>Content is missing and fallback check condition was not met.</em>';
+}
+
 if (!post) {
-	return Astro.redirect(`/${lang}/blog-new`);
+	return Astro.redirect(`/${lang}/blog`);
 }
 
 // Helper function to parse Spanish date format
@@ -148,32 +305,46 @@ const articleData = {
 ---
 
 <Layout
-	title={`${post.title} – ${t('blog.postTitleSuffix')}`}
+	title={`${post.title} – ${translator('blog.postTitleSuffix')}`}
 	description={post.excerpt}
 	lang={lang}
 	schemaType="article"
 	articleData={articleData}
 >
-	<div class="blog-post-decoration"></div>
-	<div class="blog-post-blob"></div>
-	<main id="main-content">
-		<article>
-			<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
+	<img
+		src="/images/new/blog/blog-post/Vector Blob.svg"
+		alt=""
+		class="blog-bg-decoration"
+		loading="eager"
+	/>
+	<img
+		src="/images/new/blog/blog-post/Vector Blob-2.svg"
+		alt=""
+		class="blog-blob-decoration-2"
+		loading="eager"
+	/>
+	<img
+		src="/images/new/blog/blog-post/Vector Blob-1.svg"
+		alt=""
+		class="blog-blob-decoration-3"
+		loading="eager"
+	/>
+	<article>
+		<PostHero image={post.image} imageAlt={post.imageAlt || post.title} />
 
-			<div class="post-container">
-				<PostHeader
-					title={post.title}
-					date={post.date}
-					author={post.author}
-					category={categoryDisplay}
-				/>
+		<div class="post-container">
+			<PostHeader
+				title={post.title}
+				date={post.date}
+				author={post.author}
+				category={categoryDisplay}
+			/>
 
-				<PostContent content={post.content} />
+			<PostContent content={post.content} />
 
-				<PostAuthor author={post.author} lang={lang} />
-			</div>
-		</article>
-	</main>
+			<PostAuthor author={post.author} lang={lang} />
+		</div>
+	</article>
 </Layout>
 
 <style is:global>
@@ -184,67 +355,40 @@ const articleData = {
 		font-family: 'Young Serif', serif !important;
 		font-weight: 400 !important;
 	}
-
-	/* Override global background for Blog Post page */
-	body,
-	html {
-		background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top scroll !important;
-		background-size: 100% auto !important;
-		background-color: var(--off-white) !important; /* Fallback color */
-		min-height: 100% !important;
-	}
-
-	@media (max-width: 768px) {
-		body,
-		html {
-			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top scroll !important;
-			background-size: 100% auto !important;
-		}
-	}
-
-	@media (max-width: 480px) {
-		body,
-		html {
-			background: url('/images/new/blog/blog-post/Post.svg') repeat-y center top scroll !important;
-			background-size: 100% auto !important;
-		}
-	}
 </style>
 
 <style>
-	.blog-post-decoration {
+	.blog-bg-decoration {
 		position: absolute;
-		width: 3127.226px;
-		height: 3770.657px;
-		transform: rotate(-147.916deg);
-		opacity: 0.64;
-		background-color: var(--Secondary-Sand-100, #f1efec);
-		-webkit-mask-image: url('/images/new/blog/blog-post/Path.svg');
-		mask-image: url('/images/new/blog/blog-post/Path.svg');
-		-webkit-mask-size: 100% 100%;
-		mask-size: 100% 100%;
-		-webkit-mask-repeat: no-repeat;
-		mask-repeat: no-repeat;
-		-webkit-mask-position: center;
-		mask-position: center;
-		pointer-events: none;
-		z-index: -1;
-		top: -1200px;
-		left: 50%;
-		margin-left: -1563.6px; /* Half of width */
-	}
-
-	.blog-post-blob {
-		position: absolute;
-		top: 500px;
-		left: -25%;
-		width: 200%;
+		top: 0;
+		left: 0;
+		width: 100%;
 		height: 100%;
-		background-image: url('/images/new/blog/blog-post/Vector Blob.svg');
-		background-repeat: no-repeat;
-		background-position: top center;
-		background-size: 100% 100%;
+		object-fit: cover;
 		z-index: -2;
 		pointer-events: none;
+		opacity: 0.6;
+	}
+
+	.blog-blob-decoration-2 {
+		position: absolute;
+		top: 195px;
+		left: 0;
+		width: auto;
+		height: auto;
+		z-index: -1;
+		pointer-events: none;
+		opacity: 1;
+	}
+
+	.blog-blob-decoration-3 {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: auto;
+		height: auto;
+		z-index: -1;
+		pointer-events: none;
+		opacity: 1;
 	}
 </style>

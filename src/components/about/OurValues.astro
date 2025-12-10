@@ -10,24 +10,22 @@ const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <div class="our-values-wrapper">
-	<div class="our-values-container parallax-container" id="our-values-section">
+	<div class="our-values-container" id="our-values-section">
 		<div class="our-values-image-wrapper">
 			<img
 				src="/images/new/about/Resizing-Mountains.png"
 				alt="Our Values"
-				class="our-values-image parallax-layer"
-				data-speed="-0.1"
+				class="our-values-image"
 				loading="lazy"
 			/>
 		</div>
 		<img
 			src="/images/new/about/Telescope.png"
 			alt="Telescope"
-			class="telescope-image parallax-layer"
-			data-speed="1.2"
+			class="telescope-image"
 			loading="lazy"
 		/>
-		<div class="our-values-content parallax-layer" data-speed="0.1">
+		<div class="our-values-content">
 			<img
 				src="/images/new/about/Telescope.png"
 				alt="Telescope"
@@ -59,6 +57,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		position: relative;
 		overflow: hidden;
 		background: transparent;
+		z-index: 5;
 		/* Ensure it takes up space in the flow */
 		min-height: 800px;
 	}
@@ -247,12 +246,12 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.our-values-text {
-			font-size: 20px;
+			font-size: 24px;
 			line-height: 28px;
 		}
 
 		.our-values-list li {
-			font-size: 20px;
+			font-size: 24px;
 			line-height: 28px;
 		}
 	}

@@ -39,6 +39,7 @@
     "@studiocms/blog": "^0.1.0-beta.30",
     "@studiocms/md": "^0.1.0-beta.30",
     "astro": "^5.14.7",
+    "marked": "^17.0.1",
     "sharp": "^0.34.5",
     "studiocms": "^0.1.0-beta.30"
   },

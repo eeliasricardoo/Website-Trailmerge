@@ -115,6 +115,8 @@
       "home": "Home",
       "blog": "Blog"
     },
+    "featured": "Featured",
+    "allPosts": "All Posts",
     "seo": {
       "keywords": "digital transformation blog, enterprise software development articles, product design tips, MVP strategy, software design best practices, operations and technology leaders, enterprise UX articles"
     }

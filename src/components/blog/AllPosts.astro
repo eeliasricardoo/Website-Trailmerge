@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 
-import type { BlogPost } from '../types/blog';
+import type { BlogPost } from '../../types/blog';
 
 export interface Props {
 	lang?: string;
@@ -18,12 +18,12 @@ const allPosts = posts.slice(4);
 <!-- All Posts Section -->
 <section class="all-posts-wrapper">
 	<div class="all-posts-container">
-		<h2 class="section-title">All Posts</h2>
+		<h2 class="section-title">{t('blog.allPosts')}</h2>
 		<div class="all-posts-list">
 			{
 				allPosts.map((post) => (
 					<article class="post-item">
-						<a href={`/${lang}/blog/${post.slug}-new/`} class="post-link">
+						<a href={`/${lang}/blog/${post.slug}/`} class="post-link">
 							<div class="post-image-wrapper">
 								<img
 									src={post.image}
@@ -38,12 +38,10 @@ const allPosts = posts.slice(4);
 									<span class="post-date">{post.date}</span>
 									{post.author && <span class="post-author"> • {post.author.name}</span>}
 								</div>
-								<p class="post-excerpt">
-									{post.excerpt.length > 280
-										? post.excerpt.substring(0, 280) + '...'
-										: post.excerpt}
-									<span class="post-read-more">Read More</span>
-								</p>
+								<div class="post-excerpt-wrapper">
+									<p class="post-excerpt">{post.excerpt}</p>
+									<span class="post-read-more">{t('common.readMore')}</span>
+								</div>
 							</div>
 						</a>
 					</article>
@@ -141,6 +139,13 @@ const allPosts = posts.slice(4);
 		line-height: 1.5;
 	}
 
+	.post-excerpt-wrapper {
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+		min-height: calc(18px * 1.6 * 3); /* Ensure 3 lines fixed vertical space */
+	}
+
 	.post-excerpt {
 		color: var(--brand-secondary-brown);
 		font-family: 'DM Sans', sans-serif;
@@ -148,6 +153,14 @@ const allPosts = posts.slice(4);
 		font-weight: 400;
 		line-height: 1.6;
 		margin: 0;
+		flex: 1;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		/* autoprefixer: ignore next */
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-height: calc(18px * 1.6 * 3); /* Force maximum height of 3 lines */
 	}
 
 	.post-read-more {
@@ -156,7 +169,11 @@ const allPosts = posts.slice(4);
 		font-size: 16px;
 		font-weight: 600;
 		text-decoration: underline;
-		margin-left: 8px;
+		white-space: nowrap;
+		flex-shrink: 0;
+		align-self: flex-end;
+		line-height: 1.6;
+		padding-bottom: 2px;
 	}
 
 	@media (max-width: 1024px) {
@@ -196,6 +213,11 @@ const allPosts = posts.slice(4);
 
 		.post-excerpt {
 			font-size: 16px;
+			max-height: calc(16px * 1.6 * 3);
+		}
+
+		.post-excerpt-wrapper {
+			min-height: calc(16px * 1.6 * 3);
 		}
 	}
 
@@ -209,7 +231,7 @@ const allPosts = posts.slice(4);
 		}
 
 		.post-title {
-			font-size: 20px;
+			font-size: 22px;
 		}
 	}
 </style>

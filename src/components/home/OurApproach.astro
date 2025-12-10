@@ -11,22 +11,15 @@ const t = useTranslations(lang as 'en' | 'es');
 ---
 
 <div class="our-approach-wrapper">
-	<div class="our-approach-container parallax-container" id="our-approach-section">
+	<div class="our-approach-container" id="our-approach-section">
 		<img
 			src="/images/new/home/our-approach/Resizing Mountains.svg"
 			alt="Our Approach"
-			class="our-approach-image parallax-layer"
-			data-speed="-0.1"
+			class="our-approach-image"
 			loading="lazy"
 		/>
-		<img
-			src="/images/new/home/our-approach/Map.svg"
-			alt="Map"
-			class="map-image parallax-layer"
-			data-speed="1.2"
-			loading="lazy"
-		/>
-		<div class="our-approach-content parallax-layer" data-speed="0.1">
+		<img src="/images/new/home/our-approach/Map.svg" alt="Map" class="map-image" loading="lazy" />
+		<div class="our-approach-content">
 			<h3 class="our-approach-title">{t('ourApproachNew.title')}</h3>
 			<div class="our-approach-text">
 				<p>
@@ -42,12 +35,9 @@ const t = useTranslations(lang as 'en' | 'es');
 					<span class="w-700">{t('ourApproachNew.p2.part2')}</span>
 				</p>
 			</div>
-			<Button
-				text={t('ourApproach.cta')}
-				href={lang === 'en' ? '/en/about/' : '/es/about/'}
-				variant="secondary"
-				icon="arrow-right"
-			/>
+			<Button href={lang === 'en' ? '/en/about/' : '/es/about/'} variant="primary">
+				{t('ourApproachNew.cta')}
+			</Button>
 		</div>
 	</div>
 </div>
@@ -58,7 +48,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		position: relative;
 		overflow: hidden;
 		/* Ensure it takes up space in the flow */
-		min-height: 800px;
+		min-height: 950px;
 		margin-top: 70px;
 		z-index: 20;
 	}
@@ -71,13 +61,14 @@ const t = useTranslations(lang as 'en' | 'es');
 		margin: 0;
 		display: block;
 		box-sizing: border-box;
-		min-height: 800px;
+		min-height: 950px;
 	}
 
 	.our-approach-image {
 		width: 100vw;
 		max-width: 100vw;
 		height: auto;
+		min-height: 950px;
 		object-fit: cover;
 		display: block;
 		box-sizing: border-box;
@@ -111,7 +102,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		align-items: flex-start;
 		max-width: 50%;
 		height: fit-content;
-		padding-right: 20px;
+		padding-left: 40px;
 	}
 
 	.our-approach-title {
@@ -150,10 +141,15 @@ const t = useTranslations(lang as 'en' | 'es');
 	}
 
 	/* Responsive Design */
+	/* Responsive Design */
 	@media (max-width: 1024px) {
 		.our-approach-wrapper,
 		.our-approach-container {
-			min-height: auto;
+			min-height: 850px;
+		}
+
+		.our-approach-image {
+			min-height: 850px;
 		}
 
 		.map-image {
@@ -170,7 +166,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		}
 
 		.our-approach-text {
-			font-size: 20px;
+			font-size: 24px;
 			line-height: 28px;
 		}
 	}
@@ -182,7 +178,7 @@ const t = useTranslations(lang as 'en' | 'es');
 
 		.our-approach-wrapper,
 		.our-approach-container {
-			min-height: 600px;
+			min-height: 850px;
 			height: auto;
 			display: flex;
 			flex-direction: column;
@@ -191,7 +187,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		.our-approach-image {
 			width: 100%;
 			height: 100%;
-			min-height: 600px;
+			min-height: 850px;
 			object-fit: cover;
 			position: absolute;
 			top: 0;
@@ -204,13 +200,13 @@ const t = useTranslations(lang as 'en' | 'es');
 		.map-image {
 			position: relative;
 			top: auto;
-			left: auto;
-			transform: none;
+			left: 50%;
+			transform: translateX(-50%);
 			width: 200px;
 			height: auto;
 			max-width: 50%;
 			max-height: 200px;
-			margin: 60px 0 16px 20px;
+			margin: 76px 0 16px 0;
 			z-index: 11;
 			display: block;
 		}
@@ -225,17 +221,21 @@ const t = useTranslations(lang as 'en' | 'es');
 			padding: 0 20px 80px 20px;
 			background: transparent;
 			z-index: 12;
+			align-items: center;
+			text-align: center;
 		}
 
 		.our-approach-title {
 			font-size: 36px;
 			line-height: 1.2;
 			margin-bottom: 20px;
+			text-align: center;
 		}
 
 		.our-approach-text {
 			font-size: 18px;
 			line-height: 1.6;
+			text-align: center;
 		}
 	}
 
@@ -246,7 +246,7 @@ const t = useTranslations(lang as 'en' | 'es');
 
 		.our-approach-wrapper,
 		.our-approach-container {
-			min-height: 550px;
+			min-height: 800px;
 			height: auto;
 			display: flex;
 			flex-direction: column;
@@ -255,7 +255,7 @@ const t = useTranslations(lang as 'en' | 'es');
 		.our-approach-image {
 			width: 100%;
 			height: 100%;
-			min-height: 550px;
+			min-height: 800px;
 			object-fit: cover;
 			position: absolute;
 			top: 0;
@@ -268,13 +268,13 @@ const t = useTranslations(lang as 'en' | 'es');
 		.map-image {
 			position: relative;
 			top: auto;
-			left: auto;
-			transform: none;
+			left: 50%;
+			transform: translateX(-50%);
 			width: 180px;
 			height: auto;
 			max-width: 50%;
 			max-height: 180px;
-			margin: 50px 0 16px 20px;
+			margin: 66px 0 16px 0;
 			z-index: 11;
 			display: block;
 		}
@@ -286,20 +286,24 @@ const t = useTranslations(lang as 'en' | 'es');
 			bottom: auto;
 			margin: 0;
 			max-width: 100%;
-			padding: 0 20px 80px 20px;
+			padding: 0px 20px 80px 20px;
 			background: transparent;
 			z-index: 12;
+			align-items: center;
+			text-align: center;
 		}
 
 		.our-approach-title {
 			font-size: 32px;
 			line-height: 1.2;
-			margin-bottom: 16px;
+			margin-bottom: 0px;
+			text-align: center;
 		}
 
 		.our-approach-text {
-			font-size: 17px;
+			font-size: 16px;
 			line-height: 1.6;
+			text-align: center;
 		}
 	}
 	.parallax-layer {

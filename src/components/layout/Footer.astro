@@ -13,11 +13,7 @@ const t = useTranslations(lang as 'en' | 'es');
 // Get current year for copyright
 const currentYear = new Date().getFullYear();
 
-const addressLines = [
-	t('footer.address.line1'),
-	t('footer.address.line2'),
-	t('footer.address.line3'),
-].filter((line) => line && line.trim() !== '' && !line.startsWith('footer.address'));
+const addressLines = [t('footer.address.line1'), t('footer.address.line2')];
 ---
 
 <footer class="footer-new">
@@ -29,7 +25,16 @@ const addressLines = [
 					<img src={TrailmergeLogoSand.src} alt="Trailmerge" class="footer-logo" />
 				</a>
 				<div class="footer-address">
-					{addressLines.map((line) => <p>{line}</p>)}
+					<p>
+						{
+							addressLines.map((line, index) => (
+								<>
+									{line}
+									{index < addressLines.length - 1 && <br />}
+								</>
+							))
+						}
+					</p>
 				</div>
 			</div>
 
@@ -57,11 +62,12 @@ const addressLines = [
 			<!-- CTA -->
 			<div class="footer-cta">
 				<Button
-					text={t('nav.startProject')}
 					href={lang === 'es' ? '/es/contact/' : '/en/contact/'}
 					variant="primary"
-					className="footer-cta-button"
-				/>
+					class="footer-cta-button"
+				>
+					{t('nav.startProject')}
+				</Button>
 			</div>
 		</div>
 	</div>
@@ -72,35 +78,36 @@ const addressLines = [
 		width: 100%;
 		padding: 0 12px 0 12px;
 		position: relative;
-		z-index: 10;
+		z-index: 20;
 		margin-top: auto;
-		padding-top: 64px;
+		padding-top: 0px;
 	}
 
 	.footer-container {
 		background: #44413d;
 		border-radius: 16px 16px 0 0;
 		box-shadow: 0 -8px 16px 0 rgba(0, 0, 0, 0.25);
-		padding: 0 80px;
+		padding: 0 40px;
 		width: 100%;
 		height: 180px;
 		display: flex;
-		align-items: center;
+		align-items: top;
 	}
 
 	.footer-content {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
-		gap: 40px;
+		align-items: flex-start;
+		gap: 0px;
 	}
 
 	.footer-brand {
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
-		max-width: 300px;
+		max-width: 400px;
+		padding-top: 32px;
 	}
 
 	.footer-logo {
@@ -111,16 +118,18 @@ const addressLines = [
 	.footer-address {
 		color: var(--sand-300, #e2deda);
 		font-family: 'DM Sans', sans-serif;
-		font-size: 16px;
+		font-size: 20px;
 		line-height: 1.5;
 	}
 
 	.footer-address p {
 		margin: 0;
+		font-size: 20px !important;
 	}
 
 	.footer-links {
 		display: flex;
+		padding-top: 16px;
 		gap: 80px;
 	}
 
@@ -136,6 +145,7 @@ const addressLines = [
 		font-size: 16px;
 		font-weight: 700;
 		margin: 0;
+		padding: 0;
 	}
 
 	.footer-link {
@@ -153,6 +163,8 @@ const addressLines = [
 	.footer-cta {
 		display: flex;
 		align-items: flex-start;
+		padding-top: 64px;
+		padding-bottom: 32px;
 	}
 
 	/* Responsive Design */
@@ -229,7 +241,7 @@ const addressLines = [
 		}
 
 		.footer-address {
-			font-size: 14px;
+			font-size: 16px;
 		}
 
 		.footer-links {
@@ -245,12 +257,12 @@ const addressLines = [
 		}
 
 		.column-title {
-			font-size: 14px;
+			font-size: 16px;
 			margin-bottom: 8px;
 		}
 
 		.footer-link {
-			font-size: 14px;
+			font-size: 16px;
 		}
 
 		.footer-cta {

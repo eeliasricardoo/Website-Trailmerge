@@ -252,7 +252,7 @@
 	.close-modal {
 		top: 12px;
 		right: 12px;
-		font-size: 20px;
+		font-size: 24px;
 		width: 28px;
 		height: 28px;
 	}
@@ -273,7 +273,7 @@
 	}
 
 	h4 {
-		font-size: 20px;
+		font-size: 24px;
 		line-height: 26px;
 	}
 

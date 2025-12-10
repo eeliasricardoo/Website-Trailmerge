@@ -1,7 +1,7 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 
-import type { BlogPost } from '../types/blog';
+import type { BlogPost } from '../../types/blog';
 
 export interface Props {
 	lang?: string;
@@ -20,12 +20,12 @@ const sidePosts = featuredPosts.slice(1, 4);
 <!-- Featured Posts Section -->
 <section class="featured-posts-wrapper">
 	<div class="featured-posts-container">
-		<h2 class="section-title">Featured</h2>
+		<h2 class="section-title">{t('blog.featured')}</h2>
 		<div class="featured-posts-grid">
 			{
 				mainPost && (
 					<article class="featured-main-card">
-						<a href={`/${lang}/blog/${mainPost.slug}-new/`} class="featured-main-link">
+						<a href={`/${lang}/blog/${mainPost.slug}/`} class="featured-main-link">
 							<div class="featured-main-image-wrapper">
 								<img
 									src={mainPost.image}
@@ -51,7 +51,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 				{
 					sidePosts.map((post) => (
 						<article class="featured-side-card">
-							<a href={`/${lang}/blog/${post.slug}-new/`} class="featured-side-link">
+							<a href={`/${lang}/blog/${post.slug}/`} class="featured-side-link">
 								<div class="featured-side-image-wrapper">
 									<img
 										src={post.image}
@@ -80,7 +80,7 @@ const sidePosts = featuredPosts.slice(1, 4);
 					{
 						featuredPosts.map((post, index) => (
 							<article class="slider-slide" data-slide-index={index}>
-								<a href={`/${lang}/blog/${post.slug}-new/`} class="slider-link">
+								<a href={`/${lang}/blog/${post.slug}/`} class="slider-link">
 									<div class="slider-image-wrapper">
 										<img
 											src={post.image}
@@ -557,11 +557,11 @@ const sidePosts = featuredPosts.slice(1, 4);
 		}
 
 		.slider-title {
-			font-size: 20px;
+			font-size: 22px;
 		}
 
 		.slider-meta {
-			font-size: 13px;
+			font-size: 16px;
 		}
 	}
 </style>

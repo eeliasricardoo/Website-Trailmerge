@@ -10,7 +10,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '8 DE JULIO, 2022',
 		category: 'EQUIPOS DE DISEÑO',
 		excerpt:
-			'En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas. Sin embargo, contratar y encontrar diseñadores efectivos puede ser un proceso que consume tiempo y es desafiante.',
+			'En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas, y más empresas están comenzando a reconocer su beneficio para reducir la rotación, impulsar la adopción y mejorar la eficiencia de los usuarios. Un gran equipo de diseño puede ser la diferencia entre un buen producto y un producto estelar.',
 		imageAlt: 'Ilustración de mochila de senderismo',
 		content: `<p>En el mercado actual, los diseñadores son cada vez más valiosos para startups y empresas establecidas por igual, y más empresas están comenzando a reconocer su beneficio para reducir la rotación, impulsar la adopción y mejorar la eficiencia de los usuarios. Un gran equipo de diseño puede ser la diferencia entre un buen producto y un producto estelar.</p>
 
@@ -53,7 +53,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '9 DE JUNIO, 2021',
 		category: 'SAAS',
 		excerpt:
-			'En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. El siguiente paso es mezclar las restricciones.',
+			'En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. Exploramos cómo comprender las necesidades, puntos de dolor y objetivos de tus usuarios debe ser la base de cualquier marco de priorización. Pero las necesidades del cliente por sí solas no cuentan toda la historia. El siguiente paso es mezclar las restricciones.',
 		imageAlt: 'Ilustración de taza de café',
 		content: `<p>En la primera parte de esta serie, discutimos puntos de datos centrados en el cliente que pueden ayudar a formar la estrategia de producto. Exploramos cómo comprender las necesidades, puntos de dolor y objetivos de tus usuarios debe ser la base de cualquier marco de priorización. Pero las necesidades del cliente por sí solas no cuentan toda la historia.</p>
 
@@ -113,7 +113,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '21 DE MAYO, 2021',
 		category: 'SAAS',
 		excerpt:
-			'Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero...',
+			'Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Tu tablero de visión probablemente está desbordado con funciones que revolucionarían tu industria, deleitarían a tus usuarios y harían llorar a tus competidores. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero.',
 		imageAlt: 'Ilustración de binoculares',
 		content: `<p>Si eres fundador de una startup o líder de producto, es probable que no tengas problemas para soñar en grande. Tu tablero de visión probablemente está desbordado con funciones que revolucionarían tu industria, deleitarían a tus usuarios y harían llorar a tus competidores. Pero sigues encontrándote con las mismas dos molestas restricciones al construir el producto de ensueño para dominar tu industria: tiempo y dinero.</p>
 
@@ -178,7 +178,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '21 DE ABRIL, 2021',
 		category: 'SAAS',
 		excerpt:
-			'Mejora tu técnica de cuestionamiento con estos fundamentos para hacer buenas preguntas al construir tu producto SaaS.',
+			'Como instructor en General Assembly, una de las principales cosas que quería que mi cohorte se llevara del programa intensivo de diseño UX de 10 semanas era esto: cómo hacer las preguntas correctas. Los píxeles son geniales y todo eso, pero las buenas preguntas son la base del buen diseño.',
 		imageAlt: 'Ilustración de brújula',
 		imageCredit: 'Blog Photo by Artem Maltsev on Unsplash',
 		content: `<p>Como instructor en General Assembly, una de las principales cosas que quería que mi cohorte se llevara del programa intensivo de diseño UX de 10 semanas era esto: cómo hacer las preguntas correctas.</p>
@@ -288,7 +288,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '7 DE ABRIL, 2021',
 		category: 'SAAS',
 		excerpt:
-			'Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software... pero meses después, enfrentas el impacto inicial de la deuda de diseño.',
+			'Imagina conmigo por un segundo. Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software y has escuchado que nadie quiere invertir en tu startup hasta que tengas algo construido, así que vas directamente al desarrollador o tienda de desarrollo que tu amigo recomendó.',
 		imageAlt: 'Ilustración de nudo',
 		content: `<p>Imagina conmigo por un segundo. Eres un fundador no técnico con un concepto B2B SaaS increíble. Sabes que necesitas contratar a un desarrollador para construir tu producto de software y has escuchado que nadie quiere invertir en tu startup hasta que tengas algo construido, así que vas directamente al desarrollador o tienda de desarrollo que tu amigo recomendó.</p>
 
@@ -344,7 +344,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '22 DE DICIEMBRE, 2020',
 		category: 'SAAS',
 		excerpt:
-			'¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa "producto mínimo viable". Pero, ¿cuál es el punto?',
+			'¿Cómo definirías un MVP? Sí, creo que la mayoría de nosotros en el mundo de las startups tecnológicas sabemos que significa "producto mínimo viable". Pero, ¿cuál es el punto? Bueno, a menudo he visto este término usado para significar "¡un pedazo de software arrojado rápidamente para sacar algo por la puerta para que podamos empezar a ganar dinero con este chico malo!"',
 		imageAlt: 'Ilustración de linterna',
 		content: `<p>¿Cómo definirías un MVP?</p>
 
@@ -415,7 +415,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '30 DE OCTUBRE, 2020',
 		category: 'SAAS',
 		excerpt:
-			'Identificar una oportunidad es un gran lugar para comenzar. Y obviamente, has estado lo suficientemente motivado para aprovechar el día y crear el cambio tan necesario en tu industria. El único problema es que no sabes por dónde empezar.',
+			'Los fundadores de SaaS B2B vienen en una variedad de formas. A menudo, no son los genios tecnológicos que se emocionan con los pros y los contras de las últimas bibliotecas y marcos de Javascript. En muchos casos, no son diseñadores UX o gerentes de producto que decidieron ramificarse para crear un nuevo producto. Son personas de antecedentes no técnicos que han visto una oportunidad para servir a su industria.',
 		imageAlt: 'Ilustración de botas de senderismo',
 		content: `<p>Los fundadores de SaaS B2B vienen en una variedad de formas. A menudo, no son los genios tecnológicos que se emocionan con los pros y los contras de las últimas bibliotecas y marcos de Javascript. En muchos casos, no son diseñadores UX o gerentes de producto que decidieron ramificarse para crear un nuevo producto.</p>
 
@@ -484,7 +484,7 @@ export const blogPostsEs: BlogPost[] = [
 		date: '29 DE OCTUBRE, 2020',
 		category: 'SAAS',
 		excerpt:
-			'Una startup es una organización en busca de un modelo de negocio sostenible. Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup.',
+			'Una startup es una organización en busca de un modelo de negocio sostenible. Escuché esa definición en un evento en Colorado Springs hace unos años, y se me queda hasta el día de hoy como la forma más clara de identificar una startup. "Startup" no es una descripción de la edad, el tamaño, la popularidad o los ingresos de una empresa.',
 		imageAlt: 'Mano sosteniendo un mapa examinándolo',
 		content: `<p>Una startup es una organización en busca de un modelo de negocio sostenible.</p>
 

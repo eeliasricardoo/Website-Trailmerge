@@ -24,7 +24,7 @@ const projects = [
 	{
 		title: t('recentProjectsNew.project3.title'),
 		description: t('recentProjectsNew.project3.description'),
-		image: '/images/new/home/recent-projects/unsplash_sgYamIzhAhg-2.png',
+		image: '/images/new/home/recent-projects/unsplash_sgYamIzhAhg 2.png',
 		alt: t('recentProjectsNew.project3.alt'),
 	},
 ];
@@ -58,7 +58,7 @@ const projects = [
 <style>
 	.recent-projects-wrapper {
 		width: 100%;
-		margin-top: 120px;
+		margin-top: 0px;
 		padding: 0 20px 124px 20px;
 		background-color: transparent;
 		display: flex;
@@ -123,12 +123,6 @@ const projects = [
 		aspect-ratio: 3/2;
 		border-radius: 8px;
 		overflow: hidden;
-		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease;
-	}
-
-	.image-wrapper:hover {
-		transform: translateY(-4px);
 	}
 
 	.project-image {
@@ -184,5 +178,32 @@ const projects = [
 			grid-template-columns: 1fr;
 			gap: 48px;
 		}
+
+		.project-card {
+			align-items: flex-start;
+			text-align: left;
+			gap: 8px;
+		}
+
+		.background-lines {
+			width: 220%;
+			min-width: 3500px;
+			top: -300px;
+		}
+
+		.project-title {
+			text-align: left;
+		}
+
+		.project-description {
+			font-family: 'DM Sans', sans-serif;
+			font-weight: 400;
+			font-style: normal;
+			font-size: 16px;
+			line-height: 22px;
+			letter-spacing: 0;
+			text-align: left;
+		}
 	}
 </style>
+```

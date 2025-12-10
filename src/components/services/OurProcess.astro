@@ -48,9 +48,9 @@ const processSteps = [
 ];
 ---
 
-<section class="process-wrapper parallax-container">
+<section class="process-wrapper">
 	<div class="process-container">
-		<div class="process-header parallax-layer" data-speed="0.2">
+		<div class="process-header">
 			<h2 class="section-title">{t('servicesNew.process.title')}</h2>
 			<p class="section-description" set:html={t('servicesNew.process.description')} />
 		</div>
@@ -58,10 +58,7 @@ const processSteps = [
 		<div class="process-grid">
 			{
 				processSteps.map((step, index) => (
-					<div
-						class="process-card parallax-layer"
-						data-speed={(0.4 + (index % 3) * 0.1).toFixed(2)}
-					>
+					<div class="process-card">
 						<div class="icon-wrapper">
 							<img src={step.image} alt={step.alt} width="240" height="240" class="process-icon" />
 						</div>
@@ -173,7 +170,19 @@ const processSteps = [
 		margin: 0;
 	}
 
+	@media (max-width: 1024px) {
+		.section-description,
+		.process-description {
+			font-size: 18px;
+			line-height: 1.6;
+		}
+	}
+
 	@media (max-width: 900px) {
+		.process-wrapper {
+			padding: 24px 20px 80px 20px;
+		}
+
 		.process-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -186,6 +195,12 @@ const processSteps = [
 
 		.section-title {
 			font-size: 40px;
+		}
+
+		.section-description,
+		.process-description {
+			font-size: 16px;
+			line-height: 1.6;
 		}
 	}
 </style>
