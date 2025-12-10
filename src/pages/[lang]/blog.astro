@@ -56,7 +56,7 @@ try {
 					: '',
 				publishedAt: page.publishedAt ? new Date(page.publishedAt) : new Date(0),
 				category: page.category || 'BLOG',
-				image: page.image || '',
+				image: page.image || page.heroImage || '',
 				imageAlt: page.imageAlt || page.title || '',
 				content: page.content || '',
 				author: {

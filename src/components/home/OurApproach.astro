@@ -35,7 +35,11 @@ const t = useTranslations(lang as 'en' | 'es');
 					<span class="w-700">{t('ourApproachNew.p2.part2')}</span>
 				</p>
 			</div>
-			<Button href={lang === 'en' ? '/en/about/' : '/es/about/'} variant="primary">
+			<Button
+				href={lang === 'en' ? '/en/about/' : '/es/about/'}
+				variant="primary"
+				style="width: auto; min-width: 194px; padding: 0 32px; white-space: nowrap;"
+			>
 				{t('ourApproachNew.cta')}
 			</Button>
 		</div>
