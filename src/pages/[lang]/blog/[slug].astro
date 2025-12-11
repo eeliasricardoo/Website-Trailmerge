@@ -230,7 +230,9 @@ if (post && !post.content && post.fromStudioCMS) {
             <strong>Debug Exception:</strong> ${dbError instanceof Error ? dbError.message : String(dbError)}
         </div>`;
 	}
-} else if (post && post.fromStudioCMS && !post.content) {
+}
+
+if (post && post.fromStudioCMS && !post.content) {
 	// Case where post exists but logic flow didn't catch it
 	post.content = '<em>Content is missing and fallback check condition was not met.</em>';
 }

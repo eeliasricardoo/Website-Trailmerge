@@ -26,38 +26,35 @@ interface Props {
 
 const { title, description, lang, disableScreen, checkLogin } = Astro.props;
 ---
+
 <!doctype html>
 <html {lang}>
-  <head>
-	<Global />
-    <Generator />
- 	<Favicons />
-	<TitleTags {title} {description} />
-	<ThemeManager />
-</head>
-  <body>
-	<Toaster />
-	<main>
-		<div id="canvas-container">
-			<FallbackCanvas {config} />
-		</div>
-		<div class="login-form-container">
-
-			<slot name="header" />
-
-			<slot />
-			
-			{ !disableScreen && <OAuthButtonStack /> }
-
-			<div class="form-footer">
-				<slot name="footer" />
+	<head>
+		<Global />
+		<Generator />
+		<Favicons />
+		<TitleTags {title} {description} />
+		<ThemeManager />
+	</head>
+	<body>
+		<Toaster />
+		<main>
+			<div id="canvas-container">
+				<FallbackCanvas {config} />
 			</div>
+			<div class="login-form-container">
+				<slot name="header" />
 
-		</div>
-	</main>
-	{ checkLogin && (
-		<StaticAuthCheck {userData} />
-	)}
-	<ThreeCanvasLoader />
-  </body>
+				<slot />
+
+				{!disableScreen && <OAuthButtonStack />}
+
+				<div class="form-footer">
+					<slot name="footer" />
+				</div>
+			</div>
+		</main>
+		{checkLogin && <StaticAuthCheck {userData} />}
+		<ThreeCanvasLoader />
+	</body>
 </html>
